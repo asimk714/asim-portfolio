@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<nav class="case-study-nav" aria-label="Page navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Exit
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__type">How I Think &amp; How I Work</span>
+    </div>
+  </div>
+</nav>
+
+<section class="hiw-section">
+  <div class="container">
+    <div class="section-header animate-in">
+      <p class="eyebrow">How I Think</p>
+      <h1 class="section-header__title" style="font-size: clamp(var(--text-3xl), 4.5vw, var(--text-5xl));">
+        The way I work through a product problem.
+      </h1>
+      <p class="muted-paragraph" style="max-width: 580px;">
+        Six moves. Each one is grounded in the actual work on this portfolio — not generic PM
+        methodology. Some are observed in my products, some are inferred from how I've worked,
+        some are proposals. The evidence labels tell you which is which.
+      </p>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion__item">
+        <button class="accordion__header" aria-expanded="false" aria-controls="acc-discover" id="acc-discover-btn">
+          <div class="accordion__header-text">
+            <span class="accordion__number">01</span>
+            <span class="accordion__title">Discover</span>
+          </div>
+          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion__panel" id="acc-discover" role="region" aria-labelledby="acc-discover-btn">
+          <div class="accordion__body">
+            <p class="accordion__lead">
+              Find the real problem before you propose a solution. Disambiguate. Separate facts from
+              assumptions from inferences from unknowns.
+            </p>
+            <p>
+              Before I build anything, I try to understand what problem I'm actually solving. That
+              sounds obvious, but most product work skips it — the problem is assumed, the solution is
+              proposed, and the measure is an afterthought.
+            </p>
+            <p>
+              In practice, this means separating what I know from what I'm guessing. On Unrot, the
+              problem-framing research explicitly separates known facts from assumptions, inferences,
+              and unknowns — and organizes seven candidate reasons for low D1 retention into categories
+              instead of picking one and running with it.
+            </p>
+            <p>
+              On ReviewFlow, the discovery wasn't user research — it was product formulation: what
+              would a responsible AI-assisted review tool actually need to do? The answer shaped
+              everything downstream.
+            </p>
+            <div class="accordion__evidence">
+              <span class="evidence-label evidence-label--observed">Observed</span>
+              <span> — problem framing as a deliberate step, not an assumption.</span>
+              <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+              <span> — the JTBD list and intervention hypotheses for Unrot are good guesses, not
+              validated research.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__header" aria-expanded="false" aria-controls="acc-define" id="acc-define-btn">
+          <div class="accordion__header-text">
+            <span class="accordion__number">02</span>
+            <span class="accordion__title">Define</span>
+          </div>
+          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion__panel" id="acc-define" role="region" aria-labelledby="acc-define-btn">
+          <div class="accordion__body">
+            <p class="accordion__lead">
+              Define the product before you build it. What is it? What is it not? What's the smallest
+              thing that does the job?
+            </p>
+            <p>
+              Once I understand the problem, I define the product. Not the implementation — the product.
+              What job does it do? What's in scope? What's out of scope? What's the smallest thing that
+              actually solves the problem?
+            </p>
+            <p>
+              ReviewFlow's MVP prioritization separates Must Have from Should Have from Out of Scope —
+              and the Out of Scope list is as important as the in-scope list. It shows I was thinking
+              about what the product should <em>not</em> do.
+            </p>
+            <p>
+              Experiment Tracker's PRODUCT_BRIEF evaluates seven candidate capabilities against a single
+              question: what's the smallest thing that closes the loop? Conclusion capture won. Charts,
+              search, auth, cloud, AI features, templates, artifacts — all evaluated, all deliberately
+              not chosen for v1.
+            </p>
+            <div class="accordion__evidence">
+              <span class="evidence-label evidence-label--verified">Verified</span>
+              <span> — MVP prioritization and product brief documents exist. The trade-offs are
+              explicit.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__header" aria-expanded="false" aria-controls="acc-decide" id="acc-decide-btn">
+          <div class="accordion__header-text">
+            <span class="accordion__number">03</span>
+            <span class="accordion__title">Decide</span>
+          </div>
+          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion__panel" id="acc-decide" role="region" aria-labelledby="acc-decide-btn">
+          <div class="accordion__body">
+            <p class="accordion__lead">
+              Make explicit trade-offs. Prefer the smallest thing that closes the loop. Say why you're
+              not doing the other things.
+            </p>
+            <p>
+              Product thinking is mostly decision-making under constraints. The interesting part isn't
+              the decision — it's the reasoning. What options did I consider? What trade-offs did I
+              accept? What would I do differently?
+            </p>
+            <p>
+              ReviewFlow's product decisions document records 8 decisions — structured input vs blank
+              box, anti-hallucination constraints, rating preservation, short+detailed drafts, editable
+              draft, manual Google handoff, no database, no auth — each with options, trade-offs,
+              confidence, and a validation approach.
+            </p>
+            <p>
+              Experiment Tracker's prioritization is the same move at a higher level: seven candidates,
+              one chosen, six deliberately not. The "why not prioritized" column is where the judgment
+              shows up.
+            </p>
+            <div class="accordion__evidence">
+              <span class="evidence-label evidence-label--verified">Verified</span>
+              <span> — decision records exist with explicit options and trade-offs.</span>
+              <span class="evidence-label evidence-label--proposed">Proposed</span>
+              <span> — the prioritization move itself could be formalized further as a reusable
+              framework.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__header" aria-expanded="false" aria-controls="acc-build" id="acc-build-btn">
+          <div class="accordion__header-text">
+            <span class="accordion__number">04</span>
+            <span class="accordion__title">Build</span>
+          </div>
+          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion__panel" id="acc-build" role="region" aria-labelledby="acc-build-btn">
+          <div class="accordion__body">
+            <p class="accordion__lead">
+              Build the thing. Keep it real. Don't pretend it's more than it is. If it's AI-assisted,
+              say so. If it's local-only, say so. If it's a prototype, say so.
+            </p>
+            <p>
+              I build products that actually run. ReviewFlow is a real React + Supabase application —
+              not a design concept, not a Figma file, not a "wouldn't it be cool if." It has components,
+              it has an edge function, it has a CI workflow. It runs locally with credentials.
+            </p>
+            <p>
+              Unrot is a real Next.js 16 + PostgreSQL + Prisma application with auth, sessions,
+              learning paths, lessons, progress tracking, reminder preferences, and an analytics
+              dashboard that computes from a real database. It's production-shaped, not a toy.
+            </p>
+            <p>
+              Experiment Tracker is a real Flask + SQLite application with 22 passing tests and a
+              17-category verification report. It runs. It's verified. It's intentionally small.
+            </p>
+            <p>
+              And I'm honest about how they were built. ReviewFlow was scaffolded with AI assistance —
+              I've said that clearly. The product decisions, the measurement, the MVP boundary, the
+              disclosure, the honest gaps are mine.
+            </p>
+            <div class="accordion__evidence">
+              <span class="evidence-label evidence-label--verified">Verified</span>
+              <span> — all three products run. All three have real architecture documents. All three
+              have real implementation evidence.</span>
+              <span class="evidence-label evidence-label--observed">Observed</span>
+              <span> — AI-assisted implementation disclosed where it happened. Not hidden.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__header" aria-expanded="false" aria-controls="acc-measure" id="acc-measure-btn">
+          <div class="accordion__header-text">
+            <span class="accordion__number">05</span>
+            <span class="accordion__title">Measure</span>
+          </div>
+          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion__panel" id="acc-measure" role="region" aria-labelledby="acc-measure-btn">
+          <div class="accordion__body">
+            <p class="accordion__lead">
+              Define what you care about before you claim you've changed it. Design the measurement
+              system. Run the checks. Say what you can and can't measure.
+            </p>
+            <p>
+              The hardest part of product work — especially AI product work — is knowing whether what
+              you built is actually doing what you intended. You can't tell that without measurement.
+            </p>
+            <p>
+              ReviewFlow's quality measurement is the strongest example: 247 deterministic prompt
+              checks, an output evaluator, 15 historical outputs evaluated against five dimensions
+              (rating match, invented detail, marketing/superlative, strict pass, format compliance).
+              The evaluator was corrected when it introduced measurement artifacts. The correction made
+              measurement more accurate — Phase 9's 53% looked like improvement; it was actually a
+              measurement error.
+            </p>
+            <p>
+              Unrot's measurement model is the other pole: a metric hierarchy, a 7-stage funnel, must-have
+              instrumentation, guardrails, a D1 retention calculator, an analytics dashboard that computes
+              from a real database and shows "not enough real cohort data yet" honestly, a baseline and
+              target shown as context labels, an A/B experiment plan with power analysis and decision
+              rules. All designed before any outcome was claimed.
+            </p>
+            <div class="accordion__evidence">
+              <span class="evidence-label evidence-label--verified">Verified</span>
+              <span> — measurement artifacts exist for both ReviewFlow and Unrot. The corrected evaluator
+              is real. The analytics dashboard is real. The experiment plan is real.</span>
+              <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+              <span> — no measured outcomes from either product. The D1 retention outcome was never
+              measured. The AI quality scores are against historical outputs, not a live pipeline.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__header" aria-expanded="false" aria-controls="acc-verify" id="acc-verify-btn">
+          <div class="accordion__header-text">
+            <span class="accordion__number">06</span>
+            <span class="accordion__title">Verify</span>
+          </div>
+          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion__panel" id="acc-verify" role="region" aria-labelledby="acc-verify-btn">
+          <div class="accordion__body">
+            <p class="accordion__lead">
+              Check what you claimed. Correct your measurements when they're wrong. Document what you
+              haven't validated. Learn from the gap between what you built and what you can prove.
+            </p>
+            <p>
+              Verification is where the discipline shows up. It's not "does it run?" — it's "did you
+              claim what you can support?"
+            </p>
+            <p>
+              Experiment Tracker's 17-category verification report is an independent post-implementation
+              review: database integrity, conclusion CRUD, one-conclusion-per-experiment constraint,
+              cascade deletion, run detail route, compare workflow, error handling, timestamps, HTML
+              generation, accessibility by code review, security by code review. 22 tests. Real report.
+            </p>
+            <p>
+              When the ReviewFlow evaluator introduced measurement artifacts, I corrected it. When the
+              Phase 11 intervention couldn't be live-validated, I documented that honestly — saying
+              plainly that live validation did not occur and that the before/after was not genuinely
+              measurable. That kind of honesty is not optional in a portfolio built on evidence.
+            </p>
+            <p>
+              <strong>Learning is folded into verification.</strong> I don't treat "learn" as a separate
+              stage — learning happens when you check what you claimed and find out whether it's true.
+              The learning from ReviewFlow's corrected evaluator: measurement artifacts are easy to
+              introduce, and a number that looks like improvement can actually be a measurement error.
+              The learning from Unrot's analytics: honest "not enough data" is better than invented data.
+              The learning from Experiment Tracker: don't claim what you haven't measured.
+            </p>
+            <div class="accordion__evidence">
+              <span class="evidence-label evidence-label--verified">Verified</span>
+              <span> — verification reports exist. Corrections were made and documented. Honest gaps are
+              stated.</span>
+              <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+              <span> — the Phase 11 intervention improvement is a hypothesis, not a validated result.
+              The JTBD list is a hypothesis, not validated research.</span>
+              <span class="evidence-label evidence-label--proposed">Proposed</span>
+              <span> — the evidence-label system itself is a proposal for how to think about evidence
+              status across all product work.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hiw-summary animate-in" style="margin-top: var(--space-8);">
+      <div class="hiw-summary__label">The move in one line</div>
+      <p class="hiw-summary__text">
+        I turn ambiguous problems into products that can be defined, built, measured, and verified —
+        and I'm unusually careful about what I claim along the way. The evidence labels on this
+        portfolio aren't decoration. They're the system I use to keep the claims honest.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

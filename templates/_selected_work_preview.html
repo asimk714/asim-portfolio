@@ -1,0 +1,226 @@
+<section class="section work-section" id="work">
+  <div class="container">
+    <div class="section-header animate-in">
+      <p class="eyebrow section-header__eyebrow">Selected Work</p>
+      <h2 class="section-header__title">Three products. Three stacks. One habit.</h2>
+      <p class="muted-paragraph section-header__subtitle">
+        Each one is a real product I built end-to-end — with measurement, verification,
+        and honest gaps where they exist. The thread between them is the same product
+        thinking applied across different domains.
+      </p>
+    </div>
+
+    <div class="project-grid">
+      <!-- REVIEWFLOW — flagship, spans full width -->
+      <article class="project-card project-card--reviewflow reveal">
+        <div class="project-card__visual" aria-hidden="true">
+          <div class="reviewflow-visual">
+            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="8" y="12" width="64" height="48" rx="6" stroke="var(--accent-muted)"/>
+              <circle cx="40" cy="36" r="14" stroke="var(--accent)"/>
+              <path d="M40 22v14M26 36h14M40 36h0" stroke="var(--accent)" stroke-linecap="round"/>
+              <rect x="16" y="54" width="48" height="8" rx="2" fill="var(--accent-soft)" stroke="none"/>
+            </svg>
+            <div class="reviewflow-visual__text">
+              AI product integrity —<br/>honest review drafting
+            </div>
+            <div class="reviewflow-visual__caption">Functional prototype · not live production</div>
+          </div>
+        </div>
+
+        <div class="project-card__eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          Flagship · AI Product Integrity
+        </div>
+        <h3 class="project-card__title">ReviewFlow</h3>
+        <p class="project-card__tagline">
+          An AI-assisted review tool that helps someone write an honest Google review
+          without the AI deciding what happened. Rating preservation as a hard constraint.
+          Factual guardrails. Editable draft. Manual handoff. No fabricated stats. A
+          15-case regression suite with 247 deterministic checks and a corrected output
+          evaluator.
+        </p>
+        <div class="project-card__signal">
+          PM signal: AI product integrity + measurement + verification + honesty
+        </div>
+
+        <div class="project-card__meta">
+          <span class="project-card__lifecycle">Build → Measure</span>
+          <span class="project-card__lifecycle">React + Supabase + TypeScript</span>
+        </div>
+
+        <div class="project-card__evidence">
+          <div class="project-card__evidence-item">
+            247 deterministic prompt checks — all pass
+          </div>
+          <div class="project-card__evidence-item">
+            15-case regression dataset across 1–5 star ratings
+          </div>
+          <div class="project-card__evidence-item">
+            Corrected output evaluator — 0% invented detail, 47% rating match
+          </div>
+          <div class="project-card__evidence-item">
+            8 documented product decisions with trade-offs
+          </div>
+          <div class="project-card__evidence-item">
+            CI: deterministic checks + build + component tests
+          </div>
+        </div>
+
+        <div class="project-card__caution">
+          <strong>Honest gaps:</strong> No real user validation. No live production AI evidence.
+          No measured adoption or outcome. No meaningful GTM or scale. The Phase 11 prompt
+          intervention has <em>not</em> been live-validated — live credentials were unavailable.
+        </div>
+
+        <div class="project-card__actions">
+          <a href="/work/reviewflow/" class="project-card__cta">
+            Read the ReviewFlow case study
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <span class="project-card__prototype-note">
+            Working prototype — local/demo environment · no verified public deployment
+          </span>
+        </div>
+      </article>
+
+      <!-- UNROT -->
+      <article class="project-card reveal">
+        <div class="project-card__eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 3v18h18V3H3zm0 2h18v14H3V5z"/>
+          </svg>
+          Flagship / Supporting · Retention Analytics
+        </div>
+        <h3 class="project-card__title">Unrot Daily Retention</h3>
+        <p class="project-card__tagline">
+          A Day-1 retention prototype with a structured measurement model: metric hierarchy,
+          7-stage funnel, must-have instrumentation, guardrails. A production-shaped Next.js +
+          PostgreSQL + Prisma app with auth, health endpoint, and build/lint/typecheck. An
+          A/B experiment plan with power analysis and decision rules. Analytics dashboard
+          showing honest "not enough real cohort data yet."
+        </p>
+        <div class="project-card__signal">
+          PM signal: Discovery + measurement model + retention analytics + technical execution
+        </div>
+
+        <div class="project-card__meta">
+          <span class="project-card__lifecycle">Discover → Define → Build</span>
+          <span class="project-card__lifecycle">Next.js + PostgreSQL + Prisma</span>
+        </div>
+
+        <div class="project-card__evidence">
+          <div class="project-card__evidence-item">
+            Measurement model: metric hierarchy + 7-stage funnel + instrumentation
+          </div>
+          <div class="project-card__evidence-item">
+            Rigorous A/B experiment plan with power analysis (~650–700 per variant)
+          </div>
+          <div class="project-card__evidence-item">
+            35 automated tests passing — functional, responsive, accessibility audit
+          </div>
+          <div class="project-card__evidence-item">
+            D1 retention calculator with calendar-day logic and cohort completeness rule
+          </div>
+          <div class="project-card__evidence-item">
+            Analytics dashboard: "Not enough real cohort data yet" shown honestly
+          </div>
+        </div>
+
+        <div class="project-card__caution">
+          <strong>Honest gaps:</strong> No strong external user research. No meaningful measured
+          retention outcome. No proven launch/GTM. No growth/scale story. The 16% baseline and
+          22% benchmark are assignment-provided. Real D1 retention outcome not yet evidenced.
+        </div>
+
+        <div class="project-card__actions">
+          <a href="/work/unrot/" class="project-card__cta">
+            Read the Unrot case study
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <span class="project-card__prototype-note">
+            Working prototype — local/demo environment · no verified public deployment
+          </span>
+        </div>
+      </article>
+
+      <!-- EXPERIMENT TRACKER -->
+      <article class="project-card reveal">
+        <div class="project-card__eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          Supporting · Product Definition
+        </div>
+        <h3 class="project-card__title">Experiment Tracker</h3>
+        <p class="project-card__tagline">
+          A local-first experiment tracker that closes the gap between recording experiment
+          data and recording what the experiment decided. A PRODUCT_BRIEF with 7-candidate
+          prioritization — each candidate with "what it would add" and "why not prioritized."
+          A clear MVP boundary. 22 automated tests. A 17-category verification report with
+          evidence labels. No schema change, no new dependencies.
+        </p>
+        <div class="project-card__signal">
+          PM signal: Product definition + prioritization + trade-offs + verification + honest non-claims
+        </div>
+
+        <div class="project-card__meta">
+          <span class="project-card__lifecycle">Define → Build → Verify</span>
+          <span class="project-card__lifecycle">Flask + SQLite + Jinja2</span>
+        </div>
+
+        <div class="project-card__evidence">
+          <div class="project-card__evidence-item">
+            PRODUCT_BRIEF: problem, user, JTBDs, 7-candidate prioritization
+          </div>
+          <div class="project-card__evidence-item">
+            MVP boundary: 4-in scope, 7-out of scope, with trade-offs
+          </div>
+          <div class="project-card__evidence-item">
+            22 automated tests — conclusion CRUD, cascade delete, compare, rendering
+          </div>
+          <div class="project-card__evidence-item">
+            17-category verification report with evidence labels
+          </div>
+          <div class="project-card__evidence-item">
+            ~27 lines across 3 files — one route, one helper, two template changes
+          </div>
+        </div>
+
+        <div class="project-card__caution">
+          <strong>Honest gaps:</strong> No external user research. No external users. No launch. No
+          GTM. No measured product outcomes. No scale/growth. Browser rendering not verified.
+          Screen-reader testing not performed. Proposed usage metric not yet measured.
+        </div>
+
+        <div class="project-card__actions">
+          <a href="/work/experiment-tracker/" class="project-card__cta">
+            Read the Experiment Tracker case study
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <span class="project-card__prototype-note">
+            Working prototype — local/demo environment · no verified public deployment
+          </span>
+        </div>
+      </article>
+    </div>
+
+    <div class="pwo-cta-row animate-in">
+      <a href="/work/" class="btn btn--ghost">
+        See the full Proof of Work
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,757 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Exit case study
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">ReviewFlow</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">AI product integrity + measurement + verification</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <p class="eyebrow animate-in">Flagship Case Study</p>
+
+    <div class="case-study-headline-block animate-in animate-in--delay-1">
+      <h1 class="case-study-headline">
+        AI product integrity<br/>
+        measurement &amp; verification
+      </h1>
+    </div>
+
+    <div class="case-study-meta animate-in animate-in--delay-2">
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <span class="meta-text">— implementation, tests, evaluation</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <span class="meta-text">— no real users, live AI, launch, adoption, GTM, scale</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <span class="meta-text">— Phase 11 intervention improvement not live-validated</span>
+      </div>
+    </div>
+
+    <p class="muted-paragraph case-study-subtitle animate-in animate-in--delay-3">
+      ReviewFlow is a React + Supabase application that helps people write better Google reviews
+      by combining structured input with AI-assisted wording — while preserving the user's own
+      judgment. The portfolio evidence is about <strong>how I measured the AI's output quality</strong>,
+      not about a deployed product with users.
+    </p>
+
+    <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6);">
+      <a href="https://github.com/asimk714/salon-review-bot" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+        View on GitHub
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+      <span class="case-study-cta-note">
+        Working prototype — local/demo environment · no verified public deployment
+      </span>
+      <a href="/work/" class="btn btn--ghost">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 CONTEXT
+     ============================================================ -->
+<article class="case-study-section" id="context">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Context</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        People want to leave better Google reviews. Reviews written in a hurry are usually brief,
+        vague, or hard to parse. People often know what they want to say but struggle to get the
+        wording right — especially when the experience was complex, nuanced, or emotionally charged.
+      </p>
+      <p class="body-text">
+        The deeper problem isn't "write me a review." It's: help me capture what I actually
+        experienced, in a form that's useful to other readers, without making me sound like
+        something I'm not.
+      </p>
+
+      <div class="insight-card">
+        <p class="insight-card__label">What this is</p>
+        <p>An AI-assisted review-writing tool built as a real React + Supabase application. Not a
+        hypothetical. Not a design doc. It runs — locally if you have the credentials, and the
+        architecture, product decisions, and quality measurement are all documented.</p>
+      </div>
+
+      <div class="insight-card insight-card--caveat">
+        <p class="insight-card__label">What this is not</p>
+        <p>It is not a live product with users. It is not a commercial venture. The portfolio evidence
+        is about product thinking and AI quality measurement — not about customer adoption,
+        revenue, GTM, scale, or any production outcome.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     02 PROBLEM
+     ============================================================ -->
+<article class="case-study-section" id="problem">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Problem</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        <strong>Surface problem</strong>: People leave quick, unhelpful reviews. A review tool could
+        help them write better ones.
+      </p>
+      <p class="body-text">
+        <strong>Deeper problem</strong>: Writing a review is a judgment call, not a text-generation
+        task. If you hand the judgment to the AI, you've changed what the tool is — from a review
+        tool to a content generator. The harder problem is keeping the user's judgment intact while
+        improving the output.
+      </p>
+
+      <div class="decision-card">
+        <div class="decision-card__label">Core tension</div>
+        <p class="decision-card__text">
+          How do you use AI to improve review writing without making the AI the author of the judgment?
+        </p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        This tension shaped the entire product direction: the AI's role is wording, not judgment.
+        The user's role is the substance. Rating preservation, factual guardrails, and structured
+        input were all downstream consequences of this single decision.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     03 WHY IT MATTERED
+     ============================================================ -->
+<article class="case-study-section" id="why-it-mattered">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Why It Mattered</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        AI-assisted writing is becoming common, and most of it treats "better output" as "more
+        impressive output." That framing produces reviews that sound polished and say nothing — or
+        worse, say things the user didn't actually experience.
+      </p>
+      <p class="body-text">
+        The product-thinking question worth pursuing was narrower and harder: can you build an
+        AI-assisted tool where the AI genuinely helps, the user stays in charge, and you can
+        <strong>measure whether the AI is actually doing what you intended</strong>?
+      </p>
+
+      <div class="insight-card">
+        <p class="insight-card__label">Why this is a good portfolio case</p>
+        <p>It's a real product, built by me, with real quality measurement. It shows AI product
+        integrity thinking — the hardest part of AI product work is knowing whether the AI is helping
+        or just sounding good. The evidence I can show is about that question, not about users.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     04 USERS / ASSUMPTIONS
+     ============================================================ -->
+<article class="case-study-section" id="users">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Users / Assumptions</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        <strong>Assumption:</strong> someone who cares about leaving a good review is a reasonable
+        user for this tool. Someone writing a review for a restaurant, a visit, a service, or a
+        product — someone who wants the review to be useful to other readers.
+      </p>
+      <p class="body-text">
+        <strong>What I assumed about the user</strong>: they have an experience they want to capture,
+        they can rate it, they can describe what stood out, and they want the text to be clear without
+        losing their voice.
+      </p>
+
+      <span class="evidence-label evidence-label--hypothesis">Hypothesis — not validated with real users</span>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        There is no user research behind this. No interviews. No surveys. No measured audience. The
+        user model is a reasonable inference, nothing more. This is an honest gap, not a hidden one.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     05 PRODUCT FRAMING
+     ============================================================ -->
+<article class="case-study-section" id="product-framing">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Product Framing</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        The product question, stated narrowly: <strong>how might we help someone write a better
+        Google review without making the AI the author of their judgment?</strong>
+      </p>
+      <p class="body-text">
+        The product principle, stated once and used everywhere: <strong>AI can improve how you say
+        it. It cannot decide what happened.</strong>
+      </p>
+
+      <div class="insight-card">
+        <p class="insight-card__label">The principle is the throughline</p>
+        <p>This single line is the most important thing in the case study. Everything downstream —
+        rating preservation, factual guardrails, structured input, the editable draft, the manual
+        Google handoff, the disclosure — is a consequence of this principle.</p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        The framing also implicitly defined what the product was <em>not</em>: not a content generator,
+        not a review spinner, not an auto-poster, not a thing that lets the AI decide the rating or
+        the facts.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     06 DISCOVERY / RESEARCH
+     ============================================================ -->
+<article class="case-study-section" id="discovery">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Discovery / Research</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        The discovery work was less "user research" and more "what would a responsible AI-assisted
+        review tool actually need to do?" — which is a product-formulation exercise, not a research
+        exercise. The framing came from the core principle, not from personas or interviews.
+      </p>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--observed">Observed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Structured input matters: a review written from a blank box and a review built from
+          rating + visit type + what stood out + what to tell others are different outcomes.
+          The structure shapes the content.
+        </p>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--observed">Observed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          AI output quality is measurable. You can design checks and run them against outputs.
+          Whether those checks are good checks is itself a question — and that's where the
+          evaluator and the corrected evaluator come in.
+        </p>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          A user who gets a structured input + AI-assisted wording + editable draft + manual
+          handoff will leave a better review than one who writes from a blank box. Not tested.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     07 PRIORITIZATION
+     ============================================================ -->
+<article class="case-study-section" id="prioritization">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Prioritization</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        The MVP was deliberately small. The prioritization document separates what was Must Have from
+        what was Should Have and what was explicitly Out of Scope. This matters because it shows the
+        product boundary was thought through, not improvised.
+      </p>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Must Have</strong>: structured input, rating preservation, factual guardrails,
+          editable draft, manual Google handoff, transparency, basic usable UI.
+        </p>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Out of Scope (explicit)</strong>: direct Google posting, analytics, authentication,
+          user accounts, multi-business support, native mobile, fabricated social proof, "Powered by
+          AI" badge, guaranteed AI accuracy.
+        </p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        The out-of-scope list is as important as the in-scope list. It shows I was thinking about what
+        this product should <em>not</em> do, which is often where product judgment shows up.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     08 SOLUTION
+     ============================================================ -->
+<article class="case-study-section" id="solution">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Solution</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        The solution has four moving parts, and they're arranged deliberately:
+      </p>
+
+      <ol class="body-list">
+        <li><strong>Structured input</strong> — rating, visit type, what stood out, what to tell
+        others, optional staff name, optional context. The input shapes what the AI works with.</li>
+        <li><strong>AI-assisted wording</strong> — the AI takes the structured input and produces a
+        short draft and a detailed draft. It does not change the rating. It does not invent facts.</li>
+        <li><strong>Editable draft</strong> — the user can edit before copying. The AI is a first
+        draft, not final text.</li>
+        <li><strong>Manual Google handoff</strong> — the user copies the text to Google manually.
+        No auto-posting. No pretending the AI posted the review.</li>
+      </ol>
+
+      <div class="insight-card">
+        <p class="insight-card__label">A StatsNote instead of fabricated stats</p>
+        <p>The app originally had a "stats" panel that showed fabricated numbers. That was replaced
+        with a StatsNote component — a quiet disclosure that says the numbers were placeholders and
+        the product is not live. This is the kind of product-integrity decision that the portfolio is
+        trying to show.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     09 ARCHITECTURE / IMPLEMENTATION
+     ============================================================ -->
+<article class="case-study-section" id="architecture">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Architecture / Implementation</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        <strong>Frontend:</strong> React + Vite + TypeScript + shadcn/ui. The components
+        (ReviewForm, ResultsScreen, StatsNote) are real. The structured input is real.
+        The editable draft is real.
+      </p>
+      <p class="body-text">
+        <strong>AI gateway:</strong> a Supabase Deno edge function that calls Gemini 2.5 Flash through
+        the Lovable AI gateway. The edge function produces structured tool-call output — the AI
+        responds with the short and detailed drafts in a defined shape, which is why the frontend can
+        work with it deterministically.
+      </p>
+      <p class="body-text">
+        <strong>Implementation note:</strong> the app was scaffolded with AI assistance (Lovable).
+        I've been explicit about that. The product decisions, the quality measurement, the MVP
+        boundary, the disclosure, and the honest gaps are mine.
+      </p>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--observed">Observed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The architecture document, the product decisions document, the MVP prioritization document,
+          the metrics plan, the experiment plan, and the prompt definition all exist in the repo.
+        </p>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          CI workflow exists (.github/workflows/ci.yml) with a deterministic checks job and a live
+          evaluation job (conditional on LOVABLE_API_KEY).
+        </p>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The app has never run live with real AI credentials in an environment I can verify from this
+          portfolio. The evaluation evidence is against historical outputs, not a currently-running
+          live pipeline.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     10 VALIDATION
+     ============================================================ -->
+<article class="case-study-section" id="validation">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Validation</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        Validation in this case means "does the AI output actually do what we said it would?" — not
+        "did users like it?" The first is measurable; the second is not evidenced here.
+      </p>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>15-case regression dataset</strong>: synthetic test cases covering 1–5 stars, multiple
+          visit types, with/without staff name, positive/negative/mixed experiences. Real file.
+        </p>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>247 deterministic prompt checks, 247/247 passed</strong>: the evaluator runs a set
+          of named checks against every case. All 247 pass. The test exits clean. The results file
+          exists.
+        </p>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Output evaluator</strong>: a second evaluator that examines the actual AI output text
+          for rating match, invented detail, marketing/superlative language, overall strict pass,
+          format compliance. The evaluator is real. The results are real.
+        </p>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>15 historical outputs</strong> (2026-09-10) evaluated with the corrected evaluator:
+          47% rating match, 0% invented detail, 60% marketing/superlative, 27% overall strict pass,
+          100% format compliance.
+        </p>
+      </div>
+
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The historical outputs are a point-in-time snapshot. There is no current live AI pipeline
+          I can point to. The evaluation evidence is real, but its subject is a closed historical set.
+        </p>
+      </div>
+
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No live AI validation occurred for the Phase 11 intervention.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     11 METRICS
+     ============================================================ -->
+<article class="case-study-section" id="metrics">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Metrics</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        The metrics plan is a design, not a measurement. It defines what would matter if the product
+        were live: North Star, activation, funnel, quality and safety, guardrail metrics, business
+        metrics. All proposed.
+      </p>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          North Star: a good review written. Activation: first review drafted. Funnel: structured
+          input entered → AI draft generated → draft edited → copy to clipboard → manual Google
+          submission. Quality: rating preserved, facts from user input, no invented detail.
+          Guardrail: inappropriate output rate. Business: review submission rate.
+        </p>
+      </div>
+
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No metric has been measured. The product is not live with users. The metrics plan is
+          evidence of thinking about measurement, not evidence of measurement.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     12 OUTCOMES
+     ============================================================ -->
+<article class="case-study-section" id="outcomes">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Outcomes</h2>
+
+    <div class="case-study-body">
+      <div class="limits-block limits-block--highlighted">
+        <p class="limits-block__label">Honest outcomes</p>
+
+        <div class="label-block">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            The product was built. It runs locally with credentials. The AI output quality is
+            measurable, and I measured it against a historical set of 15 outputs: 47% rating match,
+            0% invented detail, 27% strict pass, 100% format compliance.
+          </p>
+        </div>
+
+        <div class="label-block">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            No real users. No live production AI. No measured adoption or outcomes. No GTM. No scale.
+            No launch. No growth. No customer validation. No measured impact on review quality in the
+            wild.
+          </p>
+        </div>
+
+        <div class="label-block">
+          <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            The Phase 11 prompt tightening may improve live AI behavior. It passes deterministic checks
+            (247/247), but the live before/after was never genuinely measurable — no LOVABLE_API_KEY or
+            Supabase credentials in the environment. beforeVsAfterGenuinelyMeasurable: false. The
+            intervention is documented honestly as unproven.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     13 LEARNINGS
+     ============================================================ -->
+<article class="case-study-section" id="learnings">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Learnings</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        <strong>1. AI product integrity is a real and measurable problem.</strong> The hardest part
+        of building an AI-assisted product is knowing whether the AI is actually helping or just
+        sounding good. You can design checks for that, and you can run them.
+      </p>
+      <p class="body-text">
+        <strong>2. Measurement artifacts are easy to introduce.</strong> The corrected evaluator found
+        three measurement artifacts (case sensitivity, superlative word forms, false positive from the
+        word "out"). The correction made measurement more accurate. The Phase 9 number (53%) looked
+        like improvement; it was actually an evaluator artifact. Correct measurement matters.
+      </p>
+      <p class="body-text">
+        <strong>3. Honest documentation is itself a product discipline.</strong> The Phase 11
+        intervention record was written to say plainly "live validation did not occur" and to avoid
+        claiming improvement. That kind of honesty is not optional in a portfolio built on evidence.
+      </p>
+      <p class="body-text">
+        <strong>4. Structured input is not just UX.</strong> It shapes what the AI can work with and
+        what it cannot invent. The structure is a constraint that makes the product more honest.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     14 WHAT I WOULD DO NEXT
+     ============================================================ -->
+<article class="case-study-section" id="next">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What I Would Do Next</h2>
+
+    <div class="case-study-body">
+      <ol class="body-list">
+        <li><strong>Live-evaluate the Phase 11 prompt tightening</strong> against the same metric
+        framework with real AI credentials. Before/after genuinely measurable, not just
+        deterministic-check-passing.</li>
+        <li><strong>Validate the user model.</strong> Talk to real people who write reviews. Find out
+        whether the structured input and AI-assisted wording actually help.</li>
+        <li><strong>Define and measure the North Star.</strong> If the product were live, measure what
+        matters — good review written, draft edited, manual Google submission.</li>
+        <li><strong>Build the analytics.</strong> The metrics plan defines what to measure. The next
+        step is to actually instrument it and measure it.</li>
+        <li><strong>Consider the GTM honestly.</strong> This is a small tool for a real but narrow job.
+        The honest question is whether there's a real audience for it, not whether it can be scaled.</li>
+      </ol>
+
+      <div class="label-block" style="margin-top: var(--space-5);">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          None of the above has been done. They are next steps, not evidence.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     15 EVIDENCE
+     ============================================================ -->
+<article class="case-study-section" id="evidence">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        The evidence for this case study lives in the repository. The most directly relevant artifacts:
+      </p>
+
+      <div class="evidence-list">
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div>
+            <strong>AI Output Quality Measurement Report</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">
+              Per-case evaluation of 15 historical outputs. Rating match, invented detail, marketing/
+              superlative, strict pass, format compliance. Evidence types A, B, C documented.
+            </p>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div>
+            <strong>247 deterministic prompt checks</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">
+              The evaluator runs 247 named checks against 15 cases. All pass. Real file.
+            </p>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div>
+            <strong>15-case regression dataset</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">
+              Synthetic test cases covering the full rating range. Real file.
+            </p>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div>
+            <strong>Product Decisions — 8 documented choices</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">
+              Structured decisions with options, trade-offs, confidence, validation approach.
+            </p>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div>
+            <strong>MVP Prioritization document</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">
+              Must Have / Should Have / Out of Scope. Explicit boundary.
+            </p>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+          <div>
+            <strong>Phase 11 intervention record</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">
+              Prompt tightening passes 247/247 deterministic checks. Live improvement not validated.
+              Recorded honestly.
+            </p>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <div>
+            <strong>Real user validation</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">
+              No user research. No interviews. No surveys. No measured audience.
+            </p>
+          </div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <div>
+            <strong>Live production AI</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">
+              No live AI pipeline I can point to from this portfolio. Evaluation is against historical
+              outputs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     KEY TAKEAWAY
+     ============================================================ -->
+<div class="container" style="margin-top: var(--space-10);">
+  <div class="key-takeaway">
+    <div class="key-takeaway__label">Key takeaway</div>
+    <p class="key-takeaway__text">
+      AI can improve how you say it. It cannot decide what happened. If you build an AI-assisted product,
+      the first hard problem is knowing whether the AI is actually helping — and you can measure that.
+      The second hard problem is not claiming you've solved the first one when you haven't.
+    </p>
+  </div>
+</div>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<div class="container" style="margin-top: var(--space-8); padding-bottom: var(--space-8);">
+  <div class="case-study-ctas">
+    <a href="/work/" class="btn btn--primary">
+      Back to Proof of Work
+    </a>
+    <a href="https://github.com/asimk714/salon-review-bot" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
+      View full repository
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </a>
+  </div>
+  <p class="text-muted" style="margin-top: var(--space-6); font-size: var(--text-sm); text-align: center; max-width: 480px; margin-inline: auto;">
+    ReviewFlow is a real product I built. The evidence about it is real. The gaps in it are real too.
+    The portfolio exists to show the evidence and the gaps together, not to hide either one.
+  </p>
+</div>
+
+{% endblock %}

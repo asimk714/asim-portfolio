@@ -166,10 +166,11 @@ See `docs/EVIDENCE-MODEL.md` for the full evidence model.
 ## Development Status
 
 - **Phase 1–29:** Project audits completed (ReviewFlow, Unrot, Experiment Tracker, KAIRO, and excluded projects).
-- **Phase 30:** Content blueprint created.
-- **Phase 31 (current):** Portfolio repository foundation created. Website implementation pending.
+- **Phase 30:** Content blueprint created (`docs/CONTENT-BLUEPRINT.md`, `docs/EVIDENCE-MODEL.md`).
+- **Phase 31:** Portfolio repository foundation created (`.gitignore`, `README.md`, strategy docs committed; initial commit e335603).
+- **Phase 32:** Existing Flask/Jinja2 portfolio website implementation inspected, reconciled against the Phase 30 content blueprint, runtime-verified (all 7 routes return HTTP 200), evidence model checked, repository boundary cleaned (`.gitignore` updated, stray file removed), `README.md` rewritten, `PORTFOLIO-STRATEGY.md` status updated, and all verified website files plus updated docs committed locally. The website is complete and locally verifiable but not yet published to GitHub (no remote configured; push blocked by Termux credential tooling).
 
-**Next phase:** Build the portfolio website from the content blueprint in `docs/CONTENT-BLUEPRINT.md`.
+**Next phase:** Publish and promote the verified portfolio website — configure a GitHub remote where credential tooling allows, push the local commit, and make the portfolio publicly reachable. If the Termux credential blocker persists, escalate the authentication recovery as a dependency before the publish step.
 
 ---
 

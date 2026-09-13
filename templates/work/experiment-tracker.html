@@ -1,0 +1,587 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Exit case study
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Experiment Tracker</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Product definition, prioritization, verification</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <p class="eyebrow animate-in">Supporting Case Study</p>
+    <div class="case-study-headline-block animate-in animate-in--delay-1">
+      <h1 class="case-study-headline">
+        Store what you tested.<br/>
+        Record what you concluded.<br/>
+        Connect it to what you do next.
+      </h1>
+    </div>
+    <div class="case-study-meta animate-in animate-in--delay-2">
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--verified">Verified by test</span>
+        <span class="meta-text">— 22 tests passing, 17-category verification, database integrity</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <span class="meta-text">— no external users, launch, GTM, measured outcomes, browser rendering, screen-reader testing</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <span class="meta-text">— experiments_with_conclusion / completed_experiments usage metric</span>
+      </div>
+    </div>
+    <p class="muted-paragraph case-study-subtitle animate-in animate-in--delay-3">
+      Experiment Tracker is a local-first Flask + SQLite experiment log that closes the loop between
+      running an experiment and recording what you concluded from it — including the decision and the
+      next action. It is intentionally small. The evidence is about what was prioritized and why, how
+      it was verified, and what it deliberately does not claim.
+    </p>
+    <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6);">
+      <a href="https://github.com/asimk714/experiment-tracker" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+        View on GitHub
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+      <span class="case-study-cta-note">
+        Working prototype — local/demo environment · no verified public deployment
+      </span>
+      <a href="/work/" class="btn btn--ghost">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</header>
+
+<article class="case-study-section" id="context">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Context</h2>
+    <div class="case-study-body">
+      <p class="body-text">I run experiments. Small ones. Local ones. Things like "does this approach
+      work better than that one" or "what happens if I change this variable." I was losing the
+      conclusions.</p>
+      <p class="body-text">The problem wasn't running experiments. It was that the experiments, the
+      runs, and the conclusions lived in different places — a notes file here, a results folder there,
+      a memory of what I decided somewhere else. The loop between "I tested something" and "I know what
+      to do next" was broken.</p>
+      <div class="insight-card">
+        <p class="insight-card__label">What this is</p>
+        <p>A local-first Flask + SQLite experiment log. Create experiments. Add runs. Compare runs.
+        Most importantly: record a conclusion for each experiment — the outcome, the decision, and the
+        next action — and connect it back to the experiment it came from.</p>
+      </div>
+      <div class="insight-card insight-card--caveat">
+        <p class="insight-card__label">What this is not</p>
+        <p>It is not a cloud product. It is not multi-user. It has no authentication. It has no charts
+        or visualization. It is not a collaboration tool. It is a personal local tool for a specific
+        job: keeping experiments and their conclusions connected.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="problem">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Problem</h2>
+    <div class="case-study-body">
+      <p class="body-text"><strong>Surface problem</strong>: experiments and their conclusions were
+      disconnected. I'd run something, decide something, and later lose the thread.</p>
+      <p class="body-text"><strong>Deeper problem</strong>: the gap between experimentation and decision
+      was unstructured. Without a place to record what you concluded and what you'd do next, the
+      experiment doesn't change what you do — it just sits there as a memory.</p>
+      <div class="decision-card">
+        <div class="decision-card__label">Core question</div>
+        <p class="decision-card__text">How do you store what you tested, record what you concluded,
+        and connect it to what you do next — without overcomplicating the tool?</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="why-it-mattered">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Why It Mattered</h2>
+    <div class="case-study-body">
+      <p class="body-text">The value of an experiment is not the run. It's the decision that follows
+      from it. A tool that lets you record runs but not conclusions is a partial solution — it captures
+      the activity but not the value.</p>
+      <p class="body-text">Making the conclusion first-class — with outcome, decision, next action, and
+      timestamps — is what turns an experiment log into something that actually changes what you do
+      next. That's the product judgment: the smallest thing that closes the loop.</p>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="users">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Users / Assumptions</h2>
+    <div class="case-study-body">
+      <p class="body-text"><strong>Target user (inferred):</strong> someone who runs small experiments
+      locally and wants to keep them connected to decisions — a practitioner, a builder, someone who
+      tests things and wants to remember what they learned.</p>
+      <p class="body-text"><strong>Assumption:</strong> a single-user local tool is sufficient for this
+      job. Multi-user, auth, cloud — all of those would add complexity without adding value for the
+      intended user.</p>
+      <div class="label-block" style="margin-top: var(--space-3);">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Single-user local-first is the right scope for this tool. Not validated with external users —
+          inferred from the intended use case.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No external user research. No external users. No measured adoption. No launch.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="product-framing">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Product Framing</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The product principle, stated once and used everywhere: <strong>Store what you tested. Record
+        what you concluded. Connect it to what you do next.</strong>
+      </p>
+      <p class="body-text">
+        The product question, stated narrowly: <strong>what is the smallest capability that closes the
+        loop between experiment and decision?</strong> Not "what's the most impressive experiment tool?"
+        — "what's the smallest thing that actually closes the loop?"
+      </p>
+      <div class="insight-card">
+        <p class="insight-card__label">The principle is the throughline</p>
+        <p>Conclusion capture is the core. Everything else in the brief is evaluated against whether it
+        closes the loop faster or slower. The prioritization trade-offs all come from this question.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="discovery">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Discovery / Research</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The discovery work is the PRODUCT_BRIEF. It evaluates seven candidate capabilities against the
+        core question: what closes the loop, and what doesn't?
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--observed">Observed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The PRODUCT_BRIEF exists. It lists seven candidates with "What it would add" and "Why not
+          prioritized" for each. This is real product thinking — not generic prioritization, but a
+          specific trade-off against a specific product question.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="prioritization">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Prioritization</h2>
+    <div class="case-study-body">
+      <p class="body-text">Seven candidates were evaluated. One was chosen.</p>
+      <table class="prioritization-table" style="margin-top: var(--space-3); width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <th style="text-align: left; padding: var(--space-2) var(--space-3);">#</th>
+            <th style="text-align: left; padding: var(--space-2) var(--space-3);">Candidate</th>
+            <th style="text-align: left; padding: var(--space-2) var(--space-3);">Decision</th>
+            <th style="text-align: left; padding: var(--space-2) var(--space-3);">Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">1</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Conclusion capture</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-success);">Chosen</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Closes the loop. Smallest capability that does the job.</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">2</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Charts / visualization</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-muted);">Not prioritized</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Nice-to-have. Doesn't close the loop faster.</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">3</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Search / filter improvements</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-muted);">Not prioritized</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Scale problem. Not needed at local scale.</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">4</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Authentication / multi-user</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-muted);">Not prioritized</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Overkill for a local personal tool.</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">5</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Cloud database</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-muted);">Not prioritized</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Adds deployment complexity. Local-first is the point.</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">6</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">AI features</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-muted);">Not prioritized</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Distraction. The job is recording, not generating.</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">7</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Experiment templates</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-muted);">Not prioritized</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Nice-to-have. Not in the smallest loop.</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">8</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Artifact linking / file uploads</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-muted);">Not prioritized</td>
+            <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Out of scope for v1.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="body-text" style="margin-top: var(--space-4);">
+        The prioritization is the most important part of this case study. It shows the product thinking:
+        what was chosen, what was deliberately not chosen, and why. The "why not prioritized" column is
+        as important as the "chosen" column.
+      </p>
+      <div class="label-block" style="margin-top: var(--space-3);">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The PRODUCT_BRIEF exists. The 7-candidate prioritization is documented. The table above is a
+          faithful summary of the actual document.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="solution">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Solution</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The solution is a Flask + SQLite + Jinja2 web app. No JavaScript framework. No CSS framework.
+        Vanilla. The pages: dashboard, create/edit experiment, experiment detail, create/edit run, run
+        detail, compare runs, dashboard, conclusion form.
+      </p>
+      <ol class="body-list">
+        <li><strong>Experiments</strong> — create, edit, delete. Title, description, tags, status.</li>
+        <li><strong>Runs</strong> — create, edit, delete. Name, hypothesis, result, notes, timestamps.</li>
+        <li><strong>Conclusion</strong> — the core. Outcome, decision, next action, plus timestamps.
+        One conclusion per experiment. Created when you record it; updated when you change it.</li>
+        <li><strong>Compare</strong> — select two runs, see them side by side.</li>
+      </ol>
+      <div class="insight-card">
+        <p class="insight-card__label">The conclusion model is the product</p>
+        <p>Four fields: outcome, decision, next_action, plus decided_at, created_at, updated_at. That's
+        it. The smallest thing that closes the loop. One-conclusion-per-experiment constraint keeps it
+        clean. Cascade delete keeps it consistent.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="architecture">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Architecture / Implementation</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        <strong>Stack:</strong> Python 3, Flask, SQLite, Jinja2. No JS framework. No CSS framework.
+        Dependencies: gunicorn (production server). Minimal.
+      </p>
+      <p class="body-text">
+        <strong>Database:</strong> SQLite. Schema has experiments, runs, conclusions, and a
+        conclusions_updated_at trigger. One-conclusion-per-experiment enforced by UNIQUE(experiment_id)
+        on the conclusions table. Cascade: experiment deleted → runs + conclusion deleted.
+      </p>
+      <p class="body-text">
+        <strong>Conclusion capture implementation:</strong> schema (~3 lines added), db.py
+        (create_or_update_conclusion, get_conclusion — ~23 lines), templates (conclusion form, run
+        detail, experiment detail — ~27 lines across 3 files). Small, verifiable, real.
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified by test</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Database integrity verified: FK CASCADE, UNIQUE constraints, triggers all work.
+          One-conclusion-per-experiment enforced. Cascade deletion works. Run detail route wired.
+          Compare workflow works. Error handling for nonexistent experiments/runs works.
+        </p>
+      </div>
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--missing">Missing</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Browser rendering not verified — Termux environment has no GUI browser. Flask test client
+          verifies HTML generation (10 HTML tests included in the 22), but it is not a browser.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="validation">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Validation</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The validation is a 17-category verification report. It's an independent post-implementation
+        review, not a self-assessment.
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified by test</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>22 automated tests</strong> (test_experiment_tracker.py). Database integrity, conclusion
+          CRUD, one-conclusion-per-experiment, cascade deletion, run detail route, existing CRUD
+          regression, compare workflow, error handling, timestamps, HTML rendering (Flask test client,
+          10 HTML tests), session-scoped test database (never touches real database).
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified by code review">Verified by code review</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Accessibility</strong>: labels, semantic headings, focus states, consistent form
+          patterns. Code review only — no screen-reader testing performed.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified by code review">Verified by code review</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Security</strong>: Jinja2 autoescape on, no |safe filter, parameterized queries,
+          no new attack surface introduced. Code review only.
+        </p>
+      </div>
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Browser rendering verification, screen-reader testing, external user research, external users,
+          launch, GTM, measured product outcomes — none evidenced.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="metrics">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Metrics</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The product deliberately does not claim any measured outcomes. The only proposed metric is a
+        usage metric — a way to know whether the conclusion feature is actually being used.
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>experiments_with_conclusion / completed_experiments</strong> — the proportion of
+          completed experiments that have a recorded conclusion. A measure of whether the core feature
+          is actually being used. Proposed. Not measured.
+        </p>
+      </div>
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No measured product outcomes. No usage data. No adoption metric. The product is local-first
+          and personal; there is no telemetry by design.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="outcomes">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Outcomes</h2>
+    <div class="case-study-body">
+      <div class="limits-block limits-block--highlighted">
+        <p class="limits-block__label">Honest outcomes</p>
+        <div class="label-block">
+          <span class="evidence-label evidence-label--verified by test">Verified by test</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            The conclusion-capture feature was built and verified. 22 tests passing. 17-category
+            verification report complete. Database integrity confirmed. One-conclusion-per-experiment
+            constraint enforced. Cascade deletion working. HTML generation verified via Flask test
+            client.
+          </p>
+        </div>
+        <div class="label-block">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            No external users. No external user research. No launch. No GTM. No measured product
+            outcomes. No usage data. No browser rendering verification. No screen-reader testing.
+            The usage metric (experiments_with_conclusion / completed_experiments) is proposed, not
+            measured.
+          </p>
+        </div>
+        <div class="label-block">
+          <span class="evidence-label evidence-label--proposed">Proposed</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            Next steps (v2): search/filter, artifact upload, visualization. Not built.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="learnings">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Learnings</h2>
+    <div class="case-study-body">
+      <p class="body-text"><strong>1. The smallest thing that closes the loop is the product.</strong>
+      Conclusion capture is four fields. That's the whole product insight. Everything else is scope
+      management — and the prioritization of what to leave out is the real product judgment.</p>
+      <p class="body-text"><strong>2. Verification is not self-assessment.</strong> The 17-category
+      report is an independent post-implementation review. Testing the database, the constraints, the
+      routes, the HTML generation — that's different from claiming the product is "done" because it
+      runs. It's a real verification.</p>
+      <p class="body-text"><strong>3. Don't claim what you haven't measured.</strong> The proposed
+      usage metric exists as a proposal. The product does not claim adoption, outcomes, or users it
+      doesn't have. That's the discipline.</p>
+      <p class="body-text"><strong>4. Code review is not browser testing.</strong> Accessibility and
+      security were verified by code review. That's real verification with a real limitation — and the
+      limitation is stated plainly rather than hidden.</p>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="next">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What I Would Do Next</h2>
+    <div class="case-study-body">
+      <ol class="body-list">
+        <li><strong>Validate the user model</strong> with real people who run experiments locally. Is
+        single-user local-first the right scope?</li>
+        <li><strong>Measure the usage metric</strong> if the product were in use: experiments_with_
+        conclusion / completed_experiments. Is the conclusion feature actually being used?</li>
+        <li><strong>Add search/filter</strong> — the first v2 candidate, because at some scale you need
+        to find experiments.</li>
+        <li><strong>Add artifact upload</strong> — link files to experiments, so the evidence lives with
+        the conclusion.</li>
+        <li><strong>Add visualization</strong> — charts of experiment outcomes over time. Nice-to-have,
+        not core.</li>
+      </ol>
+      <div class="label-block" style="margin-top: var(--space-5);">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          None of the above has been done. They are next steps, not evidence.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="evidence">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence</h2>
+    <div class="case-study-body">
+      <p class="body-text">The evidence for this case study lives in the repository. The most directly
+      relevant artifacts:</p>
+      <div class="evidence-list">
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div><strong>PRODUCT_BRIEF — 7-Candidate Prioritization</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Conclusion capture chosen over 7 alternatives. Each with "What it would add" and "Why not prioritized." Real document.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div><strong>17-Category Verification Report</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Independent post-implementation review: DB integrity, conclusion CRUD, constraints, routes, HTML, accessibility, security. Real report.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div><strong>22 Automated Tests</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">test_experiment_tracker.py. Database integrity, conclusion CRUD, constraints, routes, HTML generation (Flask test client). Real tests, all passing.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div><strong>Schema — conclusions table, one-conclusion constraint, cascade</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">UNIQUE(experiment_id), FK CASCADE, conclusions_updated_at trigger. Real schema. Verified by test.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <div><strong>Browser rendering</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Flask test client verifies HTML generation. No GUI browser in Termux environment. Browser rendering not verified.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <div><strong>External users / user research / launch / GTM / outcomes</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">None evidenced. Local-first personal tool by design. No telemetry.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--proposed">Proposed</span>
+          <div><strong>Usage metric: experiments_with_conclusion / completed_experiments</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Proposed. Not measured. A way to know whether the conclusion feature is used.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<div class="container" style="margin-top: var(--space-10);">
+  <div class="key-takeaway">
+    <div class="key-takeaway__label">Key takeaway</div>
+    <p class="key-takeaway__text">
+      Product judgment is not about what you build. It's about what you choose to build, what you
+      choose to leave out, and how you verify that what you built is what you said it was. The
+      smallest thing that closes the loop — conclusion capture — is the product. The verification is
+      the proof. The gaps are honest.
+    </p>
+  </div>
+</div>
+
+<div class="container" style="margin-top: var(--space-8); padding-bottom: var(--space-8);">
+  <div class="case-study-ctas">
+    <a href="/work/" class="btn btn--primary">
+      Back to Proof of Work
+    </a>
+    <a href="https://github.com/asimk714/experiment-tracker" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
+      View full repository
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </a>
+  </div>
+  <p class="text-muted" style="margin-top: var(--space-6); font-size: var(--text-sm); text-align: center; max-width: 480px; margin-inline: auto;">
+    Experiment Tracker is a real product I built. The prioritization is real. The verification is
+    real. The gaps are real too — and they're stated, not hidden.
+  </p>
+</div>
+
+{% endblock %}

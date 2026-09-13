@@ -1,0 +1,593 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Exit case study
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Unrot</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Daily micro-learning retention</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <p class="eyebrow animate-in">Flagship / Supporting Case Study</p>
+    <div class="case-study-headline-block animate-in animate-in--delay-1">
+      <h1 class="case-study-headline">
+        D1 retention<br/>
+        measurement &amp; experiment design
+      </h1>
+    </div>
+    <div class="case-study-meta animate-in animate-in--delay-2">
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <span class="meta-text">— measurement model, analytics, QA, architecture</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <span class="meta-text">— no measured D1 outcome, no real users, no launch, no GTM, no scale</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <span class="meta-text">— JTBD and intervention hypotheses not validated</span>
+      </div>
+    </div>
+    <p class="muted-paragraph case-study-subtitle animate-in animate-in--delay-3">
+      Unrot is a Next.js 16 + PostgreSQL + Prisma daily micro-learning retention prototype. It
+      demonstrates how to frame a retention problem, design a measurement system before validating
+      anything, and build a production-shaped analytics dashboard — while being honest that the D1
+      retention outcome was never measured.
+    </p>
+    <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6);">
+      <a href="https://github.com/asimk714/unrot-d1-retention" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+        View on GitHub
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+      <span class="case-study-cta-note">
+        Working prototype — local/demo environment · no verified public deployment
+      </span>
+      <a href="/work/" class="btn btn--ghost">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</header>
+
+<article class="case-study-section" id="context">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Context</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        A daily micro-learning product sends users a short lesson each day. The behavioral target
+        is D1 retention — does the user come back the next day?
+      </p>
+      <p class="body-text">
+        The surface problem: D1 retention is low. The assignment gave a baseline of 16% and a
+        target benchmark of 22% — both assignment-provided context, not author-measured. The deeper
+        question is not "make the first session better." It's whether the handoff between sessions
+        is where the retention actually breaks.
+      </p>
+      <div class="insight-card">
+        <p class="insight-card__label">What this is</p>
+        <p>A real Next.js 16 + PostgreSQL + Prisma application. Auth, sessions, learning paths,
+        lessons, lesson progress, reminder preferences, analytics events. The analytics dashboard
+        computes from real events. The measurement model is real.</p>
+      </div>
+      <div class="insight-card insight-card--caveat">
+        <p class="insight-card__label">What this is not</p>
+        <p>It is not a live product with a real user base. It is not a retention solution that was
+        validated with outcomes. The portfolio evidence is about measurement thinking and product
+        rigor — not about a solved retention problem.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="problem">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Problem</h2>
+    <div class="case-study-body">
+      <p class="body-text"><strong>Surface problem</strong>: low D1 retention. People visit, then
+      don't return the next day.</p>
+      <p class="body-text"><strong>Deeper hypothesis</strong>: the problem may be the handoff between
+      sessions — the user completes the first lesson but has no reason to return tomorrow. The
+      product may be excellent at first-session value and poor at tomorrow's reason-to-return.</p>
+      <div class="decision-card">
+        <div class="decision-card__label">Core question</div>
+        <p class="decision-card__text">What creates a reason to return — not a reason to start?</p>
+      </div>
+      <p class="body-text" style="margin-top: var(--space-4);">
+        This framing is the most important product thinking in the case. It separates first-session
+        optimization from return-session optimization, and it's why the measurement model and the
+        intervention hypotheses focus on return behavior, not just first-session completion.
+      </p>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="why-it-mattered">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Why It Mattered</h2>
+    <div class="case-study-body">
+      <p class="body-text">Retention is the metric that separates a product people try from a product
+      people keep using. Low D1 retention means the product is not yet creating enough reason to
+      return — and fixing that is a product problem, not a marketing problem.</p>
+      <p class="body-text">The measurement-model-first approach matters because most products measure
+      retention after the fact, if at all. Designing the measurement before building anything is how
+      you avoid building a product you can't tell is working.</p>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="users">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Users / Assumptions</h2>
+    <div class="case-study-body">
+      <p class="body-text">The product defines user segments via a UserPreference model: role
+      (product-manager, software-engineer, general), goal (staying-current, interview-prep,
+      upskilling), experience (beginner, intermediate, advanced).</p>
+      <p class="body-text">These segments are defined in the schema. They have not been validated with
+      real users. They are inferred from the product's intended audience, not from research.</p>
+      <div class="label-block" style="margin-top: var(--space-3);">
+        <span class="evidence-label evidence-label--inferred">Inferred</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          User segments are defined in the schema but not validated with real users. Reasonable
+          inference; not evidence.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          JTBD hypotheses (4 jobs: interview prep, AI news, AI fundamentals, practical application)
+          and 7 intervention hypotheses (H1–H7) are documented — in the problem-framing research.
+          None validated.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="product-framing">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Product Framing</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The product question, stated narrowly: <strong>how do we give a daily micro-learning user a
+        reason to return tomorrow?</strong> Not "how do we make the lesson better?" — how do we make
+        the return feel worth it.
+      </p>
+      <p class="body-text">
+        The product principle, stated once and used everywhere: <strong>measure the outcome you care
+        about before you claim you've changed it.</strong>
+      </p>
+      <div class="insight-card">
+        <p class="insight-card__label">The principle is the throughline</p>
+        <p>Everything downstream — the measurement model, the analytics dashboard showing "not enough
+        real cohort data yet," the baseline/target shown as context labels, the experiment plan, the
+        honest "no meaningful externally validated outcome" — is a consequence of this principle.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="discovery">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Discovery / Research</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The discovery work is documented in a problem-framing research file. It separates known facts
+        from assumptions, inferences, and unknowns. Seven candidate reasons for low D1 retention are
+        organized by category: first-session value gap, no cue/trigger, no progress mechanic, friction,
+        audience mismatch, and measurement issues.
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--observed">Observed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The problem-framing research exists as a document. It explicitly separates facts from
+          assumptions from inferences from unknowns. It's a real artifact.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The JTBD list and the intervention hypotheses are good hypotheses — they haven't been tested.
+          The lead intervention, "Tomorrow's 5-Minute Mission" package (Mission Briefing + Completion
+          Bumps + Return-Intent Nudges + Speed Bump → Sprint Journal bridge), is a strong candidate
+          intervention, not a proven one.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="prioritization">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Prioritization</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The product prioritizes measurement before optimization. Before building any intervention, the
+        product builds the measurement system: what events to instrument, what the funnel is, what
+        D1 means, how cohorts are computed, what "not enough data" looks like.
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Measurement-first</strong>: the analytics dashboard, the D1 retention calculator, the
+          event schema, the funnel, the cohort completeness rule — all built before any intervention is
+          validated. Real code exists.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>A/B experiment plan</strong>: rigorous design with randomization unit (user ID), 50/50
+          allocation, deterministic hash assignment, primary/secondary/guardrail metrics, sample size
+          power analysis (~650–700 per variant, ~1,300–1,400 total), 2-week duration + 2-day cooldown,
+          decision rules. Real document.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="solution">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Solution</h2>
+    <div class="case-study-body">
+      <ol class="body-list">
+        <li><strong>User authentication + sessions</strong> — signup, login, session management. Real
+        routes, real form, real database models.</li>
+        <li><strong>Learning paths + lessons</strong> — a library of short daily lessons organized into
+        paths. Real schema, real pages.</li>
+        <li><strong>Lesson progress tracking</strong> — which lessons a user has started/completed. Real
+        progress model.</li>
+        <li><strong>Reminder preferences</strong> — timezone-aware reminder scheduling with a timezone
+        auto-detection form. Real timezone picker, real schema.</li>
+        <li><strong>Analytics dashboard</strong> — KPI grid, 8-step funnel, daily cohort table, event
+        taxonomy audit. Computes from real events. Shows "not enough real cohort data yet" honestly.</li>
+        <li><strong>D1 retention calculator</strong> — calendar-day logic in the user's IANA timezone,
+        UTC fallback, excludes demo return previews, cohort completeness rule. Pure TypeScript, decoupled
+        from database syntax.</li>
+      </ol>
+      <div class="insight-card">
+        <p class="insight-card__label">The analytics dashboard is the flagship artifact</p>
+        <p>It computes from a real database. It shows baseline and target as context labels, not results.
+        It shows an illustrative cohort model clearly labeled as a "benchmark model." It shows "not enough
+        real cohort data yet" when there are no closed cohorts. This is what honest measurement design looks
+        like in a product.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="architecture">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Architecture / Implementation</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        <strong>Stack:</strong> Next.js 16 App Router + TypeScript + Tailwind CSS + PostgreSQL + Prisma
+        7 ORM + Zod. Pnpm package manager. Production-shaped, not a toy.
+      </p>
+      <p class="body-text">
+        <strong>Authorization:</strong> server-side auth via session cookies. Login, signup, auth actions.
+        Server Components read the session; client-side components get the session via a hook. Prisma
+        schema has a Session model with userId foreign key, createdAt, expiresAt, revokedAt. IP-based
+        rate limiting on login/signup.
+      </p>
+      <p class="body-text">
+        <strong>Database:</strong> PostgreSQL via the driver adapter pattern (separate connection for
+        HTTP server vs. server actions). Connection pooling (max: 10, SSL in production). Serverless
+        compatibility design — Vercel + Neon deployment target.
+      </p>
+      <p class="body-text">
+        <strong>Analytics:</strong> AnalyticsEvent model with eventName, propertiesJson (JSON),
+        occurredAt, sessionId, route, userId. Events are recorded from the app and queried by the
+        analytics dashboard. The D1 retention calculator is decoupled from database syntax — pure
+        TypeScript that works on any list of events.
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Architecture document exists. Prisma schema (7 models) exists. Auth system exists. Health
+          endpoint exists (/api/health). Build, lint, typecheck pass. ESLint 0 errors / 0 warnings.
+        </p>
+      </div>
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No live deployment with real users. No production traffic. The deployment design (Vercel +
+          Neon) is documented; the actual deployment with a real audience is not evidenced.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="validation">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Validation</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Validation in this case means: does the application work as designed, does the measurement
+        system compute correctly, does the code pass its own checks? Not: did users return more?
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>20/20 functional verification</strong>: 8 routes verified, including auth flows,
+          learning path view, lesson reader, reminder form, analytics dashboard, health endpoint.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>35/35 automated tests passing</strong>: retention logic, reminder form, lesson reader,
+          onboarding. Real test suite, real results.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Demo isolation</strong>: demo_return_previewed emits 0 qualifying returners.
+          session_returned_d1 count = 0 from demo preview. The dashboard correctly does not count
+          demo returns as real D1 retention.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified by code review">Verified by code review</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Accessibility</strong>: keyboard navigation, semantic structure, form labels, aria-live,
+          color independence. WCAG 2.1 AA by code review. Screen-reader testing not performed.
+        </p>
+      </div>
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--missing">Missing</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Browser QA was blocked by the Termux environment. Code-review-based responsive check (375/768/
+          1280) is not a substitute for live browser interaction testing.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="metrics">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Metrics</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The metrics model is the strongest part of this case study. It defines a full measurement system
+        before any outcome is claimed.
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Metric hierarchy</strong>: North Star (D1 retention), activation (onboarding + first
+          lesson), funnel (first_session_started → onboarding_completed → plan_viewed → lesson_started →
+          lesson_completed → reminder_enabled → D1_returned), quality/safety, guardrail metrics, business
+          metrics. All documented.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>Must-have instrumentation</strong>: eventName, propertiesJson, occurredAt, sessionId,
+          route, userId. AnalyticsEvent model exists. The analytics dashboard queries these.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">Verified</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          <strong>D1 retention calculator</strong>: calendar-day logic, timezone-aware, UTC fallback, demo
+          isolation, cohort completeness rule. Pure TypeScript, decoupled from DB syntax. Real code.
+        </p>
+      </div>
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No meaningful externally validated D1 retention outcome. No real user base. The D1 metric is
+          defined and instrumented; the outcome is not measured.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="outcomes">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Outcomes</h2>
+    <div class="case-study-body">
+      <div class="limits-block limits-block--highlighted">
+        <p class="limits-block__label">Honest outcomes</p>
+        <div class="label-block">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            A complete measurement system was built and verified. The analytics dashboard computes from
+            a real database. The D1 calculator is correct. The experiment plan is rigorous. The QA report
+            is real: 20/20 functional, 35/35 tests, accessibility by code review, build/lint/typecheck
+            pass, demo isolation verified.
+          </p>
+        </div>
+        <div class="label-block">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            No meaningful externally validated D1 retention outcome. No real users. No launch. No GTM.
+            No growth or scale. No measured retention improvement. The 16% baseline and 22% target are
+            assignment-provided context, not author-measured results.
+          </p>
+        </div>
+        <div class="label-block">
+          <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            The "Tomorrow's 5-Minute Mission" intervention package is a strong candidate. It has not been
+            validated. The JTBD list has not been validated.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="learnings">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Learnings</h2>
+    <div class="case-study-body">
+      <p class="body-text"><strong>1. Measure before you optimize.</strong> The strongest thing this
+      product did was build the measurement system before building any intervention. You can't tell if
+      a retention intervention worked if you didn't define what "worked" means and how to measure it.</p>
+      <p class="body-text"><strong>2. The handoff between sessions is a different product problem from
+      the first session.</strong> First-session value and next-day return are related but not the same
+      thing. Treating them as the same problem produces products that are good at one and bad at the
+      other.</p>
+      <p class="body-text"><strong>3. Honest "not enough data" is better than invented data.</strong>
+      The analytics dashboard shows a real state — no closed cohorts means no D1 returners to report.
+      That's the truth. Fabricating a number would be the opposite of the product discipline this case
+      is trying to show.</p>
+      <p class="body-text"><strong>4. A rigorous experiment plan is itself evidence of product thinking.</strong>
+      The A/B plan with power analysis, decision rules, guardrails, and sample size calculation is a real
+      artifact. It shows how I'd run the experiment if I had users. That's not the same as having run it.</p>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="next">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What I Would Do Next</h2>
+    <div class="case-study-body">
+      <ol class="body-list">
+        <li><strong>Validate the JTBD hypotheses</strong> with real users — the 4 jobs, the 7
+        intervention hypotheses, and especially the lead intervention ("Tomorrow's 5-Minute Mission"
+        package).</li>
+        <li><strong>Run the A/B experiment</strong> the way the plan describes — real randomization,
+        real allocation, real D1 measurement against the defined primary metric.</li>
+        <li><strong>Measure the D1 outcome.</strong> With a real cohort, compute the actual D1 retention
+        rate and compare it against the baseline and target — as real results, not context labels.</li>
+        <li><strong>Instrument the full funnel</strong> in production and measure each stage. The 7-stage
+        funnel exists as a design; the next step is to actually collect the events and report the stages.</li>
+        <li><strong>Build the cohort dashboard</strong> with real cohort progression over time — not the
+        illustrative benchmark model, but real cohort data.</li>
+      </ol>
+      <div class="label-block" style="margin-top: var(--space-5);">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          None of the above has been done. They are next steps, not evidence.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="case-study-section" id="evidence">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The evidence for this case study lives in the repository. The most directly relevant artifacts:
+      </p>
+      <div class="evidence-list">
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div><strong>Measurement Model — A/B Experiment Plan</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Rigorous A/B design with power analysis, decision rules, guardrails, sample size calculation. Real document.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div><strong>Final QA Report — 20/20 Functional, 35/35 Tests</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Full audit: functional, responsive (375/768/1280), accessibility (WCAG 2.1 AA), tests, ESLint, build. Real report.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div><strong>D1 Retention Calculator — calendar-day logic</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Pure TypeScript, timezone-aware, UTC fallback, demo isolation, cohort completeness rule. Real code.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--verified">Verified</span>
+          <div><strong>Architecture — Next.js + PostgreSQL + Prisma</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">System diagram, Prisma schema (7 models), deployment design. Real document.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--observed">Observed</span>
+          <div><strong>Problem Framing — D1 retention as a discovery problem</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Known facts vs assumptions vs inferences vs unknowns. 7 candidate reasons. Real document.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--observed">Observed</span>
+          <div><strong>JTBD Hypotheses — 4 jobs, 7 intervention hypotheses</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Hypothesis-driven. Not validated. The lead intervention: "Tomorrow's 5-Minute Mission" package.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <div><strong>Real D1 retention outcome</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">No real user base. No measured outcome. The D1 metric is defined and instrumented; the result is not measured.</p></div>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <div><strong>Launch / GTM / scale</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">No deployment with a real audience. No growth. No scale. No GTM.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<div class="container" style="margin-top: var(--space-10);">
+  <div class="key-takeaway">
+    <div class="key-takeaway__label">Key takeaway</div>
+    <p class="key-takeaway__text">
+      Build the measurement system before you claim you've changed the outcome. Define D1, instrument the
+      funnel, compute the calculator, show "not enough data yet" when you don't have it — and be honest
+      that the outcome wasn't measured. The portfolio evidence for Unrot is the measurement thinking, not
+      the retention result.
+    </p>
+  </div>
+</div>
+
+<div class="container" style="margin-top: var(--space-8); padding-bottom: var(--space-8);">
+  <div class="case-study-ctas">
+    <a href="/work/" class="btn btn--primary">
+      Back to Proof of Work
+    </a>
+    <a href="https://github.com/asimk714/unrot-d1-retention" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
+      View full repository
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </a>
+  </div>
+  <p class="text-muted" style="margin-top: var(--space-6); font-size: var(--text-sm); text-align: center; max-width: 480px; margin-inline: auto;">
+    Unrot is a real product I built. The measurement system is real. The D1 outcome is not. The portfolio
+    exists to show both — and to make the difference legible.
+  </p>
+</div>
+
+{% endblock %}

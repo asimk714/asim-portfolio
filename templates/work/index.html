@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="work-hub">
+  <div class="container">
+    <div class="section-header" style="margin-bottom: var(--space-10);">
+      <p class="eyebrow" style="margin-bottom: var(--space-2);">Proof of Work</p>
+      <h1 class="section-header__title" style="font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl)); margin-bottom: var(--space-4);">
+        The actual evidence.
+      </h1>
+      <p class="muted-paragraph" style="max-width: 560px;">
+        Don't take my word for it — inspect the artifacts. Every claim on this portfolio is
+        backed by something real: a test, a document, a schema, a report. Filter by category.
+        Everything has an evidence label. Nothing is invented.
+      </p>
+    </div>
+
+    <div class="pwo-filters" style="margin-bottom: var(--space-8);" id="pwo-filters">
+      <a href="/work/#all" class="pwo-filter pwo-filter--active" data-filter="all">All</a>
+      <a href="/work/#discovery" class="pwo-filter" data-filter="discovery">Discovery</a>
+      <a href="/work/#decision" class="pwo-filter" data-filter="decision">Decision</a>
+      <a href="/work/#definition" class="pwo-filter" data-filter="definition">Definition</a>
+      <a href="/work/#build" class="pwo-filter" data-filter="build">Build</a>
+      <a href="/work/#measure" class="pwo-filter" data-filter="measure">Measure</a>
+      <a href="/work/#verify" class="pwo-filter" data-filter="verify">Verify</a>
+      <a href="/work/#learn" class="pwo-filter" data-filter="learn">Learn</a>
+    </div>
+
+    <div class="pwo-grid" id="pwo-grid">
+      {% for card in evidence_cards %}
+      <article class="evidence-card {{ card.css_class }}" data-category="{{ card.category }}">
+        <div class="evidence-card__header">
+          <h3 class="evidence-card__title">{{ card.title }}</h3>
+          <span class="evidence-card__type">{{ card.type }}</span>
+        </div>
+        <div class="evidence-card__body">
+          {{ card.body | safe }}
+        </div>
+        {% if card.link_url %}
+        <a href="{{ card.link_url }}" class="evidence-card__link" {% if card.link_external %}target="_blank" rel="noopener noreferrer"{% endif %}>
+          {{ card.link_label }}
+          {% if card.link_external %}
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          {% else %}
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+          {% endif %}
+        </a>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="pwo-cta-row" style="margin-top: var(--space-8);">
+      <a href="/" class="btn btn--ghost">
+        Back to homepage
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
