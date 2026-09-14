@@ -174,6 +174,58 @@ See `docs/EVIDENCE-MODEL.md` for the full evidence model.
 
 ---
 
+## Phase Reconciliation — Phases 33 and 34
+
+The portfolio website implementation was completed before Phase 33 and Phase 34 were formally designated as separate tracked phases. The design system, UX architecture, and full website implementation were all built and committed together as part of the portfolio website foundation. They are reconciled here for honest phase history. No separate Phase 33 or Phase 34 commits exist, and none are being manufactured.
+
+### Phase 33 — Design System + UX Architecture
+
+**Status:** COMPLETED AS PART OF WEBSITE FOUNDATION
+
+**Evidence:** Implementation present in commit 39fa83f (`feat: complete portfolio website foundation`).
+
+**What was delivered:**
+
+- **Design tokens** — `static/css/design-tokens.css` (451 lines): spacing scale (8px base), typography scale (Inter + Source Serif 4 + JetBrains Mono), color system (light + dark themes), shadows, transitions, container widths, evidence-state colors (7 categories).
+- **Component system** — `static/css/components.css` (698 lines): evidence labels (7 states), CTA groups, buttons, navigation (desktop + mobile), mobile menu, project cards, principle cards, evidence cards, case-study components, accordion structure.
+- **Responsive system** — 18 media queries across `static/css/pages.css` and `static/css/components.css`: breakpoints at 480px, 640px, 768px, 1024px. Single-column below 640px, multi-column layouts above. Mobile menu at 768px and below. `prefers-reduced-motion` respected.
+- **Theme system** — CSS custom properties for light and dark themes, theme toggle (JavaScript + CSS class switch on `<html>`), persisted to `localStorage`. Dark theme is a full alternative palette, not a simple inversion.
+- **Navigation** — Sticky header, desktop nav, mobile hamburger menu, footer nav, case-study exit nav, in-page anchor navigation.
+- **Case-study architecture** — Reusable case-study header, meta-row evidence labeling (Verified / Not evidenced / Hypothesis), section structure (20-section blueprint), exit navigation, internal anchor linking.
+- **Proof of Work architecture** — Filterable evidence card grid (`/work/`), 7 category filters, 14 evidence cards linking to real artifacts (GitHub + internal anchors), category-based filtering.
+- **Product Lab architecture** — Lab card grid with evidence labels per card, principle cards with accordion disclosure and evidence labeling.
+
+No separate Phase 33 commit exists. The design system was built as part of the website foundation commit.
+
+### Phase 34 — Portfolio Website Implementation
+
+**Status:** COMPLETED AS PART OF WEBSITE FOUNDATION
+
+**Evidence:** Commit 39fa83f (`feat: complete portfolio website foundation (Flask + Jinja2, 7 routes, 14 evidence cards)`). All 29 website files in that commit.
+
+**What was delivered:**
+
+- **Flask/Jinja2 website** — `app.py` (324 lines), 7 routes, 14 work-hub evidence cards, no build step, no frontend framework, no bundler.
+- **Homepage** — `templates/index.html`: hero, selected work preview, how I think, product operating system, proof of work preview, product lab, experience, credentials, now, contact.
+- **Three case studies** — `templates/work/reviewflow.html` (757 lines), `templates/work/unrot.html` (593 lines), `templates/work/experiment-tracker.html` (full case study with 17-category verification report). Each follows the 20-section case study structure from the Phase 30 blueprint.
+- **Proof of Work** — `/work/` hub with filterable evidence card grid, 14 artifacts across Discovery, Decision, Definition, Build, Measure, Verify, Learn categories.
+- **Product Lab** — `/product-lab/` section with 5 principle cards, each with evidence labels.
+- **Evidence labels** — 7 label states implemented in CSS and used across all templates: OBSERVED, VERIFIED, INFERRED, HYPOTHESIS, PROPOSED, NOT EVIDENCED, MISSING.
+- **Responsive implementation** — deliberate layout adaptation at 480/640/768/1024px breakpoints, not simple shrinkage.
+- **Accessibility foundations** — semantic HTML, ARIA labels/roles/expanded/controls/hidden, keyboard-navigable accordions, color-independent evidence labels (icon + text), form labels. Screen-reader testing not performed — disclosed in case studies.
+- **SEO foundations** — meta description, favicon, semantic structure, Google Fonts preconnect, theme-color meta. Minimal compared with a fully optimized production site — no sitemap, no robots.txt, no Open Graph tags beyond theme-color.
+- **Dark/light theme** — full dual-theme palette with toggle.
+
+**Known limitations (honestly recorded):**
+
+- Live browser QA was not completed. Code-review-based responsive check at 375/768/1280px was performed for Unrot but is not a substitute for live browser interaction testing. This limitation is disclosed in the Unrot case study.
+- Screen-reader testing was not performed. This limitation is disclosed in all three case studies.
+- SEO metadata is minimal compared with a fully optimized production portfolio site (no sitemap, no robots.txt, no Open Graph tags beyond theme-color).
+
+**Phase 34 was not separately committed under a Phase 34 commit message.** The implementation was completed as part of the portfolio website foundation commit 39fa83f. The Phase 30 content blueprint was the source of truth for what was built; Phases 33 and 34 were never separately planned or tracked as distinct phases.
+
+---
+
 ## Links
 
 - ReviewFlow: https://github.com/asimk714/salon-review-bot
