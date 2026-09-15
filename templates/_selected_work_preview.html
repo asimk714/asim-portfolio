@@ -1,4 +1,4 @@
-<section class="section work-section" id="work">
+<section class="section work-section cdmv-section" id="work">
   <div class="container">
     <div class="section-header animate-in">
       <p class="eyebrow section-header__eyebrow">Selected Work</p>
@@ -10,76 +10,201 @@
       </p>
     </div>
 
-    <div class="project-grid">
-      <!-- REVIEWFLOW — flagship, spans full width -->
-      <article class="project-card project-card--reviewflow reveal">
-        <div class="project-card__visual" aria-hidden="true">
-          <div class="reviewflow-visual">
-            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="8" y="12" width="64" height="48" rx="6" stroke="var(--accent-muted)"/>
-              <circle cx="40" cy="36" r="14" stroke="var(--accent)"/>
-              <path d="M40 22v14M26 36h14M40 36h0" stroke="var(--accent)" stroke-linecap="round"/>
-              <rect x="16" y="54" width="48" height="8" rx="2" fill="var(--accent-soft)" stroke="none"/>
-            </svg>
-            <div class="reviewflow-visual__text">
-              AI product integrity —<br/>honest review drafting
-            </div>
-            <div class="reviewflow-visual__caption">Functional prototype · not live production</div>
-          </div>
-        </div>
+    <!-- Project filters -->
+    <div class="project-filters animate-in" id="project-filters" role="group" aria-label="Filter projects by category">
+      <button class="project-filter project-filter--active" data-filter="all" type="button">
+        All
+        <span class="project-filter__count">3</span>
+      </button>
+      <button class="project-filter" data-filter="product-thinking" type="button">
+        Product Thinking
+        <span class="project-filter__count">3</span>
+      </button>
+      <button class="project-filter" data-filter="build" type="button">
+        Build
+        <span class="project-filter__count">3</span>
+      </button>
+      <button class="project-filter" data-filter="measurement" type="button">
+        Measurement
+        <span class="project-filter__count">2</span>
+      </button>
+      <button class="project-filter" data-filter="ai" type="button">
+        AI
+        <span class="project-filter__count">1</span>
+      </button>
+      <button class="project-filter" data-filter="retention" type="button">
+        Retention
+        <span class="project-filter__count">1</span>
+      </button>
+      <button class="project-filter" data-filter="experimentation" type="button">
+        Experimentation
+        <span class="project-filter__count">1</span>
+      </button>
+    </div>
 
+    <!-- Project grid -->
+    <div class="project-grid" id="project-grid">
+      <!-- REVIEWFLOW — flagship -->
+      <article class="project-card project-card--flagship reveal" data-categories="product-thinking, build, ai" aria-label="ReviewFlow — AI product integrity">
         <div class="project-card__eyebrow">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
           </svg>
           Flagship · AI Product Integrity
         </div>
-        <h3 class="project-card__title">ReviewFlow</h3>
-        <p class="project-card__tagline">
-          An AI-assisted review tool that helps someone write an honest Google review
-          without the AI deciding what happened. Rating preservation as a hard constraint.
-          Factual guardrails. Editable draft. Manual handoff. No fabricated stats. A
-          15-case regression suite with 247 deterministic checks and a corrected output
-          evaluator.
-        </p>
-        <div class="project-card__signal">
-          PM signal: AI product integrity + measurement + verification + honesty
+
+        <div class="project-card__body">
+          <div class="project-card__identity">
+            <div class="project-card__glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 7v5l3 2"/>
+              </svg>
+            </div>
+            <h3 class="project-card__title">ReviewFlow</h3>
+          </div>
+
+          <p class="project-card__product-question">
+            How might we help someone write a better Google review without making the AI the author of their judgment?
+          </p>
+
+          <div class="project-card__lifecycle-strip" aria-label="Project lifecycle">
+            <span class="project-card__lifecycle">Define</span>
+            <span class="project-card__lifecycle-separator" aria-hidden="true">→</span>
+            <span class="project-card__lifecycle">Build</span>
+            <span class="project-card__lifecycle-separator" aria-hidden="true">→</span>
+            <span class="project-card__lifecycle">Measure</span>
+          </div>
+
+          <div class="project-card__evidence-strip" aria-label="Evidence status">
+            <span class="evidence-badge evidence-badge--verified">Verified</span>
+            <span class="project-card__evidence-item-divider" aria-hidden="true"></span>
+            <span class="evidence-badge evidence-badge--historical">Historical only</span>
+            <span class="project-card__evidence-item-divider" aria-hidden="true"></span>
+            <span class="evidence-badge evidence-badge--not-evidenced">Not live</span>
+          </div>
+
+          <div class="empathy-strip" aria-label="Product tension">
+            <div class="empathy-strip__labels">
+              <span class="empathy-strip__label">TENSION</span>
+            </div>
+            <div class="empathy-strip__texts">
+              <p class="empathy-strip__text empathy-strip__text--primary">
+                AI could improve the writing — or invent, exaggerate, and decide what happened.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-card__evidence-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;color:var(--accent);flex-shrink:0;margin-top:2px;">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+            <p class="project-card__evidence-highlight-text">
+              <strong>247 deterministic checks</strong> — all pass.
+              <strong>15-case regression dataset</strong> across 1–5 star ratings.
+              <strong>Corrected output evaluator</strong> — 0% invented detail, 47% rating match.
+            </p>
+          </div>
+
+          <div class="project-card__gap">
+            <p class="project-card__gap-label">Honest gaps</p>
+            <p class="project-card__gap-text">
+              No real user validation. No live production AI. No measured adoption or outcome. The Phase 11 prompt intervention has <em>not</em> been live-validated — live credentials were unavailable.
+            </p>
+          </div>
         </div>
 
-        <div class="project-card__meta">
-          <span class="project-card__lifecycle">Build → Measure</span>
-          <span class="project-card__lifecycle">React + Supabase + TypeScript</span>
-        </div>
+        <!-- ReviewFlow visual artifact -->
+        <div class="project-card__visual" aria-hidden="true">
+          <div class="reviewflow-visual">
+            <!-- Process flow - experience to Google -->
+            <div class="rf-process-flow">
+              <div class="rf-step rf-step--active">
+                <span class="rf-step__label">Experience</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <div class="rf-arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </div>
+              <div class="rf-step">
+                <span class="rf-step__label">Draft</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </div>
+              <div class="rf-arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </div>
+              <div class="rf-step">
+                <span class="rf-step__label">Edit</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+              </div>
+              <div class="rf-arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </div>
+              <div class="rf-step">
+                <span class="rf-step__label">Approve</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <div class="rf-arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </div>
+              <div class="rf-step">
+                <span class="rf-step__label">Copy / Open Google</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </div>
+            </div>
 
-        <div class="project-card__evidence">
-          <div class="project-card__evidence-item">
-            247 deterministic prompt checks — all pass
+            <!-- Compact evidence layer -->
+            <div class="rf-evidence-layer" aria-label="Evidence summary">
+              <div class="rf-evidence-item">
+                <span class="evidence-badge evidence-badge--verified">247 checks</span>
+              </div>
+              <div class="rf-evidence-item">
+                <span class="evidence-badge evidence-badge--historical">15 cases</span>
+              </div>
+              <div class="rf-evidence-item rf-evidence-item--warning">
+                <span class="evidence-badge evidence-badge--not-evidenced">Live AI: NOT VALIDATED</span>
+              </div>
+            </div>
           </div>
-          <div class="project-card__evidence-item">
-            15-case regression dataset across 1–5 star ratings
-          </div>
-          <div class="project-card__evidence-item">
-            Corrected output evaluator — 0% invented detail, 47% rating match
-          </div>
-          <div class="project-card__evidence-item">
-            8 documented product decisions with trade-offs
-          </div>
-          <div class="project-card__evidence-item">
-            CI: deterministic checks + build + component tests
-          </div>
-        </div>
-
-        <div class="project-card__caution">
-          <strong>Honest gaps:</strong> No real user validation. No live production AI evidence.
-          No measured adoption or outcome. No meaningful GTM or scale. The Phase 11 prompt
-          intervention has <em>not</em> been live-validated — live credentials were unavailable.
         </div>
 
         <div class="project-card__actions">
           <a href="/work/reviewflow/" class="project-card__cta">
             Read the ReviewFlow case study
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
             </svg>
           </a>
           <span class="project-card__prototype-note">
@@ -89,59 +214,83 @@
       </article>
 
       <!-- UNROT -->
-      <article class="project-card reveal">
+      <article class="project-card reveal" data-categories="product-thinking, build, measurement, retention" aria-label="Unrot Daily Retention">
         <div class="project-card__eyebrow">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M3 3v18h18V3H3zm0 2h18v14H3V5z"/>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
           </svg>
           Flagship / Supporting · Retention Analytics
         </div>
-        <h3 class="project-card__title">Unrot Daily Retention</h3>
-        <p class="project-card__tagline">
-          A Day-1 retention prototype with a structured measurement model: metric hierarchy,
-          7-stage funnel, must-have instrumentation, guardrails. A production-shaped Next.js +
-          PostgreSQL + Prisma app with auth, health endpoint, and build/lint/typecheck. An
-          A/B experiment plan with power analysis and decision rules. Analytics dashboard
-          showing honest "not enough real cohort data yet."
-        </p>
-        <div class="project-card__signal">
-          PM signal: Discovery + measurement model + retention analytics + technical execution
-        </div>
 
-        <div class="project-card__meta">
-          <span class="project-card__lifecycle">Discover → Define → Build</span>
-          <span class="project-card__lifecycle">Next.js + PostgreSQL + Prisma</span>
-        </div>
+        <div class="project-card__body">
+          <div class="project-card__identity">
+            <div class="project-card__glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3 class="project-card__title">Unrot Daily Retention</h3>
+          </div>
 
-        <div class="project-card__evidence">
-          <div class="project-card__evidence-item">
-            Measurement model: metric hierarchy + 7-stage funnel + instrumentation
-          </div>
-          <div class="project-card__evidence-item">
-            Rigorous A/B experiment plan with power analysis (~650–700 per variant)
-          </div>
-          <div class="project-card__evidence-item">
-            35 automated tests passing — functional, responsive, accessibility audit
-          </div>
-          <div class="project-card__evidence-item">
-            D1 retention calculator with calendar-day logic and cohort completeness rule
-          </div>
-          <div class="project-card__evidence-item">
-            Analytics dashboard: "Not enough real cohort data yet" shown honestly
-          </div>
-        </div>
+          <p class="project-card__product-question">
+            How do we give a daily micro-learning user a reason to return tomorrow?
+          </p>
 
-        <div class="project-card__caution">
-          <strong>Honest gaps:</strong> No strong external user research. No meaningful measured
-          retention outcome. No proven launch/GTM. No growth/scale story. The 16% baseline and
-          22% benchmark are assignment-provided. Real D1 retention outcome not yet evidenced.
+          <div class="project-card__lifecycle-strip" aria-label="Project lifecycle">
+            <span class="project-card__lifecycle">Discover</span>
+            <span class="project-card__lifecycle-separator" aria-hidden="true">→</span>
+            <span class="project-card__lifecycle">Define</span>
+            <span class="project-card__lifecycle-separator" aria-hidden="true">→</span>
+            <span class="project-card__lifecycle">Build</span>
+          </div>
+
+          <div class="project-card__evidence-strip" aria-label="Evidence status">
+            <span class="evidence-badge evidence-badge--verified">Verified</span>
+            <span class="project-card__evidence-item-divider" aria-hidden="true"></span>
+            <span class="evidence-badge evidence-badge--hypothesis">Hypothesis</span>
+            <span class="project-card__evidence-item-divider" aria-hidden="true"></span>
+            <span class="evidence-badge evidence-badge--not-evidenced">Not evidenced</span>
+          </div>
+
+          <div class="empathy-strip" aria-label="Product tension">
+            <div class="empathy-strip__labels">
+              <span class="empathy-strip__label">TENSION</span>
+            </div>
+            <div class="empathy-strip__texts">
+              <p class="empathy-strip__text empathy-strip__text--primary">
+                The first session may be good while the reason to return is missing.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-card__evidence-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;color:var(--accent);flex-shrink:0;margin-top:2px;">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+            <p class="project-card__evidence-highlight-text">
+              <strong>Measurement model</strong> — metric hierarchy, 7-stage funnel, instrumentation.
+              <strong>Analytics dashboard</strong> showing honest "not enough real cohort data yet."
+              <strong>A/B experiment plan</strong> with power analysis (~650–700 per variant).
+            </p>
+          </div>
+
+          <div class="project-card__gap">
+            <p class="project-card__gap-label">Honest gaps</p>
+            <p class="project-card__gap-text">
+              No strong external user research. No meaningful measured retention outcome. The 16% baseline and 22% benchmark are assignment-provided. Real D1 retention outcome not yet evidenced.
+            </p>
+          </div>
         </div>
 
         <div class="project-card__actions">
           <a href="/work/unrot/" class="project-card__cta">
             Read the Unrot case study
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
             </svg>
           </a>
           <span class="project-card__prototype-note">
@@ -151,60 +300,82 @@
       </article>
 
       <!-- EXPERIMENT TRACKER -->
-      <article class="project-card reveal">
+      <article class="project-card reveal" data-categories="product-thinking, build, measurement, experimentation" aria-label="Experiment Tracker">
         <div class="project-card__eyebrow">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
             <path d="M21 15l-5-5L5 21"/>
           </svg>
           Supporting · Product Definition
         </div>
-        <h3 class="project-card__title">Experiment Tracker</h3>
-        <p class="project-card__tagline">
-          A local-first experiment tracker that closes the gap between recording experiment
-          data and recording what the experiment decided. A PRODUCT_BRIEF with 7-candidate
-          prioritization — each candidate with "what it would add" and "why not prioritized."
-          A clear MVP boundary. 22 automated tests. A 17-category verification report with
-          evidence labels. No schema change, no new dependencies.
-        </p>
-        <div class="project-card__signal">
-          PM signal: Product definition + prioritization + trade-offs + verification + honest non-claims
-        </div>
 
-        <div class="project-card__meta">
-          <span class="project-card__lifecycle">Define → Build → Verify</span>
-          <span class="project-card__lifecycle">Flask + SQLite + Jinja2</span>
-        </div>
+        <div class="project-card__body">
+          <div class="project-card__identity">
+            <div class="project-card__glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"/>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </div>
+            <h3 class="project-card__title">Experiment Tracker</h3>
+          </div>
 
-        <div class="project-card__evidence">
-          <div class="project-card__evidence-item">
-            PRODUCT_BRIEF: problem, user, JTBDs, 7-candidate prioritization
-          </div>
-          <div class="project-card__evidence-item">
-            MVP boundary: 4-in scope, 7-out of scope, with trade-offs
-          </div>
-          <div class="project-card__evidence-item">
-            22 automated tests — conclusion CRUD, cascade delete, compare, rendering
-          </div>
-          <div class="project-card__evidence-item">
-            17-category verification report with evidence labels
-          </div>
-          <div class="project-card__evidence-item">
-            ~27 lines across 3 files — one route, one helper, two template changes
-          </div>
-        </div>
+          <p class="project-card__product-question">
+            What is the smallest capability that closes the loop between experiment and decision?
+          </p>
 
-        <div class="project-card__caution">
-          <strong>Honest gaps:</strong> No external user research. No external users. No launch. No
-          GTM. No measured product outcomes. No scale/growth. Browser rendering not verified.
-          Screen-reader testing not performed. Proposed usage metric not yet measured.
+          <div class="project-card__lifecycle-strip" aria-label="Project lifecycle">
+            <span class="project-card__lifecycle">Define</span>
+            <span class="project-card__lifecycle-separator" aria-hidden="true">→</span>
+            <span class="project-card__lifecycle">Build</span>
+            <span class="project-card__lifecycle-separator" aria-hidden="true">→</span>
+            <span class="project-card__lifecycle">Verify</span>
+          </div>
+
+          <div class="project-card__evidence-strip" aria-label="Evidence status">
+            <span class="evidence-badge evidence-badge--verified">Verified</span>
+            <span class="project-card__evidence-item-divider" aria-hidden="true"></span>
+            <span class="evidence-badge evidence-badge--proposed">Proposed</span>
+          </div>
+
+          <div class="empathy-strip" aria-label="Product tension">
+            <div class="empathy-strip__labels">
+              <span class="empathy-strip__label">TENSION</span>
+            </div>
+            <div class="empathy-strip__texts">
+              <p class="empathy-strip__text empathy-strip__text--primary">
+                Without a conclusion, an experiment is activity, not learning.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-card__evidence-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;color:var(--accent);flex-shrink:0;margin-top:2px;">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+            <p class="project-card__evidence-highlight-text">
+              <strong>7-candidate prioritization</strong> with "why not prioritized" for each.
+              <strong>22 automated tests</strong> — conclusion CRUD, cascade delete, compare, rendering.
+              <strong>17-category verification report</strong> with evidence labels.
+            </p>
+          </div>
+
+          <div class="project-card__gap">
+            <p class="project-card__gap-label">Honest gaps</p>
+            <p class="project-card__gap-text">
+              No external user research. No external users. No launch. No GTM. No measured product outcomes. Proposed usage metric not yet measured.
+            </p>
+          </div>
         </div>
 
         <div class="project-card__actions">
           <a href="/work/experiment-tracker/" class="project-card__cta">
             Read the Experiment Tracker case study
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
             </svg>
           </a>
           <span class="project-card__prototype-note">
@@ -217,10 +388,124 @@
     <div class="pwo-cta-row animate-in">
       <a href="/work/" class="btn btn--ghost">
         See the full Proof of Work
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
         </svg>
       </a>
     </div>
   </div>
 </section>
+
+<!-- ReviewFlow visual styles (scoped to project card visual) -->
+<style>
+  .reviewflow-visual {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    gap: var(--space-3);
+    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-muted) 100%);
+  }
+
+  .rf-process-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .rf-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    min-width: 80px;
+    transition: all var(--transition-base);
+  }
+
+  .rf-step__label {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+
+  .rf-step svg {
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+  }
+
+  .rf-step--active {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+
+  .rf-step--active svg,
+  .rf-step--active .rf-step__label {
+    color: var(--accent);
+  }
+
+  .rf-arrow {
+    color: var(--border-default);
+    margin: var(--space-1) 0;
+  }
+
+  .rf-evidence-layer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+    background: var(--bg-muted);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rf-evidence-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .rf-evidence-item--warning {
+    background: var(--evidence-not-evidenced-bg);
+    border: 1px solid var(--evidence-not-evidenced-bg);
+    border-radius: var(--radius-sm);
+    padding: var(--space-1) var(--space-2);
+  }
+
+  @media (max-width: 768px) {
+    .reviewflow-visual {
+      min-height: 240px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .rf-process-flow {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .rf-arrow {
+      transform: rotate(90deg);
+      margin: 0 var(--space-1);
+    }
+
+    .rf-evidence-layer {
+      width: auto;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

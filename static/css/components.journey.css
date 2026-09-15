@@ -1,0 +1,212 @@
+/* ============================================================
+   PRODUCT JOURNEY — timeline of product thinking stages
+   ============================================================ */
+
+.product-journey {
+  position: relative;
+  padding: var(--space-6) 0;
+  margin: var(--space-4) 0;
+}
+
+.product-journey__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-journey__item {
+  position: relative;
+  padding-left: var(--space-10);
+  padding-bottom: var(--space-6);
+}
+
+.product-journey__item:last-child {
+  padding-bottom: 0;
+}
+
+.product-journey__marker {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--accent);
+  background: var(--bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.product-journey__marker svg {
+  width: 10px;
+  height: 10px;
+  color: var(--accent);
+}
+
+.product-journey__marker--evidenced {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.product-journey__marker--evidenced svg {
+  color: var(--accent);
+}
+
+.product-journey__marker--not-evidenced {
+  border-style: dashed;
+  background: var(--bg-muted);
+}
+
+.product-journey__marker--not-evidenced svg {
+  color: var(--text-muted);
+}
+
+.product-journey__marker--missing {
+  border: 2px dashed var(--border-default);
+  background: var(--bg-surface);
+}
+
+.product-journey__marker--missing::after {
+  content: '?';
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.product-journey__connector {
+  position: absolute;
+  left: 9px;
+  top: 22px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-subtle);
+}
+
+.product-journey__item:last-child .product-journey__connector {
+  display: none;
+}
+
+.product-journey__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.product-journey__stage-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.product-journey__stage-content {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.product-journey__stage-content--evidenced {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.product-journey__evidence-note {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--bg-muted);
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+/* Vertical timeline layout for mobile */
+@media (max-width: 768px) {
+  .product-journey {
+    padding-left: var(--space-4);
+  }
+
+  .product-journey__item {
+    padding-left: var(--space-4);
+  }
+
+  .product-journey__marker {
+    left: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  .product-journey__marker svg {
+    width: 8px;
+    height: 8px;
+  }
+
+  .product-journey__connector {
+    left: 7px;
+  }
+}
+
+/* Horizontal journey for compact displays */
+.product-journey--horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  padding: var(--space-3) 0;
+}
+
+.product-journey--horizontal .product-journey__item {
+  flex: 1;
+  min-width: 100px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.product-journey--horizontal .product-journey__marker {
+  position: relative;
+  top: auto;
+  left: auto;
+  margin-bottom: var(--space-1);
+}
+
+.product-journey--horizontal .product-journey__connector {
+  position: relative;
+  display: none;
+}
+
+.product-journey--horizontal .product-journey__arrow {
+  color: var(--border-default);
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 768px) {
+  .product-journey--horizontal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-journey--horizontal .product-journey__item {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0;
+  }
+
+  .product-journey--horizontal .product-journey__marker {
+    margin-bottom: 0;
+    margin-right: var(--space-2);
+  }
+
+  .product-journey--horizontal .product-journey__arrow {
+    display: none;
+  }
+}

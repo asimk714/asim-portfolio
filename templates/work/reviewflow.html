@@ -317,6 +317,63 @@
         The out-of-scope list is as important as the in-scope list. It shows I was thinking about what
         this product should <em>not</em> do, which is often where product judgment shows up.
       </p>
+
+      <!-- A real decision from the ReviewFlow product decisions document -->
+      <div class="decision-block-group" style="margin-top: var(--space-6);">
+        <div class="decision-block" id="decision-structured-input">
+          <button class="decision-block__header" type="button" aria-expanded="false" aria-controls="decision-structured-input-body" id="decision-structured-input-header">
+            <div class="decision-block__header-content">
+              <span class="decision-block__eyebrow">Product decision · Observed — document exists</span>
+              <p class="decision-block__question">Structured input vs blank box vs full AI generation</p>
+              <p class="decision-block__decision">Choose structured input + AI-assisted wording. Reject blank box and full AI generation.</p>
+            </div>
+            <span class="decision-block__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </button>
+          <div class="decision-block__body" id="decision-structured-input-body" aria-labelledby="decision-structured-input-header">
+            <ul class="decision-block__options">
+              <li class="decision-block__option-item decision-block__option-item--chosen">
+                <span>Structured input + AI-assisted wording + editable draft + manual handoff</span>
+                <span>Chosen</span>
+              </li>
+              <li class="decision-block__option-item">
+                <span>Blank box + AI assistance</span>
+                <span>Rejected</span>
+              </li>
+              <li class="decision-block__option-item">
+                <span>Full AI generation from a prompt</span>
+                <span>Rejected</span>
+              </li>
+            </ul>
+            <div class="decision-block__tradeoff">
+              <span class="decision-block__tradeoff-label">Trade-off</span>
+              Structured input shapes what the AI works with and constrains what it can invent. A blank box
+              is easier for the user but produces weaker, less faithful reviews. Full AI generation abandons
+              the user's judgment — the tool becomes a content generator, which is a different (wrong) product.
+            </div>
+            <p class="decision-block__decision" style="margin-top: var(--space-2);">
+              <strong>Why:</strong> the core product tension is "AI could improve the writing — or invent,
+              exaggerate, and decide what happened." Structured input is the constraint that keeps the AI on
+              the side of wording, not judgment. Rating preservation, factual guardrails, and the editable
+              draft are all downstream consequences of this single decision.
+            </p>
+            <div class="decision-block__evidence-row">
+              <span class="evidence-label evidence-label--observed">Observed</span>
+              <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+            </div>
+            <p class="decision-block__decision" style="margin-top: var(--space-2); font-size: var(--text-xs); color: var(--text-muted);">
+              What this supports: the decision is documented in PRODUCT-DECISIONS.md and the MVP prioritization.
+              The "better review" outcome (structured input + AI wording → better review than blank box) is a
+              hypothesis — not tested with real users. The decision's effect on AI output quality is measured
+              against historical outputs only (47% rating match, 0% invented detail) — not a live production pipeline.
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </article>
@@ -357,7 +414,176 @@
 </article>
 
 <!-- ============================================================
-     09 ARCHITECTURE / IMPLEMENTATION
+     09 PRODUCT JOURNEY — from problem to learning
+     ============================================================ -->
+<article class="case-study-section" id="product-journey">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">The Product Journey</h2>
+    <p class="muted-paragraph" style="max-width: 600px; margin-bottom: var(--space-6);">
+      One view of how this product actually came together — what was decided, what was measured,
+      and where the evidence stops. Solid markers are evidenced in this portfolio; dashed markers are
+      honest gaps.
+    </p>
+
+    <div class="product-journey">
+      <ul class="product-journey__list">
+        <!-- 1. Problem -->
+        <li class="product-journey__item">
+          <span class="product-journey__marker product-journey__marker--evidenced" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div class="product-journey__connector" aria-hidden="true"></div>
+          <div class="product-journey__content">
+            <span class="product-journey__stage-label">01 · Problem</span>
+            <p class="product-journey__stage-content product-journey__stage-content--evidenced">
+              People leave quick, unhelpful reviews. The deeper problem: writing a review is a judgment
+              call, not a text-generation task. If you hand the judgment to the AI, you've changed what
+              the tool is — from a review tool to a content generator.
+            </p>
+          </div>
+        </li>
+
+        <!-- 2. Insight -->
+        <li class="product-journey__item">
+          <span class="product-journey__marker product-journey__marker--evidenced" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </span>
+          <div class="product-journey__connector" aria-hidden="true"></div>
+          <div class="product-journey__content">
+            <span class="product-journey__stage-label">02 · Insight</span>
+            <p class="product-journey__stage-content product-journey__stage-content--evidenced">
+              The AI's role should be wording, not judgment. The user's role is the substance. Rating
+              preservation, factual guardrails, and structured input were all downstream consequences of
+              this single insight.
+            </p>
+          </div>
+        </li>
+
+        <!-- 3. Product Question -->
+        <li class="product-journey__item">
+          <span class="product-journey__marker product-journey__marker--evidenced" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </span>
+          <div class="product-journey__connector" aria-hidden="true"></div>
+          <div class="product-journey__content">
+            <span class="product-journey__stage-label">03 · Product Question</span>
+            <p class="product-journey__stage-content product-journey__stage-content--evidenced">
+              How might we help someone write a better Google review without making the AI the author of
+              their judgment?
+            </p>
+          </div>
+        </li>
+
+        <!-- 4. Hypothesis -->
+        <li class="product-journey__item">
+          <span class="product-journey__marker product-journey__marker--not-evidenced" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </span>
+          <div class="product-journey__connector" aria-hidden="true"></div>
+          <div class="product-journey__content">
+            <span class="product-journey__stage-label">04 · Hypothesis</span>
+            <p class="product-journey__stage-content">
+              A user who gets structured input + AI-assisted wording + editable draft + manual handoff
+              will leave a better review than one who writes from a blank box.
+            </p>
+            <span class="evidence-label evidence-label--hypothesis">Hypothesis — not tested with real users</span>
+          </div>
+        </li>
+
+        <!-- 5. Options -->
+        <li class="product-journey__item">
+          <span class="product-journey__marker product-journey__marker--evidenced" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+          <div class="product-journey__connector" aria-hidden="true"></div>
+          <div class="product-journey__content">
+            <span class="product-journey__stage-label">05 · Options Considered</span>
+            <p class="product-journey__stage-content product-journey__stage-content--evidenced">
+              Structured input + AI wording + editable draft + manual handoff ·
+              Blank box + AI assistance · Full AI generation from a prompt.
+            </p>
+          </div>
+        </li>
+
+        <!-- 6. Decision -->
+        <li class="product-journey__item">
+          <span class="product-journey__marker product-journey__marker--evidenced" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div class="product-journey__connector" aria-hidden="true"></div>
+          <div class="product-journey__content">
+            <span class="product-journey__stage-label">06 · Decision</span>
+            <p class="product-journey__stage-content product-journey__stage-content--evidenced">
+              Choose structured input + AI-assisted wording. Reject blank box and full AI generation.
+              The decision is documented in PRODUCT-DECISIONS.md with options, trade-offs, and
+              validation approach.
+            </p>
+          </div>
+        </li>
+
+        <!-- 7. MVP -->
+        <li class="product-journey__item">
+          <span class="product-journey__marker product-journey__marker--evidenced" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </span>
+          <div class="product-journey__connector" aria-hidden="true"></div>
+          <div class="product-journey__content">
+            <span class="product-journey__stage-label">07 · MVP</span>
+            <p class="product-journey__stage-content product-journey__stage-content--evidenced">
+              Must Have: structured input, rating preservation, factual guardrails, editable draft,
+              manual Google handoff, transparency, basic usable UI. Out of Scope (explicit): direct
+              Google posting, analytics, authentication, user accounts, multi-business, native mobile,
+              fabricated social proof, "Powered by AI" badge, guaranteed AI accuracy.
+            </p>
+          </div>
+        </li>
+
+        <!-- 8. Measurement -->
+        <li class="product-journey__item">
+          <span class="product-journey__marker product-journey__marker--evidenced" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg>
+          </span>
+          <div class="product-journey__connector" aria-hidden="true"></div>
+          <div class="product-journey__content">
+            <span class="product-journey__stage-label">08 · Measurement</span>
+            <p class="product-journey__stage-content product-journey__stage-content--evidenced">
+              247 deterministic prompt checks — all pass (247/247). Corrected output evaluator against
+              15 historical outputs: 47% rating match, 0% invented detail, 60% marketing/superlative,
+              27% strict pass, 100% format compliance. 15-case regression dataset covering 1–5 stars.
+            </p>
+            <span class="evidence-label evidence-label--historical">Historical only</span>
+          </div>
+        </li>
+
+        <!-- 9. Learning -->
+        <li class="product-journey__item">
+          <span class="product-journey__marker product-journey__marker--not-evidenced" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </span>
+          <div class="product-journey__content">
+            <span class="product-journey__stage-label">09 · Learning</span>
+            <p class="product-journey__stage-content">
+              Measurement artifacts are easy to introduce — the corrected evaluator found three (case
+              sensitivity, superlative word forms, false positive from the word "out"). Phase 9's 53%
+              looked like improvement; it was an evaluator artifact. Correct measurement matters.
+            </p>
+            <span class="evidence-label evidence-label--not-evidenced">Not validated — Phase 11 live AI improvement not measured</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <p class="text-muted" style="margin-top: var(--space-5); font-size: var(--text-sm);">
+      The journey is honest about where it stops: the product was built and measured against a
+      historical set of outputs, but no live AI pipeline was validated and no real users were studied.
+      That's a feature of this portfolio, not a bug.
+    </p>
+  </div>
+</article>
+
+<!-- ============================================================
+     10 ARCHITECTURE / IMPLEMENTATION
      ============================================================ -->
 <article class="case-study-section" id="architecture">
   <div class="container">

@@ -1,135 +1,116 @@
-<section class="section pwo-section" id="proof-of-work">
+<section class="section pwo-section cdmv-section" id="proof-of-work">
   <div class="container">
     <div class="section-header animate-in">
       <p class="eyebrow section-header__eyebrow">Proof of Work</p>
       <h2 class="section-header__title">Don't take my word for it.</h2>
       <p class="muted-paragraph section-header__subtitle">
         The actual artifacts behind the claims — prioritization tables, verification reports,
-        evaluator results, test output, architecture decisions. Filter by category. Every
-        artifact has an evidence label.
+        evaluator results, test output, architecture decisions. Every artifact has an evidence label.
       </p>
     </div>
 
-    <div class="pwo-filters animate-in animate-in--delay-1" role="group" aria-label="Filter proof of work by category">
-      <a href="/work/" class="pwo-filter pwo-filter--active" data-filter="all">All</a>
-      <a href="/work/#discovery" class="pwo-filter" data-filter="discovery">Discovery</a>
-      <a href="/work/#decision" class="pwo-filter" data-filter="decision">Decision</a>
-      <a href="/work/#definition" class="pwo-filter" data-filter="definition">Definition</a>
-      <a href="/work/#build" class="pwo-filter" data-filter="build">Build</a>
-      <a href="/work/#measure" class="pwo-filter" data-filter="measure">Measure</a>
-      <a href="/work/#verify" class="pwo-filter" data-filter="verify">Verify</a>
-      <a href="/work/#learn" class="pwo-filter" data-filter="learn">Learn</a>
-    </div>
-
+    <!-- Curated samples from the full archive at /work/ -->
     <div class="pwo-grid">
-      <!-- ReviewFlow: Discovery -->
-      <article class="evidence-card reveal">
+      <article class="evidence-card reveal" data-category="definition">
         <div class="evidence-card__header">
-          <h3 class="evidence-card__title">15-case regression dataset</h3>
-          <span class="evidence-card__type">Regression fixture</span>
-        </div>
-        <div class="evidence-card__body">
-          <p>15 synthetic test cases covering the full 1–5 star rating range, multiple visit
-          types, with/without staff name, positive/negative/mixed experiences. Each case defines
-          what a faithful AI response should do.</p>
-          <span class="evidence-label evidence-label--verified" style="margin-top: var(--space-2); display: inline-flex;">Verified — file exists</span>
-        </div>
-        <a href="https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/cases.ts" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
-          View on GitHub
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </a>
-      </article>
-
-      <!-- ReviewFlow: Measure -->
-      <article class="evidence-card reveal">
-        <div class="evidence-card__header">
-          <h3 class="evidence-card__title">AI Output Quality Measurement Report</h3>
-          <span class="evidence-card__type">Measurement report</span>
-        </div>
-        <div class="evidence-card__body">
-          <p>Human-readable report: 47% rating match, 0% invented detail, 60% marketing/superlative,
-          27% overall strict pass, 100% format compliance across 15 historical outputs (2026-09-10).
-          Includes per-case detail and evidence-type labeling (A/B/C).</p>
-          <span class="evidence-label evidence-label--verified" style="margin-top: var(--space-2); display: inline-flex;">Verified</span>
-          <span class="evidence-label evidence-label--not-evidenced" style="margin-top: var(--space-1); display: inline-flex;">Not live — historical outputs</span>
-        </div>
-        <a href="https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/ai-quality-report.md" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
-          View on GitHub
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </a>
-      </article>
-
-      <!-- ReviewFlow: Decision -->
-      <article class="evidence-card reveal">
-        <div class="evidence-card__header">
-          <h3 class="evidence-card__title">8 Product Decisions</h3>
+          <h3 class="evidence-card__title">Product Decisions — 8 documented choices</h3>
           <span class="evidence-card__type">Decision record</span>
         </div>
         <div class="evidence-card__body">
           <p>Structured decisions: structured input vs blank box, anti-hallucination constraints,
           rating preservation, short+detailed drafts, editable draft, manual Google handoff, no
-          database, no auth. Each with options considered, trade-offs, confidence, and how I'd
-          validate.</p>
-          <span class="evidence-label evidence-label--verified" style="margin-top: var(--space-2); display: inline-flex;">Verified — document exists</span>
+          database, no auth. Each with options considered, trade-offs, confidence, and validation
+          approach.</p>
+          <p style="margin-top: var(--space-2);">
+            <span class="evidence-label evidence-label--verified">Verified — document exists</span>
+          </p>
         </div>
         <a href="https://github.com/asimk714/salon-review-bot/blob/main/docs/PRODUCT-DECISIONS.md" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
           View on GitHub
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
           </svg>
         </a>
       </article>
 
-      <!-- ReviewFlow: Verify -->
-      <article class="evidence-card reveal">
+      <article class="evidence-card reveal" data-category="measure">
+        <div class="evidence-card__header">
+          <h3 class="evidence-card__title">AI Output Quality Measurement Report</h3>
+          <span class="evidence-card__type">Measurement report</span>
+        </div>
+        <div class="evidence-card__body">
+          <p>15 historical outputs (2026-09-10) evaluated with corrected evaluator: 47% rating match,
+          0% invented detail, 60% marketing/superlative, 27% overall strict pass, 100% format
+          compliance. Per-case detail included. Evidence types A (deterministic), B (historical live
+          outputs), C (new live — skipped).</p>
+          <p style="margin-top: var(--space-2);">
+            <span class="evidence-label evidence-label--verified">Verified</span>
+            <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not live — historical outputs</span>
+          </p>
+        </div>
+        <a href="https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/ai-quality-report.md" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
+          View on GitHub
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="evidence-card reveal" data-category="verify">
         <div class="evidence-card__header">
           <h3 class="evidence-card__title">Corrected Evaluator Results</h3>
           <span class="evidence-card__type">Verification artifact</span>
         </div>
         <div class="evidence-card__body">
-          <p>The output evaluator was corrected for 3 measurement artifacts: case-insensitive
-          visit-type matching, superlative word forms extended, "out" removed from negative
-          sentiment. Same 15 outputs re-evaluated: 47% rating match, 0% invented detail, 27%
-          strict pass. Correction made measurement more accurate — Phase 9 was 53%, not because
-          the model improved, but because false positives were removed.</p>
-          <span class="evidence-label evidence-label--verified" style="margin-top: var(--space-2); display: inline-flex;">Verified</span>
-          <span class="evidence-label evidence-label--hypothesis" style="margin-top: var(--space-1); display: inline-flex;">Hypothesis — live effect not validated</span>
+          <p>Output evaluator corrected for 3 measurement artifacts: case-insensitive visit-type
+          matching, superlative word forms extended, "out" removed from negative sentiment. Same 15
+          outputs re-evaluated: 47% rating match, 27% strict pass. Correction made measurement more
+          accurate — Phase 9 was 53% because of false positives, not model improvement.</p>
+          <p style="margin-top: var(--space-2);">
+            <span class="evidence-label evidence-label--verified">Verified</span>
+            <span class="evidence-label evidence-label--hypothesis" style="margin-left: var(--space-1);">Hypothesis — live effect not validated</span>
+          </p>
         </div>
         <a href="https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/corrected-historical-results.json" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
           View on GitHub
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
           </svg>
         </a>
       </article>
 
-      <!-- ReviewFlow: Learn -->
-      <article class="evidence-card reveal">
+      <article class="evidence-card reveal" data-category="build">
         <div class="evidence-card__header">
-          <h3 class="evidence-card__title">Phase 11 Intervention Record</h3>
-          <span class="evidence-card__type">Honest documentation</span>
+          <h3 class="evidence-card__title">Final QA Report — 20/20 Functional, 35/35 Tests</h3>
+          <span class="evidence-card__type">QA audit</span>
         </div>
         <div class="evidence-card__body">
-          <p>The Phase 11 prompt tightening passes deterministic checks (247/247), but live
-          validation did NOT occur — no LOVABLE_API_KEY or Supabase credentials in the environment.
-          beforeVsAfterGenuinelyMeasurable: false. The record explicitly avoids claiming improvement.</p>
-          <span class="evidence-label evidence-label--hypothesis" style="margin-top: var(--space-2); display: inline-flex;">Hypothesis — not live-validated</span>
-          <span class="evidence-label evidence-label--not-evidenced" style="margin-top: var(--space-1); display: inline-flex;">Not evidenced — no live AI</span>
+          <p>Full audit: 20/20 functional verification across 8 routes, responsive at 375/768/1280px,
+          accessibility (WCAG 2.1 AA — keyboard, semantic structure, form labels, aria-live, color
+          independence), 35/35 automated tests passing, ESLint 0 errors/0 warnings, Turbopack build
+          0 compilation errors. Demo isolation verified: 0 qualifying returners from demo preview.</p>
+          <p style="margin-top: var(--space-2);">
+            <span class="evidence-label evidence-label--verified">Verified — QA report exists</span>
+            <span class="evidence-label evidence-label--missing" style="margin-left: var(--space-1);">Missing — browser QA blocked</span>
+          </p>
         </div>
-        <a href="https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/intervention-record-phase11.json" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/asimk714/Unrot-Daily-Retention/blob/main/docs/final-qa-report.md" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
           View on GitHub
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
           </svg>
         </a>
       </article>
 
-      <!-- Experiment Tracker: Definition -->
-      <article class="evidence-card reveal">
+      <article class="evidence-card reveal" data-category="decision">
         <div class="evidence-card__header">
           <h3 class="evidence-card__title">PRODUCT_BRIEF — 7-Candidate Prioritization</h3>
           <span class="evidence-card__type">Product brief</span>
@@ -137,86 +118,54 @@
         <div class="evidence-card__body">
           <p>Conclusion capture chosen over charts, search/filter, auth, cloud, AI features, and
           experiment templates. Each candidate documented with "What it would add" and "Why not
-          prioritized." The smallest capability that closes the experiment→decision loop.</p>
-          <span class="evidence-label evidence-label--verified" style="margin-top: var(--space-2); display: inline-flex;">Verified — document exists</span>
+          prioritized." The smallest capability that closes the experiment→decision loop — ~27 lines
+          across 3 files.</p>
+          <p style="margin-top: var(--space-2);">
+            <span class="evidence-label evidence-label--verified">Verified — document exists</span>
+          </p>
         </div>
         <a href="/work/experiment-tracker/#prioritization" class="evidence-card__link">
           Read in case study
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
           </svg>
         </a>
       </article>
 
-      <!-- Experiment Tracker: Verify -->
-      <article class="evidence-card reveal">
+      <article class="evidence-card reveal" data-category="learn">
         <div class="evidence-card__header">
-          <h3 class="evidence-card__title">17-Category Verification Report</h3>
-          <span class="evidence-card__type">Verification report</span>
+          <h3 class="evidence-card__title">Phase 11 Intervention Record — honest documentation</h3>
+          <span class="evidence-card__type">Honest documentation</span>
         </div>
         <div class="evidence-card__body">
-          <p>Independent post-implementation verification: database integrity (FK, UNIQUE, triggers),
-          conclusion CRUD, one-conclusion-per-experiment constraint, cascade deletion, run detail
-          route, existing CRUD regression, compare workflow, error handling, timestamps, HTML
-          rendering, accessibility (code review), security (code review).</p>
-          <span class="evidence-label evidence-label--verified" style="margin-top: var(--space-2); display: inline-flex;">Verified by test</span>
-          <span class="evidence-label evidence-label--missing" style="margin-top: var(--space-1); display: inline-flex;">Missing — browser rendering not verified</span>
+          <p>The Phase 11 prompt tightening passes deterministic checks (247/247), but <strong>live
+          validation did NOT occur</strong> — no LOVABLE_API_KEY or Supabase credentials in the
+          environment. beforeVsAfterGenuinelyMeasurable: false. The record explicitly avoids claiming
+          improvement. Intervention retained with caveat: unproven until live-validated.</p>
+          <p style="margin-top: var(--space-2);">
+            <span class="evidence-label evidence-label--hypothesis">Hypothesis — not live-validated</span>
+            <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not evidenced — no live AI</span>
+          </p>
         </div>
-        <a href="/work/experiment-tracker/#verification" class="evidence-card__link">
-          Read in case study
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-      </article>
-
-      <!-- Unrot: Measure -->
-      <article class="evidence-card reveal">
-        <div class="evidence-card__header">
-          <h3 class="evidence-card__title">Measurement Model — A/B Experiment Plan</h3>
-          <span class="evidence-card__type">Measurement design</span>
-        </div>
-        <div class="evidence-card__body">
-          <p>Rigorous experiment design: randomization unit (user ID), 50/50 allocation, deterministic
-          hash assignment, primary metric (D1 retention), secondary metrics, guardrail metrics, sample
-          size power analysis (~650–700 per variant, ~1,300–1,400 total), 2-week duration + 2-day
-          cooldown, decision rules.</p>
-          <span class="evidence-label evidence-label--verified" style="margin-top: var(--space-2); display: inline-flex;">Verified — document exists</span>
-          <span class="evidence-label evidence-label--hypothesis" style="margin-top: var(--space-1); display: inline-flex;">Hypothesis — not yet run</span>
-        </div>
-        <a href="https://github.com/asimk714/Unrot-Daily-Retention/blob/main/docs/experiment-plan.md" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/intervention-record-phase11.json" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
           View on GitHub
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </a>
-      </article>
-
-      <!-- Unrot: Verify -->
-      <article class="evidence-card reveal">
-        <div class="evidence-card__header">
-          <h3 class="evidence-card__title">Final QA Report — 20/20 Functional</h3>
-          <span class="evidence-card__type">QA audit</span>
-        </div>
-        <div class="evidence-card__body">
-          <p>Full audit: 20/20 functional verification, responsive at 375/768/1280px, accessibility
-          (WCAG 2.1 AA — keyboard, semantic structure, form labels, aria-live, color independence),
-          35/35 tests passing, ESLint 0 errors/0 warnings, Turbopack build with 0 compilation errors.</p>
-          <span class="evidence-label evidence-label--verified" style="margin-top: var(--space-2); display: inline-flex;">Verified — QA report exists</span>
-          <span class="evidence-label evidence-label--missing" style="margin-top: var(--space-1); display: inline-flex;">Missing — browser QA blocked</span>
-        </div>
-        <a href="https://github.com/asimk714/Unrot-Daily-Retention/blob/main/docs/final-qa-report.md" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
-          View on GitHub
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
           </svg>
         </a>
       </article>
     </div>
 
-    <div class="pwo-cta-row animate-in">
-      <a href="/work/" class="btn btn--primary">
-        Explore the full Proof of Work hub
+    <div class="pwo-cta-row animate-in" style="margin-top: var(--space-8);">
+      <a href="/work/" class="btn btn--ghost">
+        See the full evidence archive — 13 artifacts, filtered by category
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
       </a>
     </div>
   </div>

@@ -1,0 +1,236 @@
+<section class="section" id="evidence">
+  <div class="container">
+    <div class="evidence-hero animate-in">
+      <p class="eyebrow section-header__eyebrow">Evidence Discipline</p>
+      <h2 class="section-header__title">What I can show. What I haven't validated.</h2>
+      <p class="muted-paragraph section-header__subtitle">
+        This portfolio distinguishes evidence from assertion. A hiring manager should be able
+        to tell at a glance which claims are backed by tests, documents, or verification — and
+        which are honest gaps I haven't closed yet.
+      </p>
+    </div>
+
+    <div class="evidence-split">
+      <!-- What I can show -->
+      <div class="evidence-side">
+        <h3 class="evidence-side__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+          What I Can Show
+        </h3>
+
+        <ul class="evidence-list">
+          <li>
+            <span class="evidence-list__item">
+              <span class="evidence-list__bullet evidence-list__bullet--verified" aria-hidden="true">✓</span>
+              <div>
+                <span class="evidence-list__label">Deterministic test suites</span>
+                <span class="evidence-list__detail">247 passing checks in ReviewFlow · 22 passing tests in Experiment Tracker · 35 passing tests in Unrot</span>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span class="evidence-list__item">
+              <span class="evidence-list__bullet evidence-list__bullet--verified" aria-hidden="true">✓</span>
+              <div>
+                <span class="evidence-list__label">Implementation artifacts</span>
+                <span class="evidence-list__detail">React + Supabase app (ReviewFlow) · Next.js 16 + PostgreSQL + Prisma app (Unrot) · Flask + SQLite app (Experiment Tracker) — all three run locally</span>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span class="evidence-list__item">
+              <span class="evidence-list__bullet evidence-list__bullet--verified" aria-hidden="true">✓</span>
+              <div>
+                <span class="evidence-list__label">Documentation</span>
+                <span class="evidence-list__detail">Product decisions · MVP prioritization · PRODUCT_BRIEF · measurement model · A/B experiment plan · architecture documents — all in linked repositories</span>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span class="evidence-list__item">
+              <span class="evidence-list__bullet evidence-list__bullet--verified" aria-hidden="true">✓</span>
+              <div>
+                <span class="evidence-list__label">Evaluator checks</span>
+                <span class="evidence-list__detail">ReviewFlow output evaluator with corrected measurement artifacts — result: 47% rating match, 0% invented detail across 15 historical outputs</span>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span class="evidence-list__item">
+              <span class="evidence-list__bullet evidence-list__bullet--verified" aria-hidden="true">✓</span>
+              <div>
+                <span class="evidence-list__label">Product definitions</span>
+                <span class="evidence-list__detail">Explicit product questions, scope boundaries, out-of-scope lists, and prioritization trade-offs — not vague assertions about what the product does</span>
+              </div>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- What I haven't validated -->
+      <div class="evidence-side evidence-side--caution">
+        <h3 class="evidence-side__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          What I Haven't Validated Yet
+        </h3>
+
+        <ul class="evidence-list">
+          <li>
+            <span class="evidence-list__item">
+              <span class="evidence-list__bullet evidence-list__bullet--not-evidenced" aria-hidden="true">⊘</span>
+              <div>
+                <span class="evidence-list__label evidence-list__label--caution">External user research</span>
+                <span class="evidence-list__detail">No interviews, no surveys, no measured audience. User models are inferred from product intent, not observed research.</span>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span class="evidence-list__item">
+              <span class="evidence-list__bullet evidence-list__bullet--not-evidenced" aria-hidden="true">⊘</span>
+              <div>
+                <span class="evidence-list__label evidence-list__label--caution">Live AI output validation</span>
+                <span class="evidence-list__detail">ReviewFlow's evaluator runs against historical outputs, not a live production pipeline. The Phase 11 intervention has not been live-validated — credentials were unavailable.</span>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span class="evidence-list__item">
+              <span class="evidence-list__bullet evidence-list__bullet--not-evidenced" aria-hidden="true">⊘</span>
+              <div>
+                <span class="evidence-list__label evidence-list__label--caution">Real-world D1 retention outcome</span>
+                <span class="evidence-list__detail">Unrot defines and instruments D1 measurement, but has no real user base. No measured retention improvement exists — the outcome is defined but not evidenced.</span>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span class="evidence-list__item">
+              <span class="evidence-list__bullet evidence-list__bullet--not-evidenced" aria-hidden="true">⊘</span>
+              <div>
+                <span class="evidence-list__label evidence-list__label--caution">Production adoption</span>
+                <span class="evidence-list__detail">All three products are working prototypes in local/demo environments — no verified public deployment, no measured adoption, no growth or scale story.</span>
+              </div>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .evidence-hero {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--space-10);
+  }
+
+  .evidence-side {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  .evidence-side__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-lg);
+    font-weight: 650;
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .evidence-side--caution {
+    background: var(--bg-muted);
+    border-color: var(--border-default);
+  }
+
+  .evidence-side--caution .evidence-side__title {
+    color: var(--text-primary);
+  }
+
+  .evidence-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .evidence-list__item {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .evidence-list__bullet {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .evidence-list__bullet--verified {
+    background: var(--evidence-verified-bg);
+    color: var(--evidence-verified);
+  }
+
+  .evidence-list__bullet--not-evidenced {
+    background: var(--evidence-not-evidenced-bg);
+    color: var(--evidence-not-evidenced);
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .evidence-list__item div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .evidence-list__label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .evidence-list__label--caution {
+    color: var(--evidence-not-evidenced);
+  }
+
+  .evidence-list__detail {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .evidence-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .evidence-split {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
