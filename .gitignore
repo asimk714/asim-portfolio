@@ -26,3 +26,6 @@ env/
 .vscode/
 *.swp
 *.swo
+
+# Generated HTML snapshots
+h10_*.html

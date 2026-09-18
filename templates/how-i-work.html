@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <nav class="case-study-nav" aria-label="Page navigation">
   <div class="container case-study-nav__inner">
     <a href="/" class="case-study-nav__exit">
@@ -11,311 +10,939 @@
       Exit
     </a>
     <div class="case-study-nav__meta">
-      <span class="case-study-nav__type">How I Think &amp; How I Work</span>
+      <span class="case-study-nav__type">Product Operating System / How I Work</span>
     </div>
   </div>
 </nav>
 
-<section class="hiw-section">
+<section class="pops-section">
   <div class="container">
-    <div class="section-header animate-in">
-      <p class="eyebrow">How I Think</p>
-      <h1 class="section-header__title" style="font-size: clamp(var(--text-3xl), 4.5vw, var(--text-5xl));">
-        The way I work through a product problem.
-      </h1>
-      <p class="muted-paragraph" style="max-width: 580px;">
-        Six moves. Each one is grounded in the actual work on this portfolio — not generic PM
-        methodology. Some are observed in my products, some are inferred from how I've worked,
-        some are proposals. The evidence labels tell you which is which.
+    <div class="pops-header animate-in">
+      <p class="eyebrow">Product Operating System</p>
+      <h1 class="pops-header__title">The way I work through a product problem.</h1>
+      <p class="muted-paragraph pops-header__subtitle" style="max-width: 560px;">
+        Eight moves. Not a decorative diagram — a real lifecycle I apply across every project on this
+        portfolio. Each stage is anchored to something I've actually done, or honestly marked where
+        evidence does not yet exist. The thread is the same across all three products: define the problem,
+        make trade-offs explicit, build measurement before the outcome, verify what I claim, and be honest
+        about gaps.
       </p>
     </div>
 
-    <div class="accordion">
-      <div class="accordion__item">
-        <button class="accordion__header" aria-expanded="false" aria-controls="acc-discover" id="acc-discover-btn">
-          <div class="accordion__header-text">
-            <span class="accordion__number">01</span>
-            <span class="accordion__title">Discover</span>
+    <!-- Lifecycle overview strip -->
+    <div class="lifecycle-strip" role="list" aria-label="Product lifecycle: Discover, Decide, Define, Build, Launch, Measure, Learn, Iterate">
+      <div class="lifecycle-stage" role="listitem" data-stage="discover">
+        <span class="lifecycle-number">01</span>
+        <span class="lifecycle-name">Discover</span>
+      </div>
+      <div class="lifecycle-arrow" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+      <div class="lifecycle-stage" role="listitem" data-stage="decide">
+        <span class="lifecycle-number">02</span>
+        <span class="lifecycle-name">Decide</span>
+      </div>
+      <div class="lifecycle-arrow" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+      <div class="lifecycle-stage" role="listitem" data-stage="define">
+        <span class="lifecycle-number">03</span>
+        <span class="lifecycle-name">Define</span>
+      </div>
+      <div class="lifecycle-arrow" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+      <div class="lifecycle-stage" role="listitem" data-stage="build">
+        <span class="lifecycle-number">04</span>
+        <span class="lifecycle-name">Build</span>
+      </div>
+      <div class="lifecycle-arrow" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+      <div class="lifecycle-stage" role="listitem" data-stage="launch">
+        <span class="lifecycle-number">05</span>
+        <span class="lifecycle-name">Launch</span>
+      </div>
+      <div class="lifecycle-arrow" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+      <div class="lifecycle-stage" role="listitem" data-stage="measure">
+        <span class="lifecycle-number">06</span>
+        <span class="lifecycle-name">Measure</span>
+      </div>
+      <div class="lifecycle-arrow" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+      <div class="lifecycle-stage" role="listitem" data-stage="learn">
+        <span class="lifecycle-number">07</span>
+        <span class="lifecycle-name">Learn</span>
+      </div>
+      <div class="lifecycle-arrow" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+      <div class="lifecycle-stage" role="listitem" data-stage="iterate">
+        <span class="lifecycle-number">08</span>
+        <span class="lifecycle-name">Iterate</span>
+      </div>
+    </div>
+
+    <!-- Detailed stage descriptions -->
+    <div class="pops-stages">
+      <!-- DISCOVER -->
+      <div class="pops-stage reveal" id="stage-discover">
+        <div class="pops-stage__header">
+          <span class="pops-stage__number">01</span>
+          <h2 class="pops-stage__title">Discover</h2>
+          <div class="pops-stage__evidence">
+            <span class="evidence-label evidence-label--observed">Observed</span>
+            <span class="pops-stage__evidence-sep">/</span>
+            <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
           </div>
-          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="accordion__panel" id="acc-discover" role="region" aria-labelledby="acc-discover-btn">
-          <div class="accordion__body">
-            <p class="accordion__lead">
-              Find the real problem before you propose a solution. Disambiguate. Separate facts from
-              assumptions from inferences from unknowns.
-            </p>
-            <p>
-              Before I build anything, I try to understand what problem I'm actually solving. That
-              sounds obvious, but most product work skips it — the problem is assumed, the solution is
-              proposed, and the measure is an afterthought.
-            </p>
-            <p>
-              In practice, this means separating what I know from what I'm guessing. On Unrot, the
-              problem-framing research explicitly separates known facts from assumptions, inferences,
-              and unknowns — and organizes seven candidate reasons for low D1 retention into categories
-              instead of picking one and running with it.
-            </p>
-            <p>
-              On ReviewFlow, the discovery wasn't user research — it was product formulation: what
-              would a responsible AI-assisted review tool actually need to do? The answer shaped
-              everything downstream.
-            </p>
-            <div class="accordion__evidence">
-              <span class="evidence-label evidence-label--observed">Observed</span>
-              <span> — problem framing as a deliberate step, not an assumption.</span>
-              <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
-              <span> — the JTBD list and intervention hypotheses for Unrot are good guesses, not
-              validated research.</span>
-            </div>
+        </div>
+        <div class="pops-stage__body">
+          <p class="pops-stage__lead">
+            Find the real problem before proposing a solution. Disambiguate. Separate facts from
+            assumptions from inferences from unknowns. Name the customer and the job.
+          </p>
+          <p>
+            Before I build anything, I try to understand what problem I'm actually solving. That sounds
+            obvious, but most product work skips it — the problem is assumed, the solution is proposed,
+            and the measure is an afterthought.
+          </p>
+          <p>
+            On Unrot, the problem-framing research explicitly separates known facts from assumptions,
+            inferences, and unknowns — and organizes seven candidate reasons for low D1 retention into
+            categories instead of picking one and running with it. Four JTBD hypotheses and seven
+            intervention hypotheses are documented, each labeled as a hypothesis, not validated research.
+          </p>
+          <p>
+            On ReviewFlow, the discovery wasn't user research — it was product formulation: what would a
+            responsible AI-assisted review tool actually need to do? The answer shaped everything
+            downstream. On Experiment Tracker, the gap between running an experiment and recording what
+            I concluded from it was observed from personal practice — not from external user research.
+          </p>
+          <div class="pops-stage__gap">
+            <span class="evidence-label evidence-label--not-evidenced">Gap: no user research, no interviews, no measured audience, no validated JTBD</span>
           </div>
         </div>
       </div>
 
-      <div class="accordion__item">
-        <button class="accordion__header" aria-expanded="false" aria-controls="acc-define" id="acc-define-btn">
-          <div class="accordion__header-text">
-            <span class="accordion__number">02</span>
-            <span class="accordion__title">Define</span>
+      <!-- DECIDE -->
+      <div class="pops-stage reveal" id="stage-decide">
+        <div class="pops-stage__header">
+          <span class="pops-stage__number">02</span>
+          <h2 class="pops-stage__title">Decide</h2>
+          <div class="pops-stage__evidence">
+            <span class="evidence-label evidence-label--verified">Verified</span>
           </div>
-          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="accordion__panel" id="acc-define" role="region" aria-labelledby="acc-define-btn">
-          <div class="accordion__body">
-            <p class="accordion__lead">
-              Define the product before you build it. What is it? What is it not? What's the smallest
-              thing that does the job?
-            </p>
-            <p>
-              Once I understand the problem, I define the product. Not the implementation — the product.
-              What job does it do? What's in scope? What's out of scope? What's the smallest thing that
-              actually solves the problem?
-            </p>
-            <p>
-              ReviewFlow's MVP prioritization separates Must Have from Should Have from Out of Scope —
-              and the Out of Scope list is as important as the in-scope list. It shows I was thinking
-              about what the product should <em>not</em> do.
-            </p>
-            <p>
-              Experiment Tracker's PRODUCT_BRIEF evaluates seven candidate capabilities against a single
-              question: what's the smallest thing that closes the loop? Conclusion capture won. Charts,
-              search, auth, cloud, AI features, templates, artifacts — all evaluated, all deliberately
-              not chosen for v1.
-            </p>
-            <div class="accordion__evidence">
-              <span class="evidence-label evidence-label--verified">Verified</span>
-              <span> — MVP prioritization and product brief documents exist. The trade-offs are
-              explicit.</span>
-            </div>
+        </div>
+        <div class="pops-stage__body">
+          <p class="pops-stage__lead">
+            Make explicit trade-offs. Prefer the smallest thing that closes the most important gap. Say
+            why you're not doing the other things.
+          </p>
+          <p>
+            Product thinking is mostly decision-making under constraints. The interesting part isn't the
+            decision — it's the reasoning. What options did I consider? What trade-offs did I accept? What
+            would I do differently?
+          </p>
+          <p>
+            ReviewFlow's product decisions document records 8 decisions — structured input vs blank box,
+            anti-hallucination constraints, rating preservation, short+detailed drafts, editable draft,
+            manual Google handoff, no database, no auth — each with options considered, trade-offs,
+            confidence, and a validation approach.
+          </p>
+          <p>
+            Experiment Tracker's PRODUCT_BRIEF evaluates seven candidate capabilities against a single
+            question: what's the smallest thing that closes the loop? Conclusion capture won. Charts,
+            search/filter, authentication, cloud, AI features, templates, artifact linking — all evaluated,
+            all deliberately not chosen for v1. The "why not prioritized" column is where the judgment
+            shows up.
+          </p>
+        </div>
+      </div>
+
+      <!-- DEFINE -->
+      <div class="pops-stage reveal" id="stage-define">
+        <div class="pops-stage__header">
+          <span class="pops-stage__number">03</span>
+          <h2 class="pops-stage__title">Define</h2>
+          <div class="pops-stage__evidence">
+            <span class="evidence-label evidence-label--verified">Verified</span>
+            <span class="pops-stage__evidence-sep">/</span>
+            <span class="evidence-label evidence-label--proposed">Proposed</span>
+          </div>
+        </div>
+        <div class="pops-stage__body">
+          <p class="pops-stage__lead">
+            Turn the decision into a defined product: what it is, what it is not, what's in scope, what's
+            out of scope, what success looks like.
+          </p>
+          <p>
+            Once I understand the problem, I define the product. Not the implementation — the product. What
+            job does it do? What's in scope? What's out of scope? What's the smallest thing that actually
+            solves the problem?
+          </p>
+          <p>
+            ReviewFlow's MVP prioritization separates Must Have from Should Have from Out of Scope — and the
+            Out of Scope list is as important as the in-scope list. It shows I was thinking about what the
+            product should <em>not</em> do: no direct Google posting, no analytics, no authentication, no
+            user accounts, no multi-business, no native mobile, no fabricated social proof, no "Powered by
+            AI" badge, no guaranteed AI accuracy.
+          </p>
+          <p>
+            Unrot's measurement model defines what to measure before anything is validated: a metric
+            hierarchy (North Star, activation, funnel, quality/safety, guardrail, business), a 7-stage
+            funnel (first_session_started → onboarding_completed → plan_viewed → lesson_started →
+            lesson_completed → reminder_enabled → D1_returned), must-have instrumentation (eventName,
+            propertiesJson, occurredAt, sessionId, route, userId). The metrics plan is defined — the
+            outcome is not measured.
+          </p>
+          <p>
+            Experiment Tracker's PRODUCT_BRIEF defines the problem, the user (inferred), the JTBDs
+            (hypothesized), the product question, and the scope — and evaluates seven alternatives against
+            it.
+          </p>
+          <div class="pops-stage__gap">
+            <span class="evidence-label evidence-label--not-evidenced">Gap: formal PRDs, user stories, and acceptance criteria as distinct artifacts not yet evidenced</span>
           </div>
         </div>
       </div>
 
-      <div class="accordion__item">
-        <button class="accordion__header" aria-expanded="false" aria-controls="acc-decide" id="acc-decide-btn">
-          <div class="accordion__header-text">
-            <span class="accordion__number">03</span>
-            <span class="accordion__title">Decide</span>
+      <!-- BUILD -->
+      <div class="pops-stage reveal" id="stage-build">
+        <div class="pops-stage__header">
+          <span class="pops-stage__number">04</span>
+          <h2 class="pops-stage__title">Build</h2>
+          <div class="pops-stage__evidence">
+            <span class="evidence-label evidence-label--verified">Verified</span>
           </div>
-          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="accordion__panel" id="acc-decide" role="region" aria-labelledby="acc-decide-btn">
-          <div class="accordion__body">
-            <p class="accordion__lead">
-              Make explicit trade-offs. Prefer the smallest thing that closes the loop. Say why you're
-              not doing the other things.
-            </p>
-            <p>
-              Product thinking is mostly decision-making under constraints. The interesting part isn't
-              the decision — it's the reasoning. What options did I consider? What trade-offs did I
-              accept? What would I do differently?
-            </p>
-            <p>
-              ReviewFlow's product decisions document records 8 decisions — structured input vs blank
-              box, anti-hallucination constraints, rating preservation, short+detailed drafts, editable
-              draft, manual Google handoff, no database, no auth — each with options, trade-offs,
-              confidence, and a validation approach.
-            </p>
-            <p>
-              Experiment Tracker's prioritization is the same move at a higher level: seven candidates,
-              one chosen, six deliberately not. The "why not prioritized" column is where the judgment
-              shows up.
-            </p>
-            <div class="accordion__evidence">
-              <span class="evidence-label evidence-label--verified">Verified</span>
-              <span> — decision records exist with explicit options and trade-offs.</span>
-              <span class="evidence-label evidence-label--proposed">Proposed</span>
-              <span> — the prioritization move itself could be formalized further as a reusable
-              framework.</span>
-            </div>
+        </div>
+        <div class="pops-stage__body">
+          <p class="pops-stage__lead">
+            Build the thing. Keep it real. Don't pretend it's more than it is. If it's AI-assisted, say so.
+            If it's local-only, say so. If it's a prototype, say so.
+          </p>
+          <p>
+            I build products that actually run. ReviewFlow is a real React + Supabase application — not a
+            design concept, not a Figma file. It has components, an edge function, and a CI workflow. It
+            runs locally with credentials. I was explicit that it was scaffolded with AI assistance — the
+            product decisions, the measurement, the MVP boundary, the disclosure, and the honest gaps are
+            mine.
+          </p>
+          <p>
+            Unrot is a real Next.js 16 + PostgreSQL + Prisma application with auth, sessions, learning
+            paths, lessons, progress tracking, reminder preferences, and an analytics dashboard that computes
+            from a real database. It's production-shaped, not a toy. Build, lint, and typecheck pass. ESLint
+            0 errors / 0 warnings.
+          </p>
+          <p>
+            Experiment Tracker is a real Flask + SQLite application with 22 passing tests and a 17-category
+            verification report. It runs. It's verified. It's intentionally small.
+          </p>
+          <div class="pops-stage__gap">
+            <span class="evidence-label evidence-label--not-evidenced">Gap: all three products built solo — cross-functional engineering collaboration not evidenced on the portfolio site</span>
           </div>
         </div>
       </div>
 
-      <div class="accordion__item">
-        <button class="accordion__header" aria-expanded="false" aria-controls="acc-build" id="acc-build-btn">
-          <div class="accordion__header-text">
-            <span class="accordion__number">04</span>
-            <span class="accordion__title">Build</span>
+      <!-- LAUNCH -->
+      <div class="pops-stage reveal" id="stage-launch">
+        <div class="pops-stage__header">
+          <span class="pops-stage__number">05</span>
+          <h2 class="pops-stage__title">Launch</h2>
+          <div class="pops-stage__evidence">
+            <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
           </div>
-          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="accordion__panel" id="acc-build" role="region" aria-labelledby="acc-build-btn">
-          <div class="accordion__body">
-            <p class="accordion__lead">
-              Build the thing. Keep it real. Don't pretend it's more than it is. If it's AI-assisted,
-              say so. If it's local-only, say so. If it's a prototype, say so.
-            </p>
-            <p>
-              I build products that actually run. ReviewFlow is a real React + Supabase application —
-              not a design concept, not a Figma file, not a "wouldn't it be cool if." It has components,
-              it has an edge function, it has a CI workflow. It runs locally with credentials.
-            </p>
-            <p>
-              Unrot is a real Next.js 16 + PostgreSQL + Prisma application with auth, sessions,
-              learning paths, lessons, progress tracking, reminder preferences, and an analytics
-              dashboard that computes from a real database. It's production-shaped, not a toy.
-            </p>
-            <p>
-              Experiment Tracker is a real Flask + SQLite application with 22 passing tests and a
-              17-category verification report. It runs. It's verified. It's intentionally small.
-            </p>
-            <p>
-              And I'm honest about how they were built. ReviewFlow was scaffolded with AI assistance —
-              I've said that clearly. The product decisions, the measurement, the MVP boundary, the
-              disclosure, the honest gaps are mine.
-            </p>
-            <div class="accordion__evidence">
-              <span class="evidence-label evidence-label--verified">Verified</span>
-              <span> — all three products run. All three have real architecture documents. All three
-              have real implementation evidence.</span>
-              <span class="evidence-label evidence-label--observed">Observed</span>
-              <span> — AI-assisted implementation disclosed where it happened. Not hidden.</span>
-            </div>
+        </div>
+        <div class="pops-stage__body">
+          <p class="pops-stage__lead">
+            Make the product available to real people. Beta, rollout, GTM, stakeholder communication.
+            Distribution is a product decision, not an afterthought.
+          </p>
+          <p>
+            This is the stage where the portfolio's evidence currently stops. All three products are working
+            prototypes in local/demo environments. None has a verified public deployment. None has a measured
+            adoption, a growth story, or a GTM strategy.
+          </p>
+          <p>
+            I'm honest about that. A launch isn't something you can fake with a README line. The gap between
+            "built and verified" and "launched and learned from" is real, and I'm not claiming it closed.
+          </p>
+          <div class="pops-stage__gap">
+            <span class="evidence-label evidence-label--not-evidenced">Gap: no launch, no beta, no GTM, no rollout, no distribution — this is the next lifecycle stage to close</span>
           </div>
         </div>
       </div>
 
-      <div class="accordion__item">
-        <button class="accordion__header" aria-expanded="false" aria-controls="acc-measure" id="acc-measure-btn">
-          <div class="accordion__header-text">
-            <span class="accordion__number">05</span>
-            <span class="accordion__title">Measure</span>
+      <!-- MEASURE -->
+      <div class="pops-stage reveal" id="stage-measure">
+        <div class="pops-stage__header">
+          <span class="pops-stage__number">06</span>
+          <h2 class="pops-stage__title">Measure</h2>
+          <div class="pops-stage__evidence">
+            <span class="evidence-label evidence-label--verified">Verified</span>
+            <span class="pops-stage__evidence-sep">/</span>
+            <span class="evidence-label evidence-label--proposed">Proposed</span>
+            <span class="pops-stage__evidence-sep">/</span>
+            <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
           </div>
-          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="accordion__panel" id="acc-measure" role="region" aria-labelledby="acc-measure-btn">
-          <div class="accordion__body">
-            <p class="accordion__lead">
-              Define what you care about before you claim you've changed it. Design the measurement
-              system. Run the checks. Say what you can and can't measure.
-            </p>
-            <p>
-              The hardest part of product work — especially AI product work — is knowing whether what
-              you built is actually doing what you intended. You can't tell that without measurement.
-            </p>
-            <p>
-              ReviewFlow's quality measurement is the strongest example: 247 deterministic prompt
-              checks, an output evaluator, 15 historical outputs evaluated against five dimensions
-              (rating match, invented detail, marketing/superlative, strict pass, format compliance).
-              The evaluator was corrected when it introduced measurement artifacts. The correction made
-              measurement more accurate — Phase 9's 53% looked like improvement; it was actually a
-              measurement error.
-            </p>
-            <p>
-              Unrot's measurement model is the other pole: a metric hierarchy, a 7-stage funnel, must-have
-              instrumentation, guardrails, a D1 retention calculator, an analytics dashboard that computes
-              from a real database and shows "not enough real cohort data yet" honestly, a baseline and
-              target shown as context labels, an A/B experiment plan with power analysis and decision
-              rules. All designed before any outcome was claimed.
-            </p>
-            <div class="accordion__evidence">
-              <span class="evidence-label evidence-label--verified">Verified</span>
-              <span> — measurement artifacts exist for both ReviewFlow and Unrot. The corrected evaluator
-              is real. The analytics dashboard is real. The experiment plan is real.</span>
-              <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
-              <span> — no measured outcomes from either product. The D1 retention outcome was never
-              measured. The AI quality scores are against historical outputs, not a live pipeline.</span>
-            </div>
+        </div>
+        <div class="pops-stage__body">
+          <p class="pops-stage__lead">
+            Define what you care about before you claim you've changed it. Design the measurement system.
+            Run the checks. Say what you can and can't measure.
+          </p>
+          <p>
+            The hardest part of product work — especially AI product work — is knowing whether what you built
+            is actually doing what you intended. You can't tell that without measurement.
+          </p>
+          <p>
+            ReviewFlow's quality measurement is the strongest example: 247 deterministic prompt checks (all
+            pass), an output evaluator, 15 historical outputs evaluated against five dimensions (rating match,
+            invented detail, marketing/superlative, strict pass, format compliance). The evaluator was
+            corrected when it introduced measurement artifacts — case-insensitive visit-type matching, extended
+            superlative word forms, and removal of a false positive from the word "out." Phase 9's 53% looked
+            like improvement; it was actually a measurement error. The correction made measurement more accurate.
+            The 15 outputs were evaluated against a closed historical snapshot (2026-09-10) — not a live
+            production pipeline.
+          </p>
+          <p>
+            Unrot's measurement model is the other pole: a metric hierarchy, a 7-stage funnel, must-have
+            instrumentation, guardrails, a D1 retention calculator (calendar-day logic in the user's configured
+            IANA timezone with UTC fallback, excluding demo_return_previewed, with a cohort completeness rule),
+            an analytics dashboard that computes from a real database and shows "not enough real cohort data yet"
+            honestly, a baseline and target shown as context labels, and an A/B experiment plan with power
+            analysis (~650–700 per variant, ~1,300–1,400 total), 2-week duration + 2-day cooldown, and
+            decision rules (win/inconclusive/loss).
+          </p>
+          <p>
+            Experiment Tracker's proposed usage metric — experiments_with_conclusion / completed_experiments —
+            is a way to know whether the conclusion feature is actually being used. It's proposed, not measured.
+            The product is local-first and personal by design; there is no telemetry.
+          </p>
+          <div class="pops-stage__gap">
+            <span class="evidence-label evidence-label--not-evidenced">Gap: no measured outcomes — ReviewFlow evaluated against historical outputs only; Unrot D1 outcome not measured; Experiment Tracker usage metric not measured</span>
           </div>
         </div>
       </div>
 
-      <div class="accordion__item">
-        <button class="accordion__header" aria-expanded="false" aria-controls="acc-verify" id="acc-verify-btn">
-          <div class="accordion__header-text">
-            <span class="accordion__number">06</span>
-            <span class="accordion__title">Verify</span>
+      <!-- LEARN -->
+      <div class="pops-stage reveal" id="stage-learn">
+        <div class="pops-stage__header">
+          <span class="pops-stage__number">07</span>
+          <h2 class="pops-stage__title">Learn</h2>
+          <div class="pops-stage__evidence">
+            <span class="evidence-label evidence-label--verified">Verified</span>
+            <span class="pops-stage__evidence-sep">/</span>
+            <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
           </div>
-          <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="accordion__panel" id="acc-verify" role="region" aria-labelledby="acc-verify-btn">
-          <div class="accordion__body">
-            <p class="accordion__lead">
-              Check what you claimed. Correct your measurements when they're wrong. Document what you
-              haven't validated. Learn from the gap between what you built and what you can prove.
-            </p>
-            <p>
-              Verification is where the discipline shows up. It's not "does it run?" — it's "did you
-              claim what you can support?"
-            </p>
-            <p>
-              Experiment Tracker's 17-category verification report is an independent post-implementation
-              review: database integrity, conclusion CRUD, one-conclusion-per-experiment constraint,
-              cascade deletion, run detail route, compare workflow, error handling, timestamps, HTML
-              generation, accessibility by code review, security by code review. 22 tests. Real report.
-            </p>
-            <p>
-              When the ReviewFlow evaluator introduced measurement artifacts, I corrected it. When the
-              Phase 11 intervention couldn't be live-validated, I documented that honestly — saying
-              plainly that live validation did not occur and that the before/after was not genuinely
-              measurable. That kind of honesty is not optional in a portfolio built on evidence.
-            </p>
-            <p>
-              <strong>Learning is folded into verification.</strong> I don't treat "learn" as a separate
-              stage — learning happens when you check what you claimed and find out whether it's true.
-              The learning from ReviewFlow's corrected evaluator: measurement artifacts are easy to
-              introduce, and a number that looks like improvement can actually be a measurement error.
-              The learning from Unrot's analytics: honest "not enough data" is better than invented data.
-              The learning from Experiment Tracker: don't claim what you haven't measured.
-            </p>
-            <div class="accordion__evidence">
-              <span class="evidence-label evidence-label--verified">Verified</span>
-              <span> — verification reports exist. Corrections were made and documented. Honest gaps are
-              stated.</span>
-              <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
-              <span> — the Phase 11 intervention improvement is a hypothesis, not a validated result.
-              The JTBD list is a hypothesis, not validated research.</span>
-              <span class="evidence-label evidence-label--proposed">Proposed</span>
-              <span> — the evidence-label system itself is a proposal for how to think about evidence
-              status across all product work.</span>
-            </div>
+        </div>
+        <div class="pops-stage__body">
+          <p class="pops-stage__lead">
+            What happened? What worked? What did not? At what confidence level? Learning is where verification
+            meets honesty — and it's where the discipline shows up.
+          </p>
+          <p>
+            Verification is where the discipline shows up. It's not "does it run?" — it's "did you claim what
+            you can support?"
+          </p>
+          <p>
+            When the ReviewFlow evaluator introduced measurement artifacts, I corrected it. When the Phase 11
+            intervention couldn't be live-validated, I documented that honestly — saying plainly that live
+            validation did not occur and that the before/after was not genuinely measurable (beforeVsAfter
+            GenuinelyMeasurable: false). That kind of honesty is not optional in a portfolio built on evidence.
+          </p>
+          <p>
+            Experiment Tracker's 17-category verification report is an independent post-implementation review,
+            not a self-assessment: database integrity, conclusion CRUD, one-conclusion-per-experiment constraint,
+            cascade deletion, run detail route, compare workflow, error handling, timestamps, HTML generation,
+            accessibility by code review, security by code review. 22 tests. Real report.
+          </p>
+          <p>
+            Unrot's analytics dashboard shows a real state — no closed cohorts means no D1 returners to report.
+            That's the truth. Fabricating a number would be the opposite of the product discipline this case is
+            trying to show.
+          </p>
+          <p>
+            Learning is folded into verification. I don't treat "learn" as a separate stage — learning happens
+            when you check what you claimed and find out whether it's true. The learnings from ReviewFlow's
+            corrected evaluator: measurement artifacts are easy to introduce, and a number that looks like
+            improvement can actually be a measurement error. The learnings from Unrot's analytics: honest "not
+            enough data" is better than invented data. The learnings from Experiment Tracker: don't claim what
+            you haven't measured, and code review is not browser testing.
+          </p>
+          <div class="pops-stage__gap">
+            <span class="evidence-label evidence-label--not-evidenced">Gap: outcome-based learning is not possible without measured outcomes — learnings are about the machinery, not about results</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITERATE -->
+      <div class="pops-stage reveal" id="stage-iterate">
+        <div class="pops-stage__header">
+          <span class="pops-stage__number">08</span>
+          <h2 class="pops-stage__title">Iterate</h2>
+          <div class="pops-stage__evidence">
+            <span class="evidence-label evidence-label--proposed">Proposed</span>
+          </div>
+        </div>
+        <div class="pops-stage__body">
+          <p class="pops-stage__lead">
+            Feed what you learned back into the next decision. Change the product. Propose the next experiment.
+            Update the roadmap. The lifecycle doesn't end at launch — it loops.
+          </p>
+          <p>
+            Each case study closes with a "What I Would Do Next" section listing specific next steps — never
+            pretending they've been done.
+          </p>
+          <p>
+            On ReviewFlow: live-evaluate the Phase 11 prompt tightening against the same metric framework with
+            real AI credentials; validate the user model with real people who write reviews; define and measure
+            the North Star if the product were live; build the analytics; consider the GTM honestly — whether
+            there's a real audience for a small tool for a real but narrow job.
+          </p>
+          <p>
+            On Unrot: validate the JTBD hypotheses with real users; run the A/B experiment the way the plan
+            describes; measure the D1 outcome with a real cohort; instrument the full funnel in production;
+            build the cohort dashboard with real cohort data.
+          </p>
+          <p>
+            On Experiment Tracker: validate the user model with real people who run experiments locally;
+            measure the usage metric if the product were in use; add search/filter as the first v2 candidate;
+            add artifact upload; add visualization as a nice-to-have.
+          </p>
+          <div class="pops-stage__gap">
+            <span class="evidence-label evidence-label--not-evidenced">Gap: no iteration has been executed yet — these are proposed next steps, not completed ones</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="hiw-summary animate-in" style="margin-top: var(--space-8);">
-      <div class="hiw-summary__label">The move in one line</div>
-      <p class="hiw-summary__text">
-        I turn ambiguous problems into products that can be defined, built, measured, and verified —
-        and I'm unusually careful about what I claim along the way. The evidence labels on this
-        portfolio aren't decoration. They're the system I use to keep the claims honest.
+    <!-- Cross-functional product thinking -->
+    <section class="cross-functional-section">
+      <div class="container">
+        <div class="cross-functional-header animate-in">
+          <p class="eyebrow">Cross-functional product thinking</p>
+          <h2 class="cross-functional-title">
+            How I approach product work across functions.
+          </h2>
+          <p class="muted-paragraph cross-functional-subtitle" style="max-width: 560px;">
+            Product decisions don't happen in one discipline. They happen at the intersection of
+            engineering, data, design, business, and quality — and the right input changes depending
+            on where you are in the lifecycle. This is how I approach that intersection. It's
+            descriptive of my operating approach, not a claim of specific collaborations.
+          </p>
+        </div>
+
+        <div class="cross-functional-grid">
+          <div class="cross-functional-card reveal">
+            <div class="cross-functional-card__label">Engineering</div>
+            <ul class="cross-functional-card__list">
+              <li>Feasibility and technical constraints</li>
+              <li>Architecture fit and implementation cost</li>
+              <li>Reliability and maintainability</li>
+              <li>What's realistic to build and maintain</li>
+            </ul>
+          </div>
+
+          <div class="cross-functional-card reveal">
+            <div class="cross-functional-card__label">Data / Analytics</div>
+            <ul class="cross-functional-card__list">
+              <li>Define measurable outcomes before building</li>
+              <li>Instrumentation and event design</li>
+              <li>Metric definitions with explicit boundaries</li>
+              <li>Experiment design and decision rules</li>
+              <li>Distinguish signal from insufficient evidence</li>
+            </ul>
+          </div>
+
+          <div class="cross-functional-card reveal">
+            <div class="cross-functional-card__label">Design / UX</div>
+            <ul class="cross-functional-card__list">
+              <li>User flow and task completion</li>
+              <li>Usability and friction points</li>
+              <li>Accessibility as a baseline, not an afterthought</li>
+              <li>Interaction trade-offs and cognitive load</li>
+            </ul>
+          </div>
+
+          <div class="cross-functional-card reveal">
+            <div class="cross-functional-card__label">Business / GTM</div>
+            <ul class="cross-functional-card__list">
+              <li>Customer and value proposition</li>
+              <li>Business constraints and viability</li>
+              <li>Prioritization against the real problem</li>
+              <li>Launch considerations and distribution</li>
+            </ul>
+          </div>
+
+          <div class="cross-functional-card reveal">
+            <div class="cross-functional-card__label">QA / Support</div>
+            <ul class="cross-functional-card__list">
+              <li>Acceptance criteria and edge cases</li>
+              <li>Validation before claiming</li>
+              <li>Feedback loops from real use</li>
+              <li>What breaks, and what that tells you</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cross-functional-lifecycle animate-in" style="margin-top: var(--space-8);">
+          <p class="cross-functional-lifecycle__label">How the functions map to the lifecycle</p>
+          <p class="muted-paragraph cross-functional-lifecycle__text">
+            Cross-functional input is not uniform across the eight moves. It concentrates where it
+            matters and recedes where it doesn't.
+          </p>
+          <div class="cross-functional-lifecycle__grid">
+            <div class="cross-functional-lifecycle__item">
+              <span class="cross-functional-lifecycle__stage">DISCOVER</span>
+              <p class="cross-functional-lifecycle__desc">User and business context, evidence, and the real problem.</p>
+            </div>
+            <div class="cross-functional-lifecycle__item">
+              <span class="cross-functional-lifecycle__stage">DEFINE</span>
+              <p class="cross-functional-lifecycle__desc">Problem, requirements, success criteria, and what's out of scope.</p>
+            </div>
+            <div class="cross-functional-lifecycle__item">
+              <span class="cross-functional-lifecycle__stage">DECIDE</span>
+              <p class="cross-functional-lifecycle__desc">Trade-offs across user, business, data, and technical constraints.</p>
+            </div>
+            <div class="cross-functional-lifecycle__item">
+              <span class="cross-functional-lifecycle__stage">BUILD</span>
+              <p class="cross-functional-lifecycle__desc">Engineering, design, and QA execution — the implementation stage.</p>
+            </div>
+            <div class="cross-functional-lifecycle__item">
+              <span class="cross-functional-lifecycle__stage">LAUNCH</span>
+              <p class="cross-functional-lifecycle__desc">Business, GTM, and stakeholder communication — currently the portfolio's evidence gap.</p>
+            </div>
+            <div class="cross-functional-lifecycle__item">
+              <span class="cross-functional-lifecycle__stage">MEASURE</span>
+              <p class="cross-functional-lifecycle__desc">Analytics, instrumentation, outcome measurement, and experiment design.</p>
+            </div>
+            <div class="cross-functional-lifecycle__item">
+              <span class="cross-functional-lifecycle__stage">LEARN</span>
+              <p class="cross-functional-lifecycle__desc">Feedback, evidence, and what the data actually says — at what confidence.</p>
+            </div>
+            <div class="cross-functional-lifecycle__item">
+              <span class="cross-functional-lifecycle__stage">ITERATE</span>
+              <p class="cross-functional-lifecycle__desc">Feed what you learned back into the next decision. The lifecycle loops.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cross-functional-honest animate-in" style="margin-top: var(--space-6);">
+          <span class="evidence-label evidence-label--not-evidenced">Honest scope</span>
+          <p class="muted-paragraph" style="margin-top: var(--space-2); max-width: 560px;">
+            This section describes how I approach cross-functional product work. It is not a claim that
+            these projects involved structured collaboration with engineering, data, design, business, or
+            QA teams — the portfolio does not currently evidence that. What it does evidence is that I
+            think in these terms when I define, build, measure, and verify products.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .cross-functional-section {
+        padding-block: var(--space-12);
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .cross-functional-header {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto var(--space-10);
+      }
+
+      .cross-functional-title {
+        font-family: var(--font-serif);
+        font-weight: 500;
+        font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: var(--text-primary);
+        margin-bottom: var(--space-4);
+      }
+
+      .cross-functional-subtitle {
+        font-size: var(--text-lg);
+        color: var(--text-secondary);
+        line-height: var(--leading-relaxed);
+      }
+
+      .cross-functional-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+
+      @media (min-width: 640px) {
+        .cross-functional-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .cross-functional-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .cross-functional-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-lg);
+        padding: var(--space-5);
+        transition: all var(--transition-base);
+      }
+
+      .cross-functional-card:hover {
+        border-color: var(--border-default);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .cross-functional-card__label {
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: var(--tracking-widest);
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: var(--space-3);
+      }
+
+      .cross-functional-card__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .cross-functional-card__list li {
+        position: relative;
+        padding-inline-start: var(--space-4);
+        margin-bottom: var(--space-2);
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        line-height: var(--leading-relaxed);
+      }
+
+      .cross-functional-card__list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.5em;
+        width: 6px;
+        height: 6px;
+        background: var(--accent);
+        border-radius: 50%;
+        opacity: 0.6;
+      }
+
+      .cross-functional-lifecycle__label {
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: var(--tracking-widest);
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: var(--space-3);
+      }
+
+      .cross-functional-lifecycle__text {
+        font-size: var(--text-base);
+        color: var(--text-secondary);
+        margin-bottom: var(--space-5);
+      }
+
+      .cross-functional-lifecycle__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+
+      @media (min-width: 640px) {
+        .cross-functional-lifecycle__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .cross-functional-lifecycle__grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .cross-functional-lifecycle__item {
+        background: var(--bg-muted);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: var(--space-4);
+      }
+
+      .cross-functional-lifecycle__stage {
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: var(--tracking-widest);
+        text-transform: uppercase;
+        color: var(--accent);
+        display: block;
+        margin-bottom: var(--space-2);
+      }
+
+      .cross-functional-lifecycle__desc {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        line-height: var(--leading-relaxed);
+        margin: 0;
+      }
+
+      .cross-functional-honest {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+    </style>
+
+    <div class="pops-summary animate-in" style="margin-top: var(--space-8);">
+      <div class="pops-summary__label">The move in one line</div>
+      <p class="pops-summary__text">
+        I turn ambiguous problems into products that can be defined, built, measured, and verified — and I'm
+        unusually careful about what I claim along the way. The evidence labels on this portfolio aren't
+        decoration. They're the system I use to keep the claims honest.
       </p>
     </div>
   </div>
 </section>
 
+<style>
+  .pops-section {
+    padding-block: var(--space-24);
+  }
+
+  .pops-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto var(--space-10);
+  }
+
+  .pops-header__title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .pops-header__subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .lifecycle-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    margin-bottom: var(--space-12);
+    padding: var(--space-5) var(--space-4);
+    background: var(--bg-muted);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .lifecycle-stage {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+  }
+
+  .lifecycle-stage:hover {
+    border-color: var(--border-default);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lifecycle-number {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-soft);
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lifecycle-name {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .lifecycle-arrow {
+    color: var(--border-default);
+    display: flex;
+    align-items: center;
+  }
+
+  .pops-stages {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .pops-stage {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .pops-stage:hover {
+    border-color: var(--border-default);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .pops-stage__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    background: var(--bg-muted);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .pops-stage__number {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+  }
+
+  .pops-stage__title {
+    font-size: var(--text-lg);
+    font-weight: 650;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+
+  .pops-stage__evidence {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .pops-stage__evidence-sep {
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+  }
+
+  .pops-stage__body {
+    padding: var(--space-5);
+  }
+
+  .pops-stage__lead {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .pops-stage__body p {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .pops-stage__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .pops-stage__gap {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-subtle);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .pops-summary {
+    text-align: center;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .pops-summary__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .pops-summary__text {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 640px) {
+    .lifecycle-strip {
+      gap: var(--space-1);
+      padding: var(--space-3) var(--space-2);
+    }
+
+    .lifecycle-stage {
+      padding: var(--space-2);
+    }
+
+    .lifecycle-name {
+      display: none;
+    }
+
+    .lifecycle-arrow {
+      transform: rotate(90deg);
+    }
+  }
+</style>
 {% endblock %}
