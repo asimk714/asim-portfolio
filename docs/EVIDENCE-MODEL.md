@@ -159,13 +159,13 @@ NOT EVIDENCED  ←  PROPOSED  ←  HYPOTHESIS  ←  INFERRED  ←  VERIFIED  ←
 
 | Claim | Label | Evidence |
 |---|---|---|
-| "Measurement model with metric hierarchy and 7-stage funnel" | OBSERVED | Documentation |
-| "D1 retention problem framing" | OBSERVED | Problem-framing documentation |
-| "JTBD hypotheses with assumptions/inferences/unknowns" | OBSERVED | JTBD documentation (labeled as hypotheses) |
+| "Measurement model with metric hierarchy and 7-stage funnel" | OBSERVED | This case study's measurement model documentation |
+- "D1 retention problem framing" | OBSERVED | This case study's problem framing |
+- "JTBD hypotheses with assumptions/inferences/unknowns" | OBSERVED | This case study's JTBD hypotheses (labeled as hypotheses) |
 | "Production-shaped prototype with auth + deployment-shaped architecture" | OBSERVED | Code + architecture |
 | "Analytics persistence evidence from earlier validation" | VERIFIED | Earlier validation output |
 | "Real D1 retention improved" | NOT EVIDENCED | Measurement model exists, but no live production outcome yet |
-| "External user research conducted" | NOT EVIDENCED | No user research evidenced |
+- "External user research conducted" | NOT EVIDENCED | External repo inspected; no standalone research artifacts found (participant notes, transcripts, findings, quotes, datasets). Case study reports the research plan as designed-but-unexecuted. |
 | "Measured retention outcome" | NOT EVIDENCED | No measured outcome |
 | "The user segments are accurate" | INFERRED | Defined in documentation, not validated with users |
 | "JTBD hypotheses are valid" | HYPOTHESIS | Explicitly labeled as hypotheses, not validated |
