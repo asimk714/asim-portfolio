@@ -67,6 +67,34 @@
               on the affected board or component, fault finding begins, hardware and software troubleshooting
               follows, RCA is carried out, and a working / OK unit is dispatched.
             </p>
+
+            <p>
+              One recurring incident in that environment illustrates the investigation approach. A site kept
+              going down, and I was involved from the beginning after the GPON ticket was raised. Because I
+              regularly handle customer escalations and RCA, I proposed bringing the complete field setup to
+              the Repair Center with the available diagnostic outputs.
+            </p>
+
+            <p>
+              The investigation established that an NT card was resetting. That could corrupt the flash card
+              holding configuration, ultimately causing the FX-8 shelf to reset. At the Repair Center, I first
+              reproduced the field configuration and then isolated individual boards when the setup initially
+              appeared healthy. Under the field configuration, I observed a slight reset on one NT card,
+              replaced it, and confirmed that the setup then operated normally.
+            </p>
+
+            <p>
+              This work involved the customer-handling team, SRE, technical personnel, and the Repair Center.
+              I also use a troubleshooting/RCA checklist I developed from experience to narrow recurring
+              problems before moving into component-level isolation.
+            </p>
+
+            <p class="muted-paragraph" style="margin-top: var(--space-3); font-size: var(--text-sm);">
+              Operational context: GPON site tickets and returned-unit history are recorded through the
+              operational process, with DOA, repaired-faulty, and repeat-failure cases receiving deeper
+              investigation. This example documents the observed investigation and repair action; it does
+              not claim that I personally performed a formal long-term recurrence analysis for this site.
+            </p>
             <p class="muted-paragraph" style="margin-top: var(--space-3); font-size: var(--text-sm);">
               Evidence classification: observed. This describes the operational environment, my responsibility,
               and the stakeholder chain as they exist in the work — not a product strategy, roadmap, GTM, user
