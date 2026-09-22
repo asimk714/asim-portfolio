@@ -1,0 +1,1166 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ============================================================
+     B1 — Case Study Navigation
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Exit case study
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">B1</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Enterprise AI pilot-to-production transition workflow</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     B1 — Hero / Header with Status Banner
+     ============================================================ -->
+<header class="case-study-header">
+  <div class="container">
+    <p class="eyebrow animate-in">Strategy Hypothesis Case Study</p>
+
+    <!-- Explicit status banner -->
+    <div class="b1-status-banner" style="display: inline-flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); padding: var(--space-2) var(--space-3); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase;">
+      <span style="color: var(--evidence-observed);">Product strategy hypothesis</span>
+      <span style="color: var(--evidence-observed);">Public research</span>
+      <span style="color: var(--evidence-hypothesis);">Not customer validated</span>
+      <span style="color: var(--evidence-not-evidenced);">No launch / no adoption / no outcomes</span>
+    </div>
+
+    <div class="case-study-headline-block animate-in animate-in--delay-1">
+      <h1 class="case-study-headline">
+        Enterprise AI pilot-to-production<br/>
+        transition workflow
+      </h1>
+    </div>
+
+    <!-- Status / Evidence Banner -->
+    <div class="case-study-meta animate-in animate-in--delay-2" style="margin-top: var(--space-4);">
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--observed">Observed — public research</span>
+        <span class="meta-text">— problem/market/tool themes from public sources</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--inferred">Inferred</span>
+        <span class="meta-text">— segment, buyer, stakeholder, and organizational-pattern logic</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <span class="meta-text">— value, demand, pricing, GTM, adoption, expansion</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <span class="meta-text">— product boundary, MVP, business model shape, case strategy</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <span class="meta-text">— no customer interviews, no validated demand, no WTP, no adoption, no ROI, no launch</span>
+      </div>
+    </div>
+
+    <p class="muted-paragraph case-study-subtitle animate-in animate-in--delay-3">
+      B1 is a product strategy hypothesis for a bounded transition workflow that helps enterprises
+      move AI pilots from pilot teams to production ownership — through readiness confirmation, a
+      governance/security/internal-policy checkpoint, ownership transfer, and accountability handoff.
+      The evidence here is public research and strategic reasoning. It is not customer-validated.
+    </p>
+
+    <div class="case-study-at-a-glance animate-in animate-in--delay-3" style="margin-top: var(--space-5);">
+      <p class="case-study-at-a-glance__label">At a glance</p>
+      <p class="case-study-at-a-glance__text">
+        <strong>Problem (narrowed):</strong> when a pilot team has a promising AI pilot and there is
+        no clear production owner ready to absorb it, the transition stalls, sits, or gets handed off
+        informally.
+        <strong>Segment:</strong> enterprises where pilots are built by individual/business-unit teams
+        without a clear production owner, alongside a central AI/IT/platform function.
+        <strong>Product question:</strong> what is the smallest bounded workflow that helps a pilot team
+        move toward a governed production handoff — or get an honest send-back?
+        <strong>Decision:</strong> a transition workflow — readiness + governance/security checkpoint +
+        ownership transfer + minimal accountability handoff.
+        <strong>Evidence:</strong> public research on pilot-to-production friction; inference on segment
+        and stakeholders; strategy proposed for boundary, MVP, business model, and GTM.
+        <strong>Gap:</strong> no customer interviews, no validated demand, no validated WTP, no adoption,
+        no ROI, no revenue, no measured outcomes, no launch, no proven whitespace.
+      </p>
+    </div>
+
+    <!-- No GitHub CTA — B1 has no repository or implementation -->
+    <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6);">
+      <a href="/work/" class="btn btn--ghost">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 — PUBLIC SIGNAL
+     ============================================================ -->
+<article class="case-study-section" id="public-signal">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Public Signal</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--observed">Observed — public research</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Public sources describe pilot-to-production friction around ownership, readiness,
+          governance/security, integration and operationalization. The following themes appear across
+          public writing about enterprise AI: pilots being built by teams that do not own the production
+          environment; a central AI/IT/platform function existing alongside those teams; and the step
+          between "pilot works here" and "production runs here" being where pilots tend to stall, sit
+          idle, or get handed off informally.
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <p class="insight-card__label">What the public record describes</p>
+        <ul class="body-list">
+          <li>
+            Public sources describe organizational patterns in which AI pilots and production ownership
+            can sit with different teams.
+          </li>
+          <li>
+            Governance, security review, access, ownership, and accountability appear as
+            concerns in how enterprises talk about AI moving into production — not yet as a distinct
+            product category, but as a set of concerns that appear in how enterprises talk about AI moving
+            into production.
+          </li>
+          <li>
+            The transition from pilot to production is described as a point where pilots can lose momentum
+            if there is no clear path to a production owner.
+          </li>
+        </ul>
+      </div>
+
+      <div class="insight-card insight-card--caveat">
+        <p class="insight-card__label">What public research is not</p>
+        <p class="body-text" style="margin: 0;">
+          Public research is not customer validation, not a measured enterprise problem in a defined segment,
+          and not evidence that any enterprise is actively searching for a product called B1. It is a starting
+          point — a set of themes pointing toward a plausible problem worth narrowing.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     02 — PROBLEM NARROWING
+     ============================================================ -->
+<article class="case-study-section" id="problem-narrowing">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Problem Narrowing</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        The widest version of this problem would be "enterprises struggle to move AI into production."
+        That is too broad for a bounded product. The narrower version B1 focuses on is:
+      </p>
+
+      <div class="decision-card">
+        <div class="decision-card__label">Narrowed problem</div>
+        <p class="decision-card__text">
+          An enterprise team has a promising AI pilot. There is no clear production owner ready to absorb
+          it. The team needs a way to move the pilot toward a governed, operational production workflow
+          without inventing a full platform, a full ML lifecycle tool, or a consulting engagement.
+        </p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        This narrowing is a product decision, not a measured finding. It is informed by the public signal
+        and by reasoning about what a bounded product could plausibly own.
+      </p>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--inferred">Inferred</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The narrowing itself — from "AI in enterprises" to "a transition workflow for pilots without a
+          clear production owner" — is inferred from public themes and organizational logic. It has not been
+          validated with enterprises.
+        </p>
+      </div>
+
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No enterprise customer research has been conducted for this case. The narrowed problem has not
+          been confirmed with any pilot team, production owner, or buyer.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     03 — SEGMENT DECISION
+     ============================================================ -->
+<article class="case-study-section" id="segment">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Segment Decision</h2>
+
+    <div class="case-study-body">
+      <p class="body-text">
+        B1 is aimed at a specific organizational pattern. The segment is defined by two conditions:
+      </p>
+      <ol class="body-list">
+        <li>AI pilots are built by individual or business-unit teams.</li>
+        <li>There is no clear production owner ready to absorb those pilots — and a central AI/IT/platform
+        function exists alongside those teams.</li>
+      </ol>
+
+      <div class="segment-table-wrap" style="margin-top: var(--space-5); overflow-x: auto;">
+        <table class="segment-table" style="width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Role</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">What they do in this context</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Pilot team</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Builds the pilot; wants a path to production or an honest send-back</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Production owner</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">IT/platform or designated operations/production owner; absorbs or rejects</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Buyer</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">IT/platform leadership or central AI/IT leadership</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Champion</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">AI/innovation function; often the discovery entry point</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="label-block" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--inferred">Inferred</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The segment and stakeholder logic — who the product is for, who the buyer is, who the champion
+          is, and who the production owner is — is inferred from the public signal and organizational
+          reasoning. It has not been validated with real enterprises or real stakeholders.
+        </p>
+      </div>
+
+      <div class="insight-card insight-card--caveat">
+        <p class="insight-card__label">Who this is not for</p>
+        <ul class="body-list">
+          <li>Teams building their own end-to-end ML platform</li>
+          <li>Enterprises that already have a well-defined production-absorption process for every pilot</li>
+          <li>Model-development tooling buyers</li>
+          <li>ITSM replacement buyers</li>
+          <li>Consulting buyers looking for an outsourced transition service</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     04 — JTBD + MOMENT OF VALUE
+     ============================================================ -->
+<article class="case-study-section" id="jtbd">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">JTBD + Moment of Value</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The JTBD and job map below are proposed product-strategy framing. They are not validated with
+          real users.
+        </p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        When an enterprise team has a promising AI pilot and there is no clear production owner ready to
+        absorb it, help them move it into a governed, operational production workflow by confirming
+        production readiness, checking governance/security/internal-policy status, transferring ownership
+        with accountability, and establishing a minimal escalation path.
+      </p>
+
+      <div class="decision-card" style="margin-top: var(--space-5);">
+        <div class="decision-card__label">Moment of value</div>
+        <p class="decision-card__text">
+          Production ownership acceptance <strong>OR</strong> explicit send-back with actionable readiness
+          gaps.
+        </p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        That is the moment the user gets value — not "the pilot is live in production," which is outside
+        B1's boundary.
+      </p>
+
+      <div class="label-block" style="margin-top: var(--space-5);">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The value B1 would aim to create is proposed, not measured. In this hypothesis, a bounded
+          transition workflow may help a pilot team and a production owner move from a promising pilot to
+          a governed operational workflow with less ambiguity and less ad-hoc coordination than the informal
+          alternatives. Specifically, the proposed value is that B1 may contribute to:
+        </p>
+      </div>
+
+      <div class="value-proposition-list" style="margin-top: var(--space-2); padding-left: var(--space-5); border-left: 2px solid var(--color-border); ">
+        <p class="value-proposition-list__item" style="margin-bottom: var(--space-2);">
+          <strong>Clearer production ownership</strong> — a record of who owns the pilot in production,
+          rather than an ambiguous handoff.
+        </p>
+        <p class="value-proposition-list__item" style="margin-bottom: var(--space-2);">
+          <strong>Fewer stranded or abandoned handoffs</strong> — pilots are more likely to reach an explicit
+          accept-or-send-back decision than to stall in between.
+        </p>
+        <p class="value-proposition-list__item" style="margin-bottom: var(--space-2);">
+          <strong>Reduced downstream rework and governance exposure</strong> — by surfacing readiness gaps
+          and governance/security/internal-policy status before ownership is transferred.
+        </p>
+        <p class="value-proposition-list__item" style="margin-bottom: var(--space-2);">
+          <strong>Faster transition from promising pilot to operational workflow</strong> — a bounded path
+          instead of an improvised, team-by-team process.
+        </p>
+      </div>
+
+      <div class="label-block label-block--caveat" style="margin-top: var(--space-3);">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          None of the value above has been measured or proven. No outcomes, adoption, ROI, or customer
+          validation exist for B1. The value hypothesis is a proposed direction, not an established result.
+          It is not repeated in full here — the later Value Proposition section develops it further.
+        </p>
+      </div>
+
+      <!-- JTBD Job Map -->
+      <div style="margin-top: var(--space-6);">
+        <p class="body-text"><strong>Proposed job map:</strong></p>
+        <div class="jtbd-job-map" style="margin-top: var(--space-3);">
+          <div class="jtbd-step" style="display: flex; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-3);">
+            <span class="jtbd-step-num" style="width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0;">1</span>
+            <div style="flex: 1;">
+              <p class="body-text" style="margin-bottom: var(--space-1);"><strong>Pilot exists; team wants a path forward</strong></p>
+              <p class="muted-paragraph" style="font-size: var(--text-sm);">Trigger: a promising pilot sits with a team that does not own production.</p>
+            </div>
+          </div>
+          <div class="jtbd-connector" style="width: 24px; height: 2px; background: var(--border-default); margin: 0 auto var(--space-1);"></div>
+
+          <div class="jtbd-step" style="display: flex; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-3);">
+            <span class="jtbd-step-num" style="width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0;">2</span>
+            <div style="flex: 1;">
+              <p class="body-text" style="margin-bottom: var(--space-1);"><strong>Team initiates a transition workflow</strong></p>
+              <p class="muted-paragraph" style="font-size: var(--text-sm);">The team starts the bounded process instead of ad-hoc handoff.</p>
+            </div>
+          </div>
+          <div class="jtbd-connector" style="width: 24px; height: 2px; background: var(--border-default); margin: 0 auto var(--space-1);"></div>
+
+          <div class="jtbd-step" style="display: flex; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-3);">
+            <span class="jtbd-step-num" style="width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0;">3</span>
+            <div style="flex: 1;">
+              <p class="body-text" style="margin-bottom: var(--space-1);"><strong>Readiness is assessed / confirmed</strong></p>
+              <p class="muted-paragraph" style="font-size: var(--text-sm);">B1-owned step: is the pilot ready to be considered for transfer?</p>
+            </div>
+          </div>
+          <div class="jtbd-connector" style="width: 24px; height: 2px; background: var(--border-default); margin: 0 auto var(--space-1);"></div>
+
+          <div class="jtbd-step" style="display: flex; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-3);">
+            <span class="jtbd-step-num" style="width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0;">4</span>
+            <div style="flex: 1;">
+              <p class="body-text" style="margin-bottom: var(--space-1);"><strong>Governance / security / internal-policy checkpoint</strong></p>
+              <p class="muted-paragraph" style="font-size: var(--text-sm);">B1-owned step: status of governance, security, and internal-policy checks.</p>
+            </div>
+          </div>
+          <div class="jtbd-connector" style="width: 24px; height: 2px; background: var(--border-default); margin: 0 auto var(--space-1);"></div>
+
+          <div class="jtbd-step" style="display: flex; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-3);">
+            <span class="jtbd-step-num" style="width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0;">5</span>
+            <div style="flex: 1;">
+              <p class="body-text" style="margin-bottom: var(--space-1);"><strong>Ownership transfer is proposed</strong></p>
+              <p class="muted-paragraph" style="font-size: var(--text-sm);">B1-owned step: a production ownership record is created/proposed.</p>
+            </div>
+          </div>
+          <div class="jtbd-connector" style="width: 24px; height: 2px; background: var(--border-default); margin: 0 auto var(--space-1);"></div>
+
+          <div class="jtbd-step" style="display: flex; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-3);">
+            <span class="jtbd-step-num" style="width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0;">6</span>
+            <div style="flex: 1;">
+              <p class="body-text" style="margin-bottom: var(--space-1);"><strong>Accountability handoff is recorded</strong></p>
+              <p class="muted-paragraph" style="font-size: var(--text-sm);">B1-owned step: handoff context and escalation path are recorded.</p>
+            </div>
+          </div>
+          <div class="jtbd-connector" style="width: 24px; height: 2px; background: var(--border-default); margin: 0 auto var(--space-1);"></div>
+
+          <div class="jtbd-step jtbd-step--value" style="display: flex; gap: var(--space-3); align-items: flex-start;">
+            <span class="jtbd-step-num jtbd-step-num--value" style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-success); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0;">★</span>
+            <div style="flex: 1;">
+              <p class="body-text" style="margin-bottom: var(--space-1);"><strong>Outcome: accept as production owner OR send back with gaps</strong></p>
+              <p class="muted-paragraph" style="font-size: var(--text-sm);">Moment of value — not "pilot is live in production."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     05 — PRODUCT BOUNDARY
+     ============================================================ -->
+<article class="case-study-section" id="boundary">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Product Boundary</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The product boundary below is a strategy decision. It defines what B1 would own, what it would
+          integrate with, and what it deliberately does not own.
+        </p>
+      </div>
+
+      <div class="boundary-grid" style="display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-top: var(--space-5);">
+        <div class="boundary-zone" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p class="boundary-zone__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--color-success); margin-bottom: var(--space-2);">OWNS</p>
+          <ul class="body-list" style="margin: 0;">
+            <li>Readiness assessment / confirmation</li>
+            <li>Production ownership record</li>
+            <li>Governance / security / internal-policy checkpoint</li>
+            <li>Accountability / handoff record</li>
+            <li>Escalation / handoff context</li>
+          </ul>
+        </div>
+
+        <div class="boundary-zone" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p class="boundary-zone__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-2);">INTEGRATES WITH</p>
+          <ul class="body-list" style="margin: 0;">
+            <li>Enterprise AI / platform systems</li>
+            <li>Identity / access</li>
+            <li>Security / governance</li>
+            <li>Deployment / platform systems</li>
+            <li>Monitoring / operations</li>
+            <li>Ticketing / work-management</li>
+            <li>Relevant enterprise workflow systems</li>
+          </ul>
+        </div>
+
+        <div class="boundary-zone" style="background: var(--bg-surface); border: 1px solid var(--color-muted); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p class="boundary-zone__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); margin-bottom: var(--space-2);">DOES NOT OWN</p>
+          <ul class="body-list" style="margin: 0;">
+            <li>Model development / training</li>
+            <li>Model deployment infrastructure</li>
+            <li>Monitoring infrastructure as primary product</li>
+            <li>Enterprise security / compliance programs</li>
+            <li>ITSM replacement</li>
+            <li>Business workflow automation</li>
+            <li>Business measurement</li>
+            <li>End-to-end AI lifecycle management</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        If B1 tries to own any of the "does not own" list, it becomes an AI governance platform, an MLOps
+        platform, an ITSM tool, or a consulting service. None of those is this product. The boundary is
+        what keeps B1 a bounded transition workflow rather than a vague "AI platform."
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     06 — COMPETITIVE / SUBSTITUTION ANALYSIS
+     ============================================================ -->
+<article class="case-study-section" id="competition">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Competitive / Substitution Analysis</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          B1's competitive position is a partial gap in public research, not proven whitespace.
+        </p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        Public research suggests that the specific transition step — readiness confirmation plus
+        governance/security/internal-policy checkpoint plus ownership transfer plus accountability handoff,
+        as a bounded workflow — is not obviously owned by a single dominant category. But "gap" in public
+        research is not the same as proven whitespace in the market.
+      </p>
+
+      <div class="competitive-table-wrap" style="margin-top: var(--space-5); overflow-x: auto;">
+        <table class="competitive-table" style="width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Existing category / substitution</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">What it covers (public record)</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Where the gap may be</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Ad-hoc manual handoffs</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Informal transfers between teams, email, Slack, spreadsheets</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">No structured readiness or accountability record</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">ITSM / ticketing / work-management</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">General work tracking; can be used as an improvised transition path</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Not built as a bounded AI pilot transition workflow</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">MLOps / LLMOps platforms</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Model deployment, monitoring, lifecycle tooling</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Adjacent; not focused on the ownership/handoff transition step</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">AI governance / security / compliance</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Policy, risk, access, review processes</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Covers checkpoint concerns; not a bounded transition workflow with ownership transfer</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Enterprise AI / cloud platforms</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Broader AI platform offerings that may absorb some transition concerns</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Broader scope; not a dedicated bounded handoff workflow</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Consulting / services</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Per-engagement transition assistance</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Service, not a productized bounded workflow</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="label-block" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The product-vs-existing-tools distinction below is a hypothesis, not a validated competitive claim.
+        </p>
+      </div>
+
+      <div class="insight-card" style="margin-top: var(--space-4);">
+        <p class="insight-card__label">Why this would be a product rather than Jira / ServiceNow + an internal checklist</p>
+        <p class="body-text" style="margin: 0;">
+          Jira, ServiceNow, and internal workflow processes are legitimate ways to run a transition — and in
+          many enterprises they may already be "good enough." The product hypothesis for B1 is that it would
+          own the AI-specific transition workflow as a bounded unit: readiness confirmation, the
+          governance/security/internal-policy checkpoint, production ownership transfer, accountability handoff,
+          and minimal escalation context — rather than leaving those steps to a general work-tracking tool plus
+          an ad-hoc checklist. Under this proposed boundary, existing ITSM, ticketing, platform, security, and
+          governance systems would remain integrations B1 connects to, not things B1 replaces. The claim is
+          that owning this specific workflow may be worth a dedicated product; it is a hypothesis, not validated
+          differentiation, and does not assert that existing tools cannot solve the problem.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     07 — MVP TRADE-OFF
+     ============================================================ -->
+<article class="case-study-section" id="mvp">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">MVP Trade-Off</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The MVP scope and rationale below are proposed strategy. They are not validated with users.
+        </p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        Three MVP scopes were considered. MVP B was selected.
+      </p>
+
+      <div class="mvp-table-wrap" style="margin-top: var(--space-5); overflow-x: auto;">
+        <table class="mvp-table" style="width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Scope</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">What it includes</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Decision</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">MVP A</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Readiness assessment / confirmation only</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-muted);">Not selected</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Too narrow — readiness without governance checkpoint or ownership transfer does not close the transition.</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-success); font-weight: 600;">MVP B</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-success);">Readiness + governance/security checkpoint + ownership transfer + minimal accountability handoff</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-success); font-weight: 600;">Selected</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-success);">The smallest bounded workflow that covers the transition step itself — the moment where a pilot needs a path to a production owner, or an honest send-back.</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">MVP C</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Full integration depth, monitoring/ops ownership, ITSM replacement, AI lifecycle management</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top; color: var(--color-muted);">Rejected</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Drifts into owning parts of the product B1 deliberately does not own — governance platform, MLOps, ITSM, or lifecycle tool.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        MVP B is scoped to the transition step itself. Expanding beyond that would drift into owning parts
+        of the product that B1 deliberately does not own. The trade-off is explicit: B1 is narrow on purpose.
+      </p>
+
+      <div class="insight-card insight-card--caveat">
+        <p class="insight-card__label">What MVP B does not include (by choice)</p>
+        <ul class="body-list">
+          <li>Full enterprise integration depth</li>
+          <li>Full monitoring / operations ownership</li>
+          <li>Full ITSM replacement</li>
+          <li>Full AI lifecycle management</li>
+          <li>Consulting-grade services</li>
+          <li>Business measurement or ROI tooling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     08 — BUSINESS MODEL
+     ============================================================ -->
+<article class="case-study-section" id="business-model">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Business Model</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The business model below is a hypothesis, not a finding. No pricing research with enterprises has
+          been conducted for this case.
+        </p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        <strong>Hypothesis:</strong> enterprise annual license + optional implementation / configuration.
+      </p>
+
+      <div class="insight-card">
+        <p class="insight-card__label">Why this shape is proposed</p>
+        <p>
+          A bounded workflow used by enterprise teams, sold to IT/platform leadership or central AI/IT
+          leadership, with AI/innovation as a champion/discovery entry point — and likely needing some amount
+          of configuration or implementation support to connect to the enterprise's existing systems and
+          policies.
+        </p>
+      </div>
+
+      <div class="label-block" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Under the proposed model, pricing would likely depend on a few enterprise-specific factors rather
+          than a fixed published price. The hypothesis is that licensing would scale with the number of teams
+          or pilots in transition, the volume of transitions over a period, and the governance/workflow
+          complexity each enterprise needs to support. Implementation and configuration costs would likely
+          depend on the depth of integration with existing platform, identity, security, governance, and
+          ticketing systems, and on the level of deployment and support the enterprise requires. These are
+          proposed pricing-practice ideas, not a real pricing structure.
+        </p>
+      </div>
+
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No price point, no per-seat pricing, no usage-based pricing, and no validated willingness to pay
+          are claimed. The licensing shape is a proposed hypothesis only.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     09 — GTM
+     ============================================================ -->
+<article class="case-study-section" id="gtm">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">GTM</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The GTM motion below is a hypothesis, not a validated channel strategy.
+        </p>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        <strong>Hypothesis:</strong> IT/platform-led, with AI/innovation as champion / discovery entry point.
+      </p>
+
+      <div class="gtm-split" style="margin-top: var(--space-5); display: grid; grid-template-columns: 1fr; gap: var(--space-4);">
+        <div class="gtm-role" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p class="gtm-role__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-2);">Champion / discovery entry point</p>
+          <p class="body-text" style="margin: 0;">AI / innovation function — often where pilot activity is visible.</p>
+        </div>
+        <div class="gtm-role" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p class="gtm-role__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--color-success); margin-bottom: var(--space-2);">Buyer / production owner</p>
+          <p class="body-text" style="margin: 0;">IT/platform or central AI/IT leadership — the role that would absorb or govern the transition.</p>
+        </div>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        B1's GTM hypothesis is built around that split: discovery through the champion, ownership/buying
+        through the platform buyer.
+      </p>
+
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No validated channel strategy, no measured conversion, no confirmed champion motivation, and no
+          confirmed buyer buying criterion are claimed.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     10 — STAKEHOLDER MAP
+     ============================================================ -->
+<article class="case-study-section" id="stakeholders">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Stakeholders</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--inferred">Inferred</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The stakeholder map below is inferred from segment logic. It has not been validated with real
+          stakeholders.
+        </p>
+      </div>
+
+      <div class="stakeholder-table-wrap" style="margin-top: var(--space-5); overflow-x: auto;">
+        <table class="stakeholder-table" style="width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Stakeholder</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Role in B1</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Tension B1 navigates</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Pilot team</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Primary user</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Wants momentum; may want the pilot to move forward quickly</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Production owner</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Primary user / operational owner</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Wants credible readiness and accountability before accepting</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Buyer</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">IT/platform leadership or central AI/IT leadership</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Owns the buying decision; may not feel the pilot-team pain directly</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Champion</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">AI/innovation — discovery entry point</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">May be motivated but lack buying authority</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Security / governance reviewers</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Integration surface</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Want checks run; may slow the handoff</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Platform / deployment / monitoring / work-mgmt owners</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Integration surface</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">B1 depends on their systems without owning them; SRE/operations wants operational readiness, supportability, escalation ownership and manageable operational risk — B1 records readiness/ownership and escalation context but does not own monitoring infrastructure or operational execution</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Privacy / legal</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Integration surface</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Wants acceptable data handling, privacy, contractual and policy exposure before operational use; B1 may provide a checkpoint/context record but does not become the enterprise compliance/privacy system</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Procurement / finance / executive sponsor</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Decision participant</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Needs clear ownership, budget justification, organizational priority and accountability for moving a pilot forward; B1 can make the transition and ownership explicit but does not claim to prove ROI or guarantee funding</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="body-text" style="margin-top: var(--space-4);">
+        The core tension: the pilot team wants momentum. The production owner wants credible readiness and
+        accountability before accepting. Security/governance wants checks. B1 does not resolve all of these
+        tensions — it provides a bounded workflow and a record for them to happen through.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     11 — RISKS + KILL TEST
+     ============================================================ -->
+<article class="case-study-section" id="risks">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Risks + Kill Test</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The risks below are hypotheses. The kill-test conditions are proposed stop conditions.
+        </p>
+      </div>
+
+      <div class="risk-table-wrap" style="margin-top: var(--space-5); overflow-x: auto;">
+        <table class="risk-table" style="width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Risk</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Implication</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Kill condition (proposed)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">No real problem / problem is too small</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Transition friction may be real but not painful enough to buy a dedicated workflow</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Research or validation shows the transition problem is not a priority purchase for the target buyer</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Existing workarounds are "good enough"</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Spreadsheets, Slack, ticketing, and informal handoffs may be sufficient most of the time</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Enterprises consistently choose to solve the transition with existing tools + informal process rather than a dedicated workflow</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Segment too narrow</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">The "pilots without a clear production owner" segment may be smaller or less motivated than assumed</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">The target segment is too small or too rare in the assumed shape</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Boundary drift</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">The product could be pulled toward becoming a governance platform, MLOps platform, ITSM replacement, or consulting service</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">The product cannot stay bounded — every pilot engagement pulls it toward owning deployment, monitoring, governance programs, or ITSM</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Adoption inside the enterprise</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Even if the product fits, adoption may depend on enterprise change-management, policy alignment, and integration work heavier than the MVP assumes</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Adoption depends on integration/change burdens that make the "optional implementation" assumption unrealistic</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Buyer / champion misalignment</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">The champion may be motivated but lack buying authority; the buyer may not see the problem as theirs</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">The champion/buyer split does not hold — the champion has no buying path and the buyer does not see the problem</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     12 — WHAT I WOULD VALIDATE NEXT
+     ============================================================ -->
+<article class="case-study-section" id="validation-next">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What I Would Validate Next</h2>
+
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The validation plan below is proposed. None of it has been done for B1.
+        </p>
+      </div>
+
+      <ol class="body-list" style="margin-top: var(--space-4);">
+        <li>
+          <strong>Problem validation.</strong> Confirm with enterprises that the transition from pilot to
+          production ownership is a real, painful, prioritized problem — not just a public-signal theme.
+        </li>
+        <li>
+          <strong>Segment validation.</strong> Confirm that the target segment actually exists in the shape
+          assumed: enterprises where pilots are built by teams without a ready production owner, alongside
+          a central AI/IT/platform function.
+        </li>
+        <li>
+          <strong>Buyer / champion dynamics.</strong> Confirm who actually sees the problem, who would buy,
+          and whether the champion/buyer split is real.
+        </li>
+        <li>
+          <strong>Boundary validation.</strong> Confirm whether the owns/integrates/does-not-own boundary is
+          the right shape, or refine it.
+        </li>
+        <li>
+          <strong>Value validation.</strong> Confirm whether B1's moment of value — acceptance or send-back
+          with actionable gaps — is meaningful to real users.
+        </li>
+        <li>
+          <strong>WTP and business model.</strong> Confirm whether an enterprise annual license + optional
+          implementation is a viable shape, or whether the economics do not work.
+        </li>
+        <li>
+          <strong>Competition / substitution validation.</strong> Confirm whether the "partial gap" is real
+          and purchasable, or whether existing tools + process truly are good enough.
+        </li>
+      </ol>
+
+      <div class="label-block label-block--caveat">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          B1 does not yet have: customer interviews, validated demand, validated WTP, adoption data, ROI
+          data, revenue, measured business outcomes, or a launched product.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     13 — EVIDENCE LIMITS
+     ============================================================ -->
+<article class="case-study-section" id="evidence-limits">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence Limits</h2>
+
+    <div class="case-study-body">
+      <div class="limits-block limits-block--highlighted">
+        <p class="limits-block__label">What B1 is</p>
+        <p class="body-text" style="margin-bottom: var(--space-4);">
+          A product strategy hypothesis assembled from public research and organizational reasoning.
+        </p>
+
+        <p class="limits-block__label" style="margin-top: var(--space-4);">What B1 is not</p>
+        <ul class="body-list">
+          <li>Customer-validated</li>
+          <li>Demand-validated</li>
+          <li>WTP-validated</li>
+          <li>Adopted</li>
+          <li>Revenue-generating</li>
+          <li>ROI-measured</li>
+          <li>Launched</li>
+        </ul>
+
+        <div class="label-block" style="margin-top: var(--space-4);">
+          <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            The following are explicitly not claimed: customer interviews, customer quotes, validated demand,
+            validated WTP, adoption, revenue, ROI, measured outcomes, launch execution, proven whitespace,
+            real customer success, and any market size figure unless independently sourced and explicitly
+            researched later.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     14 — EVIDENCE LEDGER
+     ============================================================ -->
+<article class="case-study-section" id="evidence-ledger">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence Ledger</h2>
+
+    <div class="case-study-body">
+      <p class="body-text" style="margin-bottom: var(--space-4);">
+        CLAIM | STATUS | BASIS — using the portfolio's canonical six-label model.
+      </p>
+
+      <div class="ledger-table-wrap" style="overflow-x: auto;">
+        <table class="evidence-ledger-table" style="width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Claim</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Status</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Public sources describe pilot-to-production friction (readiness, governance/security, integration, operationalization) and organizational patterns in which AI pilots and production ownership can sit with different teams</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--observed">Observed</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Public research — problem/market/tool themes and organizational pattern</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">The narrowed problem — a transition workflow for pilots without a clear production owner — is the right scope</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--inferred">Inferred</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Organizational pattern reasoning from public signal</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Target segment: enterprises where pilots are built by teams without a clear production owner, alongside a central AI/IT/platform function</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--inferred">Inferred</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Segment logic — not validated with enterprises</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Buyer is IT/platform leadership or central AI/IT leadership; champion is AI/innovation; production owner is IT/platform or designated ops/production owner</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--inferred">Inferred</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Stakeholder logic — not validated with real stakeholders</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">JTBD: help move a pilot into a governed production workflow via readiness, checkpoint, ownership transfer, accountability handoff, and minimal escalation</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--proposed">Proposed</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Product-strategy framing — not validated with users</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Moment of value: production ownership acceptance OR explicit send-back with actionable gaps</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--proposed">Proposed</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Product-strategy framing — not validated</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Product owns readiness, ownership record, governance/security/internal-policy checkpoint, accountability/handoff record, escalation context</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--proposed">Proposed</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Product boundary decision</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Product does NOT own model development, deployment infra, monitoring-as-primary-product, enterprise security/compliance programs, ITSM, business workflow automation, business measurement, end-to-end AI lifecycle management</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--proposed">Proposed</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Product boundary decision</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">MVP B = readiness + governance/security checkpoint + ownership transfer + minimal accountability handoff</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--proposed">Proposed</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">MVP scope decision</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Business model hypothesis = enterprise annual license + optional implementation/configuration</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--hypothesis">Hypothesis</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Proposed shape — not validated; pricing and WTP not evidenced</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">GTM hypothesis = IT/platform-led, with AI/innovation as champion/discovery entry point</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--hypothesis">Hypothesis</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Proposed shape — not validated</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Value hypothesis = B1 may reduce stranded/unready handoffs, ownership ambiguity, ad-hoc transition work, and potential downstream rework/exposure</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--hypothesis">Hypothesis</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Proposed value claim — not validated</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Competitive position = partial gap in public research, not proven whitespace</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--hypothesis">Hypothesis</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Positioned carefully — not claimed as proven</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">Any adoption, revenue, ROI, or measured outcome</td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;"><span class="evidence-label evidence-label--not-evidenced">Not evidenced</span></td>
+              <td style="padding: var(--space-2) var(--space-3); vertical-align: top;">No launch, no measurement</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     15 — WHAT THIS CASE PROVES / DOES NOT PROVE
+     ============================================================ -->
+<article class="case-study-section" id="proves">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What This Case Proves / Does Not Prove</h2>
+
+    <div class="case-study-body">
+      <div class="proves-grid" style="display: grid; grid-template-columns: 1fr; gap: var(--space-5); margin-top: var(--space-4);">
+        <div class="proves-block" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p class="proves-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--color-success); margin-bottom: var(--space-3);">PROVES</p>
+          <ul class="body-list" style="margin: 0;">
+            <li>Structured product strategy built from public signal and organizational reasoning</li>
+            <li>Problem narrowing from a broad theme to a bounded transition problem</li>
+            <li>Strategic trade-offs — MVP B scope, product boundary, what is deliberately excluded</li>
+            <li>Product boundary discipline — owns / integrates / does-not-own</li>
+            <li>Business-model reasoning as a labeled hypothesis</li>
+            <li>GTM reasoning as a labeled hypothesis</li>
+            <li>Stakeholder reasoning that separates champion, buyer, user, and production owner</li>
+            <li>Evidence discipline — explicit labels, no invented customers or outcomes, no false claim of validation</li>
+          </ul>
+        </div>
+
+        <div class="proves-block" style="background: var(--bg-surface); border: 1px solid var(--color-muted); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p class="proves-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); margin-bottom: var(--space-3);">DOES NOT PROVE</p>
+          <ul class="body-list" style="margin: 0;">
+            <li>Customer validation</li>
+            <li>Validated demand</li>
+            <li>Validated willingness to pay</li>
+            <li>Adoption</li>
+            <li>ROI</li>
+            <li>Launch execution</li>
+            <li>Real-world business outcomes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     CLOSING CTA
+     ============================================================ -->
+<div class="container" style="margin-top: var(--space-10);">
+  <div class="key-takeaway">
+    <div class="key-takeaway__label">Key takeaway</div>
+    <p class="key-takeaway__text">
+      B1 is a product strategy hypothesis — a bounded transition workflow for enterprises moving AI pilots
+      to production ownership, with explicit evidence labels and honest gaps. It is built from public research
+      and strategic reasoning, not from customer validation. The case demonstrates structured product strategy,
+      problem narrowing, boundary discipline, and evidence discipline — not validated demand, adoption, or
+      outcomes.
+    </p>
+  </div>
+</div>
+
+<div class="container" style="margin-top: var(--space-8); padding-bottom: var(--space-8);">
+  <div class="case-study-ctas">
+    <a href="/work/" class="btn btn--primary">
+      Back to Proof of Work
+    </a>
+  </div>
+  <p class="text-muted" style="margin-top: var(--space-6); font-size: var(--text-sm); text-align: center; max-width: 480px; margin-inline: auto;">
+    B1 is a product strategy hypothesis. The strategy is real. The customer validation is not.
+  </p>
+</div>
+
+{% endblock %}

@@ -288,6 +288,74 @@
   background: radial-gradient(circle, rgba(42, 181, 181, 0.08) 0%, transparent 70%);
 }
 
+/* ---------- Hero profile image ---------- */
+
+.hero__profile {
+  position: absolute;
+  right: var(--container-padding);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .hero__profile {
+  top: calc(50% + 8px);
+}
+
+.hero__profile-img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border-subtle);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-surface);
+  transition: transform var(--transition-base), border-color var(--transition-fast);
+}
+
+.hero__profile-img:hover {
+  transform: scale(1.02);
+  border-color: var(--border-default);
+}
+
+@media (max-width: 1023px) {
+  .hero__profile {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin-top: var(--space-4);
+    margin-inline: auto;
+    width: fit-content;
+  }
+
+  .hero__profile-img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__profile {
+    margin-top: var(--space-3);
+  }
+
+  .hero__profile-img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* Keep the accent line behind the profile */
+@media (min-width: 1024px) {
+  .hero:has(.hero__profile) .hero__accent-line {
+    right: calc(var(--container-padding) + 72px);
+  }
+}
+
 /* ---------- Section headers ---------- */
 
 .section-header {

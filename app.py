@@ -305,6 +305,11 @@ def experiment_tracker_case():
     return render_template("work/experiment-tracker.html")
 
 
+@app.route("/work/b1/")
+def b1_case():
+    return render_template("work/b1.html")
+
+
 @app.route("/how-i-work/")
 def how_i_work():
     return render_template("how-i-work.html")
