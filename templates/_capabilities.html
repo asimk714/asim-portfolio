@@ -153,6 +153,7 @@
     grid-template-columns: 1fr;
     gap: var(--space-5);
     margin-top: var(--space-8);
+    align-items: stretch;
   }
 
   @media (min-width: 768px) {
@@ -165,11 +166,6 @@
     .capabilities-grid {
       grid-template-columns: repeat(3, 1fr);
     }
-  }
-
-  /* Equal-height cards in the same row so neighboring tiles feel coherent, not uneven */
-  .capabilities-grid {
-    align-items: stretch;
   }
 
   .capability-tile,
@@ -255,6 +251,12 @@
     transition: color var(--transition-fast), border-color var(--transition-fast);
   }
 
+  .capability-tile__link:hover {
+    color: var(--accent-hover);
+    border-top-color: var(--accent-hover);
+    text-decoration: none;
+  }
+
   .capability-tile__evidence {
     font-weight: 500;
     color: var(--text-primary);
@@ -263,19 +265,6 @@
   .capability-tile__limitation {
     color: var(--text-muted);
     font-style: italic;
-  }
-
-  .capability-tile__link {
-    display: inline-block;
-    margin-top: var(--space-3);
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  .capability-tile__link:hover {
-    text-decoration: underline;
   }
 
   .capabilities-next {
