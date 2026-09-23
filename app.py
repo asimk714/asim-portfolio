@@ -28,6 +28,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/cases.ts",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "ReviewFlow",
+        "case_study_url": "/work/reviewflow/",
     },
     {
         "title": "Product Decisions — 8 documented choices",
@@ -46,6 +48,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/salon-review-bot/blob/main/docs/PRODUCT-DECISIONS.md",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "ReviewFlow",
+        "case_study_url": "/work/reviewflow/",
     },
     {
         "title": "MVP Prioritization — Must Have / Should Have / Out of Scope",
@@ -64,6 +68,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/salon-review-bot/blob/main/docs/MVP-PRIORITIZATION.md",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "ReviewFlow",
+        "case_study_url": "/work/reviewflow/",
     },
     {
         "title": "AI Output Quality Measurement Report",
@@ -83,6 +89,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/ai-quality-report.md",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "ReviewFlow",
+        "case_study_url": "/work/reviewflow/",
     },
     {
         "title": "Corrected Evaluator Results",
@@ -102,6 +110,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/corrected-historical-results.json",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "ReviewFlow",
+        "case_study_url": "/work/reviewflow/",
     },
     {
         "title": "Phase 11 Intervention Record — honest documentation",
@@ -121,6 +131,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/intervention-record-phase11.json",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "ReviewFlow",
+        "case_study_url": "/work/reviewflow/",
     },
     {
         "title": "PRODUCT_BRIEF — 7-Candidate Prioritization",
@@ -139,6 +151,8 @@ EVIDENCE_CARDS = [
         "link_url": "/work/experiment-tracker/#prioritization",
         "link_label": "Read in case study",
         "link_external": False,
+        "project": "Experiment Tracker",
+        "case_study_url": "/work/experiment-tracker/",
     },
     {
         "title": "17-Category Verification Report",
@@ -159,6 +173,8 @@ EVIDENCE_CARDS = [
         "link_url": "/work/experiment-tracker/#verification",
         "link_label": "Read in case study",
         "link_external": False,
+        "project": "Experiment Tracker",
+        "case_study_url": "/work/experiment-tracker/",
     },
     {
         "title": "Measurement Model — A/B Experiment Plan",
@@ -178,6 +194,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/Unrot-Daily-Retention/blob/main/docs/experiment-plan.md",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "Unrot",
+        "case_study_url": "/work/unrot/",
     },
     {
         "title": "Final QA Report — 20/20 Functional, 35/35 Tests",
@@ -197,6 +215,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/Unrot-Daily-Retention/blob/main/docs/final-qa-report.md",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "Unrot",
+        "case_study_url": "/work/unrot/",
     },
     {
         "title": "D1 Retention Calculator — calendar-day logic",
@@ -215,6 +235,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/Unrot-Daily-Retention/blob/main/src/lib/retention.ts",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "Unrot",
+        "case_study_url": "/work/unrot/",
     },
     {
         "title": "Architecture — Next.js + PostgreSQL + Prisma",
@@ -233,6 +255,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/Unrot-Daily-Retention/blob/main/docs/architecture.md",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "Unrot",
+        "case_study_url": "/work/unrot/",
     },
     {
         "title": "Problem Framing — D1 retention as a discovery problem",
@@ -253,6 +277,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/Unrot-Daily-Retention/blob/main/research/problem-framing.md",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "Unrot",
+        "case_study_url": "/work/unrot/",
     },
     {
         "title": "JTBD Hypotheses — 4 jobs, 7 intervention hypotheses",
@@ -272,6 +298,8 @@ EVIDENCE_CARDS = [
         "link_url": "https://github.com/asimk714/Unrot-Daily-Retention/blob/main/research/problem-framing.md",
         "link_label": "View on GitHub",
         "link_external": True,
+        "project": "Unrot",
+        "case_study_url": "/work/unrot/",
     },
 ]
 

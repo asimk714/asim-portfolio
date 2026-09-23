@@ -1,0 +1,197 @@
+/* ============================================================
+   Lifecycle Evidence Strip
+   Compact 8-stage lifecycle metadata for case studies.
+   ============================================================ */
+
+.lifecycle-evidence-strip {
+  background: var(--bg-muted);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-block: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.lifecycle-evidence-strip__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.lifecycle-evidence-strip__stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.lifecycle-evidence-strip__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  min-width: 72px;
+  flex: 0 0 auto;
+}
+
+.lifecycle-evidence-strip__stage--verified {
+  border-color: var(--border-default);
+}
+
+.lifecycle-evidence-strip__stage--verified .lifecycle-evidence-strip__number {
+  background: var(--accent);
+  color: var(--text-inverse);
+}
+
+.lifecycle-evidence-strip__stage--documented {
+  border-color: var(--border-default);
+}
+
+.lifecycle-evidence-strip__stage--documented .lifecycle-evidence-strip__number {
+  background: var(--accent-muted);
+  color: var(--text-primary);
+}
+
+.lifecycle-evidence-strip__stage--proposed {
+  border-color: var(--border-subtle);
+  opacity: 0.7;
+}
+
+.lifecycle-evidence-strip__stage--proposed .lifecycle-evidence-strip__number {
+  background: var(--bg-muted);
+  color: var(--text-muted);
+}
+
+.lifecycle-evidence-strip__stage--hypothesis {
+  border-color: var(--border-subtle);
+  opacity: 0.75;
+}
+
+.lifecycle-evidence-strip__stage--hypothesis .lifecycle-evidence-strip__number {
+  background: var(--bg-muted);
+  color: var(--text-muted);
+}
+
+.lifecycle-evidence-strip__stage--not-evidenced {
+  border-color: var(--border-subtle);
+  opacity: 0.5;
+}
+
+.lifecycle-evidence-strip__stage--not-evidenced .lifecycle-evidence-strip__number {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-default);
+}
+
+.lifecycle-evidence-strip__number {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lifecycle-evidence-strip__name {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.lifecycle-evidence-strip__status {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Tablet: allow slight wrapping */
+@media (max-width: 1024px) {
+  .lifecycle-evidence-strip__stages {
+    gap: var(--space-1);
+  }
+
+  .lifecycle-evidence-strip__stage {
+    padding: var(--space-1) var(--space-2);
+    min-width: 64px;
+  }
+
+  .lifecycle-evidence-strip__name {
+    font-size: var(--text-xs);
+  }
+
+  .lifecycle-evidence-strip__status {
+    font-size: var(--text-xs);
+  }
+}
+
+/* Mobile: 2-column grid, larger tap targets */
+@media (max-width: 640px) {
+  .lifecycle-evidence-strip {
+    padding-block: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .lifecycle-evidence-strip__stages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
+  }
+
+  .lifecycle-evidence-strip__stage {
+    flex-direction: row;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    min-width: unset;
+  }
+
+  .lifecycle-evidence-strip__number {
+    width: 22px;
+    height: 22px;
+    font-size: var(--text-xs);
+  }
+
+  .lifecycle-evidence-strip__name {
+    font-size: var(--text-sm);
+    white-space: normal;
+    text-align: left;
+    flex: 1;
+  }
+
+  .lifecycle-evidence-strip__status {
+    font-size: var(--text-xs);
+    white-space: normal;
+    text-align: right;
+    flex: 0 0 auto;
+    min-width: 60px;
+  }
+}
+
+/* Reduced motion: strip is static, no animation needed */
+@media (prefers-reduced-motion: reduce) {
+  .lifecycle-evidence-strip {
+    transition: none;
+  }
+
+  .lifecycle-evidence-strip__stage {
+    transition: none;
+  }
+}

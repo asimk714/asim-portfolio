@@ -1,6 +1,6 @@
 <section class="section experience-section" id="experience">
   <div class="container">
-    <div class="section-header animate-in">
+    <div class="experience-section__header animate-in">
       <p class="eyebrow section-header__eyebrow">Experience</p>
       <h2 class="section-header__title">
         Product thinking that grew out of real technical delivery.
@@ -15,7 +15,7 @@
     </div>
 
     <div class="experience-grid">
-      <div class="experience-text animate-in reveal">
+      <div class="experience-intro experience-text animate-in reveal">
         <p>
           At Nokia, I worked on complex technical systems — Fixed Networks, IP, and Optical — where
           engineers don't get the luxury of fuzzy requirements. You read the system, translate
@@ -29,94 +29,105 @@
           about what I don't know.
         </p>
         <p>
-          One example of that product-adjacent judgment at Nokia: a customer site repeatedly raised
-          outage-related tickets. After the issue persisted through initial troubleshooting, the team
-          replaced hardware and returned the suspected card to the repair centre. My involvement came
-          after multiple customer complaints. We recreated the field environment at the repair centre
-          and compared unit behaviour between the field site and the controlled environment. The
-          investigation identified sudden power surges causing network cards to reboot, and I proposed
-          an alternate continuous-power solution. I participated in the investigation and recommendation;
-          I did not implement the power infrastructure myself.
-
-          <p class="muted-paragraph" style="margin-top: var(--space-3); font-size: var(--text-sm);">
-            Outcome note: the same customer has not raised the same complaint in roughly two years. This is
-            based on my experience and reporting and is not independently measured in this portfolio.
-          </p>
-
-          <div class="insight-card" style="margin-top: var(--space-6);">
-            <p class="insight-card__label">GPON Fixed Network — technical ownership across stakeholders</p>
-            <p>
-              On the GPON Fixed Network system, the operational workflow follows a clear chain. A Site
-              Reliability Engineer (SRE) is responsible for establishing a site and checking whether it is
-              running smoothly. When a problem or operational situation occurs, the SRE escalates to the
-              relevant stakeholders or managers depending on the issue and the affected board or component.
-              GPON Fixed Network contains different types of boards and components, and the right contact
-              depends on which part of the system is involved.
-            </p>
-            <p>
-              My responsibility in this environment is fault finding, root-cause analysis (RCA),
-              troubleshooting, and dispatching OK / working units. The work spans both hardware and
-              software. I have strong knowledge of the hardware, and when site problems, hardware problems,
-              or repeated issues occur, people contact me because of that hardware knowledge.
-            </p>
-            <p>
-              The work therefore involves interaction across an operational environment: SREs and site
-              operations on the front end, relevant stakeholders and managers in the escalation path, and
-              repair-centre or technical personnel during troubleshooting and unit dispatch. The workflow,
-              broadly: an operational or site issue comes in, the relevant stakeholder is contacted depending
-              on the affected board or component, fault finding begins, hardware and software troubleshooting
-              follows, RCA is carried out, and a working / OK unit is dispatched.
-            </p>
-
-            <p>
-              One recurring incident in that environment illustrates the investigation approach. A site kept
-              going down, and I was involved from the beginning after the GPON ticket was raised. Because I
-              regularly handle customer escalations and RCA, I proposed bringing the complete field setup to
-              the Repair Center with the available diagnostic outputs.
-            </p>
-
-            <p>
-              The investigation established that an NT card was resetting. That could corrupt the flash card
-              holding configuration, ultimately causing the FX-8 shelf to reset. At the Repair Center, I first
-              reproduced the field configuration and then isolated individual boards when the setup initially
-              appeared healthy. Under the field configuration, I observed a slight reset on one NT card,
-              replaced it, and confirmed that the setup then operated normally.
-            </p>
-
-            <p>
-              This work involved the customer-handling team, SRE, technical personnel, and the Repair Center.
-              I also use a troubleshooting/RCA checklist I developed from experience to narrow recurring
-              problems before moving into component-level isolation.
-            </p>
-
-            <p class="muted-paragraph" style="margin-top: var(--space-3); font-size: var(--text-sm);">
-              Operational context: GPON site tickets and returned-unit history are recorded through the
-              operational process, with DOA, repaired-faulty, and repeat-failure cases receiving deeper
-              investigation. This example documents the observed investigation and repair action; it does
-              not claim that I personally performed a formal long-term recurrence analysis for this site.
-            </p>
-            <p class="muted-paragraph" style="margin-top: var(--space-3); font-size: var(--text-sm);">
-              Evidence classification: observed. This describes the operational environment, my responsibility,
-              and the stakeholder chain as they exist in the work — not a product strategy, roadmap, GTM, user
-              research, or business KPI role.
-            </p>
-          </div>
-
-          <p class="muted-paragraph" style="margin-top: var(--space-3); font-size: var(--text-sm);">
-            PM relevance: this experience is the technical and cross-functional problem-solving foundation I
-            bring into product work — understanding system dependencies, working across stakeholders,
-            investigating ambiguous problems, and driving issues toward resolution. It is not a claim that I
-            held a Product Manager title at Nokia or owned the product.
-          </p>
-        <p>
           The three projects on this portfolio are the proof that this way of working transferred into
           product work. Each one is a real product I built end-to-end — with its own measurement,
           verification, and honest gaps. They are not hypotheticals. They run.
         </p>
       </div>
 
-      <div class="animate-in reveal" style="display: flex; flex-direction: column; gap: var(--space-6);">
-        <div class="skill-group">
+      <!-- Nokia — Senior Engineer: Customer escalation & RCA (collapsible) -->
+      <div class="experience-evidence-item animate-in reveal">
+        <button class="experience-evidence-item__header" aria-expanded="false" aria-controls="nokia-escalation-body" id="nokia-escalation-btn" type="button">
+          <span>Nokia — Senior Engineer</span>
+          <svg class="experience-evidence-item__icon" id="nokia-escalation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="experience-evidence-item__body" id="nokia-escalation-body" aria-labelledby="nokia-escalation-btn">
+          <div class="experience-evidence-item__field">
+            <span class="experience-evidence-item__field-label">Context</span>
+            <div class="experience-evidence-item__field-text">
+              <p>Customer site repeatedly raised outage-related tickets. After the issue persisted through initial troubleshooting, the team replaced hardware and returned the suspected card to the repair centre.</p>
+            </div>
+          </div>
+          <div class="experience-evidence-item__field">
+            <span class="experience-evidence-item__field-label">Investigation</span>
+            <div class="experience-evidence-item__field-text">
+              <p>Recreated the field environment at the repair centre and compared unit behaviour between the field site and the controlled environment. The investigation identified sudden power surges causing network cards to reboot.</p>
+            </div>
+          </div>
+          <div class="experience-evidence-item__field">
+            <span class="experience-evidence-item__field-label">Stakeholders</span>
+            <div class="experience-evidence-item__field-text">
+              <p>Customer-handling team, Site Reliability Engineers, relevant stakeholders and managers in the escalation path, and repair-centre technical personnel.</p>
+            </div>
+          </div>
+          <div class="experience-evidence-item__field">
+            <span class="experience-evidence-item__field-label">Decision</span>
+            <div class="experience-evidence-item__field-text">
+              <p>I participated in the investigation and recommendation. I proposed an alternate continuous-power solution. I did not implement the power infrastructure myself.</p>
+            </div>
+          </div>
+          <div class="experience-evidence-item__field">
+            <span class="experience-evidence-item__field-label">Outcome</span>
+            <div class="experience-evidence-item__field-text">
+              <p>The same customer has not raised the same complaint in roughly two years — based on my experience and reporting, not independently measured in this portfolio.</p>
+            </div>
+          </div>
+          <p class="muted-paragraph">
+            Framing: engineering/customer escalation and RCA experience — not formal Product Manager ownership.
+          </p>
+        </div>
+      </div>
+
+      <!-- Nokia — Senior Engineer: GPON field failure investigation (collapsible) -->
+      <div class="experience-evidence-item animate-in reveal">
+        <button class="experience-evidence-item__header" aria-expanded="false" aria-controls="nokia-gpon-body" id="nokia-gpon-btn" type="button">
+          <span>Nokia — GPON Field Failure Investigation</span>
+          <svg class="experience-evidence-item__icon" id="nokia-gpon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="experience-evidence-item__body" id="nokia-gpon-body" aria-labelledby="nokia-gpon-btn">
+          <div class="experience-evidence-item__field">
+            <span class="experience-evidence-item__field-label">Context</span>
+            <div class="experience-evidence-item__field-text">
+              <p>GPON Fixed Network system — a site kept going down after the GPON ticket was raised. I was involved from the beginning because I regularly handle customer escalations and RCA.</p>
+            </div>
+          </div>
+          <div class="experience-evidence-item__field">
+            <span class="experience-evidence-item__field-label">Investigation</span>
+            <div class="experience-evidence-item__field-text">
+              <p>I proposed bringing the complete field setup to the Repair Center with the available diagnostic outputs. The investigation established that an NT card was resetting — which could corrupt the flash card holding configuration, ultimately causing the FX-8 shelf to reset. At the Repair Center, I first reproduced the field configuration and then isolated individual boards when the setup initially appeared healthy. Under the field configuration, I observed a slight reset on one NT card, replaced it, and confirmed that the setup then operated normally.</p>
+            </div>
+          </div>
+          <div class="experience-evidence-item__field">
+            <span class="experience-evidence-item__field-label">Stakeholders</span>
+            <div class="experience-evidence-item__field-text">
+              <p>Customer-handling team, SRE, technical personnel, and the Repair Center. The operational workflow follows a clear chain: SRE establishes a site and checks whether it is running smoothly; when a problem occurs, the SRE escalates to the relevant stakeholders or managers depending on the issue and the affected board or component.</p>
+            </div>
+          </div>
+          <div class="experience-evidence-item__field">
+            <span class="experience-evidence-item__field-label">Resolution</span>
+            <div class="experience-evidence-item__field-text">
+              <p>Fault finding, root-cause analysis (RCA), troubleshooting, and dispatching OK / working units. The work spans both hardware and software. I have strong knowledge of the hardware, and when site problems, hardware problems, or repeated issues occur, people contact me because of that hardware knowledge.</p>
+            </div>
+          </div>
+          <p class="muted-paragraph">
+            Operational context: GPON site tickets and returned-unit history are recorded through the
+            operational process, with DOA, repaired-faulty, and repeat-failure cases receiving deeper
+            investigation. This example documents the observed investigation and repair action; it does
+            not claim that I personally performed a formal long-term recurrence analysis for this site.
+          </p>
+          <p class="muted-paragraph">
+            Framing: engineering/RCA and cross-functional coordination — not formal Product Manager ownership.
+          </p>
+        </div>
+      </div>
+
+      <!-- Skills (full-width) -->
+      <div class="experience-skills">
+        <div class="experience-skills-col">
           <div class="skill-group__label">Technical</div>
           <ul class="skill-list">
             <li><span class="skill-tag">Python</span></li>
@@ -134,8 +145,7 @@
             <li><span class="skill-tag">CI</span></li>
           </ul>
         </div>
-
-        <div class="skill-group">
+        <div class="experience-skills-col">
           <div class="skill-group__label">Product</div>
           <ul class="skill-list">
             <li><span class="skill-tag">Problem framing</span></li>

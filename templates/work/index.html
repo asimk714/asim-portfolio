@@ -53,29 +53,43 @@
       {% for card in evidence_cards %}
       <article class="evidence-card {{ card.css_class }}" data-category="{{ card.category }}">
         <div class="evidence-card__header">
-          <h3 class="evidence-card__title">{{ card.title }}</h3>
+          <div class="evidence-card__title-group">
+            <span class="evidence-card__project">{{ card.project }}</span>
+            <h3 class="evidence-card__title">{{ card.title }}</h3>
+          </div>
           <span class="evidence-card__type">{{ card.type }}</span>
         </div>
         <div class="evidence-card__body">
           {{ card.body | safe }}
         </div>
-        {% if card.link_url %}
-        <a href="{{ card.link_url }}" class="evidence-card__link" {% if card.link_external %}target="_blank" rel="noopener noreferrer"{% endif %}>
-          {{ card.link_label }}
-          {% if card.link_external %}
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-          {% else %}
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
+        <div class="evidence-card__links">
+          {% if card.case_study_url %}
+          <a href="{{ card.case_study_url }}" class="evidence-card__link evidence-card__link--case-study">
+            Read in case study
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
           {% endif %}
-        </a>
-        {% endif %}
+          {% if card.link_url %}
+          <a href="{{ card.link_url }}" class="evidence-card__link {% if card.link_external %}evidence-card__link--external{% endif %}" {% if card.link_external %}target="_blank" rel="noopener noreferrer"{% endif %}>
+            {{ card.link_label }}
+            {% if card.link_external %}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            {% else %}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+            {% endif %}
+          </a>
+          {% endif %}
+        </div>
       </article>
       {% endfor %}
     </div>

@@ -1,130 +1,150 @@
 <section class="hero" id="hero">
   <div class="hero__content">
-    <div class="hero__divider" aria-hidden="true"></div>
+    <div class="hero__text">
+      <div class="hero__divider" aria-hidden="true"></div>
 
-    <p class="eyebrow hero__eyebrow animate-in">Technical Product Manager</p>
+      <p class="eyebrow hero__eyebrow animate-in">Technical Product Manager</p>
 
-    <h1 class="hero__headline animate-in animate-in--delay-1">
-      I define products before building them.
-      <span class="line-break">I measure before I claim.</span>
-      <span class="line-break">I verify what I ship.</span>
-    </h1>
+      <h1 class="hero__headline animate-in animate-in--delay-1">
+        I define products before building them.
+        <span class="line-break">I measure before I claim.</span>
+        <span class="line-break">I verify what I ship.</span>
+      </h1>
 
-    <p class="muted-paragraph hero__sentence animate-in animate-in--delay-2">
-      A Technical Product Manager / Product Owner / AI PM operating philosophy across three real
-      products and three stacks — built on 8+ years of engineering experience, with explicit
-      trade-offs, measurement systems, and honest evidence boundaries.
-    </p>
+      <!-- Rotating capability phrase -->
+      <p class="hero__rotating-phrase" aria-live="polite" aria-label="Capabilities">
+        <span class="hero__rotating-phrase__line">turn evidence into decisions</span>
+        <span class="hero__rotating-phrase__line">connect product and engineering</span>
+        <span class="hero__rotating-phrase__line">make measurement explicit</span>
+        <span class="hero__rotating-phrase__line">turn ambiguous problems into structured action</span>
+      </p>
 
-    <!-- Define / Measure / Verify sequence -->
-    <div class="cdmv-sequence" role="group" aria-labelledby="cdmv-eyebrow">
-      <p id="cdmv-eyebrow" class="sr-only">How I work: Define, then Measure, then Verify</p>
+      <p class="muted-paragraph hero__sentence animate-in animate-in--delay-2">
+        A Technical Product Manager / Product Owner / AI PM operating philosophy across three real
+        products and three stacks — built on 8+ years of engineering experience, with explicit
+        trade-offs, measurement systems, and honest evidence boundaries.
+      </p>
 
-      <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-define-detail" id="cdmv-define-btn" type="button">
-        <span class="cdmv-stage__label">DEFINE</span>
-        <span class="cdmv-stage__arrow" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
+      <!-- Define / Measure / Verify sequence -->
+      <div class="cdmv-sequence" role="group" aria-labelledby="cdmv-eyebrow">
+        <p id="cdmv-eyebrow" class="sr-only">How I work: Define, then Measure, then Verify</p>
+
+        <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-define-detail" id="cdmv-define-btn" type="button">
+          <span class="cdmv-stage__label">DEFINE</span>
+          <span class="cdmv-stage__arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </span>
+          <span class="cdmv-stage__flow" aria-hidden="true">
+            <span class="cdmv-flow-part">Problem</span>
+            <svg class="cdmv-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+            <span class="cdmv-flow-part">Decision</span>
+          </span>
+          <span class="cdmv-stage__detail sr-only" id="cdmv-define-detail">
+            Product question, MVP boundary, trade-offs, what the product is not.
+            Evidence: Experiment Tracker PRODUCT_BRIEF, ReviewFlow MVP prioritization, Unrot measurement model.
+          </span>
+        </button>
+
+        <div class="cdmv-connector" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="12" x2="23" y2="12"/>
+            <polyline points="18 7 23 12 18 17"/>
           </svg>
-        </span>
-        <span class="cdmv-stage__flow" aria-hidden="true">
-          <span class="cdmv-flow-part">Problem</span>
-          <svg class="cdmv-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-          <span class="cdmv-flow-part">Decision</span>
-        </span>
-        <span class="cdmv-stage__detail sr-only" id="cdmv-define-detail">
-          Product question, MVP boundary, trade-offs, what the product is not.
-          Evidence: Experiment Tracker PRODUCT_BRIEF, ReviewFlow MVP prioritization, Unrot measurement model.
-        </span>
-      </button>
+        </div>
 
-      <div class="cdmv-connector" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="1" y1="12" x2="23" y2="12"/>
-          <polyline points="18 7 23 12 18 17"/>
-        </svg>
+        <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-measure-detail" id="cdmv-measure-btn" type="button">
+          <span class="cdmv-stage__label">MEASURE</span>
+          <span class="cdmv-stage__arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </span>
+          <span class="cdmv-stage__flow" aria-hidden="true">
+            <span class="cdmv-flow-part">Hypothesis</span>
+            <svg class="cdmv-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+            <span class="cdmv-flow-part">Signal</span>
+          </span>
+          <span class="cdmv-stage__detail sr-only" id="cdmv-measure-detail">
+            Metrics, evaluation, experiment design before any outcome is claimed.
+            Evidence: ReviewFlow 247 checks + corrected evaluator, Unrot measurement model + A/B plan, Experiment Tracker proposed usage metric.
+          </span>
+        </button>
+
+        <div class="cdmv-connector" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="12" x2="23" y2="12"/>
+            <polyline points="18 7 23 12 18 17"/>
+          </svg>
+        </div>
+
+        <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-verify-detail" id="cdmv-verify-btn" type="button">
+          <span class="cdmv-stage__label">VERIFY</span>
+          <span class="cdmv-stage__arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </span>
+          <span class="cdmv-stage__flow" aria-hidden="true">
+            <span class="cdmv-flow-part">Evidence</span>
+            <svg class="cdmv-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+            <span class="cdmv-flow-part">What I Can Claim</span>
+          </span>
+          <span class="cdmv-stage__detail sr-only" id="cdmv-verify-detail">
+            Tests, verification reports, honest gaps. Be clear about what is evidenced and what is not.
+            Evidence: ReviewFlow corrected evaluator + Phase 11 intervention record, Unrot 20/20 QA + 35/35 tests, Experiment Tracker 17-category verification.
+          </span>
+        </button>
       </div>
 
-      <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-measure-detail" id="cdmv-measure-btn" type="button">
-        <span class="cdmv-stage__label">MEASURE</span>
-        <span class="cdmv-stage__arrow" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </span>
-        <span class="cdmv-stage__flow" aria-hidden="true">
-          <span class="cdmv-flow-part">Hypothesis</span>
-          <svg class="cdmv-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-          <span class="cdmv-flow-part">Signal</span>
-        </span>
-        <span class="cdmv-stage__detail sr-only" id="cdmv-measure-detail">
-          Metrics, evaluation, experiment design before any outcome is claimed.
-          Evidence: ReviewFlow 247 checks + corrected evaluator, Unrot measurement model + A/B plan, Experiment Tracker proposed usage metric.
-        </span>
-      </button>
-
-      <div class="cdmv-connector" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="1" y1="12" x2="23" y2="12"/>
-          <polyline points="18 7 23 12 18 17"/>
-        </svg>
+      <div class="cta-group hero__cta animate-in animate-in--delay-3">
+        <a href="/work/" class="btn btn--primary btn--lg">
+          View Selected Work
+        </a>
+        <a href="/#principal-pm-os" class="btn btn--ghost btn--lg">
+          How I Operate
+        </a>
       </div>
 
-      <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-verify-detail" id="cdmv-verify-btn" type="button">
-        <span class="cdmv-stage__label">VERIFY</span>
-        <span class="cdmv-stage__arrow" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 12 19"/>
+      <div class="hero__meta animate-in animate-in--delay-4">
+        <span class="muted-paragraph" style="font-size: var(--text-xs); letter-spacing: var(--tracking-wider); text-transform: uppercase;">
+          Technical Product Manager candidate &middot; Product Owner &middot; AI PM
+        </span>
+        <a href="https://github.com/asimk714" class="hero__meta-link" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.655.24 2.876.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.765 1.096.765 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/>
           </svg>
-        </span>
-        <span class="cdmv-stage__flow" aria-hidden="true">
-          <span class="cdmv-flow-part">Evidence</span>
-          <svg class="cdmv-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 12 19"/>
-          </svg>
-          <span class="cdmv-flow-part">What I Can Claim</span>
-        </span>
-        <span class="cdmv-stage__detail sr-only" id="cdmv-verify-detail">
-          Tests, verification reports, honest gaps. Be clear about what is evidenced and what is not.
-          Evidence: ReviewFlow corrected evaluator + Phase 11 intervention record, Unrot 20/20 QA + 35/35 tests, Experiment Tracker 17-category verification.
-        </span>
-      </button>
+          github.com/asimk714
+        </a>
+      </div>
     </div>
 
-    <div class="cta-group hero__cta animate-in animate-in--delay-3">
-      <a href="/work/" class="btn btn--primary btn--lg">
-        View Selected Work
-      </a>
-      <a href="/#how-i-think" class="btn btn--ghost btn--lg">
-        How I Think
-      </a>
+    <div class="hero__profile-side">
+      <div class="hero__profile-wrap">
+        <div class="hero__profile">
+          <img src="/static/assets/images/profile.jpg"
+               alt="Asim Kumar — Technical Product Manager and Senior Engineer"
+               class="hero__profile-img"
+               loading="lazy">
+        </div>
+        <p class="hero__profile-caption">
+          Asim Kumar &middot; 8+ years engineering &middot; PM in the Agentic AI Era
+        </p>
+      </div>
     </div>
-
-    <div class="hero__meta animate-in animate-in--delay-4">
-      <a href="https://github.com/asimk714" class="hero__meta-link" target="_blank" rel="noopener noreferrer">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.655.24 2.876.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.765 1.096.765 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/>
-        </svg>
-        github.com/asimk714
-      </a>
-    </div>
-  </div>
-
-  <div class="hero__profile" aria-hidden="true">
-    <img src="/static/assets/images/profile.jpg"
-         alt="Asim Kumar — Product Manager and Senior Engineer"
-         class="hero__profile-img"
-         loading="lazy">
   </div>
 
   <div class="hero__accent-line" aria-hidden="true"></div>

@@ -49,6 +49,20 @@
       it was verified, and what it deliberately does not claim.
     </p>
 
+{% set lifecycle_stages = [
+  {'number': '01', 'name': 'Discover', 'status': 'documented', 'status_text': 'Documented'},
+  {'number': '02', 'name': 'Decide', 'status': 'verified', 'status_text': 'Verified'},
+  {'number': '03', 'name': 'Define', 'status': 'verified', 'status_text': 'Verified'},
+  {'number': '04', 'name': 'Build', 'status': 'verified', 'status_text': 'Verified'},
+  {'number': '05', 'name': 'Launch', 'status': 'not_evidenced', 'status_text': 'Not evidenced'},
+  {'number': '06', 'name': 'Measure', 'status': 'documented', 'status_text': 'Documented'},
+  {'number': '07', 'name': 'Learn', 'status': 'documented', 'status_text': 'Documented'},
+  {'number': '08', 'name': 'Iterate', 'status': 'proposed', 'status_text': 'Proposed'},
+] %}
+
+{% set stages = lifecycle_stages %}
+{% include '_lifecycle_evidence_strip.html' with context %}
+
     <div class="case-study-at-a-glance animate-in animate-in--delay-3" style="margin-top: var(--space-5);">
       <p class="case-study-at-a-glance__label">At a glance</p>
       <p class="case-study-at-a-glance__text">

@@ -1,0 +1,25 @@
+{# ============================================================
+   Lifecycle Evidence Strip
+   Compact 8-stage lifecycle metadata for case studies.
+   Pass `stages` as a list of dicts:
+     { number, name, status, status_text }
+   Status values: verified, documented, proposed, hypothesis, not_evidenced
+   ============================================================ #}
+<div class="lifecycle-evidence-strip" role="group" aria-label="Lifecycle evidence summary">
+  <div class="lifecycle-evidence-strip__label">
+    <span class="sr-only">Product Operating System lifecycle evidence:</span>
+  </div>
+  <div class="lifecycle-evidence-strip__stages">
+    {% for stage in stages %}
+    <div class="lifecycle-evidence-strip__stage
+      lifecycle-evidence-strip__stage--{{ stage.status }}">
+      <span class="lifecycle-evidence-strip__number">{{ stage.number }}</span>
+      <span class="lifecycle-evidence-strip__name">{{ stage.name }}</span>
+      <span class="lifecycle-evidence-strip__status
+        evidence-label evidence-label--{{ stage.status }}">
+        {{ stage.status_text }}
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+</div>

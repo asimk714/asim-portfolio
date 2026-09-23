@@ -29,3 +29,6 @@ env/
 
 # Generated HTML snapshots
 h10_*.html
+
+# Old portfolio backup — not part of current implementation
+old-portfolio/
