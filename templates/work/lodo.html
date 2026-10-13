@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="work-case">
+  <nav class="work-nav">
+    <a href="/work/">Back to Proof of Work</a>
+  </nav>
+
+  <div class="work-header nested">
+    <span class="work-badge">Case Study</span>
+    <h1 class="work-title">LoDo — MSME Credit Marketplace Prototype</h1>
+    <p class="work-subtitle">
+      A concept prototype for a reverse-auction credit marketplace aimed at MSME borrowers facing opaque, single-source lending offers.
+      Android/Kotlin prototype with Room database and Jetpack Compose UI.
+      Illustrative lender data. No real lending, no real borrowers, no production deployment.
+    </p>
+    <p class="work-meta">
+      <span>Portfolio route:</span>
+      <a href="/work/lodo/">/work/lodo/</a>
+      &nbsp;|&nbsp;
+      <span>Live experience:</span>
+      <a href="/work/lodo/live/">/work/lodo/live/</a>
+      &nbsp;|&nbsp;
+      <span>Source:</span>
+      <span class="mono">projects/project-lodo/</span>
+      &nbsp;(Kotlin/Android, Room + Compose)
+    </p>
+  </div>
+
+  <section class="work-section">
+    <h2>Context</h2>
+    <p>
+      MSME (micro, small, and medium enterprise) borrowers in many markets face a lending experience that is opaque and single-source: a borrower often approaches one bank or one digital lender, receives one offer, and has little structured way to compare alternative terms side by side. The cost of that opacity is not just the headline rate — it is the difficulty of comparing APR, processing fees, upfront costs, total interest, and total repayment across lenders whose offers are structured differently.
+    </p>
+    <p>
+      Government subsidy and credit-guarantee schemes (for example, CGTMSE in India) exist to reduce lender risk and improve MSME access to credit, but borrowers do not always have a clear view of which schemes they qualify for or how those schemes interact with specific lender offers. LoDo is a concept that combines three ideas: a structured borrower intent, a reverse auction where multiple lenders can bid on the same request, and a normalized comparison view that puts offers on the same footing.
+    </p>
+    <p>
+      <strong>Evidence note:</strong> The $300B figure referenced in some LoDo descriptions is market/context information about the size of the MSME credit opportunity, not a LoDo outcome, not a measured addressable market validated for this prototype, and not a claim about LoDo's captured share. It is treated here as context only.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>Problem</h2>
+    <p>
+      The prototype frames the problem as a comparison-and-trust problem for MSME borrowers:
+    </p>
+    <ul>
+      <li><strong>Opaque single-source offers.</strong> A borrower often sees one offer from one lender and has no structured side-by-side comparison against alternatives.</li>
+      <li><strong>Unnormalized cost presentation.</strong> Lenders present APR, fees, and total repayment in different combinations, making it hard to compare the true cost of one offer against another.</li>
+      <li><strong>Limited visibility into qualifying schemes.</strong> Borrowers may not have a clear view of which government guarantee or subsidy schemes apply to their profile, and how those schemes affect lender terms.</li>
+      <li><strong>Trust and auditability gap.</strong> When the borrower cannot see or compare multiple offers on normalized terms, the process leans on trust in a single institution rather than on evidence the borrower can verify.</li>
+    </ul>
+  </section>
+
+  <section class="work-section">
+    <h2>Product Question</h2>
+    <p>
+      Can a reverse-auction credit marketplace with normalized offer comparison give an MSME borrower a clearer, more trustable view of competing lender offers than a single-source lending flow — and what trade-offs does that introduce?
+    </p>
+    <p>
+      This is the question the prototype explores. It is a product-design question, not a measured outcome. The prototype demonstrates the flow and the comparison mechanics; it does not measure borrower behavior, lender participation, or credit outcomes.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>Hypothesis</h2>
+    <p>
+      If a borrower can see multiple normalized lender offers for the same structured intent, and can compare total cost components (APR, processing fees, upfront costs, total interest, total repayment) side by side, then the borrower can make a more informed choice and the process is more auditable than a single-source offer.
+    </p>
+    <p>
+      This is a product hypothesis. It is not validated with borrowers or lenders in this prototype. The prototype demonstrates the comparison mechanics and the auction flow; it does not test whether borrowers actually understand the comparison, whether they act on it, or whether lenders participate.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>Product Decision</h2>
+    <p>
+      The prototype includes four connected decisions:
+    </p>
+
+    <h3>1. Structured borrower intent</h3>
+    <p>
+      The borrower creates a structured credit intent — amount, purpose, tenure, and description — rather than a free-form application. The intent is the unit that lenders bid on. In the prototype this is a 3-step form: loan parameters (amount, purpose, tenure, description) → collateral → review.
+    </p>
+
+    <h3>2. Reverse auction</h3>
+    <p>
+      Once an intent is created, it enters an active auction. Lenders submit bids with APR, monthly payment, total interest, processing fees, upfront costs, and total repayment. The borrower sees a live list of bids with a countdown timer representing the auction window. Bids carry tags such as "Best Value", "Current Best", "Lowest Cost", "Pre-qualified", or "Pending Final Review".
+    </p>
+
+    <h3>3. Normalized offer comparison</h3>
+    <p>
+      The borrower can select multiple bids for comparison and then open a side-by-side comparison view that presents each offer's APR, processing fees, total interest, monthly EMI, upfront costs, and total repayment in a common structure. The comparison highlights "Best Value" and "Lowest Cost" badges.
+    </p>
+
+    <h3>4. Scheme awareness</h3>
+    <p>
+      The prototype includes a scheme-finder concept (for example, CGTMSE — Credit Guarantee Fund Trust for Micro and Small Enterprises) so the borrower can see which government guarantee/subsidy schemes may apply to their profile. In the source this is represented as a screen with scheme listings and match levels.
+    </p>
+
+    <h3>What the prototype does NOT claim</h3>
+    <ul>
+      <li>It does not claim to connect to real lenders or real loan approvals.</li>
+      <li>It does not claim to disburse credit or execute a real loan transaction.</li>
+      <li>It does not claim a validated consent/verification workflow — the source prototype's borrower flow is a structured intent form plus app-level biometric authentication; explicit borrower consent and lender/bureau verification steps are an intended product design direction, not a implemented and validated workflow in this artifact.</li>
+      <li>It does not claim measured borrower comprehension, conversion, or credit outcomes.</li>
+      <li>It does not claim a real $300B addressable market validated for this prototype.</li>
+    </ul>
+  </section>
+
+  <section class="work-section">
+    <h2>How It Works</h2>
+    <ol>
+      <li><strong>Create a credit intent.</strong> The borrower enters loan amount, purpose, tenure, and a short description through a 3-step form (details → collateral → review), then creates the intent. The intent enters an active auction.</li>
+      <li><strong>Auction view.</strong> The borrower sees the active intent with a countdown timer, a list of live lender bids (each showing lender name, logo code, APR, monthly payment, total interest, and a compare checkbox), and a "Compare Offers" action that activates when at least one bid is selected.</li>
+      <li><strong>Compare offers.</strong> The borrower selects one or more bids and opens the comparison view, which shows each selected offer's APR, processing fees, total interest, monthly EMI, upfront costs, and total repayment in a normalized side-by-side structure, with "Best Value" and "Lowest Cost" badges.</li>
+      <li><strong>Accept an offer.</strong> The borrower can accept one offer, which marks it as accepted and records an activity. This is a prototype action — it does not execute a real loan transaction.</li>
+    </ol>
+    <p>
+      The prototype also includes dashboard, profile, scheme-finder, onboarding credit lines, and overview screens as part of the broader concept, but the core auction-and-compare flow is what the live experience demonstrates.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>Prioritization</h2>
+    <p>
+      The source prototype's prioritization is reflected in what is built and in how bids are tagged. The concept prioritizes:
+    </p>
+    <ul>
+      <li><strong>P0 — Structured intent + reverse auction + normalized comparison.</strong> These are the core mechanics without which the marketplace concept does not function: a borrower intent, lender bids, and a common comparison frame.</li>
+      <li><strong>P1 — Scheme awareness.</strong> Government guarantee/subsidy scheme visibility (for example CGTMSE) is included as a screen, but it is not the core auction flow.</li>
+      <li><strong>P1 — Borrower trust indicators.</strong> Bid tags ("Current Best", "Best Value", "Lowest Cost", "Pre-qualified", "Pending Final Review") and accepted-offer state give the borrower signal about offer quality and status.</li>
+      <li><strong>P2 — App-level security.</strong> Biometric authentication is present at the app level, but it is not a borrower-consent or lender-verification workflow in the lending sense.</li>
+    </ul>
+    <p>
+      <strong>Evidence note:</strong> The above is read from the source artifact's structure and bid tags. It is not a scored RICE or MoSCoW output with numeric scores. No numeric prioritization scores are claimed.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>KPI Model</h2>
+    <p>
+      The prototype defines the structure of a KPI model but does NOT contain measured KPI results. The following are KPI definitions and targets as designed — not measured outcomes.
+    </p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Consent completion</div>
+        <div class="kpi-def">Share of borrowers who complete an explicit consent step before the auction begins.</div>
+        <div class="kpi-status">Defined — not measured.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Verification completion</div>
+        <div class="kpi-def">Share of intents that pass borrower verification and lender/bureau verification gates before bids are shown.</div>
+        <div class="kpi-status">Defined — not measured.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Time to first offer</div>
+        <div class="kpi-def">Time from intent creation to the first lender bid appearing in the auction.</div>
+        <div class="kpi-status">Defined — not measured. Auction countdown is a prototype timer, not a measured lender-response time.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Offer comparison engagement</div>
+        <div class="kpi-def">Share of auctions where the borrower selects at least one bid for comparison.</div>
+        <div class="kpi-status">Defined — not measured.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Lender-offer comprehension</div>
+        <div class="kpi-def">Borrower ability to correctly identify the lowest-total-cost offer from a normalized comparison view.</div>
+        <div class="kpi-status">PROPOSED — not measured. Would require borrower testing.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Auction completion</div>
+        <div class="kpi-def">Share of auctions that reach an accepted offer or a defined end state.</div>
+        <div class="kpi-status">Defined — not measured.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Drop-off: verification → offer</div>
+        <div class="kpi-def">Share of verified intents that do not receive any bid within the auction window.</div>
+        <div class="kpi-status">PROPOSED — not measured.</div>
+      </div>
+    </div>
+
+    <p>
+      <strong>Important:</strong> The prototype's auction timer and bid data are illustrative. The countdown timer (~2h 43m in seed data) is a prototype timer, not a measured lender-response SLA. The bids are illustrative lender data, not real offers. No KPI has been measured on this prototype.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>Evidence</h2>
+    <ul>
+      <li><strong>OBSERVED (source):</strong> The LoDo source exists at <span class="mono">projects/project-lodo/</span> — a Kotlin/Android project with Room database, Jetpack Compose UI, and screens for dashboard, auctions, new intent, comparison, scheme finder, onboarding credit lines, overview, and profile. The data model (<span class="mono">Entities.kt</span>), DAO (<span class="mono">LoDoDao.kt</span>), repository (<span class="mono">LoDoRepository.kt</span>), and view model (<span class="mono">LoDoViewModel.kt</span>) are inspectable source.</li>
+      <li><strong>OBSERVED (source data):</strong> Seed/illustrative data includes a personal-loan intent (PL-8492, ₹500,000 Home Renovation, 60 months, 3 lenders: Capital One 6.45% APR, SoFi 6.99%, Wells Fargo 7.25%) and a business-expansion intent (BE-1042, ₹250,000 Equipment Purchase, draft state), plus scheme entries (CGTMSE, etc.) and a user profile (Alex Vance, MSME, manufacturing, 4 years, credit score 720–749).</li>
+      <li><strong>OBSERVED (flow):</strong> The source implements a 3-step new-intent form, an auction screen with countdown timer and bid list with compare checkboxes, and a comparison screen with normalized cost rows and accept-offer action.</li>
+    </ul>
+  </section>
+
+  <section class="work-section">
+    <h2>Evidence Limits</h2>
+    <ul>
+      <li><strong>Not a deployed product.</strong> LoDo is a prototype Android app. It is not a deployed lending marketplace. No real lenders, no real borrowers, no real loan approvals, no real credit disbursements.</li>
+      <li><strong>Illustrative data.</strong> All lender bids, intents, user profiles, and scheme entries in the source are illustrative seed data. They are not real lending offers or real borrower data.</li>
+      <li><strong>No measured KPIs.</strong> The KPI model defines potential metrics (consent completion, verification completion, time to first offer, comparison engagement, comprehension, auction completion, drop-off) but none are measured on this prototype.</li>
+      <li><strong>Consent/verification is a design direction, not a validated workflow.</strong> The source does not contain an explicit borrower-consent step or a lender/bureau verification gate in the lending sense. App-level biometric authentication exists, but it is not a consent/verification workflow for lending. The consent + verification framing in the portfolio is a product-design intent, not an implemented and validated feature.</li>
+      <li><strong>No $300B validated claim.</strong> The $300B figure is market/context information, not a validated addressable-market measurement for this prototype, and not a LoDo outcome.</li>
+      <li><strong>No lender participation.</strong> The "lenders" in the prototype are illustrative names with illustrative bids. There is no real lender network.</li>
+      <li><strong>No borrower testing.</strong> No usability testing, no borrower comprehension testing, no A/B testing.</li>
+      <li><strong>Platform scope.</strong> The source is an Android/Kotlin prototype. The portfolio live experience is a web-side demonstration of the same flow, not the Android app itself.</li>
+    </ul>
+  </section>
+
+  <section class="work-section">
+    <h2>What I Would Validate Next</h2>
+    <ol>
+      <li><strong>Borrower comprehension.</strong> Test whether MSME borrowers can correctly identify the best-total-cost offer from a normalized comparison view, and where they get confused (APR vs total interest vs total repayment).</li>
+      <li><strong>Consent and verification flow.</strong> Design and test an explicit borrower-consent step and a lender/bureau verification gate — what information is collected, what is verified, what the borrower sees, and where drop-off happens between verification and first offer.</li>
+      <li><strong>Time to first offer.</strong> Measure actual time from intent creation to first bid in a pilot with real or simulated lenders, and compare against the auction-window design target.</li>
+      <li><strong>Lender participation.</strong> Test whether lenders will submit competitive bids in a real or simulated auction, and what intent information they need to bid confidently.</li>
+      <li><strong>Scheme-to-offer linkage.</strong> Validate whether scheme visibility (for example CGTMSE) actually changes borrower decisions or lender terms in a real setting.</li>
+      <li><strong>Drop-off points.</strong> Instrument the flow to find where borrowers drop off — intent creation, verification, auction browsing, comparison, or decision — and prioritize the biggest leak.</li>
+    </ol>
+  </section>
+
+  <div class="work-cta-row">
+    <a href="/work/lodo/live/" class="btn btn--ghost">Live Experience</a>
+    <a href="/work/" class="btn btn-secondary">Back to Proof of Work</a>
+  </div>
+</div>
+
+{% endblock %}

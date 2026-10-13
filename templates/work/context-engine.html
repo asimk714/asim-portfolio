@@ -1,0 +1,274 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     CONTEXT ENGINE PROTOTYPE — CASE STUDY
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to Proof of Work
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Context Engine</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Concept prototype</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in">
+      <div class="inline-flex items-center gap-2 mb-3" style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--observed" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-observed-bg); color: var(--evidence-observed); border: 1px solid var(--evidence-observed-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-observed); flex-shrink: 0;"></span>
+          Working concept prototype
+        </span>
+        <span class="evidence-label evidence-label--not-evidenced" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); border: 1px solid var(--evidence-not-evidenced-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-not-evidenced); flex-shrink: 0; opacity: 0.5;"></span>
+          Unvalidated concept
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Context Engine Prototype
+      </h1>
+      <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
+        A concept prototype for a context engine in a Google Workspace-like environment — surfacing
+        relevant workspace context (recent files, collaborators, calendar signals, project metadata) to
+        reduce the cognitive overhead of switching between tasks. A product concept, not a validated product.
+      </p>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 — CONTEXT
+     ============================================================ -->
+<article class="case-study-section" id="context">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Context</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Knowledge workers in tool suites like Google Workspace spend a meaningful portion of their day
+        switching between documents, spreadsheets, calendar events, and email. Each switch carries a small
+        cognitive cost: re-orienting to what the document is, who else is involved, what stage it's in, and
+        what the user was doing with it last. The Context Engine concept explores whether surfacing that
+        context automatically — rather than requiring the user to reconstruct it — can reduce that overhead.
+      </p>
+      <p class="body-text">
+        The prototype was built as a self-contained interactive concept demonstration: a single HTML file with
+        embedded styling and scripting, showing a workspace UI where context signals are surfaced alongside
+        the documents and tasks the user is working on. It is a concept demonstration, not a backend-connected
+        application.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     02 — PROBLEM / MOTIVATION
+     ============================================================ -->
+<article class="case-study-section" id="problem">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Problem / Motivation</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The problem statement below is a product hypothesis. It has not been validated with users.
+        </p>
+      </div>
+      <p class="body-text">
+        When a user switches from one document to another, or from a document to a calendar event or email,
+        the relevant context is scattered across the suite: the document's own metadata, the user's recent
+        activity, who else is working on it, what project it belongs to, and what the user was doing with it
+        last. Reconstructing that context manually takes attention and time. The hypothesis is that a context
+        engine — a system that surfaces the right context at the right moment — can reduce the cognitive cost
+        of switching and help the user re-orient faster.
+      </p>
+      <p class="body-text">
+        This is a product hypothesis about a class of tooling, not a validated finding. There is no evidence
+        that this specific concept is needed, wanted, or effective. The prototype exists to make the concept
+        concrete enough to discuss and critique — not to prove that the concept works.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     03 — PRODUCT DECISION
+     ============================================================ -->
+<article class="case-study-section" id="decision">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Product Decision</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The decisions below are product choices about the concept. They are not validated with users.
+        </p>
+      </div>
+
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">Concept scope</div>
+        <p class="decision-card__text">
+          The Context Engine concept is scoped to a Google Workspace-like environment: documents, spreadsheets,
+          presentations, calendar, and email. The engine surfaces context signals — recent files, collaborators,
+          calendar context, project metadata — alongside the items the user is working on. The concept does not
+          attempt to replace any of those tools; it adds a context layer on top of them.
+        </p>
+      </div>
+
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">Concept approach</div>
+        <p class="decision-card__text">
+          Rather than building a backend or connecting to a real Workspace instance, the prototype is a
+          self-contained interactive concept demonstration. It shows what the context surfacing might look like:
+          a sidebar or panel with context signals, interactive controls to explore context, and editable regions
+          to simulate the documents and tasks being worked on. The prototype is a concept artifact — a way to
+          make an abstract idea concrete enough to discuss.
+        </p>
+      </div>
+
+      <div class="decision-card">
+        <div class="decision-card__label">What the concept does not claim</div>
+        <p class="decision-card__text">
+          The Context Engine concept does not claim to be a product, a validated solution, or anything that has
+          been tested with users. It is a concept prototype. It does not claim to reduce switching cost, improve
+          productivity, or solve any measured problem. It exists as a thinking tool — a way to make a product
+          hypothesis concrete.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     04 — CONCEPT DEMONSTRATION
+     ============================================================ -->
+<article class="case-study-section" id="demonstration">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Concept Demonstration</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The live experience below lets you interact with the concept prototype directly. It demonstrates:
+      </p>
+      <ul class="body-list">
+        <li>A workspace view with documents and context signals</li>
+        <li>Context surfacing alongside the items being worked on</li>
+        <li>Interactive controls to explore and manipulate context</li>
+        <li>Editable regions to simulate the content being worked on</li>
+      </ul>
+      <p class="body-text" style="margin-top: var(--space-3);">
+        The prototype is a concept demonstration. The data is illustrative. The interactions are simulated.
+        Nothing here is connected to a real workspace or real user data.
+      </p>
+      <div class="label-block label-block--caveat" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The concept has not been tested with users. There is no evidence that this specific approach is useful,
+          wanted, or effective. The prototype demonstrates the concept; it does not validate it.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     05 — EVIDENCE LIMITS
+     ============================================================ -->
+<article class="case-study-section" id="evidence-limits">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence Limits</h2>
+    <div class="case-study-body">
+      <div class="limits-block" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+        <p class="limits-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-3);">What this demonstrates</p>
+        <ul class="body-list" style="margin: 0;">
+          <li>A concrete concept prototype for context-aware workspace tooling</li>
+          <li>An interactive demonstration of what context surfacing could look like</li>
+          <li>A way to make an abstract product hypothesis concrete enough to discuss</li>
+          <li>Self-contained interactive HTML — no backend required to demonstrate the concept</li>
+        </ul>
+        <p class="limits-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); margin-top: var(--space-4); margin-bottom: var(--space-3);">What this does not claim</p>
+        <ul class="body-list" style="margin: 0;">
+          <li>That the concept solves a real, measured problem</li>
+          <li>User research or usability testing</li>
+          <li>Validated demand or adoption</li>
+          <li>That context surfacing improves productivity or reduces switching cost</li>
+          <li>That this specific design is the right one</li>
+          <li>Any production deployment or real workspace connection</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     06 — WHAT I WOULD VALIDATE NEXT
+     ============================================================ -->
+<article class="case-study-section" id="next">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What I Would Validate Next</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The validation steps below are proposed. None have been done for this concept.
+        </p>
+      </div>
+      <ol class="body-list">
+        <li><strong>Problem validation.</strong> Confirm with real knowledge workers that switching cost between
+        workspace items is a real, painful enough problem to warrant a dedicated concept.</li>
+        <li><strong>Concept testing.</strong> Show the concept prototype to potential users and observe whether
+        the surfaced context matches what they actually need at switch time.</li>
+        <li><strong>Context signal prioritization.</strong> Determine which context signals are most useful — recent
+        files, collaborators, calendar context, project metadata — and whether some signals are noise rather than
+        signal.</li>
+        <li><strong>Concept-to-product gap.</strong> Assess whether the concept is better as a lightweight sidebar
+        layer, a deeper integration, or something else — and whether the concept justifies further investment.</li>
+      </ol>
+      <div class="label-block label-block--caveat" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          None of the above has been done. The Context Engine is a concept prototype. It is a way to think about
+          a product idea — not a validated product.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     CTA ROW
+     ============================================================ -->
+<div class="container" style="margin-top: var(--space-10); display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+  <a href="/work/context-engine/live/" class="btn btn--ghost">
+    Live Experience
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  </a>
+  <a href="/work/" class="btn btn--ghost">
+    Back to Proof of Work
+  </a>
+</div>
+
+<div class="container" style="margin-top: var(--space-6); padding-bottom: var(--space-8); text-align: center;">
+  <p class="text-muted" style="font-size: var(--text-sm); max-width: 480px; margin-inline: auto;">
+    The Context Engine is a concept prototype. The idea is concrete. The validation is not.
+  </p>
+</div>
+
+{% endblock %}

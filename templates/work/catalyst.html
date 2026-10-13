@@ -1,0 +1,335 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     CATALYST — CASE STUDY
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to Proof of Work
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Catalyst</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Keyboard-first interaction design study</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in">
+      <div class="inline-flex items-center gap-2 mb-3" style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--observed" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-observed-bg); color: var(--evidence-observed); border: 1px solid var(--evidence-observed-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-observed); flex-shrink: 0;"></span>
+          Working prototype
+        </span>
+        <span class="evidence-label evidence-label--not-evidenced" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); border: 1px solid var(--evidence-not-evidenced-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-not-evidenced); flex-shrink: 0; opacity: 0.5;"></span>
+          No user research
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Catalyst
+      </h1>
+      <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
+        A keyboard-first interaction design study — a working product built as vanilla JS with localStorage,
+        demonstrating the interaction paradigm inspired by Linear. Not a clone. Three documented improvements
+        over the reference. No framework. No backend.
+      </p>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 — CONTEXT
+     ============================================================ -->
+<article class="case-study-section" id="context">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Context</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Catalyst is a keyboard-first interaction design study — a working product that explores what it feels like
+        to build an interface where the keyboard is the primary input, not the mouse. It was inspired by the
+        interaction paradigm of Linear, the issue tracking tool known for its keyboard-centric UX — but Catalyst
+        is not a clone. It is a demonstration of the paradigm, built from scratch in vanilla JavaScript with
+        localStorage persistence.
+      </p>
+      <p class="body-text">
+        The project was built as a single-page application with no framework, no build step, and no backend. Every
+        interaction is handled in the browser, and state persists in localStorage. The goal was to show that the
+        keyboard-first paradigm can be implemented cleanly without a large framework or complex infrastructure.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     02 — PROBLEM / MOTIVATION
+     ============================================================ -->
+<article class="case-study-section" id="problem">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Problem / Motivation</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The motivation below is a product decision. It is not validated with users.
+        </p>
+      </div>
+      <p class="body-text">
+        Many tools assume the mouse is the primary input and the keyboard is secondary. Catalyst explores the
+        opposite: what if the keyboard were primary, and the mouse were the accommodation? The hypothesis is that
+        a keyboard-first interface can feel fast and focused for certain kinds of work — navigating lists, moving
+        between items, performing actions — without requiring a mouse for every step.
+      </p>
+      <p class="body-text">
+        This is an interaction design study, not a market-validated product. There is no evidence that users prefer
+        keyboard-first interfaces for this kind of task, or that Catalyst's specific implementation is better than
+        alternatives. The value is in demonstrating the paradigm, not in proving demand.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     03 — PRODUCT DECISION
+     ============================================================ -->
+<article class="case-study-section" id="decision">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Product Decision</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The decisions below are product choices. They are not validated with users.
+        </p>
+      </div>
+      <p class="body-text">
+        Catalyst was built as a vanilla JS application with no framework, no build tool, and no backend. The
+        decision was deliberate: show that the keyboard-first paradigm is achievable without a large technology
+        stack. localStorage handles persistence. The entire application runs in a single HTML file with embedded
+        JavaScript and CSS.
+      </p>
+      <div class="decision-card" style="margin-top: var(--space-4);">
+        <div class="decision-card__label">Stack decision</div>
+        <p class="decision-card__text">
+          Vanilla JS + localStorage. No framework. No build step. No backend. One HTML file. This keeps the
+          project simple, portable, and focused on the interaction design rather than the infrastructure.
+        </p>
+      </div>
+      <div class="decision-card" style="margin-top: var(--space-4);">
+        <div class="decision-card__label">Not a clone</div>
+        <p class="decision-card__text">
+          Catalyst was inspired by Linear's keyboard-centric interaction paradigm, but it is not a Linear clone.
+          It demonstrates the paradigm — keyboard navigation, keyboard actions, keyboard-first modal flow — in a
+          simplified issue-tracking interface. The visual design, the feature set, and the interaction details are
+          Catalyst's own.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     04 — HOW IT WORKS
+     ============================================================ -->
+<article class="case-study-section" id="how-it-works">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">How It Works</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Catalyst presents a list of issues (or tasks) that can be navigated and acted on entirely from the
+        keyboard. The core interaction loop: navigate the list with j/k, open an item with Enter, close modals
+        with Escape, search with /. State persists in localStorage, so the list and any changes survive a page
+        reload.
+      </p>
+      <div class="keyboard-shortcuts" style="margin-top: var(--space-5); display: grid; grid-template-columns: 1fr; gap: var(--space-3);">
+        <table class="shortcuts-table" style="width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Key</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">j</td>
+              <td style="padding: var(--space-2) var(--space-3);">Move down the list</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">k</td>
+              <td style="padding: var(--space-2) var(--space-3);">Move up the list</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">Enter</td>
+              <td style="padding: var(--space-2) var(--space-3);">Open the selected item</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">Escape</td>
+              <td style="padding: var(--space-2) var(--space-3);">Close the current modal / cancel</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">/</td>
+              <td style="padding: var(--space-2) var(--space-3);">Focus the search field</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="body-text" style="margin-top: var(--space-4);">
+        The interface is organized around a focused list view with a modal overlay for detail. When an item is
+        selected and opened, a modal appears with the item's details. The modal can be closed with Escape or by
+        clicking outside it. Search filters the list in real time.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     05 — THREE IMPROVEMENTS
+     ============================================================ -->
+<article class="case-study-section" id="improvements">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Three Documented Improvements</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The three improvements below are product decisions. They are documented as improvements over the reference,
+          but they have not been validated with users or measured against a baseline.
+        </p>
+      </div>
+      <p class="body-text">
+        Catalyst documents three improvements over the reference interaction paradigm. These are the product's
+        own contributions — decisions about how the keyboard-first experience should work. They are not
+        comparative claims backed by user testing.
+      </p>
+      <div class="improvement-card" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-3);">
+        <p class="improvement-card__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-2);">Improvement 1 — Progressive Onboarding</p>
+        <p class="improvement-card__text" style="font-size: var(--text-sm); color: var(--text-secondary); margin: 0;">
+          Linear's keyboard-centric approach has a steep learning curve — new users see a powerful system but don't know where to start. Catalyst addresses this with progressive onboarding: the first-run experience starts with essential features visible and reveals keyboard shortcuts and advanced features as the user engages. A sample project is pre-populated so the user can experience the paradigm immediately, with a clear option to clear it and start fresh.
+        </p>
+      </div>
+      <div class="improvement-card" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-3);">
+        <p class="improvement-card__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-2);">Improvement 2 — Visual Progress Dashboard</p>
+        <p class="improvement-card__text" style="font-size: var(--text-sm); color: var(--text-secondary); margin: 0;">
+          Linear shows progress through issue counts and cycle views, but creative teams often benefit from more visual progress indication — especially for non-technical stakeholders. Catalyst adds a dashboard with visual progress bars per project, showing completion percentage and task distribution across statuses. The summary view is compact but information-rich, giving a quick health assessment without requiring the user to count or calculate.
+        </p>
+      </div>
+      <div class="improvement-card" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-3);">
+        <p class="improvement-card__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-2);">Improvement 3 — Contextual Discoverability</p>
+        <p class="improvement-card__text" style="font-size: var(--text-sm); color: var(--text-secondary); margin: 0;">
+          Linear's command palette (Cmd+K) is powerful but requires memorization — not all actions are equally discoverable. Catalyst addresses this with a context-sensitive action bar showing relevant actions for the current context (new task, change status, filter). Combined with keyboard shortcuts that ARE shown in the UI (not hidden), and command palette results that display shortcuts for discoverability. The paradigm is discoverable by scanning, not by memorizing.
+        </p>
+      </div>
+      <div class="label-block label-block--caveat" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          These improvements are documented claims, not validated results. There is no user research, no usability
+          testing, and no measured comparison against the reference. The improvements are the product's own design
+          decisions, stated plainly.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     06 — EVIDENCE LIMITS
+     ============================================================ -->
+<article class="case-study-section" id="evidence-limits">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence Limits</h2>
+    <div class="case-study-body">
+      <div class="limits-block" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+        <p class="limits-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-3);">What Catalyst demonstrates</p>
+        <ul class="body-list" style="margin: 0;">
+          <li>A working keyboard-first interaction paradigm implemented in vanilla JS</li>
+          <li>Keyboard navigation (j/k), modal flow (Enter/Escape), search (/)</li>
+          <li>localStorage persistence</li>
+          <li>A product built as a deliberate interaction design study</li>
+          <li>Three documented improvements over the reference — stated as product decisions</li>
+        </ul>
+        <p class="limits-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); margin-top: var(--space-4); margin-bottom: var(--space-3);">What Catalyst does not claim</p>
+        <ul class="body-list" style="margin: 0;">
+          <li>User research or usability testing</li>
+          <li>Validated demand</li>
+          <li>Measured improvement over the reference</li>
+          <li>Adoption or usage data</li>
+          <li>Production deployment</li>
+          <li>That keyboard-first is better — only that it is a viable paradigm worth exploring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     07 — WHAT I WOULD VALIDATE NEXT
+     ============================================================ -->
+<article class="case-study-section" id="next">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What I Would Validate Next</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The validation steps below are proposed. None have been done for Catalyst.
+        </p>
+      </div>
+      <ol class="body-list">
+        <li><strong>Usability comparison.</strong> Test whether keyboard-first navigation is faster or more
+        satisfying than mouse-driven navigation for the same task, with real users.</li>
+        <li><strong>Task completion.</strong> Measure whether users can complete core tasks (find an item, open it,
+        perform an action) without using the mouse.</li>
+        <li><strong>Preference.</strong> Ask users whether they prefer keyboard-first or mouse-driven interfaces
+        for this kind of work — and why.</li>
+        <li><strong>Comparison to reference.</strong> Compare Catalyst's interaction paradigm to the reference it
+        was inspired by, in a structured usability study.</li>
+      </ol>
+      <div class="label-block label-block--caveat" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          None of the above has been done. Catalyst is a working prototype and an interaction design study. It is
+          not a validated product.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     CTA ROW
+     ============================================================ -->
+<div class="container" style="margin-top: var(--space-10); display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+  <a href="/work/catalyst/live/" class="btn btn--ghost">
+    Live Experience
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  </a>
+  <a href="/work/" class="btn btn--ghost">
+    Back to Proof of Work
+  </a>
+</div>
+
+<div class="container" style="margin-top: var(--space-6); padding-bottom: var(--space-8); text-align: center;">
+  <p class="text-muted" style="font-size: var(--text-sm); max-width: 480px; margin-inline: auto;">
+    Catalyst is a working prototype. The keyboard-first paradigm is real. The user validation is not.
+  </p>
+</div>
+
+{% endblock %}

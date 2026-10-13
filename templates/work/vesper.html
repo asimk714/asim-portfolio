@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     VESPER — CASE STUDY
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to Proof of Work
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Vesper</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Local-first personal workspace</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in">
+      <div class="inline-flex items-center gap-2 mb-3" style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--verified" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-verified-bg); color: var(--evidence-verified); border: 1px solid var(--evidence-verified-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-verified); flex-shrink: 0;"></span>
+          Working prototype
+        </span>
+        <span class="evidence-label evidence-label--not-evidenced" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); border: 1px solid var(--evidence-not-evidenced-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-not-evidenced); flex-shrink: 0; opacity: 0.5;"></span>
+          Local-only · no users
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Vesper
+      </h1>
+      <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
+        A local-first personal workspace. Flask + SQLite. Sidebar of pages, inline block editing
+        (contenteditable), command palette (Ctrl/Cmd+K), content search, autosave with visual feedback,
+        favorites, responsive layout. Local-only, no authentication.
+      </p>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 — CONTEXT
+     ============================================================ -->
+<article class="case-study-section" id="context">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Context</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Vesper is a personal workspace application — a place to keep notes, drafts, writing, and references
+        in a structured way. It was built as a Flask + SQLite web application that runs locally, with no
+        authentication and no multi-user features. The goal was to create a focused editing environment with
+        good keyboard support and fast feedback.
+      </p>
+      <p class="body-text">
+        The product is local-first by design: everything lives in a SQLite database on the local machine, and
+        there is no network dependency. The interface is built around a sidebar of pages and an inline block
+        editor where each block is a contenteditable element.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     02 — PROBLEM / MOTIVATION
+     ============================================================ -->
+<article class="case-study-section" id="problem">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Problem / Motivation</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The motivation below is a product decision. It is not validated with users.
+        </p>
+      </div>
+      <p class="body-text">
+        Many note-taking tools are either too simple (a single text file or a bare list) or too complex
+        (enterprise wikis with permissions, sync, and collaboration features the individual user does not need).
+        Vesper sits in the middle: structured enough to organize work into pages and blocks, simple enough to
+        stay focused on editing.
+      </p>
+      <p class="body-text">
+        The hypothesis is that a local-first tool with contenteditable blocks, a command palette, and autosave
+        can feel fast and focused for personal writing and note-taking — without the overhead of sync, accounts,
+        or collaboration features. This is a product hypothesis, not a validated finding.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     03 — PRODUCT DECISION
+     ============================================================ -->
+<article class="case-study-section" id="decision">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Product Decision</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The decisions below are product choices. They are not validated with users.
+        </p>
+      </div>
+
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">Stack decision</div>
+        <p class="decision-card__text">
+          Flask + SQLite + Jinja2. Server-rendered templates with a lightweight AJAX layer for block CRUD,
+          autosave, favorites, and reordering. No frontend framework. No build step. This keeps the application
+          simple and portable — a single database file, a single Python process.
+        </p>
+      </div>
+
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">Local-first, no authentication</div>
+        <p class="decision-card__text">
+          Vesper is designed for a single user on a local machine. There is no authentication, no multi-user
+          support, and no network dependency. The trade-off: no sync across devices, no sharing, no collaboration.
+          The benefit: zero backend complexity, instant loading, and a single SQLite file as the entire data store.
+        </p>
+      </div>
+
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">Contenteditable blocks</div>
+        <p class="decision-card__text">
+          Each page is made of blocks — heading1, heading2, heading3, paragraph, bullet, check, code, divider.
+          Blocks are contenteditable, so the user edits inline rather than in a separate form. New blocks can be
+          added by clicking the + button that appears on hover, or by pressing Enter in an existing block. This is
+          the core editing model.
+        </p>
+      </div>
+
+      <div class="decision-card">
+        <div class="decision-card__label">Command palette</div>
+        <p class="decision-card__text">
+          Ctrl/Cmd+K opens a command palette that searches pages by title and content. The palette is a server-side
+          search API backed by SQLite FTS-like substring matching. This gives keyboard-driven page navigation without
+          requiring the mouse.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     04 — HOW IT WORKS
+     ============================================================ -->
+<article class="case-study-section" id="how-it-works">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">How It Works</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Vesper's interface has two main areas: a sidebar listing pages, and an editor area showing the selected
+        page's blocks. The sidebar shows page titles, block counts, last-updated dates, and a star for favorites.
+        Pages can be reordered by dragging, favorited with a click, and deleted with a confirmation.
+      </p>
+      <p class="body-text">
+        The editor area shows blocks stacked vertically. Each block is a contenteditable div with a block-type
+        label. Hovering over a block reveals a + button to add a new block below. Pressing Enter in a block creates
+        a new paragraph block below. Autosave sends block content to the server on a debounced interval, with visual
+        "Saving…" and "Saved" feedback.
+      </p>
+      <div class="keyboard-shortcuts" style="margin-top: var(--space-5); display: grid; grid-template-columns: 1fr; gap: var(--space-3);">
+        <table class="shortcuts-table" style="width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">Key / Action</th>
+              <th style="text-align: left; padding: var(--space-2) var(--space-3);">What it does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">Ctrl/Cmd + K</td>
+              <td style="padding: var(--space-2) var(--space-3);">Open command palette — search pages by title or content</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">Enter in a block</td>
+              <td style="padding: var(--space-2) var(--space-3);">Create a new paragraph block below the current one</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">Hover + click +</td>
+              <td style="padding: var(--space-2) var(--space-3);">Add a new block below the hovered block</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">Star in sidebar</td>
+              <td style="padding: var(--space-2) var(--space-3);">Toggle favorite — favorites appear at top of sidebar</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-weight: 600;">Drag in sidebar</td>
+              <td style="padding: var(--space-2) var(--space-3);">Reorder pages</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     05 — EVIDENCE LIMITS
+     ============================================================ -->
+<article class="case-study-section" id="evidence-limits">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence Limits</h2>
+    <div class="case-study-body">
+      <div class="limits-block" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+        <p class="limits-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-3);">What Vesper demonstrates</p>
+        <ul class="body-list" style="margin: 0;">
+          <li>A working Flask + SQLite web application with full CRUD</li>
+          <li>Contenteditable block editing with autosave</li>
+          <li>Command palette with server-side page search</li>
+          <li>Sidebar with favorites, reordering, delete</li>
+          <li>Responsive layout with sidebar collapse on narrow screens</li>
+          <li>Visual autosave feedback ("Saving…" / "Saved")</li>
+        </ul>
+        <p class="limits-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); margin-top: var(--space-4); margin-bottom: var(--space-3);">What Vesper does not claim</p>
+        <ul class="body-list" style="margin: 0;">
+          <li>User research or usability testing</li>
+          <li>Validated demand</li>
+          <li>Adoption or usage data</li>
+          <li>Multi-user or collaboration features</li>
+          <li>Sync across devices</li>
+          <li>Production deployment with real users</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     06 — WHAT I WOULD VALIDATE NEXT
+     ============================================================ -->
+<article class="case-study-section" id="next">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What I Would Validate Next</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The validation steps below are proposed. None have been done for Vesper.
+        </p>
+      </div>
+      <ol class="body-list">
+        <li><strong>Editing efficiency.</strong> Measure whether contenteditable block editing is faster or more
+        fluid than a traditional form-based editor for the same writing tasks.</li>
+        <li><strong>Command palette usefulness.</strong> Test whether keyboard-driven page search via Ctrl+K is
+        actually used and preferred over sidebar navigation.</li>
+        <li><strong>Autosave trust.</strong> Verify that the autosave feedback is clear enough that the user trusts
+        their content is saved without manual action.</li>
+        <li><strong>Block type discoverability.</strong> Check whether users understand the available block types
+        and use them appropriately, or whether the palette of types is confusing.</li>
+      </ol>
+      <div class="label-block label-block--caveat" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          None of the above has been done. Vesper is a working prototype. It is not a validated product.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     CTA ROW
+     ============================================================ -->
+<div class="container" style="margin-top: var(--space-10); display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+  <a href="/work/vesper/live/" class="btn btn--ghost">
+    Live Experience
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  </a>
+  <a href="/work/" class="btn btn--ghost">
+    Back to Proof of Work
+  </a>
+</div>
+
+<div class="container" style="margin-top: var(--space-6); padding-bottom: var(--space-8); text-align: center;">
+  <p class="text-muted" style="font-size: var(--text-sm); max-width: 480px; margin-inline: auto;">
+    Vesper is a working prototype. The local-first editing model is real. The user validation is not.
+  </p>
+</div>
+
+{% endblock %}

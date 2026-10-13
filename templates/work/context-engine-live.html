@@ -1,0 +1,330 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     CONTEXT ENGINE — LIVE EXPERIENCE
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/context-engine/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to case study
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Context Engine</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Live Experience</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in">
+      <div class="inline-flex items-center gap-2 mb-3" style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--observed" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-observed-bg); color: var(--evidence-observed); border: 1px solid var(--evidence-observed-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-observed); flex-shrink: 0;"></span>
+          Working concept prototype
+        </span>
+        <span class="evidence-label evidence-label--not-evidenced" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); border: 1px solid var(--evidence-not-evidenced-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-not-evidenced); flex-shrink: 0; opacity: 0.5;"></span>
+          Illustrative demo
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Try the context engine concept
+      </h1>
+    </div>
+
+    <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
+      This interactive demonstrates the Context Engine concept: a workspace view where relevant context
+      signals — recent files, collaborators, calendar context, project metadata — surface alongside the
+      documents and tasks you're working on. The demo is fully interactive but runs in-memory in your browser.
+      No real workspace, no real user data, no backend.
+    </p>
+
+    <div class="inline-flex items-center gap-2" style="display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-4); font-size: var(--text-xs); color: var(--text-muted);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; opacity: 0.6;">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      Prototype functionality is demonstrated here. No real workspace or user data is involved.
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     LIVE EXPERIENCE: CONTEXT ENGINE WORKSPACE
+     ============================================================ -->
+<section class="ce-live-section" style="padding: var(--space-12) 0 var(--space-16);">
+  <div class="container">
+    <div class="ce-live-layout" style="display: grid; grid-template-columns: 1fr; gap: var(--space-6);">
+
+      <!-- Main workspace -->
+      <div class="ce-workspace" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column;">
+
+        <!-- Workspace toolbar -->
+        <div class="ce-toolbar" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border-subtle); flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+            <span style="font-weight: 600; color: var(--text-primary); font-size: var(--text-sm);">Workspace</span>
+          </div>
+          <div class="ce-context-indicator" style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); color: var(--text-muted); padding: var(--space-1) var(--space-2); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+            <span style="display: inline-flex; align-items: center; gap: 4px;">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-success); flex-shrink: 0;"></span>
+              Context active
+            </span>
+            <span style="color: var(--text-faint);">·</span>
+            <span id="ce-context-signal-count" style="font-family: var(--font-mono);">4 signals</span>
+          </div>
+          <div style="margin-left: auto; font-size: var(--text-xs); color: var(--text-muted);">
+            <span class="ce-kbd-hint" style="display: inline-flex; align-items: center; gap: 4px;">
+              <kbd class="ce-kbd" style="display: inline-block; padding: 1px 5px; font-size: var(--text-xs); font-family: var(--font-mono); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: 3px; color: var(--text-secondary);">click</kbd>
+              items to inspect
+            </span>
+          </div>
+        </div>
+
+        <!-- Main content area -->
+        <div class="ce-content" style="display: grid; grid-template-columns: 1fr 280px; flex: 1; min-height: 400px;">
+
+          <!-- Document list -->
+          <div class="ce-documents" style="padding: var(--space-4); border-right: 1px solid var(--border-subtle); overflow-y: auto; max-height: 400px;">
+            <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-3);">Documents</p>
+            <div id="ce-document-list" style="display: flex; flex-direction: column; gap: var(--space-2);">
+              <!-- populated by JS -->
+            </div>
+          </div>
+
+          <!-- Context panel -->
+          <div class="ce-context-panel" style="background: var(--bg-muted); padding: var(--space-4); overflow-y: auto; max-height: 400px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3);">
+              <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0;">Context</p>
+              <span style="font-size: var(--text-xs); color: var(--text-muted);">selected: <span id="ce-context-selected-name" style="color: var(--text-primary);">none</span></span>
+            </div>
+            <div id="ce-context-signals" style="display: flex; flex-direction: column; gap: var(--space-2);">
+              <!-- populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Editor area (simulated document content) -->
+        <div class="ce-editor" style="border-top: 1px solid var(--border-subtle); padding: var(--space-4);">
+          <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); font-size: var(--text-xs); color: var(--text-muted);">
+            <span style="display: inline-flex; align-items: center; gap: 4px;">
+              <kbd class="ce-kbd" style="display: inline-block; padding: 1px 5px; font-size: var(--text-xs); font-family: var(--font-mono); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: 3px; color: var(--text-secondary);">click</kbd>
+              a document to edit
+            </span>
+          </div>
+          <div id="ce-editor-content" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4); min-height: 120px;">
+            <p style="color: var(--text-muted); font-size: var(--text-sm); margin: 0;">Select a document from the list to edit its content here.</p>
+            <textarea id="ce-editor-textarea" style="width: 100%; min-height: 100px; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-family: var(--font-sans); resize: vertical; display: none;" placeholder="Edit document content..."></textarea>
+            <div id="ce-editor-display" style="font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-relaxed); white-space: pre-wrap;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept explanation -->
+      <div class="ce-concept-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5);">
+        <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-3);">Concept explanation</p>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-secondary);">
+          <div style="padding: var(--space-3); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+            <p style="font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent); margin: 0 0 var(--space-1);">Context signals</p>
+            <p style="margin: 0;">The context panel shows signals relevant to the selected document: collaborators, recent activity, calendar context, and project metadata. These are the kinds of signals a context engine would surface.</p>
+          </div>
+          <div style="padding: var(--space-3); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+            <p style="font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent); margin: 0 0 var(--space-1);">Interaction</p>
+            <p style="margin: 0;">Click a document to select it and see its context. Click the context signals to inspect them. Edit the document content in the textarea below. The concept demonstrates what context surfacing could look like.</p>
+          </div>
+          <div style="padding: var(--space-3); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+            <p style="font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent); margin: 0 0 var(--space-1);">What this is not</p>
+            <p style="margin: 0;">This is not a real workspace. There is no backend, no real user data, no actual context engine. This is a concept demonstration — a way to make an abstract idea concrete.</p>
+          </div>
+        </div>
+        <p class="text-muted" style="font-size: var(--text-xs); margin-top: var(--space-3);">
+          Concept prototype. No user research. No validated demand.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA row -->
+    <div style="margin-top: var(--space-8); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+      <a href="/work/context-engine/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;">
+          <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Context Engine case study
+      </a>
+      <a href="/work/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESPONSIVE
+     ============================================================ -->
+<style>
+  .ce-live-section {
+    padding: var(--space-12) 0 var(--space-16);
+  }
+
+  .ce-live-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .ce-workspace {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ce-toolbar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .ce-context-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    padding: var(--space-1) var(--space-2);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+  }
+
+  .ce-content {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    flex: 1;
+    min-height: 400px;
+  }
+
+  .ce-documents {
+    padding: var(--space-4);
+    border-right: 1px solid var(--border-subtle);
+    overflow-y: auto;
+    max-height: 400px;
+  }
+
+  .ce-document-item {
+    padding: var(--space-3);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .ce-document-item:hover {
+    border-color: var(--border-default);
+    background: var(--bg-muted);
+  }
+
+  .ce-document-item--selected {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .ce-document-item__title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .ce-document-item__meta {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .ce-context-panel {
+    background: var(--bg-muted);
+    padding: var(--space-4);
+    overflow-y: auto;
+    max-height: 400px;
+  }
+
+  .ce-context-signal {
+    padding: var(--space-2);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: var(--text-xs);
+  }
+
+  .ce-context-signal:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .ce-context-signal__label {
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-1);
+    font-size: var(--text-xs);
+  }
+
+  .ce-context-signal__value {
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+    line-height: var(--leading-relaxed);
+  }
+
+  .ce-editor {
+    border-top: 1px solid var(--border-subtle);
+    padding: var(--space-4);
+  }
+
+  .ce-kbd {
+    display: inline-block;
+    padding: 1px 5px;
+    font-size: var(--text-xs);
+    font-family: var(--font-mono);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: 3px;
+    color: var(--text-secondary);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .ce-content {
+      grid-template-columns: 1fr;
+    }
+
+    .ce-documents {
+      border-right: none;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+  }
+</style>
+
+<script src="/static/js/context-engine-live.js" defer></script>
+
+{% endblock %}

@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="work-live">
+  <nav class="work-nav">
+    <a href="/work/irctc/">Back to IRCTC case study</a>
+    <a href="/work/">Back to Proof of Work</a>
+  </nav>
+
+  <div class="work-live-header">
+    <span class="work-live-badge work-live-badge-concept">Concept artifact + interactive prototype</span>
+    <span class="work-live-badge work-live-badge-illustrative">Illustrative data</span>
+    <span class="work-live-badge work-live-badge-static">Static portfolio presentation</span>
+    <h1>IRCTC — Peak-Hour Checkout UX Redesign</h1>
+    <p>
+      Interactive demonstration of the checkout teardown concept and the proposed redesign behaviors.
+      <span class="inline-note">
+        <strong>Source prototype:</strong>
+        <a href="/work/irctc/">/work/irctc/</a>
+        &nbsp; — the full 1,451-line interactive prototype lives in the case study. This page is a portfolio presentation of the same behaviors.
+      </span>
+    </p>
+    <p class="inline-note">
+      <strong>Evidence status:</strong>
+      The metric figures shown below (980ms / 77.4% for current mode; 420ms / 91.2% for redesign mode) are concept figures from the source prototype. They are NOT measured IRCTC outcomes. This is a concept prototype, not a deployed feature. No real tickets are booked.
+    </p>
+  </div>
+
+  <div class="live-workspace">
+    <!-- LEFT PANEL: PM explanation + mode toggle + metrics -->
+    <div class="pm-panel">
+      <div class="glass-card">
+        <h2 class="card-title">PM Assignment: Concurrency vs. UX</h2>
+        <p>
+          IRCTC (India's railway reservation platform) faces extreme concurrency during Tatkal booking windows (10:00 AM and 11:00 AM). The prototype frames this as a concurrency-vs-UX problem: database load, layout shifts from async ad banners, and session drop-off degrade the checkout experience at the worst possible moment.
+        </p>
+
+        <div class="mode-selector">
+          <button class="mode-tab" id="irctc-btn-toggle-current">🔴 Legacy Cluttered UI</button>
+          <button class="mode-tab" id="irctc-btn-toggle-redesign">🟢 Redesigned Minimalist UI</button>
+        </div>
+
+        <h3 class="section-heading">Key Funnel Diagnostics Comparison</h3>
+        <div class="metric-comparison">
+          <div class="metric-card">
+            <div class="metric-header">Peak Checkout Latency</div>
+            <div class="metric-row">
+              <span class="metric-value metric-red" id="irctc-metric-latency-val">980ms</span>
+              <span class="metric-change metric-negative" id="irctc-metric-latency-change">Slow</span>
+            </div>
+            <p class="metric-desc" id="irctc-metric-latency-desc">Heavy script files (ad trackers, analytics bundles) load during the transaction, slowing checkout responses.</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-header">Tatkal Success Rate</div>
+            <div class="metric-row">
+              <span class="metric-value metric-red" id="irctc-metric-success-val">77.4%</span>
+              <span class="metric-change metric-negative" id="irctc-metric-success-change">Leaky</span>
+            </div>
+            <p class="metric-desc" id="irctc-metric-success-desc">Frequent time-out errors, layout shifts leading to invalid taps, and session expiry cause user drop-off.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card">
+        <span class="badge-pill blue">P0 / P1 Prioritization</span>
+        <h2 class="card-title" style="font-size: 1.4rem;">Core Strategic Initiatives</h2>
+        <div class="feature-list" id="irctc-feature-list"></div>
+      </div>
+
+      <div class="glass-card booking-status-card">
+        <div class="booking-status-label">Booking flow status</div>
+        <p id="irctc-booking-status" class="booking-status-text">
+          Toggle the mode above to compare the two experiences.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: smartphone mockup -->
+    <div class="device-panel">
+      <div class="smartphone">
+        <div class="notch"></div>
+
+        <div class="screen">
+          <div class="app-header">
+            <h3>IRCTC</h3>
+            <div class="app-header-icons">
+              <span>🔔</span>
+              <span>👤</span>
+            </div>
+          </div>
+
+          <!-- Step indicator (redesign mode only) -->
+          <div class="step-indicator" id="irctc-step-indicator" style="display:none;">
+            <span> passenger info</span>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="irctc-progress-fill" style="width: 0%;"></div>
+            </div>
+            <span>payment</span>
+          </div>
+
+          <div class="screen-content">
+            <!-- Current mode: cluttered with ad banners -->
+            <div id="irctc-screen-current">
+              <p class="screen-intro">
+                <strong>Tatkal Booking — General Class</strong><br/>
+                <span>Train: 12345 Rajdhani Express</span><br/>
+                <span>Date: 15 Nov 2024</span><br/>
+                <span>Quota: Tatkal</span><br/>
+                <span>Seats available: 2</span>
+              </p>
+              <p class="screen-sub">
+                Passenger details<br/>
+                <span class="hint">Enter passenger info manually</span>
+              </p>
+              <div class="input-line">
+                <span class="input-label">Name</span>
+                <input type="text" placeholder="Enter name" class="screen-input" disabled/>
+              </div>
+              <div class="input-line">
+                <span class="input-label">Age</span>
+                <input type="text" placeholder="Enter age" class="screen-input" disabled/>
+              </div>
+              <div class="input-line">
+                <span class="input-label">Berth preference</span>
+                <select class="screen-input" disabled>
+                  <option>Any</option>
+                  <option>Lower</option>
+                  <option>Upper</option>
+                  <option>Side</option>
+                </select>
+              </div>
+
+              <!-- Ad banner 1 -->
+              <div class="ad-banner" id="irctc-ad-1">
+                <div class="ad-content">
+                  <div class="ad-text">Limited Offer!</div>
+                  <div class="ad-subtext">Book now and get 10% off on food</div>
+                </div>
+              </div>
+              <!-- Ad banner 2 -->
+              <div class="ad-banner" id="irctc-ad-2">
+                <div class="ad-content">
+                  <div class="ad-text">Tatkal Crash Course</div>
+                  <div class="ad-subtext">Master the art of quick booking</div>
+                </div>
+              </div>
+
+              <button class="screen-btn primary" disabled>Continue to Payment</button>
+            </div>
+
+            <!-- Redesign mode: clean UI -->
+            <div id="irctc-screen-redesign" style="display:none;">
+              <p class="screen-intro">
+                <strong>Tatkal Booking — General Class</strong><br/>
+                <span>Train: 12345 Rajdhani Express</span><br/>
+                <span>Date: 15 Nov 2024</span><br/>
+                <span>Quota: Tatkal</span><br/>
+                <span>Seats available: 2</span>
+              </p>
+
+              <div class="autofill-area">
+                <button class="screen-btn secondary" id="irctc-btn-autofill">Quick Autofill</button>
+                <span class="hint">Auto-populate frequent traveler profile</span>
+              </div>
+
+              <div class="input-line autofill-line" id="irctc-passenger-form">
+                <span class="input-label">Name</span>
+                <input type="text" placeholder="—" class="screen-input autofill-input" disabled/>
+              </div>
+              <div class="input-line autofill-line">
+                <span class="input-label">Age</span>
+                <input type="text" placeholder="—" class="screen-input autofill-input" disabled/>
+              </div>
+              <div class="input-line autofill-line">
+                <span class="input-label">Berth preference</span>
+                <select class="screen-input autofill-input" disabled>
+                  <option>Any</option>
+                </select>
+              </div>
+
+              <button class="screen-btn primary" id="irctc-btn-checkout" disabled>Checkout</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Virtual waiting queue overlay (redesign mode only) -->
+        <div class="queue-overlay" id="irctc-waiting-queue">
+          <div class="queue-card">
+            <div class="queue-icon">⏳</div>
+            <h3>You're in the queue</h3>
+            <p>Your booking request is being processed. Please hold on.</p>
+            <div class="queue-position">
+              <span class="queue-label">Your position</span>
+              <span class="queue-value" id="irctc-queue-position">—</span>
+            </div>
+            <div class="queue-progress">
+              <div class="queue-bar-bg">
+                <div class="queue-bar-fill" id="irctc-queue-bar" style="width: 0%;"></div>
+              </div>
+              <span class="queue-percent" id="irctc-queue-percent">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success screen overlay (redesign mode only) -->
+        <div class="success-overlay" id="irctc-success-screen">
+          <div class="success-card">
+            <div class="success-icon">✅</div>
+            <h3>Booking Confirmed</h3>
+            <p>PNR: <strong>8475930261</strong></p>
+            <p>Date: 15 Nov 2024 &bull; Train: 12345 Rajdhani Express</p>
+            <p>Class: General &bull; Seat: 12A</p>
+
+            <div class="success-upsell">
+              <h5>Would you like to add travel insurance?</h5>
+              <p>Complimentary coverage up to ₹50,000</p>
+              <button class="success-upsell-btn">Add (₹120)</button>
+              <button class="success-upsell-btn secondary">Skip</button>
+            </div>
+
+            <button class="reset-btn" id="irctc-btn-reset">Reset Demo</button>
+          </div>
+        </div>
+
+        <!-- Shift alert toast (current mode only) -->
+        <div class="toast-shift" id="irctc-shift-toast">
+          ⚠️ Layout shift detected — screen displaced
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="live-footer-note">
+    This page is a static portfolio presentation of the IRCTC checkout teardown concept prototype.
+    It is NOT a deployed IRCTC feature. The metric figures (980ms / 77.4% / 420ms / 91.2%) are concept figures from the source prototype, not measured IRCTC outcomes. No real tickets are booked, and no real booking transaction occurs.
+  </p>
+</div>
+
+<script src="/static/js/irctc-live.js"></script>
+
+{% endblock %}

@@ -301,6 +301,29 @@ EVIDENCE_CARDS = [
         "project": "Unrot",
         "case_study_url": "/work/unrot/",
     },
+    {
+        "title": "Cross-Functional Decision — Should the return-intent nudge ship before JTBD is validated?",
+        "type": "Decision exercise · Portfolio Exercise",
+        "body": """
+        <p>A simulated cross-functional decision set in the Unrot context: whether to prioritize the
+        return-intent nudge (H4) for an A/B test before completing JTBD validation with real users.
+        Maps how business, product, UX/design, data/analytics, engineering, and QA/ops would each
+        contribute, weighs Option A (ship the nudge now) against Option B (validate JTBD first), and
+        records the decision, trade-offs, acceptance criteria, proposed measurement model, and a
+        stakeholder-facing decision brief.</p>
+        <p style="margin-top: var(--space-2);">
+          <span class="evidence-label evidence-label--simulated">Simulated — portfolio exercise</span>
+          <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not evidenced — no real stakeholder decision</span>
+        </p>
+        """,
+        "category": "decision",
+        "css_class": "",
+        "link_url": "/work/unrot/cross-functional-decision/",
+        "link_label": "Read the decision artifact",
+        "link_external": False,
+        "project": "Unrot",
+        "case_study_url": "/work/unrot/",
+    },
 ]
 
 
@@ -323,9 +346,19 @@ def reviewflow_case():
     return render_template("work/reviewflow.html")
 
 
+@app.route("/work/reviewflow/live/")
+def reviewflow_live():
+    return render_template("work/reviewflow-live.html")
+
+
 @app.route("/work/unrot/")
 def unrot_case():
     return render_template("work/unrot.html")
+
+
+@app.route("/work/unrot/live/")
+def unrot_live():
+    return render_template("work/unrot-live.html")
 
 
 @app.route("/work/experiment-tracker/")
@@ -333,9 +366,84 @@ def experiment_tracker_case():
     return render_template("work/experiment-tracker.html")
 
 
+@app.route("/work/experiment-tracker/live/")
+def experiment_tracker_live():
+    return render_template("work/experiment-tracker-live.html")
+
+
 @app.route("/work/b1/")
 def b1_case():
     return render_template("work/b1.html")
+
+
+@app.route("/work/b1/live/")
+def b1_live():
+    return render_template("work/b1-live.html")
+
+
+@app.route("/work/catalyst/")
+def catalyst_case():
+    return render_template("work/catalyst.html")
+
+
+@app.route("/work/catalyst/live/")
+def catalyst_live():
+    return render_template("work/catalyst-live.html")
+
+
+@app.route("/work/vesper/")
+def vesper_case():
+    return render_template("work/vesper.html")
+
+
+@app.route("/work/vesper/live/")
+def vesper_live():
+    return render_template("work/vesper-live.html")
+
+
+@app.route("/work/context-engine/")
+def context_engine_case():
+    return render_template("work/context-engine.html")
+
+
+@app.route("/work/context-engine/live/")
+def context_engine_live():
+    return render_template("work/context-engine-live.html")
+
+
+@app.route("/work/windows-taskflow/")
+def windows_taskflow_case():
+    return render_template("work/windows-taskflow.html")
+
+
+@app.route("/work/windows-taskflow/live/")
+def windows_taskflow_live():
+    return render_template("work/windows-taskflow-live.html")
+
+
+@app.route("/work/irctc/")
+def irctc_case():
+    return render_template("work/irctc.html")
+
+
+@app.route("/work/irctc/live/")
+def irctc_live():
+    return render_template("work/irctc-live.html")
+
+
+@app.route("/work/lodo/")
+def lodo_case():
+    return render_template("work/lodo.html")
+
+
+@app.route("/work/lodo/live/")
+def lodo_live():
+    return render_template("work/lodo-live.html")
+
+
+@app.route("/work/unrot/cross-functional-decision/")
+def unrot_cross_functional_decision():
+    return render_template("work/unrot-cross-functional-decision.html")
 
 
 @app.route("/how-i-work/")

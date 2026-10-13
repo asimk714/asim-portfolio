@@ -1,0 +1,345 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     B1 — LIVE EXPERIENCE
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/b1/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to case study
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">B1</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Live Experience</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in">
+      <div class="inline-flex items-center gap-2 mb-3" style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--observed" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-observed-bg); color: var(--evidence-observed); border: 1px solid var(--evidence-observed-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-observed); flex-shrink: 0;"></span>
+          Strategy hypothesis
+        </span>
+        <span class="evidence-label evidence-label--not-evidenced" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); border: 1px solid var(--evidence-not-evidenced-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-not-evidenced); flex-shrink: 0; opacity: 0.5;"></span>
+          Illustrative flow only
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Walk through the transition workflow
+      </h1>
+    </div>
+
+    <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
+      B1 is a product strategy hypothesis for a bounded transition workflow. This interactive demonstrates the
+      proposed workflow sequence itself — not a working product. It shows the shape of the workflow: a pilot team
+      starts a transition, readiness and governance/security checks are surfaced, ownership is proposed, and the
+      outcome is either accept as production owner or send back with gaps.
+    </p>
+
+    <div class="inline-flex items-center gap-2" style="display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-4); font-size: var(--text-xs); color: var(--text-muted);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; opacity: 0.6;">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      Illustrative demonstration only. No real enterprises, pilots, or outcomes are involved.
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     LIVE EXPERIENCE: TRANSITION WORKFLOW SIMULATOR
+     ============================================================ -->
+<section class="b1-live-section" style="padding: var(--space-12) 0 var(--space-16);">
+  <div class="container">
+    <div class="b1-live-layout" style="display: grid; grid-template-columns: 1fr; gap: var(--space-8); align-items: start;">
+
+      <!-- LEFT: Workflow state + controls -->
+      <div class="b1-workflow-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column;">
+        <div class="b1-panel-header" style="margin-bottom: var(--space-5);">
+          <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">Transition Workflow</p>
+          <h2 style="font-size: var(--text-lg); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">Step through the bounded workflow</h2>
+        </div>
+
+        <!-- Current step indicator -->
+        <div class="b1-step-indicator" style="display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5);">
+          <div class="b1-step-badge-row" style="display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap;">
+            <span class="b1-step-number" style="width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0;" id="b1-current-step-num">1</span>
+            <span class="b1-step-label" style="font-weight: 600; color: var(--text-primary); font-size: var(--text-sm);" id="b1-current-step-label">Initiate workflow</span>
+          </div>
+          <p class="muted-paragraph" style="font-size: var(--text-sm); color: var(--text-secondary); margin: 0;" id="b1-step-description">A pilot team with a promising AI pilot starts the transition workflow instead of an ad-hoc handoff.</p>
+        </div>
+
+        <!-- Workflow progress bar (visual) -->
+        <div class="b1-progress-track" style="display: flex; gap: var(--space-1); margin-bottom: var(--space-5); flex-wrap: wrap;">
+          <template id="b1-progress-template">
+            <div class="b1-progress-step" style="flex: 1; min-width: 80px; padding: var(--space-2); text-align: center; font-size: var(--text-xs); font-weight: 600; border-radius: var(--radius-sm); background: var(--bg-muted); color: var(--text-muted); border: 1px solid var(--border-subtle); transition: all var(--transition-fast);"></div>
+          </template>
+        </div>
+
+        <!-- Step content: varies by step -->
+        <div id="b1-step-content" style="background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-4); min-height: 120px;">
+          <!-- populated by JS -->
+        </div>
+
+        <!-- Controls -->
+        <div class="b1-controls" style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+          <button id="b1-back-btn" class="btn btn--ghost" style="display: none;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-right: var(--space-1);">
+              <path d="M19 12H5"/>
+              <polyline points="12 19 5 12 12 5"/>
+            </svg>
+            Back
+          </button>
+          <button id="b1-next-btn" class="btn btn--primary" style="display: none;">
+            Next
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-left: var(--space-1);">
+              <path d="M5 12h14"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+          <button id="b1-reset-btn" class="btn btn--ghost" style="margin-left: auto;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-right: var(--space-1);">
+              <polyline points="23 4 23 10 17 10"/>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+            </svg>
+            Reset
+          </button>
+        </div>
+
+        <!-- Workflow state summary (changes as user progresses) -->
+        <div id="b1-state-summary" style="margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--border-subtle); display: none;">
+          <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-2);">Workflow state so far</p>
+          <div id="b1-state-items" style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-sm); color: var(--text-secondary);">
+            <!-- populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Context panel -->
+      <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+
+        <!-- Pilot context -->
+        <div class="b1-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6);">
+          <div class="b1-panel-header" style="margin-bottom: var(--space-4);">
+            <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">In scope</p>
+            <h2 style="font-size: var(--text-lg); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">Pilot context</h2>
+          </div>
+          <p class="muted-paragraph" style="font-size: var(--text-sm); color: var(--text-secondary); margin: 0;">
+            This is an illustrative pilot — not a real enterprise. The purpose is to show what the workflow surfaces
+            at each step, not to demonstrate a real transition.
+          </p>
+          <div id="b1-pilot-context" style="margin-top: var(--space-3); font-size: var(--text-sm);">
+            <p><strong>Illustrative pilot:</strong> A business-unit team has built a promising internal AI assistant
+            prototype. There is no clear production owner ready to absorb it. The team wants a path to a governed
+            operational workflow — or an honest send-back.</p>
+          </div>
+        </div>
+
+        <!-- What B1 owns -->
+        <div class="b1-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6);">
+          <div class="b1-panel-header" style="margin-bottom: var(--space-4);">
+            <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">B1 owns</p>
+            <h2 style="font-size: var(--text-lg); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">What the workflow covers</h2>
+          </div>
+          <ul class="body-list" style="margin: 0; font-size: var(--text-sm); color: var(--text-secondary);">
+            <li>Readiness assessment / confirmation</li>
+            <li>Governance / security / internal-policy checkpoint</li>
+            <li>Production ownership transfer</li>
+            <li>Minimal accountability handoff</li>
+            <li>Escalation / handoff context</li>
+          </ul>
+          <p class="muted-paragraph" style="font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-3);">
+            B1 does NOT own model development, deployment infrastructure, monitoring-as-primary-product, enterprise
+            security/compliance programs, ITSM replacement, business workflow automation, or end-to-end AI lifecycle
+            management. The boundary is what keeps this a bounded transition workflow.
+          </p>
+        </div>
+
+        <!-- Moment of value -->
+        <div class="b1-panel b1-panel--value" style="background: var(--bg-surface); border: 1px solid var(--color-success); border-radius: var(--radius-lg); padding: var(--space-6);">
+          <div class="b1-panel-header" style="margin-bottom: var(--space-4);">
+            <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--color-success); margin: 0 0 var(--space-1);">Moment of value</p>
+            <h2 style="font-size: var(--text-lg); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">Accept or send back</h2>
+          </div>
+          <p class="muted-paragraph" style="font-size: var(--text-sm); color: var(--text-secondary); margin: 0;">
+            The moment of value is production ownership acceptance <strong>OR</strong> explicit send-back with
+            actionable readiness gaps — not "the pilot is live in production," which is outside B1's boundary.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA row -->
+    <div class="b1-cta-row" style="margin-top: var(--space-8); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+      <a href="/work/b1/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;">
+          <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to B1 case study
+      </a>
+      <a href="/work/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESPONSIVE
+     ============================================================ -->
+<style>
+  .b1-live-section {
+    padding: var(--space-12) 0 var(--space-16);
+  }
+
+  .b1-live-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .b1-live-layout {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  .b1-workflow-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .b1-panel-header {
+    margin-bottom: var(--space-4);
+  }
+
+  .b1-step-indicator {
+    margin-bottom: var(--space-4);
+  }
+
+  .b1-step-badge-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .b1-step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--text-inverse);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .b1-step-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+  }
+
+  .b1-step-description {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .b1-progress-track {
+    display: flex;
+    gap: var(--space-1);
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .b1-progress-step {
+    flex: 1;
+    min-width: 80px;
+    padding: var(--space-2);
+    text-align: center;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    background: var(--bg-muted);
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .b1-progress-step--active {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .b1-progress-step--done {
+    background: var(--color-success-soft);
+    border-color: var(--color-success);
+    color: var(--color-success);
+  }
+
+  .b1-controls {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .b1-state-summary {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .b1-cta-row {
+    margin-top: var(--space-8);
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .b1-workflow-panel {
+      padding: var(--space-4);
+    }
+
+    .b1-cta-row {
+      flex-direction: column;
+    }
+
+    .b1-cta-row a {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .b1-live-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script src="/static/js/b1-live.js" defer></script>
+
+{% endblock %}

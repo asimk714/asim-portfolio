@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="work-case">
+  <nav class="work-nav">
+    <a href="/work/">Back to Proof of Work</a>
+  </nav>
+
+  <div class="work-header nested">
+    <span class="work-badge">Case Study</span>
+    <h1 class="work-title">IRCTC — Peak-Hour Checkout UX Teardown & Redesign Prototype</h1>
+    <p class="work-subtitle">
+      Interactive prototype of a redesigned booking checkout addressing concurrency-driven UX degradation on India's railway reservation platform. Concept prototype + interactive mockup. Not a productized feature.
+    </p>
+    <p class="work-meta">
+      <span>Portfolio route:</span>
+      <a href="/work/irctc/">/work/irctc/</a>
+      &nbsp;|&nbsp;
+      <span>Live experience:</span>
+      <a href="/work/irctc/live/">/work/irctc/live/</a>
+    </p>
+  </div>
+
+  <section class="work-section">
+    <h2>PM Assignment Context</h2>
+    <p>
+      IRCTC (Indian Railway Catering and Tourism Corporation) operates India's largest railway ticket reservation platform. During Tatkal booking windows (typically 10:00 AM and 11:00 AM) the platform experiences extreme concurrency — a surge of simultaneous booking attempts on limited seat inventory. The prototype frames this as a concurrency-vs-UX problem: at peak load, the transaction gateway degrades, session timeouts increase, and the user experience suffers.
+    </p>
+    <p>
+      The PM teardown frames the problem around three pressures: database load at peak hours, layout shifts from asynchronously loaded programmatic ad banners, and session drop-off during the booking transaction. The redesign proposes a set of UX and behavior changes intended to reduce friction at exactly the moments where concurrency is highest.
+    </p>
+    <p>
+      <strong>Evidence note:</strong> The existence of peak-hour congestion on large ticketing platforms is well established as a category pattern. The specific IRCTC degradation details, timing windows, and metric figures presented here are drawn from the prototype's own framing and representative patterns; they are not independently sourced from IRCTC operational data and are labeled as prototype concept figures. This is a product teardown and interactive concept prototype, not verified operational analysis.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>Problem Statement</h2>
+    <p>
+      The prototype presents the legacy checkout experience as having three visible problems during peak booking windows:
+    </p>
+    <ul>
+      <li><strong>Peak checkout latency:</strong> heavy script files (ad trackers, analytics bundles) loading during the transaction slow checkout responses. The prototype frames peak checkout latency as a metric that should be reduced.</li>
+      <li><strong>Layout shifts from ad banners:</strong> asynchronously loaded programmatic banner advertisements cause sudden screen displacement ("layout shifts"), creating invalid tap risk and breaking the booking flow.</li>
+      <li><strong>Session drop-off:</strong> timeouts, layout shifts leading to invalid taps, and session expiry cause user drop-off. The prototype frames Tatkal success rate as a leaky funnel metric.</li>
+    </ul>
+    <p>
+      The concept prototype's interactive smartphone mockup demonstrates these behaviors in the "current" (legacy) mode — ad-banner layout shifts simulated on a timer, and a session timeout/captcha failure simulated on checkout attempt. The redesign mode demonstrates the proposed behaviors instead.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>Product Decision</h2>
+    <p>
+      The PM teardown proposes a checkout redesign that separates the booking transaction path from non-essential script loading, and introduces a client-side concurrency behavior to make peak-hour booking feel more predictable.
+    </p>
+
+    <h3>What the redesign would do</h3>
+    <ul>
+      <li><strong>Reduce script load on the transaction path.</strong> Freeze or defer non-essential ad and tracking scripts during peak-hour booking windows, to eliminate layout shifts and reduce checkout latency.</li>
+      <li><strong>Introduce a client-side virtual waiting queue.</strong> Instead of dropping connections or surfacing raw timeout errors under load, route booking requests into a visible queue with live progress status, lowering booking anxiety and reducing perceived failure.</li>
+      <li><strong>Add smart passenger autofill.</strong> Suggest and auto-populate frequent traveler profiles based on historical booking behavior, removing manual data entry during high-stakes Tatkal windows.</li>
+      <li><strong>Simplify the checkout UI.</strong> A cleaner, minimal layout intended to reduce cognitive load and invalid interactions during the booking flow.</li>
+    </ul>
+
+    <h3>What the redesign does NOT claim</h3>
+    <ul>
+      <li>It does not claim to fix database capacity or server-side concurrency limits. The concurrency problem has both UX and infrastructure components; this is a UX/behavior layer.</li>
+      <li>It does not claim to guarantee seat allocation or booking success. The virtual queue manages request flow and perceived latency, not inventory availability.</li>
+      <li>It does not claim to replace rate limiting, authentication, or payment processing. It is a checkout UX and request-flow layer.</li>
+    </ul>
+  </section>
+
+  <section class="work-section">
+    <h2>How It Works</h2>
+    <p>
+      The concept prototype's interactive mockup shows the redesign as a smartphone checkout flow with four core behaviors:
+    </p>
+    <ol>
+      <li><strong>Mode toggle:</strong> Switch between "Legacy Cluttered UI" and "Redesigned Minimalist UI" to compare the two experiences side by side. The PM panel updates its metric display and feature callouts to match the selected mode.</li>
+      <li><strong>Metric comparison:</strong> The PM panel shows peak checkout latency and Tatkal success rate as comparison metrics. In the current mode they show degraded values; in the redesign mode the prototype shows improved figures. (See Evidence Limits — these are concept figures, not measured outcomes.)</li>
+      <li><strong>Core feature demonstration:</strong> Three feature callouts demonstrate the proposed P0/P1 features: Smart Passenger Autofill, Peak-Hour Ad-Free Script Freeze, and Client-Side Virtual Waiting Queue.</li>
+      <li><strong>Booking flow simulation:</strong> On the redesign mockup, a "Quick Autofill" action populates passenger details; a "Checkout" action routes the request into a virtual waiting queue with a live position counter, then transitions to a booking success screen with an optional insurance upsell. On the legacy mockup, checkout triggers a session timeout failure instead.</li>
+    </ol>
+    <p>
+      The prototype also includes an ad-layout-shift simulator that runs during the legacy mode to make the layout-shift problem visible on the mockup screen.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>Prioritization</h2>
+    <p>
+      The prototype frames the proposed features in P0/P1 priority tiers.
+    </p>
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon p0">P0</div>
+        <div class="feature-text">
+          <h4>Smart Passenger Autofill</h4>
+          <p>Suggests and auto-populates frequent traveler profiles dynamically based on historical bookings. Reduces manual data entry during high-stakes Tatkal windows.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon p0">P0</div>
+        <div class="feature-text">
+          <h4>Peak-Hour Ad-Free Script Freeze</h4>
+          <p>Automatically freezes non-essential ad and tracking scripts during peak-hour booking windows. Eliminates visual shifts and layout displacement on the transaction path.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon p1">P1</div>
+        <div class="feature-text">
+          <h4>Client-Side Virtual Waiting Queue</h4>
+          <p>Routes user requests to a client-side queue under load instead of dropping connections. Displays transparent live progress status to lower booking anxiety.</p>
+        </div>
+      </div>
+    </div>
+    <p>
+      The prioritization logic is straightforward: P0 features directly address the most visible failure modes during peak booking — layout shifts and manual data entry friction. P1 addresses the perceived-concurrency experience (waiting queue) which is important for anxiety reduction but secondary to preventing the layout-shift failures that break the booking flow.
+    </p>
+    <p>
+      <strong>Evidence note:</strong> RICE-style scoring and MoSCoW-style tiering are described here as a product-thinking exercise applied to the prototype's feature set. The exact scores and stack-rank are concept figures, not validated prioritization output. IRCTC's actual production prioritization process was not observed.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>KPI Model</h2>
+    <p>
+      The prototype proposes a small KPI model for the checkout redesign. Three KPI cards are shown in the PM panel as comparison metrics.
+    </p>
+    <div class="metric-cards">
+      <div class="metric-card">
+        <div class="metric-header">Peak Checkout Latency</div>
+        <div class="metric-row">
+          <span class="metric-value metric-red">980ms</span>
+          <span class="metric-change metric-negative">Slow</span>
+        </div>
+        <p class="metric-desc">Heavy script files (ad trackers, analytics bundles) load during the transaction, slowing checkout responses.</p>
+      </div>
+      <div class="metric-card">
+        <div class="metric-header">Tatkal Success Rate</div>
+        <div class="metric-row">
+          <span class="metric-value metric-red">77.4%</span>
+          <span class="metric-change metric-negative">Leaky</span>
+        </div>
+        <p class="metric-desc">Frequent time-out errors, layout shifts leading to invalid taps, and session expiry cause user drop-off.</p>
+      </div>
+    </div>
+    <p>
+      In the redesign mode, the prototype shows improved figures (e.g., 420ms and 91.2%) as concept targets. These are illustrative concept figures presented by the prototype to make the comparison visible — they are not measured before/after outcomes from a live experiment or production deployment.
+    </p>
+    <p>
+      A more complete KPI model for this type of work would also include: booking completion rate by hour-of-day, layout-shift incidents per session during peak windows, queue abandonment rate, average time-to-booking-completion, and error-rate by step. These are noted as "would validate next" items rather than measured here.
+    </p>
+  </section>
+
+  <section class="work-section">
+    <h2>Evidence</h2>
+    <ul>
+      <li><strong>OBSERVED (source):</strong> The prototype exists as a complete interactive artifact at <a href="/work/irctc/live/">/work/irctc/live/</a> — a 1,451-line HTML prototype with CSS and JavaScript, demonstrating the checkout teardown, mode toggle, metric comparison, feature callouts, booking flow simulation, and ad-layout-shift simulator.</li>
+      <li><strong>OBSERVED (category pattern):</strong> Peak-hour congestion and layout-shift problems on large ticketing/checkout platforms are a recognized category pattern; the prototype's framing is consistent with this category behavior.</li>
+    </ul>
+  </section>
+
+  <section class="work-section">
+    <h2>Evidence Limits</h2>
+    <ul>
+      <li><strong>No IRCTC operational data observed.</strong> The specific metric figures (980ms, 77.4%, and the redesign-mode 420ms / 91.2%) are presented as concept figures within the prototype, not as sourced IRCTC operational metrics. They are prototype concept figures, not measured outcomes.</li>
+      <li><strong>No user research conducted.</strong> There are no user interviews, usability tests, or A/B tests associated with this artifact. The redesign features are a PM concept proposal, not validated with users.</li>
+      <li><strong>Not a deployed feature.</strong> This is a concept prototype and teardown. It is not a deployed IRCTC feature. IRCTC's product, engineering, and operations were not directly involved.</li>
+      <li><strong>Not a production checkout.</strong> The booking flow simulation (autofill, virtual queue, success upsell) is a demonstrative mockup, not a real booking transaction. No real tickets are booked.</li>
+      <li><strong>Concurrency problem is shared between UX and infrastructure.</strong> The prototype addresses the UX/behavior layer; server-side concurrency and database capacity are out of scope for this artifact.</li>
+    </ul>
+  </section>
+
+  <section class="work-section">
+    <h2>What I Would Validate Next</h2>
+    <ol>
+      <li><strong>Quantify the layout-shift problem.</strong> Instrument the real checkout path to measure Cumulative Layout Shift (CLS) during peak booking windows, correlated with booking-completion drop-off and invalid-tap incidents. This would confirm whether ad-script layout shifts are a material contributor to the observed friction.</li>
+      <li><strong>Measure peak-hour checkout latency breakdown.</strong> Separate script-load time, server response time, and queue/wait time in the transaction path, so the redesign's script-freeze impact can be measured rather than assumed.</li>
+      <li><strong>Validate the virtual queue concept with users.</strong> Test whether a transparent waiting queue reduces booking anxiety and abandonment under simulated load, versus the raw-timeout behavior. This requires simulated concurrency testing and user observation, not just a mockup.</li>
+      <li><strong>Validate autofill value.</strong> Measure time-to-form-completion and error rate with and without the smart autofill feature, for frequent travelers specifically, during peak windows.</li>
+      <li><strong>Instrument success-rate and completion-rate KPIs.</strong> Establish a baseline for booking completion rate by hour-of-day and by step, so a redesign's impact can be measured in a real deployment rather than projected.</li>
+      <li><strong>Assess the business/operational angle.</strong> Confirm with IRCTC product and operations whether script-freezing during peak windows is operationally acceptable, and what the seat-availability and payment-processing implications are.</li>
+    </ol>
+  </section>
+
+  <div class="work-cta-row">
+    <a href="/work/irctc/live/" class="btn btn--ghost">Live Experience</a>
+    <a href="/work/" class="btn btn-secondary">Back to Proof of Work</a>
+  </div>
+</div>
+
+{% endblock %}

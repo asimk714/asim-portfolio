@@ -1,0 +1,1583 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     CROSS-FUNCTIONAL DECISION ARTIFACT — UNROT CONTEXT
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Page navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to Proof of Work
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Unrot</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Cross-Functional Decision Artifact · Portfolio Exercise</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in animate-in--delay-1">
+      <div class="inline-flex items-center gap-2 mb-3"
+           style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--simulated"
+              style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-proposed-bg); color: var(--evidence-proposed); border: 1px solid var(--evidence-proposed-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-proposed); flex-shrink: 0;"></span>
+          Portfolio Exercise
+        </span>
+        <span class="evidence-label"
+              style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--bg-muted); color: var(--text-muted); border: 1px solid var(--border-subtle); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); flex-shrink: 0;"></span>
+          Simulated Cross-Functional Decision
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Should Unrot ship the return-intent nudge before the JTBD is validated?
+      </h1>
+      <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 680px; margin-top: var(--space-4);">
+        A simulated cross-functional product decision set in the Unrot Daily Retention context. This artifact
+        demonstrates how I would bring business, product, UX, data, engineering, and QA/ops together around
+        one real trade-off — it does not claim that these stakeholders met, that a decision was made this way,
+        or that any outcome resulted.
+      </p>
+    </div>
+
+    <div class="case-study-meta animate-in animate-in--delay-2" style="margin-top: var(--space-4);">
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--verified">Verified — existing Unrot context</span>
+        <span class="meta-text">— measurement model, A/B plan, tech stack, problem framing, JTBD hypotheses are documented Unrot artifacts</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--simulated">Simulated — this decision exercise</span>
+        <span class="meta-text">— stakeholder discussion, options, recommendation, and brief are a portfolio demonstration, not a record of work that occurred</span>
+      </div>
+      <div class="case-study-meta__row">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced — no real decision</span>
+        <span class="meta-text">— no real stakeholder approval, no real customer research, no production launch, no measured outcome</span>
+      </div>
+    </div>
+
+    <div class="case-study-at-a-glance animate-in animate-in--delay-3" style="margin-top: var(--space-5);">
+      <p class="case-study-at-a-glance__label">At a glance</p>
+      <p class="case-study-at-a-glance__text">
+        <strong>Decision:</strong> whether to prioritize the return-intent nudge intervention (H4 from Unrot's documented JTBD/intervention hypotheses) for an A/B test before completing JTBD validation with real users.
+        <strong>Trade-off:</strong> speed to a real test result vs. measurement confidence and user-model validity.
+        <strong>Artifact type:</strong> simulated cross-functional decision exercise — portfolio evidence of operating method, not a record of an actual decision.
+      </p>
+    </div>
+
+    <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6);">
+      <a href="/work/unrot/" class="btn btn--primary">
+        Back to Unrot Case Study
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+      </a>
+      <a href="/work/unrot/live/" class="btn btn--ghost">
+        Unrot Live Experience
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+      <a href="/work/" class="btn btn--ghost">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 — WHAT THIS ARTIFACT IS
+     ============================================================ -->
+<article class="case-study-section" id="context-artifact">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What This Artifact Is</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        This is a <strong>portfolio exercise</strong>. It demonstrates a cross-functional product decision process
+        — how I would structure a conversation across business, product, UX, data, engineering, and QA/operations
+        around a single meaningful trade-off.
+      </p>
+      <p class="body-text">
+        The scenario is set inside the <strong>Unrot Daily Retention</strong> product context because that is where
+        the strongest existing portfolio evidence lives: a documented measurement model, an A/B experiment plan with
+        power analysis, a real Next.js 16 + PostgreSQL + Prisma application, and documented problem framing plus
+        JTBD/intervention hypotheses. Those artifacts are real and verified. The decision exercise itself is simulated.
+      </p>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--simulated">SIMULATED — PORTFOLIO EXERCISE</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No claim is made that a business stakeholder, UX designer, data analyst, engineer, or QA/ops person
+          participated in the conversation below. The function-by-function inputs are how I would represent each
+          function's perspective — a demonstration of operating method, not a record of an actual cross-functional
+          meeting. The recommendation is a <strong>proposed decision</strong>, not an approved one.
+        </p>
+      </div>
+      <div class="label-block">
+        <span class="evidence-label evidence-label--verified">VERIFIED — existing Unrot context used</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The Unrot measurement model (metric hierarchy, 7-stage funnel, must-have instrumentation), the A/B
+          experiment plan (power analysis ~650–700 per variant, ~1,300–1,400 total, 2-week duration + 2-day
+          cooldown, decision rules), the tech stack (Next.js 16 + PostgreSQL + Prisma), and the JTBD/intervention
+          hypotheses (4 jobs, 7 interventions H1–H7, none validated) are drawn from documented Unrot artifacts.
+          Where this exercise adds anything — stakeholder concerns, UX flow, acceptance criteria, the options table,
+          the recommendation, the decision brief — that addition is simulated and labeled as such.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     02 — THE PROBLEM THAT DRIVES THE DECISION
+     ============================================================ -->
+<article class="case-study-section" id="problem-decision">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">The Problem That Drives the Decision</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Unrot's surface problem is low D1 retention — people visit, then don't return the next day. The deeper
+        hypothesis in the Unrot case study is that the problem may be the handoff between sessions: the user
+        completes the first lesson but has no reason to return tomorrow. The product may be excellent at first-session
+        value and poor at tomorrow's reason-to-return.
+      </p>
+      <p class="body-text">
+        The measurement model defines D1 and instruments the funnel; the A/B plan is written; the analytics
+        dashboard computes from real events but currently shows "not enough real cohort data yet." The JTBD and
+        intervention hypotheses (H1–H7) are documented but <strong>not validated with real users</strong>.
+      </p>
+      <p class="body-text">
+        A business stakeholder — in this simulated scenario, someone accountable for whether Unrot creates a
+        retention outcome — is pressing for a visible next step. The question is not "do nothing." It is:
+        <strong>which intervention, if any, do we test now, and what are we accepting by choosing it?</strong>
+      </p>
+      <div class="decision-block">
+        <button class="decision-block__header" id="decision-problem-btn" type="button" aria-expanded="false" aria-controls="decision-problem-body">
+          <div class="decision-block__header-content">
+            <div class="decision-block__question">The one decision this artifact is about</div>
+            <div class="decision-block__decision">Should Unrot run the return-intent nudge (H4) as the first A/B test before the JTBD/intervention hypotheses are validated with real users — or should the team hold for user validation first?</div>
+          </div>
+          <div class="decision-block__chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </button>
+        <div class="decision-block__body" id="decision-problem-body" role="region">
+          <p class="body-text">
+            This is a prioritization-and-measurement-confidence decision, not a build-vs-not-build decision. Both
+            sides agree the team should test something. The disagreement is about <strong>when</strong> to test and
+            <strong>whether the user model behind the test is reliable enough</strong> to make the test worth the
+            opportunity cost of not testing something else.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     03 — CROSS-FUNCTIONAL DECISION MAP
+     ============================================================ -->
+<article class="case-study-section" id="functions">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">How the Functions Would Contribute</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Below is how I would structure each function's input to the decision. Each section states the function's
+        <strong>question</strong>, its <strong>concern</strong>, and the <strong>decision input</strong> it would
+        bring. This is the simulated PM's representation of each function — not a record of what any specific person
+        said.
+      </p>
+
+      <!-- BUSINESS / STAKEHOLDER -->
+      <div class="function-block">
+        <h3 class="function-block__title">
+          <span class="function-block__eyebrow">Business / Stakeholder</span>
+          <span class="function-block__name">Accountable for whether Unrot creates a retention outcome</span>
+        </h3>
+        <div class="function-block__body">
+          <div class="function-field">
+            <span class="function-field__label">Question</span>
+            <p class="function-field__text body-text">
+              Are we moving the right metric, and are we moving it for the right reason — or are we optimizing a
+              first-session number that doesn't actually cause return?
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Concern</span>
+            <p class="function-field__text body-text">
+              Time-to-evidence pressure: the team has a measurement system and an A/B plan but no real cohort data
+              yet. A stakeholder accountable for retention wants to see whether the product can move D1 at all,
+              and wants that evidence sooner rather than later. The concern is the cost of waiting for perfect
+              user-model validation when the cost of a bad test is a wasted experiment slot and a misleading signal.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Decision input</span>
+            <p class="function-field__text body-text">
+              <strong>Provided:</strong> "I need to know whether we can move D1. I'd rather test something real and
+              learn than wait indefinitely. But I also need the test to be interpretable — if it wins, I need to be
+              able to say it moved D1 for the right reason, not just that a number went up." <span class="evidence-label evidence-label--simulated">Simulated</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT -->
+      <div class="function-block">
+        <h3 class="function-block__title">
+          <span class="function-block__eyebrow">Product (PM)</span>
+          <span class="function-block__name">Translate the problem into a decision</span>
+        </h3>
+        <div class="function-block__body">
+          <div class="function-field">
+            <span class="function-field__label">Problem framing</span>
+            <p class="function-field__text body-text">
+              The deepest documented Unrot hypothesis is that the problem is the handoff between sessions, not the
+              first session alone. Any intervention chosen should target return behavior, not just first-session
+              completion. The PM's job is to make sure the decision respects that framing rather than defaulting to
+              the easiest first-session improvement.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Scope</span>
+            <p class="function-field__text body-text">
+              For this decision, scope is one intervention for one A/B test. Not a multi-intervention program, not a
+              redesign. One hypothesis, one test, one primary metric (D1).
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Priority</span>
+            <p class="function-field__text body-text">
+              Prioritize the intervention with the highest probability of targeting the deeper problem <em>and</em>
+              the lowest risk of producing an uninterpretable result. If two interventions are close, prefer the one
+              whose failure would still teach us something about the user model.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Trade-offs</span>
+            <p class="function-field__text body-text">
+              Testing H4 now means accepting that the JTBD/intervention hypotheses are unvalidated. Testing nothing
+              until validation means accepting delay and the risk that the user model is wrong in a way we won't
+              discover until we test. The PM must choose which uncertainty to carry.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Success criteria</span>
+            <p class="function-field__text body-text">
+              A successful decision here is not "the test wins." It is: the team runs a test that is interpretable,
+              learns something about the user model whether it wins or loses, and does not spend the opportunity cost
+              of a misleading test. The measurement status of the outcome is defined before the decision is made.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- UX / DESIGN -->
+      <div class="function-block">
+        <h3 class="function-block__title">
+          <span class="function-block__eyebrow">UX / Design</span>
+          <span class="function-block__name">User flow, usability risk, interaction implications</span>
+        </h3>
+        <div class="function-block__body">
+          <div class="function-field">
+            <span class="function-field__label">User flow</span>
+            <p class="function-field__text body-text">
+              H4 (return-intent nudge at lesson completion) is a post-action interaction: after the user completes
+              a lesson, the product asks whether they intend to return tomorrow, and if yes, offers a concrete
+              commitment (for example, a reminder or a "tomorrow's mission" preview). This is a flow that sits
+              between sessions — exactly the handoff the deeper hypothesis identifies.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Usability risk</span>
+            <p class="function-field__text body-text">
+              <strong>Low (proposed assessment, simulated):</strong> a single post-completion prompt is low-risk in
+              isolation. The bigger risk is <strong>change to the completion experience</strong>: if the nudge makes
+              the completion moment feel like a request rather than a reward, it could depress lesson completion
+              itself. That would confound the D1 signal — a drop in completion could mask a real D1 improvement, or
+              a D1 improvement could be driven by a completion drop that we don't notice.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Interaction implications</span>
+            <p class="function-field__text body-text">
+              The nudge needs a concrete commitment outcome (reminder, preview, or similar) to be more than a survey
+              question. Without a commitment mechanism, the return-intent prompt is a measurement instrument, not an
+              intervention — and testing it as an intervention would be a weak test.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">UX validation</span>
+            <p class="function-field__text body-text">
+              <span class="evidence-label evidence-label--proposed">Proposed — not yet done (simulated)</span>
+              No UX research has validated the return-intent prompt wording, the commitment mechanism, or the risk
+              that the prompt depresses completion. Proposed UX validation before the test: a small unmoderated task
+              + comprehension check on the prompt + commitment flow, with a clear "this is a portfolio exercise,
+              not validated research" label.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA / ANALYTICS -->
+      <div class="function-block">
+        <h3 class="function-block__title">
+          <span class="function-block__eyebrow">Data / Analytics</span>
+          <span class="function-block__name">Metric, measurement method, success threshold</span>
+        </h3>
+        <div class="function-block__body">
+          <div class="function-field">
+            <span class="function-field__label">Metric</span>
+            <p class="function-field__text body-text">
+              <strong>Primary:</strong> D1 retention — fraction of users who start a lesson on day D and return to
+              start another lesson on day D+1. This is the metric the Unrot measurement model defines and the A/B
+              plan targets.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Supporting metrics</span>
+            <p class="function-field__text body-text">
+              Lesson completion rate (guardrail), reminder opt-in rate (mechanism check), return-intent prompt
+              response rate (instrument check), D1 among prompt-responders vs. prompt-skippers (segment check).
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Measurement method</span>
+            <p class="function-field__text body-text">
+              A/B test with randomized user-ID assignment, 50/50 allocation, deterministic hash assignment (as
+              specified in the Unrot A/B plan). Primary analysis on D1. The analytics dashboard already computes from
+              real events — the test would populate it with a real cohort for the first time.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Baseline requirement</span>
+            <p class="function-field__text body-text">
+              <strong>Not yet measured (proposed).</strong> The A/B plan specifies ~650–700 users per variant and
+              ~1,300–1,400 total, with 2-week duration + 2-day cooldown. The current analytics dashboard shows
+              "not enough real cohort data yet" — there is no closed cohort to establish a baseline D1 from. The
+              first real test would also be the first real baseline.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Success threshold</span>
+            <p class="function-field__text body-text">
+              Defined in the A/B plan as part of the decision rules (win / inconclusive / loss). Not reproduced here —
+              the threshold is an existing Unrot artifact. The data function's input to the decision is that any test
+              needs a closed cohort and enough power to be interpretable, and that a test run before a baseline exists
+              is still interpretable <em>if</em> the analysis treats the first cohort as the baseline.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Measurement status</span>
+            <p class="function-field__text body-text">
+              <span class="evidence-label evidence-label--proposed">PROPOSED — not yet measured</span>
+              All metrics here are proposed evaluation criteria for this portfolio exercise. No D1 outcome has been
+              measured on Unrot. The A/B plan exists; the test has not been run on a real cohort.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENGINEERING -->
+      <div class="function-block">
+        <h3 class="function-block__title">
+          <span class="function-block__eyebrow">Engineering</span>
+          <span class="function-block__name">Feasibility, architecture, dependencies, technical risk</span>
+        </h3>
+        <div class="function-block__body">
+          <div class="function-field">
+            <span class="function-field__label">Feasibility</span>
+            <p class="function-field__text body-text">
+              <strong>Feasible (proposed assessment, simulated).</strong> Unrot already has auth, sessions, lesson
+              progress tracking, reminder preferences (UserPreference model), and analytics events. The return-intent
+              nudge is a post-completion interaction that can reuse the existing session/lesson-completion boundary.
+              The commitment mechanism (reminder or "tomorrow's mission" preview) can reuse the existing reminder
+              preference and lesson-scheduling structure.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Architecture implications</span>
+            <p class="function-field__text body-text">
+              One new event type (return_intent_responded) and one new prompt exposure event. One new UI surface at
+              lesson completion. One new preference/commitment state. No new service, no new database, no new external
+              dependency. The engineering surface is small relative to the measurement upside.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Dependencies</span>
+            <p class="function-field__text body-text">
+              Completion event boundary must be well-defined so the prompt does not fire spuriously (e.g., on
+              non-completion returns to the lesson page). Reminder delivery path must be validated before the test —
+              if reminders don't actually fire, the commitment mechanism doesn't work, and the test is testing a
+              broken intervention.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Implementation complexity</span>
+            <p class="function-field__text body-text">
+              <strong>Low-to-medium (proposed assessment, simulated).</strong> Small surface, but the correctness
+              of the completion-boundary and reminder-delivery assumptions matters more than the UI effort. The
+              engineering risk is not "can we build it" but "are the assumptions the test relies on true."
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Technical risk</span>
+            <p class="function-field__text body-text">
+              The measurement depends on clean event instrumentation at the completion boundary. If the prompt fires
+              at the wrong moment, or if reminder delivery is unreliable, the test's interpretability degrades. This
+              is a measurement-confidence engineering risk, not a build risk.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- QA / OPERATIONS -->
+      <div class="function-block">
+        <h3 class="function-block__title">
+          <span class="function-block__eyebrow">QA / Operations</span>
+          <span class="function-block__name">Acceptance criteria, regression, rollout, monitoring</span>
+        </h3>
+        <div class="function-block__body">
+          <div class="function-field">
+            <span class="function-field__label">Acceptance criteria</span>
+            <p class="function-field__text body-text">
+              See the Acceptance Criteria section below. In brief: the prompt fires only on genuine lesson completion,
+              the commitment mechanism is wired, the event instrumentation is correct, the randomization is correct,
+              and the dashboard shows the cohort state honestly.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Regression concerns</span>
+            <p class="function-field__text body-text">
+              The prompt must not fire on non-completion page views. The reminder delivery path must not regress.
+              The new events must not break existing analytics queries. The completion moment itself must not regress
+              in latency or reliability.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Rollout considerations</span>
+            <p class="function-field__text body-text">
+              A/B test with 50/50 allocation is the rollout mechanism. No gradual rollout needed for a single prompt
+              — the risk surface is small. The bigger rollout question is: if the test wins, what is the
+              <strong>generalizable</strong> intervention, not just the one prompt wording.
+            </p>
+          </div>
+          <div class="function-field">
+            <span class="function-field__label">Monitoring requirements</span>
+            <p class="function-field__text body-text">
+              During the test: prompt exposure rate, prompt response rate, reminder opt-in rate, reminder delivery
+              confirmation, lesson completion rate (guardrail), D1. After the test: a clear decision record capturing
+              the outcome, the decision, and the next action — exactly the loop the Experiment Tracker product was
+              built to close.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     04 — OPTIONS COMPARED
+     ============================================================ -->
+<article class="case-study-section" id="options">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Options Compared</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Two options are on the table. A third — "do nothing until user validation" — is the implicit off-ramp that
+        any prioritization decision must acknowledge.
+      </p>
+
+      <div class="comparison-grid">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th class="comparison-table__criterion">Consideration</th>
+              <th class="comparison-table__option">Option A<br><span class="comparison-table__option-label">Run the return-intent nudge (H4) as the first A/B test now</span></th>
+              <th class="comparison-table__option">Option B<br><span class="comparison-table__option-label">Hold for JTBD/user validation first, then test</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>User value target</td>
+              <td>Targets the handoff between sessions directly — the deeper documented hypothesis. The commitment
+                  mechanism gives the user a concrete reason to return.</td>
+              <td>Defers any intervention until the user model is validated. Lower risk of testing the wrong problem,
+                  but no user value created during the hold.</td>
+            </tr>
+            <tr>
+              <td>Engineering effort</td>
+              <td>Low-to-medium (proposed). Small surface: one prompt, one event, one commitment state. Reuses
+                  existing session/lesson-completion boundary and reminder infrastructure.</td>
+              <td>Lower engineering effort now (nothing built), but the eventual test still needs the same surface.
+                  Delay does not eliminate the build; it defers it.</td>
+            </tr>
+            <tr>
+              <td>Measurement confidence</td>
+              <td>Medium. The test is interpretable <em>if</em> the completion boundary is clean and reminder delivery
+                  works. The first real cohort doubles as the baseline, which is weaker than having a prior baseline
+                  but is exactly what the A/B plan anticipates for a first test.</td>
+              <td>Higher confidence that the test targets the right problem — but only if the validation actually
+                  happens and actually changes the hypothesis. A hold that ends in "validate then test" is only
+                  better if the validation is real and acted on.</td>
+            </tr>
+            <tr>
+              <td>Risk</td>
+              <td>The prompt could depress lesson completion, confounding D1. Commitment mechanism could be broken
+                  (reminders don't fire) without detection. A win could be uninterpretable — D1 up, but for the wrong
+                  reason.</td>
+              <td>The main risk is opportunity cost: the team spends time validating a model that may or may not
+                  change the decision, while the measurement system sits idle. A hold can become indefinite.</td>
+            </tr>
+            <tr>
+              <td>Dependencies</td>
+              <td>Requires clean completion-boundary eventing and a working reminder delivery path before the test.
+                  These are pre-test engineering verification items, not launch dependencies.</td>
+              <td>Requires a real user-validation study to actually occur and to actually inform the decision. If the
+                  validation is skipped or nominal, the hold bought nothing.</td>
+            </tr>
+            <tr>
+              <td>Learning value if it loses</td>
+              <td>High. A losing test still tells us whether the return-intent mechanism moved D1, whether completion
+                  was depressed, and whether the commitment mechanism worked. That is learning about the user model,
+                  not just a failed intervention.</td>
+              <td>Low, unless the validation is real. A hold that ends without a test produces no outcome learning —
+                  only a decision about when to test.</td>
+            </tr>
+            <tr>
+              <td>Alignment with Unrot philosophy</td>
+              <td>Consistent with "measure before optimizing" in the sense that the test is designed with a clear
+                  primary metric, supporting metrics, and guardrails — but runs before the user model is validated,
+                  which is the tension.</td>
+              <td>Most consistent with "measure before optimizing" in the strictest sense: validate the user model
+                  first. But the Unrot measurement model is already built; running nothing against it postpones the
+                  measurement the model was built to support.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--simulated">SIMULATED — the options table reflects the simulated PM's reasoning, not a documented team decision.</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          No scores are assigned. No stakeholder votes are recorded. The table is a structured reasoning artifact —
+          the kind of thing a PM would prepare before a decision conversation, not a record of one that happened.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     05 — THE DECISION, TRADE-OFFS, WHAT CHANGES IT
+     ============================================================ -->
+<article class="case-study-section" id="decision">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">The Decision, the Trade-off, and What Would Change It</h2>
+
+    <div class="decision-block">
+      <button class="decision-block__header" id="decision-rec-btn" type="button" aria-expanded="false" aria-controls="decision-rec-body">
+        <div class="decision-block__header-content">
+          <div class="decision-block__eyebrow">Proposed Decision</div>
+          <div class="decision-block__question">Proposed recommendation — simulated PM perspective</div>
+        </div>
+        <div class="decision-block__chevron" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+      </button>
+      <div class="decision-block__body" id="decision-rec-body" role="region">
+        <p class="body-text">
+          <strong>Run the return-intent nudge (H4) as the first A/B test — but only after three pre-test
+          verification items are confirmed, and only with the guardrails below.</strong>
+        </p>
+        <p class="body-text">
+          The reasoning is not that H4 is the best intervention in absolute terms. It is that H4 has the highest
+          combination of (a) direct alignment with the deeper documented hypothesis (the session handoff), (b) small
+          engineering surface, and (c) high learning value even if it loses — provided the pre-test verification items
+          are confirmed. The alternative (hold for validation first) carries its own risk: a hold that does not end in
+          a real, acted-on validation is just delay, and the measurement system is already built to support a first
+          test.
+        </p>
+        <p class="body-text">
+          This is a <strong>proposed decision for the portfolio exercise</strong>. It is not an approved decision, not
+          a decision that was made, and not a decision backed by real stakeholders. The artifact exists to show the
+          structure of the reasoning, not to claim a real outcome.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="section-subtitle" style="margin-top: var(--space-8); color: var(--text-secondary);">What we prioritize</h3>
+    <ul class="prioritized-list">
+      <li><strong>One intervention for one interpretable A/B test.</strong> H4, with a concrete commitment mechanism,
+          run against D1 as the primary metric.</li>
+      <li><strong>Pre-test verification before the test runs.</strong> The three items below must be confirmed before
+          the test is launched — not after.</li>
+      <li><strong>Measurement confidence over speed.</strong> The test runs because the engineering surface is small
+          and the learning value is high, not because speed is the priority. The guardrails below are non-negotiable.</li>
+    </ul>
+
+    <h3 class="section-subtitle" style="margin-top: var(--space-6); color: var(--text-secondary);">What we defer</h3>
+    <ul class="prioritized-list">
+      <li><strong>Validating the full JTBD/intervention hypothesis set with real users.</strong> Deferred until after
+          the test — not because it is unimportant, but because the test is the faster path to a real learning signal,
+          and the test result will inform what validation to prioritize.</li>
+      <li><strong>Testing a second intervention (e.g., H5 or H6) in the same window.</strong> Deferred. One test at a
+          time, with a clean primary metric. A second intervention would dilute the interpretability of the first.</li>
+      <li><strong>Generalizing the intervention beyond the specific prompt wording.</strong> Deferred until after the
+          test shows a signal. The first test is about whether the mechanism moves D1, not about the perfect wording.</li>
+      <li><strong>A multi-intervention program.</strong> Deferred. This is one decision, one test, one primary metric.</li>
+    </ul>
+
+    <h3 class="section-subtitle" style="margin-top: var(--space-6); color: var(--text-secondary);">Why</h3>
+    <p class="body-text">
+      The deeper Unrot hypothesis — that the problem is the handoff between sessions — is the right problem to target,
+      and H4 is the intervention most directly aimed at that handoff among the documented options. The engineering
+      surface is small and reuses existing structure. Most importantly, a losing H4 test still teaches us something
+      about the user model (did the commitment mechanism move D1? did completion drop? did reminder delivery work?),
+      whereas a hold that ends in nominal validation teaches us less.
+    </p>
+    <p class="body-text">
+      The counter-argument — that testing before user validation risks a misleading result — is real and is addressed
+      by the pre-test verification items and guardrails below. The decision accepts the measurement-confidence risk
+      <em>because it is bounded and because the alternative carries its own risk</em>.
+    </p>
+
+    <div class="decision-block">
+      <button class="decision-block__header" id="decision-change-btn" type="button" aria-expanded="false" aria-controls="decision-change-body">
+        <div class="decision-block__header-content">
+          <div class="decision-block__eyebrow">What would change this decision</div>
+          <div class="decision-block__question">Evidence that would cause the PM to reconsider</div>
+        </div>
+        <div class="decision-block__chevron" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+      </button>
+      <div class="decision-block__body" id="decision-change-body" role="region">
+        <ul class="prioritized-list">
+          <li><strong>Pre-test verification fails.</strong> If the completion boundary cannot be instrumented cleanly,
+              or if reminder delivery cannot be confirmed, the test's interpretability is compromised and the decision
+              should be held until those are fixed.</li>
+          <li><strong>A real user-validation study changes the hypothesis.</strong> If validation (when it happens)
+              shows the handoff problem is not the dominant issue, H4 is no longer the best target and the decision
+              should be reconsidered.</li>
+          <li><strong>The stakeholder's underlying question changes.</strong> If the accountable stakeholder shifts from
+              "can we move D1 at all" to "we need a specific D1 number by a specific date," the decision framework
+              changes — and the PM should flag that the portfolio exercise does not include a real stakeholder with a
+              real deadline.</li>
+          <li><strong>A better-understood intervention emerges.</strong> If a different intervention has a clearer link
+              to the deeper hypothesis and a similarly small surface, the comparison should be re-run.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     06 — ACCEPTANCE CRITERIA
+     ============================================================ -->
+<article class="case-study-section" id="acceptance">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Acceptance Criteria</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        These are the acceptance criteria for the <strong>intervention and the test setup</strong>, not for a business
+        outcome. They define what must be true before and during the test. None of them is a claim that the test will
+        win.
+      </p>
+
+      <ol class="acceptance-list">
+        <li>
+          <span class="acceptance-label">AC-1 · Prompt fires only on genuine lesson completion</span>
+          <p class="acceptance-text body-text">
+            Given a user completes a lesson, when the completion event fires, then the return-intent prompt is shown
+            once and only once for that completion — and is not shown on non-completion page views, on lesson retries,
+            or on navigation that does not constitute a completion.
+          </p>
+        </li>
+        <li>
+          <span class="acceptance-label">AC-2 · Commitment mechanism is wired</span>
+          <p class="acceptance-text body-text">
+            Given a user responds to the return-intent prompt with a commitment, when the commitment is recorded,
+            then a reminder or "tomorrow's mission" preview is scheduled against the existing reminder preference /
+            lesson-scheduling structure — and the commitment is reflected in the user's state.
+          </p>
+        </li>
+        <li>
+          <span class="acceptance-label">AC-3 · Reminder delivery is confirmed before the test</span>
+          <p class="acceptance-text body-text">
+            Given the reminder path is used as the commitment mechanism, when a reminder is scheduled, then the
+            delivery path is verified to fire (in a pre-test verification step, not inferred from the test itself) —
+            because a broken delivery path would make the test test a broken intervention.
+          </p>
+        </li>
+        <li>
+          <span class="acceptance-label">AC-4 · Event instrumentation is correct</span>
+          <p class="acceptance-text body-text">
+            Given the test runs, when a user is exposed to the prompt, then a prompt_exposure event is emitted; when
+            the user responds, then a return_intent_responded event is emitted with the response and commitment; and
+            both events carry the standard properties (eventName, propertiesJson, occurredAt, sessionId, route, userId)
+            required by the Unrot measurement model.
+          </p>
+        </li>
+        <li>
+          <span class="acceptance-label">AC-5 · Randomization is correct</span>
+          <p class="acceptance-text body-text">
+            Given a user is eligible for the test, when the user reaches the lesson-completion boundary, then the
+            user is assigned to control or variant by deterministic user-ID hash with 50/50 allocation, and the
+            assignment is stable for the duration of the test.
+          </p>
+        </li>
+        <li>
+          <span class="acceptance-label">AC-6 · Completion rate is monitored as a guardrail</span>
+          <p class="acceptance-text body-text">
+            Given the test runs, when lesson completion rate is tracked, then a material drop in completion in the
+            variant relative to control is flagged — because a D1 improvement driven by a completion drop would be an
+            uninterpretable result, not a real win.
+          </p>
+        </li>
+        <li>
+          <span class="acceptance-label">AC-7 · Dashboard shows the cohort state honestly</span>
+          <p class="acceptance-text body-text">
+            Given the test runs, when the analytics dashboard renders, then it shows the cohort state honestly —
+            including "not enough real cohort data yet" until a cohort has closed, and the test cohort when one exists.
+            No D1 number is fabricated to fill an empty state.
+          </p>
+        </li>
+        <li>
+          <span class="acceptance-label">AC-8 · Decision is recorded after the test</span>
+          <p class="acceptance-text body-text">
+            Given the test concludes, when the outcome is known, then a decision record is created capturing the
+            outcome, the decision, and the next action — the same loop the Experiment Tracker product was built to
+            close, applied here to the test itself.
+          </p>
+        </li>
+      </ol>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--simulated">SIMULATED — acceptance criteria are proposed for the portfolio exercise, not a record of criteria agreed by a real team.</span>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     07 — MEASUREMENT MODEL
+     ============================================================ -->
+<article class="case-study-section" id="measurement">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Measurement Model</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The measurement model below is a <strong>proposed evaluation framework for this portfolio exercise</strong>.
+        It draws on the existing Unrot measurement model and A/B plan as the basis, but no D1 outcome has been
+        measured on Unrot, and no real test has been run. The metrics are what the PM would propose to evaluate the
+        decision — not results that were achieved.
+      </p>
+
+      <div class="measurement-grid">
+        <div class="measurement-card measurement-card--primary">
+          <div class="measurement-card__label">Primary metric</div>
+          <div class="measurement-card__name">D1 retention</div>
+          <div class="measurement-card__definition">
+            Fraction of users who start a lesson on day D and return to start another lesson on day D+1.
+            Defined by the Unrot measurement model. Targeted by the Unrot A/B plan.
+          </div>
+          <div class="measurement-card__status">
+            <span class="evidence-label evidence-label--proposed">PROPOSED — not yet measured</span>
+            <span class="measurement-status-text">
+              The metric is defined. No real cohort has closed. No D1 outcome has been measured. The first real test
+              would create the first real baseline.
+            </span>
+          </div>
+        </div>
+
+        <div class="measurement-card">
+          <div class="measurement-card__label">Supporting metric · 1</div>
+          <div class="measurement-card__name">Lesson completion rate</div>
+          <div class="measurement-card__definition">
+            Fraction of lesson-started users who complete the lesson. Guardrail metric — a drop in the variant would
+            confound D1.
+          </div>
+          <div class="measurement-card__status">
+            <span class="evidence-label evidence-label--proposed">PROPOSED — not yet measured</span>
+          </div>
+        </div>
+
+        <div class="measurement-card">
+          <div class="measurement-card__label">Supporting metric · 2</div>
+          <div class="measurement-card__name">Return-intent prompt response rate</div>
+          <div class="measurement-card__definition">
+            Fraction of prompt-exposed users who respond to the return-intent prompt. Mechanism check — if nobody
+            responds, the intervention is a survey, not a treatment.
+          </div>
+          <div class="measurement-card__status">
+            <span class="evidence-label evidence-label--proposed">PROPOSED — not yet measured</span>
+          </div>
+        </div>
+
+        <div class="measurement-card">
+          <div class="measurement-card__label">Supporting metric · 3</div>
+          <div class="measurement-card__name">Reminder opt-in rate</div>
+          <div class="measurement-card__definition">
+            Fraction of prompt-responders who commit to a reminder. Commitment-mechanism check.
+          </div>
+          <div class="measurement-card__status">
+            <span class="evidence-label evidence-label--proposed">PROPOSED — not yet measured</span>
+          </div>
+        </div>
+
+        <div class="measurement-card">
+          <div class="measurement-card__label">Supporting metric · 4</div>
+          <div class="measurement-card__name">D1 among prompt-responders vs. prompt-skippers</div>
+          <div class="measurement-card__definition">
+            Segment check. If D1 is higher among responders, that tells us the mechanism has signal even if the
+            overall D1 effect is small.
+          </div>
+          <div class="measurement-card__status">
+            <span class="evidence-label evidence-label--proposed">PROPOSED — not yet measured</span>
+          </div>
+        </div>
+
+        <div class="measurement-card measurement-card--guardrail">
+          <div class="measurement-card__label">Guardrail metric</div>
+          <div class="measurement-card__name">First-session completion rate (no-prompt baseline)</div>
+          <div class="measurement-card__definition">
+            Completion rate for the first session overall, tracked to ensure the prompt does not depress the
+            completion moment that precedes it.
+          </div>
+          <div class="measurement-card__status">
+            <span class="evidence-label evidence-label--proposed">PROPOSED — not yet measured</span>
+            <span class="measurement-status-text">Guardrail — if this drops in the variant, the D1 result is uninterpretable.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--not-evidenced">NO PRODUCT OUTCOME IS BEING CLAIMED</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          All metrics above are proposed evaluation criteria for this portfolio exercise. No D1 outcome has been
+          measured on Unrot. No real test has been run. No baseline D1 exists. The A/B plan exists; the test has not
+          been executed on a real cohort. The measurement model is what the PM would propose to evaluate the decision
+          — not results that were achieved.
+        </p>
+      </div>
+
+      <div class="decision-block">
+        <button class="decision-block__header" id="decision-measure-btn" type="button" aria-expanded="false" aria-controls="decision-measure-body">
+          <div class="decision-block__header-content">
+            <div class="decision-block__eyebrow">Measurement status summary</div>
+            <div class="decision-block__question">What is defined, what is proposed, what is not measured</div>
+          </div>
+          <div class="decision-block__chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </button>
+        <div class="decision-block__body" id="decision-measure-body" role="region">
+          <ul class="prioritized-list">
+            <li><strong>Defined (from existing Unrot artifacts):</strong> D1 as the primary metric, the 7-stage funnel,
+                the must-have instrumentation (eventName, propertiesJson, occurredAt, sessionId, route, userId), the
+                A/B plan's power analysis and decision rules.</li>
+            <li><strong>Proposed (for this exercise):</strong> the specific supporting and guardrail metrics above, the
+                pre-test verification items, the acceptance criteria, the decision-record requirement.</li>
+            <li><strong>Not yet measured (no claim):</strong> D1 baseline, D1 outcome, completion-rate baseline,
+                prompt-response rate, reminder opt-in rate, any segment D1. None of these has been measured on Unrot.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     08 — DECISION BRIEF
+     ============================================================ -->
+<article class="case-study-section" id="brief">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Decision Brief</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        A compact brief a PM might share before a decision conversation. In this portfolio exercise, it represents the
+        simulated PM's proposed framing — not a brief that was shared, not a decision that was made.
+      </p>
+
+      <div class="decision-brief">
+        <div class="decision-brief__row decision-brief__row--label">
+          <span class="decision-brief__label">Decision</span>
+        </div>
+        <div class="decision-brief__row decision-brief__row--value">
+          <p class="body-text">
+            Whether to run the return-intent nudge (H4) as Unrot's first A/B test before the JTBD/intervention
+            hypotheses are validated with real users — with three pre-test verification items and the guardrails below.
+          </p>
+        </div>
+
+        <div class="decision-brief__row decision-brief__row--label">
+          <span class="decision-brief__label">Proposed recommendation</span>
+        </div>
+        <div class="decision-brief__row decision-brief__row--value">
+          <p class="body-text">
+            <span class="evidence-label evidence-label--simulated">SIMULATED — proposed, not approved</span>
+            Run H4 as the first test, after pre-test verification, because it is the intervention most directly aligned
+            with the deeper documented hypothesis, has the smallest engineering surface, and has the highest learning
+            value even if it loses. Hold only if pre-test verification fails or if real user validation (when it
+            happens) changes the hypothesis.
+          </p>
+        </div>
+
+        <div class="decision-brief__row decision-brief__row--label">
+          <span class="decision-brief__label">Why now</span>
+        </div>
+        <div class="decision-brief__row decision-brief__row--value">
+          <p class="body-text">
+            The measurement system and A/B plan are built. The analytics dashboard is ready to compute from real events
+            but has no closed cohort yet. The team has a documented hypothesis about the session handoff and a
+            documented set of intervention candidates. The cost of waiting for perfect user-model validation is real,
+            and the measurement system is already built to support a first test.
+          </p>
+        </div>
+
+        <div class="decision-brief__row decision-brief__row--label">
+          <span class="decision-brief__label">Options considered</span>
+        </div>
+        <div class="decision-brief__row decision-brief__row--value">
+          <p class="body-text">
+            Option A: run H4 now (with pre-test verification + guardrails). Option B: hold for JTBD/user validation
+            first, then test. The off-ramp: do nothing until validation — which only helps if the validation is real
+            and acted on.
+          </p>
+          <p class="body-text" style="margin-top: var(--space-2);">
+            See the Options Compared section above for the full structured comparison. No scores assigned. No
+            stakeholder votes recorded.
+          </p>
+        </div>
+
+        <div class="decision-brief__row decision-brief__row--label">
+          <span class="decision-brief__label">Trade-offs accepted by the proposed recommendation</span>
+        </div>
+        <div class="decision-brief__row decision-brief__row--value">
+          <ul class="prioritized-list">
+            <li>Testing before the user model is validated — accepting measurement-confidence risk bounded by
+                pre-test verification and guardrails.</li>
+            <li>A possible confounded result if lesson completion drops in the variant — addressed by monitoring
+                completion as a guardrail.</li>
+            <li>A possible broken intervention if reminder delivery doesn't work — addressed by pre-test delivery
+                verification.</li>
+            <li>A possible uninterpretable win — addressed by segment analysis (D1 among responders vs. skippers) and
+                by the decision-record requirement.</li>
+          </ul>
+        </div>
+
+        <div class="decision-brief__row decision-brief__row--label">
+          <span class="decision-brief__label">Pre-test verification (required before launch)</span>
+        </div>
+        <div class="decision-brief__row decision-brief__row--value">
+          <ol class="prioritized-list">
+            <li>Completion-boundary eventing is correct — the prompt fires only on genuine lesson completion.</li>
+            <li>Reminder delivery path is verified to fire (pre-test, not inferred from the test).</li>
+            <li>New event instrumentation (prompt_exposure, return_intent_responded) emits with the required properties.</li>
+          </ol>
+        </div>
+
+        <div class="decision-brief__row decision-brief__row--label">
+          <span class="decision-brief__label">Open questions</span>
+        </div>
+        <div class="decision-brief__row decision-brief__row--value">
+          <ul class="prioritized-list">
+            <li>What is the right commitment mechanism (reminder vs. "tomorrow's mission" preview vs. both)?</li>
+            <li>What is the right prompt wording and timing at lesson completion?</li>
+            <li>What D1 effect size would actually be meaningful, given the absence of a prior baseline?</li>
+            <li>If the test wins, what is the generalizable intervention — the mechanism, or the specific prompt?</li>
+          </ul>
+        </div>
+
+        <div class="decision-brief__row decision-brief__row--label">
+          <span class="decision-brief__label">Next step (proposed)</span>
+        </div>
+        <div class="decision-brief__row decision-brief__row--value">
+          <p class="body-text">
+            <span class="evidence-label evidence-label--simulated">SIMULATED — proposed, not executed</span>
+            Confirm the three pre-test verification items. If they pass, run the A/B test with the guardrails above.
+            Record the outcome, the decision, and the next action in a decision record when the test concludes. Then
+            use the result to prioritize the next JTBD validation work.
+          </p>
+        </div>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--simulated">SIMULATED — PORTFOLIO EXERCISE</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          This brief represents the simulated PM's proposed framing for a decision conversation. It is not a record of
+          a brief that was shared, not a decision that was made, and not a recommendation that was approved by real
+          stakeholders. The "next step" above is proposed, not executed.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     09 — EVIDENCE BOUNDARY
+     ============================================================ -->
+<article class="case-study-section" id="evidence-boundary">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence Boundary</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        This artifact is a portfolio exercise. It demonstrates a cross-functional product decision process; it does not
+        claim that the decision occurred, that the stakeholders participated, or that any outcome resulted.
+      </p>
+
+      <div class="evidence-boundary-grid">
+        <div class="evidence-boundary-card evidence-boundary-card--verified">
+          <div class="evidence-boundary-card__label">Verified</div>
+          <ul class="evidence-boundary-list">
+            <li>Existing Unrot measurement model (metric hierarchy, 7-stage funnel, must-have instrumentation) is a
+                documented Unrot artifact.</li>
+            <li>Existing Unrot A/B experiment plan (power analysis, decision rules) is a documented Unrot artifact.</li>
+            <li>Existing Unrot tech stack (Next.js 16 + PostgreSQL + Prisma) is a documented Unrot artifact.</li>
+            <li>Existing Unrot problem framing and JTBD/intervention hypotheses (4 jobs, 7 interventions H1–H7, none
+                validated) are documented Unrot artifacts.</li>
+            <li>Existing Unrot application (auth, sessions, lesson progress, reminder preferences, analytics events) is
+                a real, running application.</li>
+            <li>The analytics dashboard showing "not enough real cohort data yet" is an existing, honest Unrot behavior.</li>
+          </ul>
+        </div>
+
+        <div class="evidence-boundary-card evidence-boundary-card--observed">
+          <div class="evidence-boundary-card__label">Observed</div>
+          <ul class="evidence-boundary-list">
+            <li>The Unrot case study documents the deeper hypothesis that the problem may be the handoff between
+                sessions, not the first session alone.</li>
+            <li>The Unrot case study documents that D1 outcome was never measured.</li>
+            <li>The Unrot case study documents that JTBD and intervention hypotheses are not validated with real users.</li>
+            <li>The Unrot case study documents the "measure before optimizing" principle as the throughline.</li>
+          </ul>
+        </div>
+
+        <div class="evidence-boundary-card evidence-boundary-card--proposed">
+          <div class="evidence-boundary-card__label">Proposed — simulated for this exercise</div>
+          <ul class="evidence-boundary-list">
+            <li>The business stakeholder concern and decision input.</li>
+            <li>The UX flow, usability-risk assessment, and interaction implications.</li>
+            <li>The engineering feasibility, architecture, dependency, and technical-risk assessment.</li>
+            <li>The QA/ops acceptance criteria, regression concerns, rollout considerations, and monitoring requirements.</li>
+            <li>The options comparison table and the reasoning in it.</li>
+            <li>The proposed recommendation and the decision brief.</li>
+            <li>The acceptance criteria (AC-1 through AC-8).</li>
+            <li>The measurement model (primary, supporting, guardrail metrics) as an evaluation framework.</li>
+            <li>The pre-test verification items and the "what would change this decision" list.</li>
+          </ul>
+        </div>
+
+        <div class="evidence-boundary-card evidence-boundary-card--not-evidenced">
+          <div class="evidence-boundary-card__label">Not evidenced — no claim made</div>
+          <ul class="evidence-boundary-list">
+            <li>No real stakeholder participated in the conversation above.</li>
+            <li>No real UX designer, data analyst, engineer, or QA/ops person provided the inputs above.</li>
+            <li>No real decision was made. No decision was approved. No decision was recorded.</li>
+            <li>No real user research validated the return-intent prompt, the commitment mechanism, or the usability
+                assessment.</li>
+            <li>No real D1 outcome has been measured on Unrot — ever.</li>
+            <li>No real A/B test of H4 has been run on Unrot.</li>
+            <li>No real reminder delivery has been verified for this exercise.</li>
+            <li>No production launch, no business outcome, no adoption, no revenue, no business impact resulted from
+                this exercise.</li>
+            <li>No stakeholder approved this recommendation. No stakeholder agreed to anything.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="label-block">
+        <span class="evidence-label evidence-label--simulated">SIMULATED — PORTFOLIO EXERCISE</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The artifact exists to show how I would structure a cross-functional product decision. It is evidence of
+          operating method and product thinking — not evidence of a real cross-functional meeting, a real decision, a
+          real stakeholder, or a real outcome.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<div class="container" style="margin-top: var(--space-10); padding-bottom: var(--space-8); border-top: 1px solid var(--border-subtle);">
+  <div class="case-study-ctas">
+    <a href="/work/unrot/" class="btn btn--primary">
+      Back to Unrot Case Study
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+    </a>
+    <a href="/work/unrot/live/" class="btn btn--ghost">
+      Unrot Live Experience
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </a>
+    <a href="/work/" class="btn btn--ghost">
+      Back to Proof of Work
+    </a>
+  </div>
+  <p class="text-muted" style="margin-top: var(--space-6); font-size: var(--text-sm); text-align: center; max-width: 520px; margin-inline: auto;">
+    This is a portfolio exercise — a demonstration of cross-functional product thinking using the Unrot context. It
+    is not a record of a real decision, a real stakeholder conversation, or a real outcome. The Unrot measurement
+    model, A/B plan, tech stack, problem framing, and JTBD/intervention hypotheses are real Unrot artifacts; the
+    decision exercise above them is simulated and labeled as such.
+  </p>
+</div>
+
+<style>
+  /* ============================================================
+     CROSS-FUNCTIONAL DECISION ARTIFACT — scoped component styles
+     ============================================================ */
+
+  .function-block {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    margin: var(--space-4) 0;
+    overflow: hidden;
+  }
+
+  .function-block + .function-block {
+    margin-top: var(--space-5);
+  }
+
+  .function-block__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--bg-muted);
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: var(--text-base);
+    font-weight: 650;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .function-block__eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .function-block__name {
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: var(--text-sm);
+    font-style: italic;
+  }
+
+  .function-block__body {
+    padding: var(--space-4);
+  }
+
+  .function-field {
+    margin-bottom: var(--space-3);
+  }
+
+  .function-field:last-child {
+    margin-bottom: 0;
+  }
+
+  .function-field__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-1);
+  }
+
+  .function-field__text {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .comparison-grid {
+    margin-top: var(--space-5);
+    overflow-x: auto;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    min-width: 680px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+
+  .comparison-table thead th {
+    background: var(--bg-muted);
+    border-bottom: 2px solid var(--border-default);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--text-primary);
+  }
+
+  .comparison-table__criterion {
+    width: 22%;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .comparison-table__option {
+    width: 39%;
+    color: var(--text-secondary);
+  }
+
+  .comparison-table__option-label {
+    display: block;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-1);
+    letter-spacing: normal;
+    text-transform: none;
+    font-family: inherit;
+  }
+
+  .comparison-table tbody tr:nth-child(even) {
+    background: var(--bg-surface);
+  }
+
+  .comparison-table td:first-child {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .measurement-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+  }
+
+  @media (min-width: 640px) {
+    .measurement-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .measurement-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .measurement-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .measurement-card--primary {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-muted);
+  }
+
+  .measurement-card--guardrail {
+    border-left: 3px solid var(--evidence-not-evidenced);
+  }
+
+  .measurement-card__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .measurement-card--guardrail .measurement-card__label {
+    color: var(--evidence-not-evidenced);
+  }
+
+  .measurement-card__name {
+    font-size: var(--text-base);
+    font-weight: 650;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .measurement-card__definition {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  .measurement-card__status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: auto;
+  }
+
+  .measurement-status-text {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  .evidence-boundary-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+  }
+
+  @media (min-width: 768px) {
+    .evidence-boundary-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .evidence-boundary-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+  }
+
+  .evidence-boundary-card__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .evidence-boundary-card--verified .evidence-boundary-card__label {
+    color: var(--evidence-verified);
+    border-bottom-color: var(--evidence-verified-bg);
+  }
+
+  .evidence-boundary-card--observed .evidence-boundary-card__label {
+    color: var(--evidence-observed);
+    border-bottom-color: var(--evidence-observed-bg);
+  }
+
+  .evidence-boundary-card--proposed .evidence-boundary-card__label {
+    color: var(--evidence-proposed);
+    border-bottom-color: var(--evidence-proposed-bg);
+  }
+
+  .evidence-boundary-card--not-evidenced .evidence-boundary-card__label {
+    color: var(--evidence-not-evidenced);
+    border-bottom-color: var(--evidence-not-evidenced-bg);
+  }
+
+  .evidence-boundary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .evidence-boundary-list li {
+    padding: var(--space-1) 0;
+    padding-left: var(--space-4);
+    position: relative;
+  }
+
+  .evidence-boundary-list li::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+
+  .evidence-boundary-card--verified .evidence-boundary-list li::before {
+    color: var(--evidence-verified);
+  }
+
+  .evidence-boundary-card--observed .evidence-boundary-list li::before {
+    color: var(--evidence-observed);
+  }
+
+  .evidence-boundary-card--proposed .evidence-boundary-list li::before {
+    color: var(--evidence-proposed);
+  }
+
+  .evidence-boundary-card--not-evidenced .evidence-boundary-list li::before {
+    color: var(--evidence-not-evidenced);
+  }
+
+  .evidence-label--simulated {
+    background: var(--evidence-proposed-bg);
+    color: var(--evidence-proposed);
+    border: 1px solid var(--evidence-proposed-bg);
+  }
+
+  .decision-brief {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .decision-brief__row {
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .decision-brief__row:last-child {
+    border-bottom: none;
+  }
+
+  .decision-brief__row--label {
+    background: var(--bg-muted);
+  }
+
+  .decision-brief__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .decision-brief__row--value {
+    background: var(--bg-surface);
+  }
+
+  .prioritized-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-3);
+  }
+
+  .prioritized-list:last-child {
+    margin-bottom: 0;
+  }
+
+  .prioritized-list li {
+    padding: var(--space-1) 0 var(--space-1) var(--space-4);
+    position: relative;
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    font-size: var(--text-sm);
+  }
+
+  .prioritized-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .prioritized-list li strong {
+    color: var(--text-primary);
+  }
+
+  .acceptance-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+  }
+
+  .acceptance-list li {
+    padding: var(--space-4);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-3);
+  }
+
+  .acceptance-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .acceptance-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .acceptance-text {
+    margin: 0;
+  }
+
+  .section-subtitle {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>
+
+{% endblock %}
