@@ -28,7 +28,7 @@
   </div>
 
   <section class="work-section">
-    <h2>Context</h2>
+    <h2 class="section-title">Context</h2>
     <p>
       MSME (micro, small, and medium enterprise) borrowers in many markets face a lending experience that is opaque and single-source: a borrower often approaches one bank or one digital lender, receives one offer, and has little structured way to compare alternative terms side by side. The cost of that opacity is not just the headline rate — it is the difficulty of comparing APR, processing fees, upfront costs, total interest, and total repayment across lenders whose offers are structured differently.
     </p>
@@ -41,7 +41,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Problem</h2>
+    <h2 class="section-title">Problem</h2>
     <p>
       The prototype frames the problem as a comparison-and-trust problem for MSME borrowers:
     </p>
@@ -54,7 +54,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Product Question</h2>
+    <h2 class="section-title">Product Question</h2>
     <p>
       Can a reverse-auction credit marketplace with normalized offer comparison give an MSME borrower a clearer, more trustable view of competing lender offers than a single-source lending flow — and what trade-offs does that introduce?
     </p>
@@ -64,7 +64,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Hypothesis</h2>
+    <h2 class="section-title">Hypothesis</h2>
     <p>
       If a borrower can see multiple normalized lender offers for the same structured intent, and can compare total cost components (APR, processing fees, upfront costs, total interest, total repayment) side by side, then the borrower can make a more informed choice and the process is more auditable than a single-source offer.
     </p>
@@ -74,7 +74,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Product Decision</h2>
+    <h2 class="section-title">Product Decision</h2>
     <p>
       The prototype includes four connected decisions:
     </p>
@@ -110,7 +110,7 @@
   </section>
 
   <section class="work-section">
-    <h2>How It Works</h2>
+    <h2 class="section-title">How It Works</h2>
     <ol>
       <li><strong>Create a credit intent.</strong> The borrower enters loan amount, purpose, tenure, and a short description through a 3-step form (details → collateral → review), then creates the intent. The intent enters an active auction.</li>
       <li><strong>Auction view.</strong> The borrower sees the active intent with a countdown timer, a list of live lender bids (each showing lender name, logo code, APR, monthly payment, total interest, and a compare checkbox), and a "Compare Offers" action that activates when at least one bid is selected.</li>
@@ -123,7 +123,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Prioritization</h2>
+    <h2 class="section-title">Prioritization</h2>
     <p>
       The source prototype's prioritization is reflected in what is built and in how bids are tagged. The concept prioritizes:
     </p>
@@ -139,7 +139,7 @@
   </section>
 
   <section class="work-section">
-    <h2>KPI Model</h2>
+    <h2 class="section-title">KPI Model</h2>
     <p>
       The prototype defines the structure of a KPI model but does NOT contain measured KPI results. The following are KPI definitions and targets as designed — not measured outcomes.
     </p>
@@ -188,7 +188,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Evidence</h2>
+    <h2 class="section-title">Evidence</h2>
     <ul>
       <li><strong>OBSERVED (source):</strong> The LoDo source exists at <span class="mono">projects/project-lodo/</span> — a Kotlin/Android project with Room database, Jetpack Compose UI, and screens for dashboard, auctions, new intent, comparison, scheme finder, onboarding credit lines, overview, and profile. The data model (<span class="mono">Entities.kt</span>), DAO (<span class="mono">LoDoDao.kt</span>), repository (<span class="mono">LoDoRepository.kt</span>), and view model (<span class="mono">LoDoViewModel.kt</span>) are inspectable source.</li>
       <li><strong>OBSERVED (source data):</strong> Seed/illustrative data includes a personal-loan intent (PL-8492, ₹500,000 Home Renovation, 60 months, 3 lenders: Capital One 6.45% APR, SoFi 6.99%, Wells Fargo 7.25%) and a business-expansion intent (BE-1042, ₹250,000 Equipment Purchase, draft state), plus scheme entries (CGTMSE, etc.) and a user profile (Alex Vance, MSME, manufacturing, 4 years, credit score 720–749).</li>
@@ -197,7 +197,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Evidence Limits</h2>
+    <h2 class="section-title">Evidence Limits</h2>
     <ul>
       <li><strong>Not a deployed product.</strong> LoDo is a prototype Android app. It is not a deployed lending marketplace. No real lenders, no real borrowers, no real loan approvals, no real credit disbursements.</li>
       <li><strong>Illustrative data.</strong> All lender bids, intents, user profiles, and scheme entries in the source are illustrative seed data. They are not real lending offers or real borrower data.</li>
@@ -211,7 +211,7 @@
   </section>
 
   <section class="work-section">
-    <h2>What I Would Validate Next</h2>
+    <h2 class="section-title">What I Would Validate Next</h2>
     <ol>
       <li><strong>Borrower comprehension.</strong> Test whether MSME borrowers can correctly identify the best-total-cost offer from a normalized comparison view, and where they get confused (APR vs total interest vs total repayment).</li>
       <li><strong>Consent and verification flow.</strong> Design and test an explicit borrower-consent step and a lender/bureau verification gate — what information is collected, what is verified, what the borrower sees, and where drop-off happens between verification and first offer.</li>

@@ -22,7 +22,7 @@
   </div>
 
   <section class="work-section">
-    <h2>PM Assignment Context</h2>
+    <h2 class="section-title">PM Assignment Context</h2>
     <p>
       IRCTC (Indian Railway Catering and Tourism Corporation) operates India's largest railway ticket reservation platform. During Tatkal booking windows (typically 10:00 AM and 11:00 AM) the platform experiences extreme concurrency — a surge of simultaneous booking attempts on limited seat inventory. The prototype frames this as a concurrency-vs-UX problem: at peak load, the transaction gateway degrades, session timeouts increase, and the user experience suffers.
     </p>
@@ -35,7 +35,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Problem Statement</h2>
+    <h2 class="section-title">Problem Statement</h2>
     <p>
       The prototype presents the legacy checkout experience as having three visible problems during peak booking windows:
     </p>
@@ -50,7 +50,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Product Decision</h2>
+    <h2 class="section-title">Product Decision</h2>
     <p>
       The PM teardown proposes a checkout redesign that separates the booking transaction path from non-essential script loading, and introduces a client-side concurrency behavior to make peak-hour booking feel more predictable.
     </p>
@@ -72,7 +72,7 @@
   </section>
 
   <section class="work-section">
-    <h2>How It Works</h2>
+    <h2 class="section-title">How It Works</h2>
     <p>
       The concept prototype's interactive mockup shows the redesign as a smartphone checkout flow with four core behaviors:
     </p>
@@ -88,7 +88,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Prioritization</h2>
+    <h2 class="section-title">Prioritization</h2>
     <p>
       The prototype frames the proposed features in P0/P1 priority tiers.
     </p>
@@ -124,7 +124,7 @@
   </section>
 
   <section class="work-section">
-    <h2>KPI Model</h2>
+    <h2 class="section-title">KPI Model</h2>
     <p>
       The prototype proposes a small KPI model for the checkout redesign. Three KPI cards are shown in the PM panel as comparison metrics.
     </p>
@@ -155,7 +155,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Evidence</h2>
+    <h2 class="section-title">Evidence</h2>
     <ul>
       <li><strong>OBSERVED (source):</strong> The prototype exists as a complete interactive artifact at <a href="/work/irctc/live/">/work/irctc/live/</a> — a 1,451-line HTML prototype with CSS and JavaScript, demonstrating the checkout teardown, mode toggle, metric comparison, feature callouts, booking flow simulation, and ad-layout-shift simulator.</li>
       <li><strong>OBSERVED (category pattern):</strong> Peak-hour congestion and layout-shift problems on large ticketing/checkout platforms are a recognized category pattern; the prototype's framing is consistent with this category behavior.</li>
@@ -163,7 +163,7 @@
   </section>
 
   <section class="work-section">
-    <h2>Evidence Limits</h2>
+    <h2 class="section-title">Evidence Limits</h2>
     <ul>
       <li><strong>No IRCTC operational data observed.</strong> The specific metric figures (980ms, 77.4%, and the redesign-mode 420ms / 91.2%) are presented as concept figures within the prototype, not as sourced IRCTC operational metrics. They are prototype concept figures, not measured outcomes.</li>
       <li><strong>No user research conducted.</strong> There are no user interviews, usability tests, or A/B tests associated with this artifact. The redesign features are a PM concept proposal, not validated with users.</li>
@@ -174,7 +174,7 @@
   </section>
 
   <section class="work-section">
-    <h2>What I Would Validate Next</h2>
+    <h2 class="section-title">What I Would Validate Next</h2>
     <ol>
       <li><strong>Quantify the layout-shift problem.</strong> Instrument the real checkout path to measure Cumulative Layout Shift (CLS) during peak booking windows, correlated with booking-completion drop-off and invalid-tap incidents. This would confirm whether ad-script layout shifts are a material contributor to the observed friction.</li>
       <li><strong>Measure peak-hour checkout latency breakdown.</strong> Separate script-load time, server response time, and queue/wait time in the transaction path, so the redesign's script-freeze impact can be measured rather than assumed.</li>
