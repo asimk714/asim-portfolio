@@ -35,7 +35,7 @@ Environment variable `PORT` can override the default port.
 ### Pages
 
 - `/` — Homepage: hero, selected work preview, how I think, product operating system, proof of work preview, product lab, experience, credentials, now, contact.
-- `/work/` — Proof of Work hub: filterable evidence card grid with 14 artifacts across Discovery, Decision, Definition, Build, Measure, Verify, and Learn categories.
+- `/work/` — Proof of Work hub: filterable evidence card grid with 15 artifacts across Discovery, Decision, Definition, Build, Measure, Verify, and Learn categories.
 - `/work/reviewflow/` — ReviewFlow case study: AI product integrity, measurement, verification.
 - `/work/unrot/` — Unrot Daily Retention case study: D1 retention measurement model, experiment design.
 - `/work/experiment-tracker/` — Experiment Tracker case study: product definition, prioritization, verification.
@@ -44,11 +44,11 @@ Environment variable `PORT` can override the default port.
 
 ### Evidence Cards
 
-The Proof of Work hub presents 14 evidence cards linking to real artifacts:
+The Proof of Work hub presents 15 evidence cards linking to real artifacts:
 
 - ReviewFlow: 15-case regression dataset, AI output quality measurement report, 8 product decisions, corrected evaluator results, Phase 11 intervention record.
 - Experiment Tracker: PRODUCT_BRIEF with 7-candidate prioritization, 17-category verification report.
-- Unrot: A/B experiment plan with power analysis, Final QA report (20/20 functional, 35/35 tests), D1 retention calculator, architecture document, problem framing, JTBD hypotheses.
+- Unrot: A/B experiment plan with power analysis, Final QA report (20/20 functional — previously reported, not revalidated; 29/50 tests — 21 DB-dependent failures), D1 retention calculator, architecture document, problem framing, JTBD hypotheses.
 
 All external links point to github.com/asimk714 repositories. Internal links anchor to section IDs within case study pages.
 
@@ -67,7 +67,7 @@ Where evidence is missing, it is stated plainly rather than hidden.
 
 ## Current Status
 
-The website implementation is complete and locally verifiable. All 7 routes render successfully (HTTP 200). The implementation follows the content blueprint documented in `docs/CONTENT-BLUEPRINT.md`.
+The website implementation is complete and locally verifiable. All 14 unique pages render successfully (HTTP 200) via Flask test-client verification (25 route decorators serve 14 unique pages, including `/live/` alias variants). The implementation follows the content blueprint documented in `docs/CONTENT-BLUEPRINT.md`.
 
 This is a portfolio project — a proof of how the author thinks about product, not a deployed production site with users.
 

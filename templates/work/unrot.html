@@ -73,7 +73,7 @@
         <strong>Decision:</strong> measure before optimizing — build the measurement system, funnel, and
         A/B experiment plan before any intervention is validated.
         <strong>Evidence:</strong> measurement model, D1 retention calculator, analytics dashboard,
-        A/B plan with power analysis, 20/20 functional verification, 35/35 tests.
+        A/B plan with power analysis, 20/20 functional verification (previously reported, not revalidated), 29/50 tests passing (21 DB-dependent failures).
         <strong>Gap:</strong> no measured D1 outcome, no real users, no launch, no GTM, no scale.
       </p>
     </div>
@@ -407,14 +407,14 @@
       <div class="label-block">
         <span class="evidence-label evidence-label--verified">Verified</span>
         <p class="body-text" style="margin-top: var(--space-2);">
-          <strong>20/20 functional verification</strong>: 8 routes verified, including auth flows,
+          <strong>20/20 functional verification</strong> (previously reported, not revalidated): 8 routes verified, including auth flows,
           learning path view, lesson reader, reminder form, analytics dashboard, health endpoint.
         </p>
       </div>
       <div class="label-block">
         <span class="evidence-label evidence-label--verified">Verified</span>
         <p class="body-text" style="margin-top: var(--space-2);">
-          <strong>35/35 automated tests passing</strong>: retention logic, reminder form, lesson reader,
+          <strong>29/50 automated tests passing</strong> (21 failures due to PostgreSQL at 127.0.0.1:5432 being unavailable): retention logic, reminder form, lesson reader,
           onboarding. Real test suite, real results.
         </p>
       </div>
@@ -499,7 +499,7 @@
           <p class="body-text" style="margin-top: var(--space-2);">
             A complete measurement system was built and verified. The analytics dashboard computes from
             a real database. The D1 calculator is correct. The experiment plan is rigorous. The QA report
-            is real: 20/20 functional, 35/35 tests, accessibility by code review, build/lint/typecheck
+            is real: 20/20 functional (previously reported, not revalidated), 29/50 tests (21 DB-dependent failures), accessibility by code review, build/lint/typecheck
             pass, demo isolation verified.
           </p>
         </div>
@@ -590,8 +590,8 @@
         </div>
         <div class="evidence-item">
           <span class="evidence-label evidence-label--verified">Verified</span>
-          <div><strong>Final QA Report — 20/20 Functional, 35/35 Tests</strong>
-            <p class="muted-paragraph" style="margin-top: var(--space-1);">Full audit: functional, responsive (375/768/1280), accessibility (WCAG 2.1 AA), tests, ESLint, build. Real report.</p></div>
+          <div><strong>QA Results and Verification Limitations — 20/20 Functional (previously reported, not revalidated), 29/50 Tests</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Full audit: functional, responsive (375/768/1280), accessibility considerations reviewed in code; formal WCAG 2.1 AA conformance not verified, tests (29/50 passed — 21 failures due to PostgreSQL at 127.0.0.1:5432 being unavailable), ESLint, build. Real report.</p></div>
         </div>
         <div class="evidence-item">
           <span class="evidence-label evidence-label--verified">Verified</span>
