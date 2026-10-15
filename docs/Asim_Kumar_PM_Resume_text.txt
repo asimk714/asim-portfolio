@@ -25,8 +25,8 @@ FEATURED PRODUCT CASE STUDIES (INDEPENDENT IMPLEMENTATIONS)
 ReviewFlow — AI-Assisted Customer Review Analysis & Response Pipeline [PRD, Evaluation Pipeline & Live Prototype]
   Scoped product boundaries for an AI review synthesis tool designed to draft context-faithful salon responses while preventing hallucinated claims.
   Authored 8 structured product decision records; deliberately deprioritized automatic posting to Google to eliminate hallucination liability.
-  Scoped MVP with MoSCoW; developed and verified a 15-case regression suite and automated evaluator measuring rating consistency, superlative
- drift, and format compliance.
+  Scoped MVP with MoSCoW; developed an offline 15-case regression suite and deterministic evaluator measuring rating consistency and format
+ compliance.
 Unrot — Daily Retention Modeling & Cross-Functional Prioritization [Retention Modeling, Experiment Design & Strategic Decision Brief]
   Investigated educational habit decay; built a Day 1 retention measurement model and formulated testable Jobs-to-be-Done (JTBD) hypotheses.
   Engineered a complete A/B experiment plan with power calculations and sample size requirements to test return-intent notification timing.
@@ -35,7 +35,7 @@ Unrot — Daily Retention Modeling & Cross-Functional Prioritization [Retention 
 Experiment Tracker — Statistical Rigor & Decision-Support System [PRD Scoping, 17-Category Verification & Functional Prototype]
   Identified the 'experiment graveyard' friction point where test results lack structured conclusion capture and explicit launch/kill decision criteria.
   Authored a 7-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.
-  Verified functionality across an automated 17-category verification suite and 26 test functions covering database integrity and decision gating.
+  Structured a 17-category verification suite and authored 26 automated test functions covering database integrity and decision gating.
  Windows Taskflow & IRCTC Rail Connect — Product Teardowns & Prototypes [User Journey Mapping, Concurrency Analysis &
 Clickable Prototypes]
   Windows Taskflow: Authored PRD for context-aware workspaces; scoped backlog via RICE, defining <3.5s state restoration as P0 KPI with

@@ -154,7 +154,7 @@ def build_docx():
             "bullets": [
                 "Defined product boundaries for an AI review synthesis tool designed to draft context-faithful salon responses while preventing hallucinated claims.",
                 "Authored 8 structured product decision records; deliberately deprioritized automatic posting to Google to eliminate hallucination liability.",
-                "Scoped MVP with MoSCoW; developed and verified a 15-case regression suite and automated evaluator measuring rating consistency, superlative drift, and format compliance."
+                "Scoped MVP with MoSCoW; developed an offline 15-case regression suite and deterministic evaluator measuring rating consistency and format compliance."
             ]
         },
         {
@@ -172,7 +172,7 @@ def build_docx():
             "bullets": [
                 "Identified the 'experiment graveyard' friction point where test results lack structured conclusion capture and explicit launch/kill decision criteria.",
                 "Authored a 7-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.",
-                "Verified functionality across an automated 17-category verification suite and 26 test functions covering database integrity and decision gating."
+                "Structured a 17-category verification suite and authored 26 automated test functions covering database integrity and decision gating."
             ]
         },
         {
@@ -463,7 +463,7 @@ def build_pdf():
         Paragraph("<b>ReviewFlow — AI-Assisted Customer Review Analysis & Response Pipeline</b> <font color='#475569'><i>[PRD, Evaluation Pipeline & Live Prototype]</i></font>", style_item_title),
         Paragraph("&bull; Scoped product boundaries for an AI review synthesis tool designed to draft context-faithful salon responses while preventing hallucinated claims.", style_bullet),
         Paragraph("&bull; Authored 8 structured product decision records; deliberately deprioritized automatic posting to Google to eliminate hallucination liability.", style_bullet),
-        Paragraph("&bull; Scoped MVP with MoSCoW; developed and verified a 15-case regression suite and automated evaluator measuring rating consistency, superlative drift, and format compliance.", style_bullet)
+        Paragraph("&bull; Scoped MVP with MoSCoW; developed an offline 15-case regression suite and deterministic evaluator measuring rating consistency and format compliance.", style_bullet)
     ]
     story.extend(p1)
 
@@ -479,7 +479,7 @@ def build_pdf():
         Paragraph("<b>Experiment Tracker — Statistical Rigor & Decision-Support System</b> <font color='#475569'><i>[PRD Scoping, 17-Category Verification & Functional Prototype]</i></font>", style_item_title),
         Paragraph("&bull; Identified the 'experiment graveyard' friction point where test results lack structured conclusion capture and explicit launch/kill decision criteria.", style_bullet),
         Paragraph("&bull; Authored a 7-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.", style_bullet),
-        Paragraph("&bull; Verified functionality across an automated 17-category verification suite and 26 test functions covering database integrity and decision gating.", style_bullet)
+        Paragraph("&bull; Structured a 17-category verification suite and authored 26 automated test functions covering database integrity and decision gating.", style_bullet)
     ]
     story.extend(p3)
 
