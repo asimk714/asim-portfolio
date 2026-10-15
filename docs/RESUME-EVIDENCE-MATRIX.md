@@ -33,7 +33,7 @@ This document maps verified source evidence from Asim Kumar's engineering career
    - *B.Tech Mechanical Engineering:* Kurukshetra University (2014 – 2017). (PASS).
    - *Diploma ECE:* Govt. Polytechnic Ambala City (2010 – 2013). (PASS).
 4. **Certifications:**
-   - *Executive Certification: Product Management in the Agentic AI Era:* IIM Tiruchirappalli & Masai School (Aug 2026). (PASS).
+   - *Executive Certification: Product Management in the Agentic AI Era:* IIM Tiruchirappalli (Coursework completed 2026; certificate issuance pending). (PASS).
    - *Product Owner Certification:* Udemy (Credential ID: F607C4712D38). (PASS).
    - *Python for AI:* ScholarHat (Credential ID: IJDU240126). (PASS).
    - *Management Consulting & Excel Analytics:* Jobaaj Learnings (Credential ID: AIJDW103334). (PASS).

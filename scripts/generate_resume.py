@@ -287,7 +287,7 @@ def build_docx():
     add_heading_rule("Education & Verified Credentials")
 
     edu_items = [
-        ("Executive Education: Product Management in the Agentic AI Era", "IIM Tiruchirappalli & Masai School (Aug 2026 cohort)"),
+        ("Executive Education: Product Management in the Agentic AI Era", "IIM Tiruchirappalli (Coursework Completed 2026)"),
         ("Product Owner Certification", "Udemy (Credential ID: F607C4712D38)"),
         ("Python for AI", "ScholarHat (Credential ID: IJDU240126)"),
         ("Management Consulting & Excel Analytics", "Jobaaj Learnings (Credential ID: AIJDW103334)"),
@@ -529,7 +529,7 @@ def build_pdf():
     # Education & Credentials
     story.append(Paragraph("EDUCATION & VERIFIED CREDENTIALS", style_heading))
     edu = [
-        "<b>Executive Education: Product Management in the Agentic AI Era</b> — IIM Tiruchirappalli & Masai School (Aug 2026 cohort)",
+        "<b>Executive Education: Product Management in the Agentic AI Era</b> — IIM Tiruchirappalli (Coursework Completed 2026)",
         "<b>Product Owner Certification</b> — Udemy (Credential ID: F607C4712D38)",
         "<b>Python for AI</b> — ScholarHat (Credential ID: IJDU240126)",
         "<b>Management Consulting & Excel Analytics</b> — Jobaaj Learnings (Credential ID: AIJDW103334)",

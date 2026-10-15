@@ -56,7 +56,7 @@ This document provides complete line-by-line traceability between the statements
 
 | Credential | Verification Source | Status |
 | :--- | :--- | :--- |
-| **Executive PM: Agentic AI Era (IIM Tiruchirappalli)** | `templates/_credentials.html`, `docs/PORTFOLIO-STRATEGY.md`. | **PASS** |
+| **Executive PM: Agentic AI Era (IIM Tiruchirappalli)** | `templates/_credentials.html`, `docs/PORTFOLIO-STRATEGY.md`. | **PASS** (Coursework completed 2026; formal certificate issuance pending) |
 | **Product Owner Certification (Udemy)** | Credential ID: F607C4712D38. | **PASS** |
 | **Python for AI (ScholarHat)** | Credential ID: IJDU240126. | **PASS** |
 | **Management Consulting & Excel (Jobaaj Learnings)** | Credential ID: AIJDW103334. | **PASS** |
