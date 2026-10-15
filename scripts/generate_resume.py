@@ -18,7 +18,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable, KeepTogether
+    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable, KeepTogether, PageBreak
 )
 import pypdf
 
@@ -208,6 +208,9 @@ def build_docx():
             rb.font.size = Pt(8.5)
             rb.font.name = "Arial"
 
+    # --- Page Break before Professional Experience ---
+    doc.add_page_break()
+
     # --- Professional Experience ---
     add_heading_rule("Professional Experience (Engineering Execution & Transferable PM Skills)")
 
@@ -304,6 +307,25 @@ def build_docx():
         ri.font.size = Pt(8.5)
         ri.font.name = "Arial"
 
+    # --- Systems & Technical Capabilities ---
+    add_heading_rule("Technical Stack & Operational Tooling")
+    tech_items = [
+        ("Telecom & Diagnostic Systems: ", "Carrier-grade DWDM/SDH (Nokia SM1660 Matrix E), GPON Optical Line Terminals (OLT) & ONTs, Nokia Wi-Fi beacons, RF signal generators & power amplifiers, spectrum analyzers."),
+        ("Development & Product Analytics: ", "Python 3, Flask, SQLite, TypeScript, REST APIs, Git, Jira, Trello, Confluence, Microsoft Excel (Advanced financial & cohort modeling)."),
+        ("Methodologies & Quality Standards: ", "Root Cause Analysis (RCA), Failure Mode and Effects Analysis (FMEA), Gherkin BDD specs, MoSCoW / RICE prioritization, statistical power analysis, automated anti-hallucination evaluation suites.")
+    ]
+    for bold_prefix, text in tech_items:
+        p = doc.add_paragraph(style='List Bullet')
+        p.paragraph_format.space_before = Pt(1)
+        p.paragraph_format.space_after = Pt(1)
+        rb = p.add_run(bold_prefix)
+        rb.bold = True
+        rb.font.size = Pt(8.5)
+        rb.font.name = "Arial"
+        rt = p.add_run(text)
+        rt.font.size = Pt(8.5)
+        rt.font.name = "Arial"
+
     doc.save(DOCX_PATH)
     print(f"DOCX saved to {DOCX_PATH}")
 
@@ -315,8 +337,8 @@ def build_pdf():
         pagesize=letter,
         leftMargin=36,
         rightMargin=36,
-        topMargin=32,
-        bottomMargin=32
+        topMargin=30,
+        bottomMargin=30
     )
 
     styles = getSampleStyleSheet()
@@ -331,8 +353,8 @@ def build_pdf():
         'DocName',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=17,
-        leading=20,
+        fontSize=16.5,
+        leading=19,
         alignment=1, # Center
         textColor=primary_color
     )
@@ -340,8 +362,8 @@ def build_pdf():
         'DocSub',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=9.5,
-        leading=12,
+        fontSize=9,
+        leading=11.5,
         alignment=1,
         textColor=accent_color
     )
@@ -349,8 +371,8 @@ def build_pdf():
         'DocContact',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8,
-        leading=10.5,
+        fontSize=7.8,
+        leading=10,
         alignment=1,
         textColor=muted_color
     )
@@ -358,44 +380,44 @@ def build_pdf():
         'DocHeading',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=9,
-        leading=11,
+        fontSize=8.8,
+        leading=10.8,
         textColor=accent_color,
-        spaceBefore=7,
-        spaceAfter=2,
+        spaceBefore=5,
+        spaceAfter=1.5,
         keepWithNext=True
     )
     style_body = ParagraphStyle(
         'DocBody',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.2,
-        leading=10.5,
+        fontSize=8,
+        leading=10.2,
         textColor=body_color,
         spaceBefore=1,
-        spaceAfter=2
+        spaceAfter=1.5
     )
     style_bullet = ParagraphStyle(
         'DocBullet',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8,
-        leading=10.2,
+        fontSize=7.8,
+        leading=9.8,
         textColor=body_color,
-        leftIndent=12,
-        firstLineIndent=-8,
-        spaceBefore=1,
-        spaceAfter=1.5
+        leftIndent=11,
+        firstLineIndent=-7,
+        spaceBefore=0.8,
+        spaceAfter=1
     )
     style_item_title = ParagraphStyle(
         'DocItemTitle',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=8.5,
-        leading=10.5,
+        fontSize=8.2,
+        leading=10.2,
         textColor=primary_color,
-        spaceBefore=3,
-        spaceAfter=1,
+        spaceBefore=2.5,
+        spaceAfter=0.8,
         keepWithNext=True
     )
 
@@ -410,8 +432,8 @@ def build_pdf():
         "Portfolio: github.com/asimk714/asim-portfolio  &bull;  LinkedIn: linkedin.com/in/asim-kumar-b69558188  &bull;  GitHub: github.com/asimk714",
         style_contact
     ))
-    story.append(Spacer(1, 4))
-    story.append(HRFlowable(width="100%", thickness=1, color=accent_color, spaceBefore=2, spaceAfter=4))
+    story.append(Spacer(1, 3))
+    story.append(HRFlowable(width="100%", thickness=1, color=accent_color, spaceBefore=1.5, spaceAfter=3))
 
     # Summary
     story.append(Paragraph("PROFESSIONAL SUMMARY", style_heading))
@@ -419,7 +441,7 @@ def build_pdf():
         "Product-minded engineer transitioning into Product Management, offering 8+ years of technical systems execution in telecom network infrastructure combined with formal Executive Product Management education from IIM Tiruchirappalli. Demonstrated end-to-end product thinking across 3 flagship implementations (ReviewFlow, Unrot, Experiment Tracker) and 7 supporting product teardowns—authoring PRDs, Gherkin acceptance criteria, RICE/MoSCoW prioritization frameworks, automated verification suites, and interactive prototypes. Proven ability to translate ambiguous operational problems into structured technical execution, coordinate cross-functional engineering teams, and design AI workflows with rigorous evaluation and anti-hallucination guardrails.",
         style_body
     ))
-    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=3, spaceAfter=3))
+    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=2.5, spaceAfter=2.5))
 
     # Competencies
     story.append(Paragraph("CORE PRODUCT & TECHNICAL COMPETENCIES", style_heading))
@@ -432,7 +454,7 @@ def build_pdf():
     ]
     for c in competencies:
         story.append(Paragraph(f"&bull; {c}", style_bullet))
-    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=3, spaceAfter=3))
+    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=2.5, spaceAfter=2.5))
 
     # Featured Projects
     story.append(Paragraph("FEATURED PRODUCT CASE STUDIES (INDEPENDENT IMPLEMENTATIONS)", style_heading))
@@ -468,7 +490,8 @@ def build_pdf():
     ]
     story.extend(p4)
 
-    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=3, spaceAfter=3))
+    # --- Page Break to split Page 1 (Product Case Studies) and Page 2 (Engineering Execution & Credentials) ---
+    story.append(PageBreak())
 
     # Experience
     story.append(Paragraph("PROFESSIONAL EXPERIENCE (ENGINEERING EXECUTION & TRANSFERABLE PM SKILLS)", style_heading))
@@ -501,7 +524,7 @@ def build_pdf():
     ]
     story.extend(exp4)
 
-    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=3, spaceAfter=3))
+    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=2.5, spaceAfter=2.5))
 
     # Education & Credentials
     story.append(Paragraph("EDUCATION & VERIFIED CREDENTIALS", style_heading))
@@ -515,6 +538,18 @@ def build_pdf():
     ]
     for e in edu:
         story.append(Paragraph(f"&bull; {e}", style_bullet))
+
+    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=2.5, spaceAfter=2.5))
+
+    # Technical Stack & Systems Capabilities
+    story.append(Paragraph("TECHNICAL STACK & OPERATIONAL TOOLING", style_heading))
+    tech = [
+        "<b>Telecom & Diagnostic Systems:</b> Carrier-grade DWDM/SDH (Nokia SM1660 Matrix E), GPON Optical Line Terminals (OLT) & ONTs, Nokia Wi-Fi beacons, RF signal generators & power amplifiers, spectrum analyzers.",
+        "<b>Development & Product Analytics:</b> Python 3, Flask, SQLite, TypeScript, REST APIs, Git, Jira, Trello, Confluence, Microsoft Excel (Advanced financial & cohort modeling).",
+        "<b>Methodologies & Quality Standards:</b> Root Cause Analysis (RCA), Failure Mode and Effects Analysis (FMEA), Gherkin BDD specs, MoSCoW / RICE prioritization, statistical power analysis, automated anti-hallucination evaluation suites."
+    ]
+    for t in tech:
+        story.append(Paragraph(f"&bull; {t}", style_bullet))
 
     doc.build(story)
     print(f"PDF saved to {PDF_PATH}")
