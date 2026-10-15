@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jobaaj Learning: SaaS Transition Strategy & Moat</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- D3.js for Mindmap Rendering -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <style>
+    :root {
+      /* JOBAAJ Project Colors (Dark Theme - Default) */
+      --bg-dark: #0b1b3d;               /* Deep Dark Navy */
+      --bg-card: #121a3e;               /* Dark Blue-Grey */
+      --bg-sidebar: rgba(11, 27, 61, 0.96); /* Deep Navy */
+      --border-color: rgba(201, 210, 232, 0.15);
+      --border-blue: #1e2a5e;
+      --border-glow: rgba(255, 107, 0, 0.35); /* Orange Glow */
+      --text-primary: #ffffff;
+      --text-secondary: #c9d2e8;
+      --text-muted: #8fa3d9;
+      
+      /* Accents */
+      --accent-red: #f43f5e;
+      --accent-blue: #3b82f6;
+      --accent-purple: #a855f7;
+      --accent-yellow: #ff6b00;         /* Vibrant Orange */
+      --accent-green: #10b981;
+      
+      --accent-red-glow: rgba(244, 63, 94, 0.15);
+      --accent-blue-glow: rgba(59, 130, 246, 0.15);
+      --accent-purple-glow: rgba(168, 85, 247, 0.15);
+      --accent-yellow-glow: rgba(255, 107, 0, 0.15);
+      --accent-green-glow: rgba(16, 185, 129, 0.15);
+
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    body.light-theme {
+      /* JOBAAJ Project Colors (Light Theme Toggle) */
+      --bg-dark: #f0f4f8;               /* Clean Light Blue-Grey */
+      --bg-card: #ffffff;               /* Solid White Cards */
+      --bg-sidebar: #e2e8f0;            /* Soft light grey sidebar */
+      --border-color: rgba(30, 42, 94, 0.15);
+      --border-blue: #9fb0da;
+      --border-glow: rgba(255, 107, 0, 0.2);
+      --text-primary: #121a3e;          /* Deep Navy Text */
+      --text-secondary: #4a5568;        /* Slate text */
+      --text-muted: #718096;
+
+      --accent-red-glow: rgba(244, 63, 94, 0.08);
+      --accent-blue-glow: rgba(59, 130, 246, 0.08);
+      --accent-purple-glow: rgba(168, 85, 247, 0.08);
+      --accent-yellow-glow: rgba(255, 107, 0, 0.08);
+      --accent-green-glow: rgba(16, 185, 129, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Background animated elements */
+    .bg-glow-1 {
+      position: absolute;
+      top: -10%;
+      left: 15%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 107, 0, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-glow-2 {
+      position: absolute;
+      bottom: -10%;
+      right: 15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header Bar */
+    header {
+      background: var(--bg-sidebar);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      position: relative;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent-yellow), var(--accent-blue));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+    }
+
+    .brand-logo i {
+      color: #fff;
+      font-size: 1.1rem;
+    }
+
+    .brand-title {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.1);
+      padding: 0.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.5rem 1rem;
+      font-family: var(--font-title);
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .theme-toggle-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: var(--font-title);
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--bg-card);
+      border-color: var(--accent-yellow);
+    }
+
+    /* Main Grid Layout */
+    .app-main {
+      flex: 1;
+      display: flex;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .tab-content {
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    .tab-content.active {
+      display: flex;
+    }
+
+    /* MINDMAP VIEW STYLE */
+    .mindmap-container {
+      flex: 1;
+      position: relative;
+      background-color: var(--bg-dark);
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+
+    .mindmap-controls {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 5;
+    }
+
+    .control-btn-circle {
+      width: 36px;
+      height: 36px;
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.2s ease;
+    }
+
+    .control-btn-circle:hover {
+      background: var(--accent-yellow);
+      border-color: var(--accent-yellow);
+      color: #000;
+      box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+    }
+
+    .mindmap-search {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 5;
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.25rem 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      width: 280px;
+    }
+
+    .mindmap-search input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      flex: 1;
+      padding: 0.35rem;
+      font-size: 0.85rem;
+    }
+
+    .mindmap-search button {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    .mindmap-search button:hover {
+      color: var(--text-primary);
+    }
+
+    /* Side Panel / Node Inspector */
+    .inspector-panel {
+      width: 420px;
+      border-left: 1px solid var(--border-color);
+      background: var(--bg-sidebar);
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      z-index: 5;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .inspector-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .category-badge {
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    .node-title {
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .inspector-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .inspector-section-title {
+      font-family: var(--font-title);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      line-height: 1.5;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+
+    /* Node types styling for Mindmap SVG */
+    .node rect {
+      stroke-width: 1.5px;
+      rx: 8;
+      ry: 8;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+    }
+
+    .node text {
+      font-family: var(--font-title);
+      font-size: 12px;
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    .node-subtext {
+      font-family: var(--font-body);
+      font-size: 10px;
+      fill: var(--text-secondary);
+      pointer-events: none;
+    }
+
+    .node-collapse-indicator {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      font-size: 10px;
+      cursor: pointer;
+      fill: var(--text-secondary);
+    }
+
+    .link {
+      fill: none;
+      stroke-opacity: 0.4;
+      stroke-width: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .link.highlighted {
+      stroke-width: 3.5px;
+      stroke-opacity: 0.9;
+    }
+
+    /* DASHBOARD VIEW STYLE */
+    .dashboard-container {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      height: 100%;
+      background-color: var(--bg-dark);
+      transition: background-color 0.3s ease;
+    }
+
+    .dash-sidebar {
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .dash-menu-group-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .dash-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .dash-menu-item {
+      padding: 0.65rem 0.85rem;
+      border-radius: 6px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .dash-menu-item:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .dash-menu-item.active {
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .dash-content {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .dash-section {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .dash-section.active {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 107, 0, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-header-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    /* PERSONAS STYLING */
+    .persona-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .persona-profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .persona-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-yellow), var(--accent-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-title);
+      font-weight: 800;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+
+    .persona-title {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .persona-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    /* SQL TERMINAL SIMULATOR */
+    .terminal-container {
+      border-radius: 8px;
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .terminal-header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .terminal-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .terminal-textarea {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #38bdf8;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      resize: none;
+      height: 80px;
+      width: 100%;
+      line-height: 1.4;
+    }
+
+    .terminal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 0.75rem;
+    }
+
+    .btn-action {
+      background: var(--accent-yellow);
+      border: none;
+      color: #000;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-action:hover {
+      background: #e56000;
+      box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+    }
+
+    .terminal-result-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .terminal-results {
+      max-height: 150px;
+      overflow-y: auto;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--border-color);
+      font-size: 0.8rem;
+    }
+
+    .terminal-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .terminal-table th {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.5rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 600;
+    }
+
+    .terminal-table td {
+      padding: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    /* MOCK AI GRADER */
+    .grader-input {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      padding: 0.75rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      resize: vertical;
+      height: 120px;
+      width: 100%;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .grader-input:focus {
+      border-color: var(--accent-yellow);
+      box-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
+    }
+
+    .grader-output-card {
+      background: rgba(255, 107, 0, 0.03);
+      border: 1px solid rgba(255, 107, 0, 0.15);
+      border-radius: 8px;
+      padding: 1rem;
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .grader-score-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .score-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 3px solid var(--accent-yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-primary);
+      background: rgba(255, 107, 0, 0.1);
+    }
+
+    /* A/B SIMULATOR */
+    .ab-results-bar {
+      display: flex;
+      height: 24px;
+      border-radius: 100px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+
+    .ab-bar-fill {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* BUSINESS CALCULATOR */
+    .calc-slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .slider-val {
+      font-weight: 700;
+      color: var(--accent-yellow);
+    }
+
+    .calc-slider {
+      width: 100%;
+      accent-color: var(--accent-yellow);
+      background: rgba(0, 0, 0, 0.15);
+      height: 6px;
+      border-radius: 100px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .metric-value {
+      font-family: var(--font-title);
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* AARRR FUNNEL STYLE */
+    .funnel-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .funnel-stage {
+      display: flex;
+      align-items: center;
+      height: 42px;
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      transition: all 0.2s ease;
+    }
+
+    .funnel-stage:hover {
+      transform: translateX(4px);
+      border-color: rgba(255,107,0,0.15);
+    }
+
+    .funnel-stage-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.15;
+    }
+
+    .funnel-label {
+      position: relative;
+      z-index: 2;
+      padding-left: 1rem;
+      font-family: var(--font-title);
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .funnel-stat {
+      position: relative;
+      z-index: 2;
+      padding-right: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">
+        <i class="fa-solid fa-network-wired"></i>
+      </div>
+      <div>
+        <h1 class="brand-title">Jobaaj Learning</h1>
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-top:0.15rem;">
+          <span class="brand-subtitle">Transition Strategy Map</span>
+          <span style="font-size: 0.7rem; color: var(--text-muted);"><i class="fa-solid fa-circle-check text-green"></i> Outcomes-Driven SaaS</span>
+        </div>
+      </div>
+    </div>
+    
+    <div style="display:flex; align-items:center; gap:1.25rem;">
+      <a href="jobaaj_saas_transition_strategy.pptx" style="font-size: 0.8rem; color: var(--accent-yellow); text-decoration: none; font-weight:600; display:flex; align-items:center; gap:0.35rem;" download>
+        <i class="fa-solid fa-file-powerpoint"></i> Download PPTX Deck
+      </a>
+      <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-toggle-btn">
+        <i class="fa-solid fa-moon"></i> <span>Dark Theme</span>
+      </button>
+      <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab(this, 'mindmap-tab')">
+          <i class="fa-solid fa-circle-nodes"></i> Strategy Mindmap
+        </button>
+        <button class="tab-btn" onclick="switchTab(this, 'dashboard-tab')">
+          <i class="fa-solid fa-chart-line"></i> Strategic Sandbox Dashboard
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- App Main Content Area -->
+  <div class="app-main">
+
+    <!-- TAB 1: STRATEGY MINDMAP -->
+    <div id="mindmap-tab" class="tab-content active">
+      <div class="mindmap-container" id="mindmap-canvas">
+        <div class="mindmap-search">
+          <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input type="text" id="node-search" placeholder="Search strategy items (e.g. TAM, RICE)...">
+          <button id="clear-search-btn" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="mindmap-controls">
+          <button class="control-btn-circle" onclick="zoomIn()" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
+          <button class="control-btn-circle" onclick="zoomOut()" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
+          <button class="control-btn-circle" onclick="resetZoom()" title="Reset Zoom"><i class="fa-solid fa-expand"></i></button>
+          <button class="control-btn-circle" onclick="expandAllNodes()" title="Expand All Nodes" style="margin-top: 0.5rem;"><i class="fa-solid fa-folder-open"></i></button>
+          <button class="control-btn-circle" onclick="collapseAllNodes()" title="Collapse All Nodes"><i class="fa-solid fa-folder"></i></button>
+        </div>
+      </div>
+
+      <aside class="inspector-panel" id="inspector-panel">
+        <div class="inspector-header">
+          <div class="category-badge" id="insp-badge" style="background: var(--accent-blue-glow); color: var(--accent-blue);">SaaS Transition Node</div>
+          <h2 class="node-title" id="insp-title">Select a Node to Inspect</h2>
+          <div style="font-size: 0.75rem; color: var(--text-muted); display:flex; align-items:center; gap:0.35rem;" id="insp-path">
+            <i class="fa-solid fa-level-down-alt"></i> Click any node to explore strategy details
+          </div>
+        </div>
+
+        <div class="inspector-body">
+          <div>
+            <h4 class="inspector-section-title"><i class="fa-solid fa-bullseye"></i> Strategic Alignment</h4>
+            <div class="info-card" id="insp-desc">
+              Select any node in the mindmap hierarchy to load its context, business rationale, pain solver mechanics, and associated simulation calculators.
+            </div>
+          </div>
+
+          <div id="insp-tool-section" style="display:none;">
+            <h4 class="inspector-section-title" id="insp-tool-title"><i class="fa-solid fa-gears"></i> Live Sandbox Simulation</h4>
+            <div id="insp-tool-container" style="margin-top:0.5rem;">
+            </div>
+          </div>
+
+          <div>
+            <h4 class="inspector-section-title"><i class="fa-solid fa-clipboard-list"></i> Success Framework</h4>
+            <div class="info-card" style="font-size: 0.8rem; background: rgba(0,0,0,0.05); border-color: var(--border-color);" id="insp-notes">
+              Select nodes to view execution checklists and transition priorities.
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- TAB 2: STRATEGIC SANDBOX DASHBOARD -->
+    <div id="dashboard-tab" class="tab-content">
+      <div class="dashboard-container">
+        <aside class="dash-sidebar">
+          <div>
+            <h4 class="dash-menu-group-title">SaaS Transition Moat</h4>
+            <ul class="dash-menu">
+              <li class="dash-menu-item active" onclick="switchDashSection('dash-personas')">
+                <i class="fa-solid fa-user-tag" style="color: var(--accent-red);"></i> User Personas
+              </li>
+              <li class="dash-menu-item" onclick="switchDashSection('dash-sandbox')">
+                <i class="fa-solid fa-terminal" style="color: var(--accent-blue);"></i> PM Sandbox Simulators
+              </li>
+              <li class="dash-menu-item" onclick="switchDashSection('dash-grader')">
+                <i class="fa-solid fa-brain" style="color: var(--accent-purple);"></i> AI PRD Grader
+              </li>
+              <li class="dash-menu-item" onclick="switchDashSection('dash-ab')">
+                <i class="fa-solid fa-flask" style="color: var(--accent-blue);"></i> A/B Testing Simulator
+              </li>
+              <li class="dash-menu-item" onclick="switchDashSection('dash-calculator')">
+                <i class="fa-solid fa-indian-rupee-sign" style="color: var(--accent-yellow);"></i> Business Tier Calculator
+              </li>
+              <li class="dash-menu-item" onclick="switchDashSection('dash-metrics')">
+                <i class="fa-solid fa-chart-simple" style="color: var(--accent-green);"></i> Funnel Metrics & AARRR
+              </li>
+            </ul>
+          </div>
+
+          <div style="margin-top: auto; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.02); border:1px solid var(--border-color);">
+            <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; display:flex; align-items:center; gap:0.4rem;">
+              <i class="fa-solid fa-shield-halved text-accent" style="color: var(--accent-blue);"></i> Outcome Proof Moat
+            </div>
+            <p style="font-size:0.65rem; color: var(--text-muted); margin-top:0.35rem; line-height: 1.4;">
+              Transitioning prevents content commoditization by making learning hands-on, verifiable, and B2B ready.
+            </p>
+          </div>
+        </aside>
+
+        <main class="dash-content">
+          <!-- SECTION 1: PERSONAS -->
+          <section id="dash-personas" class="dash-section active">
+            <div>
+              <h2 style="font-family: var(--font-title); font-weight:700;">Target Personas & Pain Solvers</h2>
+              <p style="color: var(--text-secondary); font-size:0.9rem; margin-top: 0.25rem;">Designing SaaS interfaces around specific goals and critical funnel leaks.</p>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="persona-card" style="border-top: 4px solid var(--accent-red);">
+                <div class="persona-profile">
+                  <div class="persona-avatar">A</div>
+                  <div>
+                    <h3 class="persona-title">Amit</h3>
+                    <div class="persona-meta">The Tech Transitioner (Nokia Solutions / Ex-Telecom)</div>
+                  </div>
+                </div>
+                <div>
+                  <h4 style="font-size:0.8rem; font-weight:600; color:var(--text-secondary); margin-bottom:0.25rem;">Goals:</h4>
+                  <p style="font-size:0.85rem; line-height:1.4;">Move from telecom engineering to Product Management. Seeks credentials verifying SQL, metrics, and PRD drafting.</p>
+                </div>
+                <div>
+                  <h4 style="font-size:0.8rem; font-weight:600; color:var(--text-secondary); margin-bottom:0.25rem;">Pain Points:</h4>
+                  <p style="font-size:0.85rem; line-height:1.4; color: var(--text-secondary);">Theoretical video fatigue. Lacks sandbox tool access, completing standard certificates without writing code or building mock funnels.</p>
+                </div>
+                <div style="background: rgba(244,63,94,0.04); border-radius: 8px; padding:0.75rem; border:1px solid rgba(244,63,94,0.1);">
+                  <strong style="color: var(--accent-red); font-size:0.75rem; display:block; margin-bottom:0.2rem;"><i class="fa-solid fa-key"></i> SaaS Solver:</strong>
+                  <span style="font-size:0.8rem; line-height: 1.4;">Immediate drops into the SQL console to complete onboarding, creating verifiable project exports linking to LinkedIn.</span>
+                </div>
+              </div>
+
+              <div class="persona-card" style="border-top: 4px solid var(--accent-purple);">
+                <div class="persona-profile">
+                  <div class="persona-avatar" style="background: linear-gradient(135deg, var(--accent-purple), #7c3aed);">P</div>
+                  <div>
+                    <h3 class="persona-title">Priya</h3>
+                    <div class="persona-meta">The Independent Instructor</div>
+                  </div>
+                </div>
+                <div>
+                  <h4 style="font-size:0.8rem; font-weight:600; color:var(--text-secondary); margin-bottom:0.25rem;">Goals:</h4>
+                  <p style="font-size:0.85rem; line-height:1.4;">Seamlessly publish and monetize specialized courses without complex setups or high commission cuts.</p>
+                </div>
+                <div>
+                  <h4 style="font-size:0.8rem; font-weight:600; color:var(--text-secondary); margin-bottom:0.25rem;">Pain Points:</h4>
+                  <p style="font-size:0.85rem; line-height:1.4; color: var(--text-secondary);">Platforms like Teachable and Kajabi lack custom sandbox APIs to build interactive coding and analytical labs for students.</p>
+                </div>
+                <div style="background: rgba(168,85,247,0.04); border-radius: 8px; padding:0.75rem; border:1px solid rgba(168,85,247,0.1);">
+                  <strong style="color: var(--accent-purple); font-size:0.75rem; display:block; margin-bottom:0.2rem;"><i class="fa-solid fa-key"></i> SaaS Solver:</strong>
+                  <span style="font-size:0.8rem; line-height: 1.4;">Self-serve course outliners and custom SQL terminal templates to structure course environments.</span>
+                </div>
+              </div>
+
+              <div class="persona-card" style="border-top: 4px solid var(--accent-blue);">
+                <div class="persona-profile">
+                  <div class="persona-avatar" style="background: linear-gradient(135deg, var(--accent-blue), #2563eb);">R</div>
+                  <div>
+                    <h3 class="persona-title">Raj</h3>
+                    <div class="persona-meta">Corporate L&D Manager</div>
+                  </div>
+                </div>
+                <div>
+                  <h4 style="font-size:0.8rem; font-weight:600; color:var(--text-secondary); margin-bottom:0.25rem;">Goals:</h4>
+                  <p style="font-size:0.85rem; line-height:1.4;">Deploy consistent, trackable department-wide upskilling with compliance-ready certifications.</p>
+                </div>
+                <div>
+                  <h4 style="font-size:0.8rem; font-weight:600; color:var(--text-secondary); margin-bottom:0.25rem;">Pain Points:</h4>
+                  <p style="font-size:0.85rem; line-height:1.4; color: var(--text-secondary);">Self-paced video courses lack cohort reporting. Cannot verify actual team capabilities without centralized logs.</p>
+                </div>
+                <div style="background: rgba(59,130,246,0.04); border-radius: 8px; padding:0.75rem; border:1px solid rgba(59,130,246,0.1);">
+                  <strong style="color: var(--accent-blue); font-size:0.75rem; display:block; margin-bottom:0.2rem;"><i class="fa-solid fa-key"></i> SaaS Solver:</strong>
+                  <span style="font-size:0.8rem; line-height: 1.4;">Multi-tenant Business Dashboards with compliance-auditable grading tables and group progression logs.</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 2: PM SANDBOX SIMULATORS -->
+          <section id="dash-sandbox" class="dash-section">
+            <div>
+              <h2 style="font-family: var(--font-title); font-weight:700;">The PM Sandbox (Simulation Layer)</h2>
+              <p style="color: var(--text-secondary); font-size:0.9rem; margin-top: 0.25rem;">A hands-on tool query workspace replicating real-world PM diagnostic exercises.</p>
+            </div>
+
+            <div class="dashboard-grid" style="grid-template-columns: 1.2fr 0.8fr;">
+              <div class="card" style="gap:1rem;">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                  <div class="card-header-icon" style="background: var(--accent-blue-glow); color: var(--accent-blue);"><i class="fa-solid fa-terminal"></i></div>
+                  <div>
+                    <h3 style="font-family:var(--font-title); font-size: 1.1rem;">Interactive SQL Sandbox</h3>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Run queries to analyze mock database metrics</p>
+                  </div>
+                </div>
+
+                <div class="terminal-container">
+                  <div class="terminal-header">
+                    <div class="terminal-dots">
+                      <div class="terminal-dot" style="background:#ef4444;"></div>
+                      <div class="terminal-dot" style="background:#f59e0b;"></div>
+                      <div class="terminal-dot" style="background:#10b981;"></div>
+                    </div>
+                    <div class="terminal-title">postgres@jobaaj-sandbox-db</div>
+                  </div>
+                  <div class="terminal-body">
+                    <textarea class="terminal-textarea" id="sql-input">SELECT * FROM users LIMIT 3;</textarea>
+                    <div class="terminal-actions">
+                      <span style="font-size: 0.65rem; color:var(--text-muted); align-self:center; margin-right:auto;">Try: SELECT * FROM checkout_funnel;</span>
+                      <button class="btn-action" onclick="runSandboxSQL()"><i class="fa-solid fa-play"></i> Run Query</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="terminal-result-title">Query Results</div>
+                  <div class="terminal-results" id="sql-results-box" style="margin-top:0.4rem;">
+                    <table class="terminal-table">
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>name</th>
+                          <th>role</th>
+                          <th>status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Amit Kumar</td>
+                          <td>Telecom Transitioner</td>
+                          <td>Active</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Sarah Patel</td>
+                          <td>Business Analyst</td>
+                          <td>Active</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Michael Chang</td>
+                          <td>QA Engineer</td>
+                          <td>Idle</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3 style="font-family:var(--font-title); font-size: 1.1rem; display:flex; align-items:center; gap:0.5rem;"><i class="fa-solid fa-circle-question" style="color: var(--accent-blue);"></i> Sandbox Tasks</h3>
+                <div style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.8rem; margin-top:0.5rem;">
+                  <div style="border-left: 2px solid var(--accent-blue); padding-left: 0.75rem;">
+                    <strong>Step 1: Check activation</strong>
+                    <p style="color: var(--text-secondary); font-size:0.75rem; margin-top:0.15rem;">Run the default query above to explore user cohorts.</p>
+                  </div>
+                  <div style="border-left: 2px solid var(--accent-purple); padding-left: 0.75rem;">
+                    <strong>Step 2: Inspect funnel leakage</strong>
+                    <p style="color: var(--text-secondary); font-size:0.75rem; margin-top:0.15rem;">Enter and run: <code style="font-family:var(--font-mono); color:var(--accent-purple);">SELECT * FROM checkout_funnel;</code></p>
+                  </div>
+                  <div style="border-left: 2px solid var(--accent-green); padding-left: 0.75rem;">
+                    <strong>Step 3: Certify execution</strong>
+                    <p style="color: var(--text-secondary); font-size:0.75rem; margin-top:0.15rem;">Once complete, sandbox records a cryptographically signed score linked to your portfolio.</p>
+                  </div>
+                </div>
+
+                <div style="margin-top:auto; background: rgba(59, 130, 246, 0.03); border:1px dashed rgba(59, 130, 246, 0.2); border-radius:6px; padding:0.75rem; font-size:0.75rem;">
+                  <strong style="color: var(--accent-blue); display:flex; align-items:center; gap:0.35rem;"><i class="fa-solid fa-link"></i> LinkedIn Integration</strong>
+                  <span style="color: var(--text-secondary); display:block; margin-top:0.2rem; line-height: 1.35;">Provides a one-click certificate export pipeline showing hard coding proof.</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 3: AI PRD GRADER -->
+          <section id="dash-grader" class="dash-section">
+            <div>
+              <h2 style="font-family: var(--font-title); font-weight:700;">AI-Powered PRD Grader</h2>
+              <p style="color: var(--text-secondary); font-size:0.9rem; margin-top: 0.25rem;">Instant logical evaluation of requirements documents to scale quality feedback.</p>
+            </div>
+
+            <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr;">
+              <div class="card">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                  <div class="card-header-icon" style="background: var(--accent-purple-glow); color: var(--accent-purple);"><i class="fa-solid fa-file-signature"></i></div>
+                  <div>
+                    <h3 style="font-family:var(--font-title); font-size:1.1rem;">Draft Product Requirement Document</h3>
+                    <p style="font-size:0.75rem; color:var(--text-secondary);">Input text outlining feature details to test the grader</p>
+                  </div>
+                </div>
+
+                <textarea class="grader-input" id="prd-input-box">Feature: One-Click Checkout
+Goal: Reduce shopping cart friction by bypassing the normal checkout funnel.
+Target Metric: Boost Conversion Rate by 12%.
+Flow: If user clicks "One-Click Checkout", charge their saved default credit card immediately and trigger order confirmation email.
+Edge Cases: None. If card fails, return error.</textarea>
+
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:0.7rem; color:var(--text-muted);"><i class="fa-solid fa-robot"></i> LLM Review Mode: Strategic PM</span>
+                  <button class="btn-action" onclick="runGrader()"><i class="fa-solid fa-wand-magic-sparkles"></i> Evaluate PRD</button>
+                </div>
+              </div>
+
+              <div class="card" style="justify-content: flex-start;">
+                <h3 style="font-family:var(--font-title); font-size:1.1rem; display:flex; align-items:center; gap:0.5rem;"><i class="fa-solid fa-list-check" style="color: var(--accent-purple);"></i> Grading Analysis Output</h3>
+                
+                <div id="grader-empty-state" style="text-align:center; padding:3rem 1rem; color: var(--text-muted); display:flex; flex-direction:column; align-items:center; gap:0.5rem; border:1px dashed var(--border-color); border-radius:8px;">
+                  <i class="fa-solid fa-circle-notch fa-spin" style="font-size:1.5rem; display:none;" id="grader-loading-spinner"></i>
+                  <i class="fa-solid fa-file-circle-question" style="font-size: 2rem; color:var(--text-muted);" id="grader-quest-icon"></i>
+                  <span id="grader-state-text">Press "Evaluate PRD" to trigger the GenAI grading ecosystem.</span>
+                </div>
+
+                <div class="grader-output-card" id="grader-output-result">
+                  <div class="grader-score-header">
+                    <div>
+                      <strong style="font-family:var(--font-title); font-size:1.05rem; display:block; color:var(--text-primary);" id="grader-score-verdict">Needs Revision</strong>
+                      <span style="font-size:0.75rem; color:var(--text-secondary);">Logical Gaps & Edge Cases Review</span>
+                    </div>
+                    <div class="score-circle" id="grader-score-val">74</div>
+                  </div>
+                  
+                  <div style="font-size:0.8rem; display:flex; flex-direction:column; gap:0.6rem; border-top:1px solid var(--border-color); padding-top:0.75rem;">
+                    <div>
+                      <span style="color:var(--accent-red); font-weight:600; display:block;"><i class="fa-solid fa-triangle-exclamation"></i> Critical Gap: Card Status Handling</span>
+                      <p style="color:var(--text-secondary); font-size:0.75rem; margin-top:0.1rem;" id="gap-text-1">No fallback is defined if card lacks funds or is expired. Will trigger checkout loops.</p>
+                    </div>
+                    <div>
+                      <span style="color:var(--accent-yellow); font-weight:600; display:block;"><i class="fa-solid fa-lightbulb"></i> Optimization Hook: Transaction Audit</span>
+                      <p style="color:var(--text-secondary); font-size:0.75rem; margin-top:0.1rem;" id="gap-text-2">Integrate checkout diagnostic logs in the Product Analytics Console for funnel mapping.</p>
+                    </div>
+                  </div>
+
+                  <div style="background: rgba(16, 185, 129, 0.05); border:1px solid rgba(16, 185, 129, 0.15); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.75rem; color: var(--accent-green); display:flex; align-items:center; gap:0.4rem; margin-top:0.25rem;">
+                    <i class="fa-solid fa-user-shield"></i> <span>Human-in-the-Loop: Reviewer assigned for borderline grade.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 4: A/B TESTING SIMULATOR -->
+          <section id="dash-ab" class="dash-section">
+            <div>
+              <h2 style="font-family: var(--font-title); font-weight:700;">Onboarding A/B Testing Simulator</h2>
+              <p style="color: var(--text-secondary); font-size:0.9rem; margin-top: 0.25rem;">Simulate retention and activation rates between video and sandbox onboarding loops.</p>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="card" style="gap:1.25rem;">
+                <h3 style="font-family:var(--font-title); font-size:1.1rem;"><i class="fa-solid fa-sliders" style="color: var(--accent-blue);"></i> Control Parameters</h3>
+                <div class="calc-slider-group">
+                  <div class="slider-header">
+                    <span>Simulated Cohort Size (Users)</span>
+                    <span class="slider-val" id="ab-cohort-val">10,000</span>
+                  </div>
+                  <input type="range" class="calc-slider" id="ab-cohort-slider" min="1000" max="50000" step="1000" value="10000" oninput="updateABSim()">
+                </div>
+
+                <div class="calc-slider-group">
+                  <div class="slider-header">
+                    <span>Interactive Sandbox Appeal (%)</span>
+                    <span class="slider-val" id="ab-appeal-val">85%</span>
+                  </div>
+                  <input type="range" class="calc-slider" id="ab-appeal-slider" min="30" max="100" step="5" value="85" oninput="updateABSim()">
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); border:1px solid var(--border-color); padding:0.75rem; border-radius:8px; display:flex; align-items:center; gap:0.75rem;">
+                  <i class="fa-solid fa-chart-line" style="font-size:1.25rem; color:var(--accent-blue);"></i>
+                  <div style="font-size:0.75rem; line-height:1.4;">
+                    <strong>Activation Hypothesis:</strong> Transitioning passive onboarding to action-based setups drives immediate core activations up to 70%+.
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style="gap:1.25rem;">
+                <h3 style="font-family:var(--font-title); font-size:1.1rem;"><i class="fa-solid fa-square-poll-vertical" style="color: var(--accent-blue);"></i> Activation Outcomes</h3>
+                <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                  <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:600;">
+                    <span>Version A (Passive Video Intro)</span>
+                    <span style="color: var(--accent-red);" id="ab-ver-a-val">30.0% Activation</span>
+                  </div>
+                  <div class="ab-results-bar">
+                    <div class="ab-bar-fill" id="ab-ver-a-bar" style="background: linear-gradient(90deg, var(--accent-red), #e11d48); width: 30%;">3,000 users</div>
+                  </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                  <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:600;">
+                    <span>Version B (Interactive Sandbox Trial)</span>
+                    <span style="color: var(--accent-green);" id="ab-ver-b-val">72.3% Activation</span>
+                  </div>
+                  <div class="ab-results-bar">
+                    <div class="ab-bar-fill" id="ab-ver-b-bar" style="background: linear-gradient(90deg, var(--accent-green), #059669); width: 72.3%;">7,230 users</div>
+                  </div>
+                </div>
+
+                <div style="border-top:1px solid var(--border-color); padding-top:0.75rem; display:flex; justify-content:space-between; align-items:center;">
+                  <div>
+                    <span style="font-size:0.75rem; color:var(--text-secondary);">Conversion Lift</span>
+                    <strong style="font-family:var(--font-title); font-size:1.2rem; display:block; color:var(--accent-green);" id="ab-lift-val">+141%</strong>
+                  </div>
+                  <div>
+                    <span style="font-size:0.75rem; color:var(--text-secondary);">Statistical Significance</span>
+                    <strong style="font-family:var(--font-title); font-size:1.2rem; display:block; color:var(--text-primary);">99.9% (Conf. High)</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 5: BUSINESS CALCULATOR -->
+          <section id="dash-calculator" class="dash-section">
+            <div>
+              <h2 style="font-family: var(--font-title); font-weight:700;">Blended SaaS Freemium Calculator</h2>
+              <p style="color: var(--text-secondary); font-size:0.9rem; margin-top: 0.25rem;">Estimate monthly recurring revenue (MRR) based on subscription conversions.</p>
+            </div>
+
+            <div class="dashboard-grid" style="grid-template-columns: 1.1fr 0.9fr;">
+              <div class="card" style="gap:1.25rem;">
+                <h3 style="font-family:var(--font-title); font-size: 1.1rem;"><i class="fa-solid fa-gears" style="color: var(--accent-yellow);"></i> Model Inputs</h3>
+                <div class="calc-slider-group">
+                  <div class="slider-header">
+                    <span>Target Active Subscribers (Monthly MAU)</span>
+                    <span class="slider-val" id="mau-val">50,000</span>
+                  </div>
+                  <input type="range" class="calc-slider" id="mau-slider" min="10000" max="250000" step="5000" value="50000" oninput="updateCalculator()">
+                </div>
+
+                <div class="calc-slider-group">
+                  <div class="slider-header">
+                    <span>Paid Conversion Rate (%)</span>
+                    <span class="slider-val" id="conv-val">4.5%</span>
+                  </div>
+                  <input type="range" class="calc-slider" id="conv-slider" min="1.0" max="15.0" step="0.5" value="4.5" oninput="updateCalculator()">
+                </div>
+
+                <div class="calc-slider-group">
+                  <div class="slider-header">
+                    <span>Creator Pro Monthly Price (₹)</span>
+                    <span class="slider-val" id="price-val">₹499</span>
+                  </div>
+                  <input type="range" class="calc-slider" id="price-slider" min="299" max="999" step="50" value="499" oninput="updateCalculator()">
+                </div>
+
+                <div style="display:flex; justify-content:space-between; gap:1rem; border-top:1px solid var(--border-color); padding-top:0.75rem; font-size:0.75rem; color:var(--text-secondary);">
+                  <div>
+                    <span>Business Model: <strong>SaaS + Commission</strong></span>
+                  </div>
+                  <div>
+                    <span>Revenue Split: <strong>30% Jobaaj / 70% Creator</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style="gap:1.25rem; justify-content:space-between; border-left: 4px solid var(--accent-yellow);">
+                <h3 style="font-family:var(--font-title); font-size: 1.1rem;"><i class="fa-solid fa-wallet" style="color: var(--accent-yellow);"></i> Projected Outcomes</h3>
+                <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                  <div>
+                    <span style="font-size:0.8rem; color:var(--text-secondary);">Paid Users Cohort</span>
+                    <div class="metric-value" style="color: var(--text-primary);" id="out-paid-users">2,250</div>
+                  </div>
+                  <div>
+                    <span style="font-size:0.8rem; color:var(--text-secondary);">Monthly Recurring Revenue (MRR)</span>
+                    <div class="metric-value" style="color: var(--accent-yellow);" id="out-mrr">₹11.23 Lakh</div>
+                  </div>
+                  <div>
+                    <span style="font-size:0.8rem; color:var(--text-secondary);">Annual Run Rate (ARR)</span>
+                    <div class="metric-value" style="color: var(--accent-green);" id="out-arr">₹1.35 Crore</div>
+                  </div>
+                </div>
+
+                <div style="background: rgba(255, 107, 0, 0.03); border: 1px dashed rgba(255, 107, 0, 0.2); border-radius: 6px; padding: 0.75rem; font-size: 0.75rem;">
+                  <strong style="color:var(--accent-yellow); display:block; margin-bottom:0.15rem;"><i class="fa-solid fa-arrow-up-right-dots"></i> CAC Reduction Loop</strong>
+                  <span style="color:var(--text-secondary); line-height: 1.35;">Users sharing their sandbox certificates to LinkedIn drives organic zero-cost viral acquisition loops.</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 6: FUNNEL METRICS & AARRR -->
+          <section id="dash-metrics" class="dash-section">
+            <div>
+              <h2 style="font-family: var(--font-title); font-weight:700;">Metrics & AARRR Funnel Framework</h2>
+              <p style="color: var(--text-secondary); font-size:0.9rem; margin-top: 0.25rem;">The 12-month outlook goals aligned against standard growth channels.</p>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="card">
+                <h3 style="font-family:var(--font-title); font-size: 1.1rem;"><i class="fa-solid fa-filter" style="color: var(--accent-green);"></i> Target Conversion Funnel</h3>
+                <div class="funnel-container">
+                  <div class="funnel-stage">
+                    <div class="funnel-stage-fill" style="background: var(--accent-blue); width: 100%;"></div>
+                    <span class="funnel-label"><i class="fa-solid fa-magnet text-blue" style="color: var(--accent-blue);"></i> Acquisition (+40% Signups)</span>
+                    <span class="funnel-stat">100%</span>
+                  </div>
+                  <div class="funnel-stage">
+                    <div class="funnel-stage-fill" style="background: var(--accent-purple); width: 70%;"></div>
+                    <span class="funnel-label"><i class="fa-solid fa-bolt text-purple" style="color: var(--accent-purple);"></i> Activation (>=70% Sandbox rate)</span>
+                    <span class="funnel-stat">70%</span>
+                  </div>
+                  <div class="funnel-stage">
+                    <div class="funnel-stage-fill" style="background: var(--accent-yellow); width: 55%;"></div>
+                    <span class="funnel-label"><i class="fa-solid fa-arrows-spin text-yellow" style="color: var(--accent-yellow);"></i> Retention (>=55% 90-Day Renewal)</span>
+                    <span class="funnel-stat">55%</span>
+                  </div>
+                  <div class="funnel-stage">
+                    <div class="funnel-stage-fill" style="background: var(--accent-green); width: 30%;"></div>
+                    <span class="funnel-label"><i class="fa-solid fa-indian-rupee-sign text-green" style="color: var(--accent-green);"></i> Revenue (+30% ARR YoY)</span>
+                    <span class="funnel-stat">30%</span>
+                  </div>
+                  <div class="funnel-stage">
+                    <div class="funnel-stage-fill" style="background: var(--accent-red); width: 55%;"></div>
+                    <span class="funnel-label"><i class="fa-solid fa-share-nodes text-red" style="color: var(--accent-red);"></i> Referral (NPS >=55 from 15)</span>
+                    <span class="funnel-stat">55%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style="gap:1rem; border-top: 4px solid var(--accent-green);">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                  <div class="card-header-icon" style="background: var(--accent-green-glow); color: var(--accent-green);"><i class="fa-solid fa-star"></i></div>
+                  <div>
+                    <h3 style="font-family:var(--font-title); font-size:1.1rem;">North Star Metric</h3>
+                    <p style="font-size:0.75rem; color:var(--text-secondary);">The core growth driver</p>
+                  </div>
+                </div>
+
+                <div style="background: rgba(16, 185, 129, 0.03); border:1px solid rgba(16, 185, 129, 0.1); border-radius:8px; padding:1rem; display:flex; flex-direction:column; gap:0.35rem;">
+                  <strong style="font-family:var(--font-title); font-size:1.05rem; color:var(--text-primary);">MACCs</strong>
+                  <span style="font-size:0.8rem; color:var(--text-secondary);">Monthly Active Course Creators</span>
+                  <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.4rem; line-height:1.4;">
+                    MACCs drive double-sided network effects. High active creators means more unique sandbox content, which draws more students, feeding organic zero-cost loop referrals.
+                  </p>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8rem;">
+                  <strong>12-Month Targets Summary:</strong>
+                  <div style="display:flex; justify-content:space-between; padding:0.25rem 0; border-bottom:1px solid rgba(255,255,255,0.03);">
+                    <span style="color:var(--text-secondary);">Acquisition Lift</span>
+                    <strong style="color:var(--accent-blue);">+40% Signups</strong>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; padding:0.25rem 0; border-bottom:1px solid rgba(255,255,255,0.03);">
+                    <span style="color:var(--text-secondary);">Completion Target</span>
+                    <strong style="color:var(--accent-purple);">&ge;70%</strong>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; padding:0.25rem 0;">
+                    <span style="color:var(--text-secondary);">NPS Goal</span>
+                    <strong style="color:var(--accent-red);">&ge;55 (from 15)</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const mindmapData = {
+      name: "Jobaaj Learning",
+      type: "root",
+      description: "Transition from Passive Video Platform to Outcomes-Driven SaaS Moat",
+      children: [
+        {
+          name: "1. Target Audience & Compliance",
+          type: "category",
+          color: "var(--accent-red)",
+          description: "Analyzing TAM/SAM/SOM boundaries, user personas (Amit, Priya, Raj), and critical regulatory gates (DPDP Act, 2023).",
+          children: [
+            {
+              name: "Market Sizing (TAM/SAM/SOM)",
+              type: "subcategory",
+              description: "Rigorous bottom-up market sizing mapping addressable upsell domains in India.",
+              children: [
+                { name: "TAM: ₹24,000 Cr / yr", type: "detail", description: "Total Professional Upskilling, Executive Education, and Career Transition programs in India." },
+                { name: "SAM: ₹8,500 Cr / yr", type: "detail", description: "Digitally accessible business, design, management, and technology upskilling certifications." },
+                { name: "SOM: ₹425 Cr / yr", type: "detail", description: "5% share via interactive, price-sensitive sandbox certifications targeted at Tier-2/3 transitioners." }
+              ]
+            },
+            {
+              name: "Regulatory & Compliance Gates",
+              type: "subcategory",
+              description: "Mandatory compliance guardrails built directly into Sandbox architecture.",
+              children: [
+                { name: "DPDP Act, 2023 Compliance", type: "detail", description: "Student sandbox code telemetry and answers require secure, compliant local data storage." },
+                { name: "Consumer Protection Rules", type: "detail", description: "Requires dropping placement guarantees, substituting verifiable portfolio achievements." },
+                { name: "AI Governance & Audits", type: "detail", description: "Explainable prompts for AI grading engines to guarantee unbiased score metrics." }
+              ]
+            },
+            {
+              name: "User Personas & Pain Points",
+              type: "subcategory",
+              description: "Customer archetypes detailing real goals and pain points solved by the SaaS shift.",
+              children: [
+                { name: "Amit (Tech Transitioner)", type: "detail", persona: "amit", description: "Goals: Move from telecom engineer to Product Manager. Seeks technical tools proof.\nPain Points: Generates theoretical video fatigue; no hands-on proof of query execution or telemetry tagging." },
+                { name: "Priya (Independent Instructor)", type: "detail", persona: "priya", description: "Goals: Seamlessly publish, market, and monetize specialized design and product courses.\nPain Points: Simple templates on Teachable/Kajabi lack custom sandbox APIs to build terminals." },
+                { name: "Raj (Corporate L&D Manager)", type: "detail", persona: "raj", description: "Goals: Implement trackable upskilling with compliance-ready certs.\nPain Points: Self-paced video libraries do not provide cohort reporting or team-level progression audits." }
+              ]
+            },
+            {
+              name: "Current Funnel Leaks",
+              type: "subcategory",
+              description: "Funnel Analysis (100 Traffic -> 42 Signup -> 24 Course Enter -> 16 First Eng -> 9 Paid Sub -> 6 Renewal).",
+              children: [
+                { name: "Low Activation (24%)", type: "detail", description: "Steep drop-off from registration to course entry. Onboarding lacks immediate visual quick wins." },
+                { name: "Low Retention (6%)", type: "detail", description: "Weak renewal rate. Product lacks continuous utility loops once initial video series concludes." },
+                { name: "Low Referral Loops", type: "detail", description: "No native mechanism for users to showcase and broadcast completed work." }
+              ]
+            }
+          ]
+        },
+        {
+          name: "2. Core Features & Sandbox",
+          type: "category",
+          color: "var(--accent-blue)",
+          description: "The core product pillars required to transition the business to a high-retention SaaS platform.",
+          children: [
+            {
+              name: "The PM Sandbox",
+              type: "subcategory",
+              description: "Core simulation layer delivering hands-on coding and analytical experiences.",
+              children: [
+                { name: "Embedded SQL Terminal", type: "detail", widget: "sql", description: "Run queries directly against mock PostgreSQL databases to extract checkout funnel logs." },
+                { name: "Product Analytics Console", type: "detail", widget: "analytics", description: "Simulate checkout funnel tracking & diagnostic events." },
+                { name: "A/B Testing Simulator", type: "detail", widget: "abtest", description: "Hands-on experimentation environment without real financial risks." }
+              ]
+            },
+            {
+              name: "MoSCoW Backlog & Prioritization",
+              type: "subcategory",
+              description: "Prioritization framework mapping specific user pain points to launch sequences.",
+              children: [
+                { name: "Must Have: PM Sandbox MVP", type: "detail", description: "Embedded SQL Terminal and PRD shell. Resolves video fatigue and provides tool exposure." },
+                { name: "Should Have: AI PRD Grader", type: "detail", description: "LLM grading logic loops resolving doubt-clearing and CS bottlenecks." },
+                { name: "Could Have: LinkedIn Export", type: "detail", description: "One-click export of sandbox work logs to LinkedIn profile blocks." }
+              ]
+            },
+            {
+              name: "RICE Sequencing Override",
+              type: "subcategory",
+              description: "Sequencing adjustments where strategic foundations override raw RICE scores.",
+              children: [
+                { name: "RICE Score Matrix", type: "detail", description: "PM Sandbox (171) | AI PRD Grader (722) | LinkedIn Export (525) | Peer Slack Study (250)." },
+                { name: "Strategic Priority 1 Override", type: "detail", description: "Sandbox is sequenced as Priority 1 (foundation) because the AI Grader and LinkedIn Export features require Sandbox-generated data to run." }
+              ]
+            }
+          ]
+        },
+        {
+          name: "3. Creative Features & AI",
+          type: "category",
+          color: "var(--accent-purple)",
+          description: "Next-gen features designed to create long-term competitive differentiation and network effects.",
+          children: [
+            {
+              name: "GenAI Evaluation Ecosystem",
+              type: "subcategory",
+              description: "Automated grading infrastructure and course builders.",
+              children: [
+                { name: "AI PRD Grader", type: "detail", widget: "grader", description: "Instant, automated, logic-gap grading engine for Product Requirement Documents." },
+                { name: "Human-in-the-Loop Safeguard", type: "detail", description: "Flagged grading loops routed to part-time tutors, securing evaluation accuracy." },
+                { name: "AI Course Outliner compiler", type: "detail", description: "Enables creators to rapidly compile course outlines into custom sandboxes." }
+              ]
+            },
+            {
+              name: "Interactive Creator Marketplace",
+              type: "subcategory",
+              description: "Developer tools to let instructors customize interactive playgrounds.",
+              children: [
+                { name: "Self-Serve Content Publishing", type: "detail", description: "Drag-and-drop course designer layout blocks for creators like Priya." },
+                { name: "Sandbox Plug-in API", type: "detail", description: "Enables advanced creators to customize query tables and custom test runners." }
+              ]
+            },
+            {
+              name: "Placement & Social loops",
+              type: "subcategory",
+              description: "Platform retention loop integrations.",
+              children: [
+                { name: "Gamified Leaderboards", type: "detail", description: "Showcases top sandbox performers inside community feeds to improve retention." },
+                { name: "Peer Cohort Networks", type: "detail", description: "Group challenge workspaces reducing self-paced isolation." },
+                { name: "Recruiter-Linked Portfolios", type: "detail", description: "Connects verified sandbox score telemetry directly to corporate hiring pipelines." }
+              ]
+            }
+          ]
+        },
+        {
+          name: "4. Business Model & Growth",
+          type: "category",
+          color: "var(--accent-yellow)",
+          description: "Pricing and strategic customer acquisition models.",
+          children: [
+            {
+              name: "Blended Freemium Tier Structure",
+              type: "subcategory",
+              widget: "calculator",
+              description: "Dual monetization framework: Subscription tiers & custom Enterprise agreements.",
+              children: [
+                { name: "Freemium (₹0)", type: "detail", description: "Free foundational video access + exactly 1 trial Sandbox module attempt." },
+                { name: "Creator Pro (₹499/mo)", type: "detail", description: "Full Sandbox access, unlimited AI grading, & LinkedIn export features." },
+                { name: "Business (₹1,999/user/mo)", type: "detail", description: "Cohort dashboard tracking tools optimized for coaching hubs & SMEs." },
+                { name: "Enterprise (Custom)", type: "detail", description: "White-label platform access, API pipelines, and verified compliance audits." }
+              ]
+            },
+            {
+              name: "Organic Acquisition Channels",
+              type: "subcategory",
+              description: "Low-cost user acquisition channels to drive organic expansion.",
+              children: [
+                { name: "Product-Led Loops (PLG)", type: "detail", description: "Viral referral loops fueled by students posting cert milestone links to LinkedIn." },
+                { name: "Hyper-Targeted SEO", type: "detail", description: "Focus content on Tier-2 & Tier-3 PM career-transition queries." },
+                { name: "Strategic College B2B Deals", type: "detail", description: "Partnership contracts with local university hubs and coaching institutes." }
+              ]
+            }
+          ]
+        },
+        {
+          name: "5. Metrics & AARRR Funnel",
+          type: "category",
+          color: "var(--accent-green)",
+          description: "Key performance indicators to track and validate SaaS transition performance.",
+          children: [
+            {
+              name: "North Star Metric",
+              type: "subcategory",
+              description: "Platform target metric reflecting double-sided network effects.",
+              children: [
+                { name: "MACCs (Monthly Active Course Creators)", type: "detail", description: "Controls both user engagement and creator platform stickiness." }
+              ]
+            },
+            {
+              name: "Target AARRR Milestone Goals",
+              type: "subcategory",
+              widget: "funnel",
+              description: "12-month outlook target improvements across the growth funnel.",
+              children: [
+                { name: "Acquisition (+40% Signups)", type: "detail", description: "Boost new signups by +40% using optimized low-cost viral loops." },
+                { name: "Activation (>=70% Sandbox rate)", type: "detail", description: "Drive Sandbox & module completion rates to >=70% (Up from a 30% baseline)." },
+                { name: "Retention (>=55% Renewal)", type: "detail", description: "Secure a 90-day subscriber renewal rate of >=55%." },
+                { name: "Revenue (+30% ARR YoY)", type: "detail", description: "Realize a +30% year-over-year increase in Annual Recurring Revenue (ARR)." },
+                { name: "Referral (NPS >=55)", type: "detail", description: "Elevate the Net Promoter Score (NPS) to >=55 (Up from a baseline of 15)." }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    function switchTab(btnElement, tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      btnElement.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+      
+      if (tabId === 'mindmap-tab') {
+        update(root);
+      }
+    }
+
+    function switchDashSection(sectionId) {
+      document.querySelectorAll('.dash-menu-item').forEach(item => item.classList.remove('active'));
+      document.querySelectorAll('.dash-section').forEach(sec => sec.classList.remove('active'));
+      
+      const currentMenuItem = Array.from(document.querySelectorAll('.dash-menu-item')).find(item => item.getAttribute('onclick').includes(sectionId));
+      if (currentMenuItem) currentMenuItem.classList.add('active');
+      
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const btn = document.getElementById('theme-toggle-btn');
+      const isLight = body.classList.toggle('light-theme');
+      
+      if (isLight) {
+        btn.innerHTML = `<i class="fa-solid fa-sun"></i> <span>Light Theme</span>`;
+      } else {
+        btn.innerHTML = `<i class="fa-solid fa-moon"></i> <span>Dark Theme</span>`;
+      }
+      
+      update(root);
+    }
+
+    const container = document.getElementById('mindmap-canvas');
+    const width = container.clientWidth || 1000;
+    const height = container.clientHeight || 700;
+
+    const svg = d3.select("#mindmap-canvas")
+      .append("svg")
+      .attr("width", "100%")
+      .attr("height", "100%")
+      .attr("style", "background-color: var(--bg-dark); overflow: hidden;");
+
+    const g = svg.append("g");
+
+    const zoom = d3.zoom()
+      .scaleExtent([0.3, 3])
+      .on("zoom", (event) => {
+        g.attr("transform", event.transform);
+      });
+
+    svg.call(zoom);
+    resetZoom();
+
+    function zoomIn() { svg.transition().duration(300).call(zoom.scaleBy, 1.3); }
+    function zoomOut() { svg.transition().duration(300).call(zoom.scaleBy, 0.7); }
+    function resetZoom() {
+      svg.transition().duration(500).call(
+        zoom.transform,
+        d3.zoomIdentity.translate(width / 2 - 110, height / 2 - 50).scale(0.85)
+      );
+    }
+
+    const treemap = d3.tree().nodeSize([45, 260]);
+    let root = d3.hierarchy(mindmapData, d => d.children);
+    root.x0 = height / 2;
+    root.y0 = 0;
+
+    function collapseAll(d) {
+      if (d.children) {
+        d._children = d.children;
+        d._children.forEach(collapseAll);
+        d.children = null;
+      }
+    }
+
+    function expandAll(d) {
+      if (d._children) {
+        d.children = d._children;
+        d._children = null;
+      }
+      if (d.children) {
+        d.children.forEach(expandAll);
+      }
+    }
+
+    function expandAllNodes() {
+      expandAll(root);
+      update(root);
+    }
+
+    function collapseAllNodes() {
+      root.children.forEach(collapseAll);
+      update(root);
+    }
+
+    root.children.forEach(c => {
+      if (c.children) {
+        c.children.forEach(sc => {
+          if (sc.children) {
+            sc._children = sc.children;
+            sc.children = null;
+          }
+        });
+      }
+    });
+
+    // Helper to determine if node is on the left side
+    function isLeft(d) {
+      if (!d || d.depth === 0) return false;
+      let curr = d;
+      while (curr.depth > 1) {
+        if (!curr.parent) return false;
+        curr = curr.parent;
+      }
+      if (!root || !root.children) return false;
+      const idx = root.children.indexOf(curr);
+      return idx < 2; // Split first 2 categories to the left, others to the right
+    }
+
+    update(root);
+    let activeNode = null;
+    let iCount = 0;
+
+    function update(source) {
+      const treeData = treemap(root);
+      const nodes = treeData.descendants();
+      const links = treeData.links();
+
+      // Split layout y-coordinates
+      nodes.forEach(d => {
+        if (d.depth === 0) {
+          d.y = 0;
+        } else {
+          const side = isLeft(d) ? -1 : 1;
+          d.y = side * d.depth * 280;
+        }
+      });
+
+      svg.style("background-color", "var(--bg-dark)");
+
+      const node = g.selectAll('g.node')
+        .data(nodes, d => d.id || (d.id = ++iCount));
+
+      const nodeEnter = node.enter().append('g')
+        .attr('class', 'node')
+        .attr("transform", d => `translate(${source.y0},${source.x0})`)
+        .on('click', (event, d) => {
+          if (d.children) {
+            d._children = d.children;
+            d.children = null;
+          } else {
+            d.children = d._children;
+            d._children = null;
+          }
+          update(d);
+          inspectNode(d.data);
+        });
+
+      nodeEnter.append('rect')
+        .attr('x', d => isLeft(d) ? -220 : 0)
+        .attr('y', -16)
+        .attr('width', 220)
+        .attr('height', 32)
+        .attr('rx', 6)
+        .attr('ry', 6)
+        .attr('stroke', d => getNodeColor(d))
+        .attr('fill', 'var(--bg-card)')
+        .style('cursor', 'pointer');
+
+      nodeEnter.append('circle')
+        .attr('class', 'collapse-dot')
+        .attr('r', 5)
+        .attr('cx', d => isLeft(d) ? -220 : 220)
+        .attr('cy', 0)
+        .attr('fill', d => getNodeColor(d))
+        .style('opacity', d => (d.children || d._children) ? 1 : 0);
+
+      nodeEnter.append('text')
+        .attr('dy', '.35em')
+        .attr('dx', d => isLeft(d) ? -210 : 10)
+        .attr('text-anchor', 'start')
+        .text(d => truncateText(d.data.name, 26))
+        .style('fill', 'var(--text-primary)');
+
+      const nodeUpdate = nodeEnter.merge(node);
+      nodeUpdate.transition().duration(300)
+        .attr("transform", d => `translate(${d.y},${d.x})`);
+
+      nodeUpdate.select('rect')
+        .attr('x', d => isLeft(d) ? -220 : 0)
+        .attr('stroke', d => getNodeColor(d))
+        .style('fill', d => {
+          if (activeNode && activeNode.name === d.data.name) {
+            return 'rgba(30, 42, 94, 0.5)';
+          }
+          return 'var(--bg-card)';
+        })
+        .style('stroke-width', d => (activeNode && activeNode.name === d.data.name) ? '2.5px' : '1.5px')
+        .style('filter', d => (activeNode && activeNode.name === d.data.name) ? `drop-shadow(0 0 8px ${getNodeColor(d)})` : 'none');
+
+      nodeUpdate.select('text')
+        .style('fill', 'var(--text-primary)');
+
+      nodeUpdate.select('.collapse-dot')
+        .attr('cx', d => isLeft(d) ? -220 : 220)
+        .attr('fill', d => d.children ? 'var(--bg-dark)' : getNodeColor(d))
+        .attr('stroke', d => getNodeColor(d))
+        .attr('stroke-width', '1.5px')
+        .style('opacity', d => (d.children || d._children) ? 1 : 0);
+
+      const nodeExit = node.exit().transition().duration(300)
+        .attr("transform", d => `translate(${source.y},${source.x})`)
+        .remove();
+
+      nodeExit.select('rect')
+        .attr('width', 0)
+        .attr('height', 0);
+
+      nodeExit.select('text')
+        .style('fill-opacity', 0);
+
+      const link = g.selectAll('path.link')
+        .data(links, d => d.target.id);
+
+      const linkEnter = link.enter().insert('path', 'g')
+        .attr('class', 'link')
+        .attr('d', d => {
+          const o = { x: source.x0, y: source.y0, depth: source.depth };
+          return diagonal(o, o);
+        })
+        .attr('stroke', d => getNodeColor(d.target))
+        .attr('stroke-opacity', 0.2);
+
+      const linkUpdate = linkEnter.merge(link);
+      linkUpdate.transition().duration(300)
+        .attr('d', d => diagonal(d.source, d.target))
+        .attr('stroke', d => getNodeColor(d.target))
+        .attr('stroke-opacity', d => {
+          if (activeNode && (d.target.data.name === activeNode.name || isNodeAncestor(d.target, activeNode))) {
+            return 0.8;
+          }
+          return 0.25;
+        })
+        .attr('stroke-width', d => {
+          if (activeNode && (d.target.data.name === activeNode.name || isNodeAncestor(d.target, activeNode))) {
+            return '3px';
+          }
+          return '1.5px';
+        });
+
+      link.exit().transition().duration(300)
+        .attr('d', d => {
+          const o = { x: source.x, y: source.y, depth: source.depth };
+          return diagonal(o, o);
+        })
+        .remove();
+
+      nodes.forEach(d => {
+        d.x0 = d.x;
+        d.y0 = d.y;
+      });
+    }
+
+    function diagonal(s, d) {
+      const onLeft = d && d.depth ? isLeft(d) : false;
+      const parentLeft = s && s.depth ? isLeft(s) : false;
+      
+      let py;
+      if (!s || s.depth === 0) {
+        py = onLeft ? (s ? s.y : 0) : (s ? s.y + 220 : 220);
+      } else {
+        py = parentLeft ? s.y - 220 : s.y + 220;
+      }
+      const cy = d ? d.y : 0;
+      
+      return `M ${py} ${s.x}
+              C ${(py + cy) / 2} ${s.x},
+                ${(py + cy) / 2} ${d.x},
+                ${cy} ${d.x}`;
+    }
+
+    function getNodeColor(d) {
+      if (d.data.color) return d.data.color;
+      let p = d.parent;
+      while (p) {
+        if (p.data.color) return p.data.color;
+        p = p.parent;
+      }
+      return 'var(--accent-blue)';
+    }
+
+    function isNodeAncestor(node, activeNodeName) {
+      let matchingNode = null;
+      root.each(n => {
+        if (n.data.name === activeNodeName.name) matchingNode = n;
+      });
+      if (!matchingNode) return false;
+      let curr = matchingNode.parent;
+      while (curr) {
+        if (curr.id === node.id) return true;
+        curr = curr.parent;
+      }
+      return false;
+    }
+
+    function truncateText(text, limit) {
+      if (text.length <= limit) return text;
+      return text.substring(0, limit - 3) + '...';
+    }
+
+    // Node inspector
+    function inspectNode(data) {
+      activeNode = data;
+      update(root);
+
+      const badge = document.getElementById('insp-badge');
+      const title = document.getElementById('insp-title');
+      const desc = document.getElementById('insp-desc');
+      const notes = document.getElementById('insp-notes');
+      const pathEl = document.getElementById('insp-path');
+      
+      const toolSection = document.getElementById('insp-tool-section');
+      const toolTitle = document.getElementById('insp-tool-title');
+      const toolContainer = document.getElementById('insp-tool-container');
+
+      title.innerText = data.name;
+      desc.innerText = data.description || "Strategically aligned to support Jobaaj Learning SaaS monetization.";
+
+      let nodeColor = 'var(--accent-blue)';
+      let nodeColorGlow = 'var(--accent-blue-glow)';
+      
+      let p = root.descendants().find(n => n.data.name === data.name);
+      if (p) {
+        nodeColor = getNodeColor(p);
+        if (nodeColor.includes('red')) nodeColorGlow = 'var(--accent-red-glow)';
+        else if (nodeColor.includes('blue')) nodeColorGlow = 'var(--accent-blue-glow)';
+        else if (nodeColor.includes('purple')) nodeColorGlow = 'var(--accent-purple-glow)';
+        else if (nodeColor.includes('yellow')) nodeColorGlow = 'var(--accent-yellow-glow)';
+        else if (nodeColor.includes('green')) nodeColorGlow = 'var(--accent-green-glow)';
+      }
+      
+      badge.style.background = nodeColorGlow;
+      badge.style.color = nodeColor;
+      badge.innerText = data.type ? data.type.toUpperCase() : "STRATEGY";
+
+      let pathArray = [];
+      let currNode = p;
+      while (currNode) {
+        pathArray.unshift(currNode.data.name);
+        currNode = currNode.parent;
+      }
+      pathEl.innerHTML = `<i class="fa-solid fa-folder-tree"></i> ` + pathArray.join(' &gt; ');
+
+      let notesHtml = "";
+      if (data.name.includes("TAM") || data.name.includes("SAM") || data.name.includes("SOM")) {
+        notesHtml = "✔️ <strong>TAM (₹24,000 Cr):</strong> Upskilling in India.<br>✔️ <strong>SAM (₹8,500 Cr):</strong> Digital upskilling certs.<br>✔️ <strong>SOM (₹425 Cr):</strong> 5% share targeted at price-sensitive sandbox certifications in Tier 2/3.";
+      } else if (data.name.includes("DPDP") || data.name.includes("Compliance") || data.name.includes("Regulatory")) {
+        notesHtml = "✔️ <strong>DPDP Act 2023:</strong> Secure, compliant local storage for code and student answers.<br>✔️ <strong>Guarantees:</strong> Drop unverifiable guarantees, replace with digital portfolios.";
+      } else if (data.name.includes("RICE") || data.name.includes("Sequence") || data.name.includes("Priorit")) {
+        notesHtml = "✔️ <strong>Override Logic:</strong> Sandbox (RICE 171) is Priority 1 despite its lower score because it is the baseline database architecture that the AI Grader and LinkedIn Export features require to operate.";
+      } else if (data.name.includes("SQL")) {
+        notesHtml = "✔️ <strong>Sandbox:</strong> Mock PostgreSQL datasets inside browser.<br>✔️ <strong>TTV Target:</strong> Executing first query in under 5 minutes.";
+      } else if (data.name.includes("LinkedIn")) {
+        notesHtml = "✔️ <strong>PLG Loop:</strong> Student exports sandbox query outcomes to LinkedIn, creating zero-cost referral loops.";
+      } else {
+        notesHtml = "✔️ <strong>Google/Microsoft Standards:</strong> Outcome-oriented delivery. Reduce support tickets by replacing case-studies with tool querying.";
+      }
+      notes.innerHTML = notesHtml;
+
+      if (data.persona) {
+        toolSection.style.display = "block";
+        toolTitle.innerHTML = `<i class="fa-solid fa-user-tag" style="color: ${nodeColor};"></i> Target Persona File`;
+        let personaHtml = "";
+        if (data.persona === 'amit') {
+          personaHtml = `
+            <div style="background: var(--bg-dark); padding:0.75rem; border-radius:6px; border:1px solid var(--border-color); font-size:0.8rem;">
+              <strong>Amit (Tech Transitioner)</strong>
+              <div style="color:var(--text-secondary); margin-top:0.25rem;">Nokia Solutions Telecom Engineer experiencing passive video fatigue. Seeks sandbox credentials to verify code capability.</div>
+              <button class="btn-action" style="margin-top:0.75rem; width:100%; justify-content:center;" onclick="switchTab(this, 'dashboard-tab'); switchDashSection('dash-personas');"><i class="fa-solid fa-address-card"></i> View Persona Dashboard</button>
+            </div>`;
+        } else if (data.persona === 'priya') {
+          personaHtml = `
+            <div style="background: var(--bg-dark); padding:0.75rem; border-radius:6px; border:1px solid var(--border-color); font-size:0.8rem;">
+              <strong>Priya (Independent Creator)</strong>
+              <div style="color:var(--text-secondary); margin-top:0.25rem;">Requires self-serve outliners and SQL sandbox APIs to host interactive design/PM courses.</div>
+              <button class="btn-action" style="margin-top:0.75rem; width:100%; justify-content:center; background:var(--accent-purple);" onclick="switchTab(this, 'dashboard-tab'); switchDashSection('dash-personas');"><i class="fa-solid fa-address-card"></i> View Persona Dashboard</button>
+            </div>`;
+        } else {
+          personaHtml = `
+            <div style="background: var(--bg-dark); padding:0.75rem; border-radius:6px; border:1px solid var(--border-color); font-size:0.8rem;">
+              <strong>Raj (L&D Corporate Manager)</strong>
+              <div style="color:var(--text-secondary); margin-top:0.25rem;">Demands multi-tenant dashboards to track team compliance, progression and logs.</div>
+              <button class="btn-action" style="margin-top:0.75rem; width:100%; justify-content:center; background:var(--accent-blue);" onclick="switchTab(this, 'dashboard-tab'); switchDashSection('dash-personas');"><i class="fa-solid fa-address-card"></i> View Persona Dashboard</button>
+            </div>`;
+        }
+        toolContainer.innerHTML = personaHtml;
+      } else if (data.widget === 'sql' || data.name.includes("SQL")) {
+        toolSection.style.display = "block";
+        toolTitle.innerHTML = `<i class="fa-solid fa-terminal" style="color: ${nodeColor};"></i> PM SQL Terminal`;
+        toolContainer.innerHTML = `
+          <div style="background: var(--bg-dark); border: 1px solid var(--border-color); border-radius:6px; padding:0.75rem; font-family:var(--font-mono); font-size:0.75rem;">
+            <span style="color:#64748b;">-- Mock SQL execution terminal</span>
+            <div style="color:#38bdf8; margin:0.35rem 0;">SELECT * FROM checkout_funnel;</div>
+            <button class="btn-action" style="width:100%; justify-content:center; padding:0.35rem 0.5rem; font-size:0.7rem;" onclick="switchTab(this, 'dashboard-tab'); switchDashSection('dash-sandbox');"><i class="fa-solid fa-play"></i> Open Terminal Simulator</button>
+          </div>`;
+      } else if (data.widget === 'grader' || data.name.includes("Grader")) {
+        toolSection.style.display = "block";
+        toolTitle.innerHTML = `<i class="fa-solid fa-brain" style="color: ${nodeColor};"></i> AI PRD Grader`;
+        toolContainer.innerHTML = `
+          <div style="background: rgba(255, 107, 0, 0.05); border: 1px solid rgba(255, 107, 0, 0.15); border-radius:6px; padding:0.75rem; font-size:0.75rem;">
+            <strong>Test the AI Grading Engine</strong>
+            <p style="color:var(--text-secondary); margin-top:0.2rem;">Checks PRD text and highlights critical logic loops.</p>
+            <button class="btn-action" style="width:100%; justify-content:center; margin-top:0.5rem; font-size:0.7rem;" onclick="switchTab(this, 'dashboard-tab'); switchDashSection('dash-grader');"><i class="fa-solid fa-wand-magic-sparkles"></i> Open Grader Simulator</button>
+          </div>`;
+      } else if (data.widget === 'calculator' || data.name.includes("Freemium") || data.name.includes("Pricing")) {
+        toolSection.style.display = "block";
+        toolTitle.innerHTML = `<i class="fa-solid fa-indian-rupee-sign" style="color: ${nodeColor};"></i> SaaS Calculator`;
+        toolContainer.innerHTML = `
+          <div style="background: rgba(255, 107, 0, 0.04); border: 1px solid rgba(255, 107, 0, 0.15); border-radius:6px; padding:0.75rem; font-size:0.75rem;">
+            <strong>Calculate SaaS Tiers Yields</strong>
+            <p style="color:var(--text-secondary); margin-top:0.2rem;">Adjust converters, pricing models and MAUs.</p>
+            <button class="btn-action" style="width:100%; justify-content:center; margin-top:0.5rem; font-size:0.7rem;" onclick="switchTab(this, 'dashboard-tab'); switchDashSection('dash-calculator');"><i class="fa-solid fa-calculator"></i> Open Revenue Calculator</button>
+          </div>`;
+      } else if (data.widget === 'funnel' || data.name.includes("Funnel") || data.name.includes("AARRR") || data.name.includes("Metrics")) {
+        toolSection.style.display = "block";
+        toolTitle.innerHTML = `<i class="fa-solid fa-chart-simple" style="color: ${nodeColor};"></i> AARRR Funnel`;
+        toolContainer.innerHTML = `
+          <div style="background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15); border-radius:6px; padding:0.75rem; font-size:0.75rem;">
+            <strong>Track 12-Month SaaS Milestones</strong>
+            <p style="color:var(--text-secondary); margin-top:0.2rem;">Acquisition +40% / Activation &ge;70%.</p>
+            <button class="btn-action" style="background:var(--accent-green); width:100%; justify-content:center; margin-top:0.5rem; font-size:0.7rem;" onclick="switchTab(this, 'dashboard-tab'); switchDashSection('dash-metrics');"><i class="fa-solid fa-filter"></i> Open Funnel Metrics</button>
+          </div>`;
+      } else if (data.widget === 'abtest' || data.name.includes("Onboarding") || data.name.includes("A/B")) {
+        toolSection.style.display = "block";
+        toolTitle.innerHTML = `<i class="fa-solid fa-flask" style="color: ${nodeColor};"></i> A/B Testing`;
+        toolContainer.innerHTML = `
+          <div style="background: rgba(59, 130, 246, 0.04); border: 1px solid rgba(59, 130, 246, 0.15); border-radius:6px; padding:0.75rem; font-size:0.75rem;">
+            <strong>Compare Onboarding Lift</strong>
+            <p style="color:var(--text-secondary); margin-top:0.2rem;">Calculate Version A (video) vs. Version B (sandbox).</p>
+            <button class="btn-action" style="background:var(--accent-blue); width:100%; justify-content:center; margin-top:0.5rem; font-size:0.7rem;" onclick="switchTab(this, 'dashboard-tab'); switchDashSection('dash-ab');"><i class="fa-solid fa-chart-bar"></i> Open A/B Simulator</button>
+          </div>`;
+      } else {
+        toolSection.style.display = "none";
+      }
+    }
+
+    // Node Search Filtering
+    const searchInput = document.getElementById('node-search');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.toLowerCase().trim();
+      if (val === "") {
+        clearSearch();
+        return;
+      }
+      clearSearchBtn.style.display = "block";
+      filterNodes(val);
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = "";
+      clearSearch();
+    });
+
+    function filterNodes(val) {
+      root.each(d => {
+        if (d.data.name.toLowerCase().includes(val) || (d.data.description && d.data.description.toLowerCase().includes(val))) {
+          let curr = d.parent;
+          while (curr) {
+            if (curr._children) {
+              curr.children = curr._children;
+              curr._children = null;
+            }
+            curr = curr.parent;
+          }
+        }
+      });
+      update(root);
+
+      g.selectAll('g.node').style('opacity', d => {
+        const matches = d.data.name.toLowerCase().includes(val) || (d.data.description && d.data.description.toLowerCase().includes(val));
+        return matches ? 1 : 0.25;
+      });
+
+      g.selectAll('path.link').style('opacity', d => {
+        const matchesTarget = d.target.data.name.toLowerCase().includes(val);
+        return matchesTarget ? 0.8 : 0.05;
+      });
+    }
+
+    function clearSearch() {
+      clearSearchBtn.style.display = "none";
+      g.selectAll('g.node').style('opacity', 1);
+      g.selectAll('path.link').style('opacity', 0.25);
+      update(root);
+    }
+
+    // SQL terminal simulator
+    function runSandboxSQL() {
+      const query = document.getElementById('sql-input').value.trim();
+      const resultsBox = document.getElementById('sql-results-box');
+
+      resultsBox.innerHTML = `<div style="padding:1rem; color:var(--text-muted);"><i class="fa-solid fa-circle-notch fa-spin"></i> Running query on postgres...</div>`;
+      setTimeout(() => {
+        if (query.toLowerCase().includes('checkout_funnel')) {
+          resultsBox.innerHTML = `
+            <table class="terminal-table">
+              <thead>
+                <tr>
+                  <th>funnel_stage</th>
+                  <th>users_count</th>
+                  <th>conversion_rate</th>
+                  <th>leakage_detected</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1. Registration</td>
+                  <td>24,500</td>
+                  <td>100%</td>
+                  <td>None</td>
+                </tr>
+                <tr>
+                  <td>2. First Course Enter</td>
+                  <td>7,350</td>
+                  <td>30.0%</td>
+                  <td>🛑 HIGH (Low Activation)</td>
+                </tr>
+                <tr>
+                  <td>3. Project Attempt</td>
+                  <td>3,675</td>
+                  <td>15.0%</td>
+                  <td>📉 MODERATE (Theoretical fatigue)</td>
+                </tr>
+                <tr>
+                  <td>4. 90-Day Renewal</td>
+                  <td>1,102</td>
+                  <td>4.5%</td>
+                  <td>🛑 HIGH (Churn)</td>
+                </tr>
+              </tbody>
+            </table>`;
+        } else if (query.toLowerCase().includes('users')) {
+          resultsBox.innerHTML = `
+            <table class="terminal-table">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>role</th>
+                  <th>status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Amit Kumar</td>
+                  <td>Telecom Transitioner</td>
+                  <td>Active</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Sarah Patel</td>
+                  <td>Business Analyst</td>
+                  <td>Active</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Michael Chang</td>
+                  <td>QA Engineer</td>
+                  <td>Idle</td>
+                </tr>
+              </tbody>
+            </table>`;
+        } else {
+          resultsBox.innerHTML = `
+            <table class="terminal-table">
+              <thead>
+                <tr>
+                  <th>Error Code</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="color:var(--accent-red);">42P01</td>
+                  <td>Relation "${query.replace('SELECT * FROM ', '').replace(';', '')}" does not exist. Try querying "checkout_funnel" or "users".</td>
+                </tr>
+              </tbody>
+            </table>`;
+        }
+      }, 500);
+    }
+
+    // AI Grader
+    function runGrader() {
+      const spinner = document.getElementById('grader-loading-spinner');
+      const questIcon = document.getElementById('grader-quest-icon');
+      const stateText = document.getElementById('grader-state-text');
+      const outputCard = document.getElementById('grader-output-result');
+      const textVal = document.getElementById('prd-input-box').value;
+
+      questIcon.style.display = "none";
+      stateText.style.display = "none";
+      outputCard.style.display = "none";
+      spinner.style.display = "block";
+
+      setTimeout(() => {
+        spinner.style.display = "none";
+        outputCard.style.display = "flex";
+
+        const scoreVal = document.getElementById('grader-score-val');
+        const verdict = document.getElementById('grader-score-verdict');
+        const gap1 = document.getElementById('gap-text-1');
+        const gap2 = document.getElementById('gap-text-2');
+
+        if (textVal.toLowerCase().includes('edge cases: none')) {
+          scoreVal.innerText = "68";
+          scoreVal.style.borderColor = "var(--accent-red)";
+          verdict.innerText = "Revision Required";
+          verdict.style.color = "var(--accent-red)";
+          gap1.innerText = "Severe logic loophole: Declaring 'No edge cases' in payment handling will crash checkout pipelines.";
+          gap2.innerText = "Action item: Establish fallback routines for failed charge state & verify webhook triggers.";
+        } else {
+          scoreVal.innerText = "88";
+          scoreVal.style.borderColor = "var(--accent-green)";
+          verdict.innerText = "Passed (Review Complete)";
+          verdict.style.color = "var(--accent-green)";
+          gap1.innerText = "Minor note: Verify transaction telemetry rates directly inside your product console dashboard.";
+          gap2.innerText = "Recommendation: Attach the LinkedIn cert pipeline hooks onto the success webhook status.";
+        }
+      }, 900);
+    }
+
+    // A/B Simulator
+    function updateABSim() {
+      const cohort = parseInt(document.getElementById('ab-cohort-slider').value);
+      const appeal = parseInt(document.getElementById('ab-appeal-slider').value);
+
+      document.getElementById('ab-cohort-val').innerText = cohort.toLocaleString();
+      document.getElementById('ab-appeal-val').innerText = appeal + "%";
+
+      const rateA = 30.0;
+      const rateB = (30.0 + (appeal - 30) * 0.65).toFixed(1);
+
+      const countA = Math.round(cohort * (rateA / 100));
+      const countB = Math.round(cohort * (rateB / 100));
+      const lift = Math.round(((rateB - rateA) / rateA) * 100);
+
+      document.getElementById('ab-ver-a-val').innerText = rateA.toFixed(1) + "% Activation";
+      document.getElementById('ab-ver-b-val').innerText = rateB + "% Activation";
+
+      document.getElementById('ab-ver-a-bar').style.width = rateA + "%";
+      document.getElementById('ab-ver-a-bar').innerText = countA.toLocaleString() + " users";
+
+      document.getElementById('ab-ver-b-bar').style.width = rateB + "%";
+      document.getElementById('ab-ver-b-bar').innerText = countB.toLocaleString() + " users";
+      document.getElementById('ab-lift-val').innerText = "+" + lift + "%";
+    }
+
+    // Revenue Calculator
+    function updateCalculator() {
+      const mau = parseInt(document.getElementById('mau-slider').value);
+      const conv = parseFloat(document.getElementById('conv-slider').value);
+      const price = parseInt(document.getElementById('price-slider').value);
+
+      document.getElementById('mau-val').innerText = mau.toLocaleString();
+      document.getElementById('conv-val').innerText = conv.toFixed(1) + "%";
+      document.getElementById('price-val').innerText = "₹" + price;
+
+      const paidUsers = Math.round(mau * (conv / 100));
+      const mrr = paidUsers * price;
+      const arr = mrr * 12;
+
+      document.getElementById('out-paid-users').innerText = paidUsers.toLocaleString();
+      
+      if (mrr >= 100000) {
+        document.getElementById('out-mrr').innerText = "₹" + (mrr / 100000).toFixed(2) + " Lakh";
+      } else {
+        document.getElementById('out-mrr').innerText = "₹" + mrr.toLocaleString();
+      }
+
+      if (arr >= 10000000) {
+        document.getElementById('out-arr').innerText = "₹" + (arr / 10000000).toFixed(2) + " Crore";
+      } else if (arr >= 100000) {
+        document.getElementById('out-arr').innerText = "₹" + (arr / 100000).toFixed(2) + " Lakh";
+      } else {
+        document.getElementById('out-arr').innerText = "₹" + arr.toLocaleString();
+      }
+    }
+
+    updateABSim();
+    updateCalculator();
+  </script>
+</body>
+</html>

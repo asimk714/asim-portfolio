@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     RÉSUMÉ PREVIEW & VERIFICATION
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Page navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Home
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Asim Kumar</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Product Management Résumé</span>
+    </div>
+  </div>
+</nav>
+
+<section class="section" style="padding-top: var(--space-8);">
+  <div class="container" style="max-width: 900px;">
+    <!-- HEADER -->
+    <div class="section-header animate-in" style="text-align: center; margin-bottom: var(--space-8);">
+      <p class="eyebrow">Verified Credentials &amp; Background</p>
+      <h1 class="section-header__title" style="margin-inline: auto; font-size: clamp(var(--text-3xl), 4.5vw, var(--text-5xl));">
+        Product Management Résumé
+      </h1>
+      <p class="muted-paragraph" style="margin-inline: auto; max-width: 680px; margin-top: var(--space-3);">
+        An ATS-friendly résumé reflecting 8+ years of technical systems execution, formal Executive PM education from
+        IIM Tiruchirappalli, and end-to-end evidence from 3 flagship product implementations.
+      </p>
+
+      <div style="display: flex; justify-content: center; gap: var(--space-3); margin-top: var(--space-6); flex-wrap: wrap;">
+        <a href="/static/assets/resume/Asim-Kumar-Resume.pdf" class="btn btn--primary" download="Asim-Kumar-Resume.pdf" style="display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-6); background: var(--accent); color: #fff; border-radius: var(--radius-md); font-weight: 600; text-decoration: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download PDF Résumé
+        </a>
+        <a href="/resume/download/" class="btn btn--secondary" style="display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); text-decoration: none;">
+          Direct PDF Download Link
+        </a>
+        <a href="https://github.com/asimk714/asim-portfolio/blob/portfolio/finalize-p0/docs/RESUME-EVIDENCE-MAPPING.md" target="_blank" rel="noopener noreferrer" class="btn btn--secondary" style="display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-secondary); text-decoration: none;">
+          View Evidence Traceability Matrix
+        </a>
+      </div>
+    </div>
+
+    <!-- EVIDENCE BOUNDARY BANNER -->
+    <div class="evidence-card" style="border: 1px solid var(--border-color); border-left: 4px solid var(--evidence-verified); background: var(--surface-secondary); padding: var(--space-4) var(--space-5); border-radius: var(--radius-md); margin-bottom: var(--space-8);">
+      <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-1);">
+        <span class="evidence-label evidence-label--verified">Verified Grounding</span>
+        <span style="font-size: var(--text-xs); color: var(--text-muted); font-family: var(--font-mono);">SOURCE: Resume Btech.pdf + IIM Trichy + Code Repos</span>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--text-secondary); margin: 0; line-height: var(--leading-normal);">
+        This résumé does not claim a formal Product Manager job title for past engineering roles. It accurately presents
+        8+ years of carrier telecom systems diagnostics at Nokia, CTDI, Radio Design, and iQor, translating technical capabilities into product competencies supported by real PRDs, decision records, and interactive prototypes.
+      </p>
+    </div>
+
+    <!-- PDF EMBED VIEWER -->
+    <div class="resume-embed-container" style="margin-bottom: var(--space-10); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; background: #525659; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+      <div style="background: var(--surface-primary); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: var(--text-xs); font-family: var(--font-mono); color: var(--text-secondary);">
+          📄 Asim-Kumar-Resume.pdf &middot; 2 Pages &middot; ATS-Optimized
+        </span>
+        <a href="/static/assets/resume/Asim-Kumar-Resume.pdf" target="_blank" rel="noopener noreferrer" style="font-size: var(--text-xs); color: var(--accent); text-decoration: none;">
+          Open in New Tab &nearr;
+        </a>
+      </div>
+      <iframe
+        src="/static/assets/resume/Asim-Kumar-Resume.pdf#toolbar=0&navpanes=0"
+        title="Asim Kumar Product Management Resume Preview"
+        style="width: 100%; height: 900px; border: none; display: block;"
+      >
+        <p style="padding: var(--space-6); text-align: center; color: #fff;">
+          Your browser does not support embedded PDFs.
+          <a href="/static/assets/resume/Asim-Kumar-Resume.pdf" style="color: #67e8f9; text-decoration: underline;">
+            Click here to download the PDF.
+          </a>
+        </p>
+      </iframe>
+    </div>
+
+    <!-- STRUCTURED WEB VIEW -->
+    <div class="resume-web-view" style="background: var(--surface-primary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: clamp(var(--space-6), 5vw, var(--space-10)); margin-bottom: var(--space-12);">
+      
+      <!-- NAME & CONTACT -->
+      <div style="text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: var(--space-5); margin-bottom: var(--space-6);">
+        <h2 style="font-family: var(--font-sans); font-size: var(--text-3xl); font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-1) 0;">
+          ASIM KUMAR
+        </h2>
+        <p style="font-size: var(--text-sm); font-weight: 600; color: var(--accent); margin: 0 0 var(--space-2) 0; letter-spacing: 0.02em;">
+          Technical Product Manager Candidate &middot; Product Owner &middot; Systems Engineer
+        </p>
+        <p style="font-size: var(--text-xs); color: var(--text-secondary); margin: 0; line-height: 1.6;">
+          Gurugram, Haryana, India &bull; +91 98177 53425 &bull; <a href="mailto:asimkumar613@gmail.com" style="color: inherit;">asimkumar613@gmail.com</a><br/>
+          <a href="/" style="color: var(--accent);">Portfolio</a> &bull;
+          <a href="https://linkedin.com/in/asim-kumar-b69558188" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">LinkedIn</a> &bull;
+          <a href="https://github.com/asimk714" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">GitHub</a>
+        </p>
+      </div>
+
+      <!-- PROFESSIONAL SUMMARY -->
+      <div style="margin-bottom: var(--space-6);">
+        <h3 style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--accent); border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-1); margin-bottom: var(--space-3);">
+          Professional Summary
+        </h3>
+        <p style="font-size: var(--text-sm); line-height: var(--leading-relaxed); color: var(--text-secondary); margin: 0;">
+          Product-minded engineer transitioning into Product Management, offering 8+ years of technical systems execution in telecom network infrastructure combined with formal Executive Product Management education from IIM Tiruchirappalli. Demonstrated end-to-end product thinking across 3 flagship implementations (ReviewFlow, Unrot, Experiment Tracker) and 7 supporting product teardowns—authoring PRDs, Gherkin acceptance criteria, RICE/MoSCoW prioritization frameworks, automated verification suites, and interactive prototypes. Proven ability to translate ambiguous operational problems into structured technical execution, coordinate cross-functional engineering teams, and design AI workflows with rigorous evaluation and anti-hallucination guardrails.
+        </p>
+      </div>
+
+      <!-- CORE COMPETENCIES -->
+      <div style="margin-bottom: var(--space-6);">
+        <h3 style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--accent); border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-1); margin-bottom: var(--space-3);">
+          Core Product &amp; Technical Competencies
+        </h3>
+        <ul style="list-style: disc; padding-left: var(--space-4); margin: 0; font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6;">
+          <li><strong>Product Strategy &amp; Discovery:</strong> Problem discovery, user journey mapping, Jobs-to-be-Done (JTBD), PRD authoring, user stories &amp; Gherkin acceptance criteria, competitive benchmarking.</li>
+          <li><strong>Prioritization &amp; Scoping:</strong> RICE &amp; MoSCoW prioritization, Impact vs. Effort matrices, MVP boundary scoping, trade-off documentation, decision records.</li>
+          <li><strong>Experimentation &amp; Metrics:</strong> A/B test design, sample size &amp; statistical power calculations, cohort retention modeling (D1/D7), evaluation metrics (precision, hallucination rate).</li>
+          <li><strong>AI Product Integrity:</strong> Deterministic AI output grading, prompt architecture, synthetic evaluation fixtures, hallucination mitigation guardrails, executive AI workflows.</li>
+          <li><strong>Technical Execution &amp; Tools:</strong> Python, Flask, SQLite, TypeScript, SQL queries &amp; data modeling, REST APIs, Git, Jira, Trello, Confluence documentation, FMEA root-cause analysis.</li>
+        </ul>
+      </div>
+
+      <!-- FEATURED PROJECTS -->
+      <div style="margin-bottom: var(--space-6);">
+        <h3 style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--accent); border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-1); margin-bottom: var(--space-3);">
+          Featured Product Case Studies (Independent Implementations)
+        </h3>
+
+        <div style="margin-bottom: var(--space-4);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <strong style="color: var(--text-primary); font-size: var(--text-sm);">
+              <a href="/work/reviewflow/" style="color: inherit;">ReviewFlow — AI-Assisted Customer Review Analysis &amp; Response Pipeline</a>
+            </strong>
+            <span style="font-size: var(--text-xs); color: var(--text-muted); font-style: italic;">PRD &middot; Evaluator &middot; Prototype</span>
+          </div>
+          <ul style="list-style: disc; padding-left: var(--space-4); margin-top: var(--space-1); font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+            <li>Scoped product boundaries for an AI review synthesis tool designed to draft context-faithful salon responses while preventing hallucinated claims.</li>
+            <li>Authored 8 structured product decision records; deliberately deprioritized automatic posting to Google to eliminate hallucination liability.</li>
+            <li>Scoped MVP with MoSCoW; developed and verified a 15-case regression suite and automated evaluator measuring rating consistency, superlative drift, and format compliance.</li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom: var(--space-4);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <strong style="color: var(--text-primary); font-size: var(--text-sm);">
+              <a href="/work/unrot/" style="color: inherit;">Unrot — Daily Retention Modeling &amp; Cross-Functional Prioritization</a>
+            </strong>
+            <span style="font-size: var(--text-xs); color: var(--text-muted); font-style: italic;">Retention Modeling &middot; A/B Design &middot; Decision Brief</span>
+          </div>
+          <ul style="list-style: disc; padding-left: var(--space-4); margin-top: var(--space-1); font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+            <li>Investigated educational habit decay; built a Day 1 retention measurement model and formulated testable Jobs-to-be-Done (JTBD) hypotheses.</li>
+            <li>Engineered a complete A/B experiment plan with power calculations and sample size requirements to test return-intent notification timing.</li>
+            <li>Authored a comprehensive 6-role cross-functional decision brief (Product, Business, UX, Data, Eng, QA) establishing clear pre-test verification guardrails.</li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom: var(--space-4);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <strong style="color: var(--text-primary); font-size: var(--text-sm);">
+              <a href="/work/experiment-tracker/" style="color: inherit;">Experiment Tracker — Statistical Rigor &amp; Decision-Support System</a>
+            </strong>
+            <span style="font-size: var(--text-xs); color: var(--text-muted); font-style: italic;">PRD Scoping &middot; 17-Category Verification &middot; Prototype</span>
+          </div>
+          <ul style="list-style: disc; padding-left: var(--space-4); margin-top: var(--space-1); font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+            <li>Identified the 'experiment graveyard' friction point where test results lack structured conclusion capture and explicit launch/kill decision criteria.</li>
+            <li>Authored a 7-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.</li>
+            <li>Verified functionality across an automated 17-category verification suite and 26 test functions covering database integrity and decision gating.</li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom: var(--space-2);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <strong style="color: var(--text-primary); font-size: var(--text-sm);">
+              <a href="/work/windows-taskflow/" style="color: inherit;">Windows Taskflow &amp; IRCTC Rail Connect — Product Teardowns &amp; Prototypes</a>
+            </strong>
+            <span style="font-size: var(--text-xs); color: var(--text-muted); font-style: italic;">Journey Mapping &middot; Concurrency Analysis &middot; Clickable Prototypes</span>
+          </div>
+          <ul style="list-style: disc; padding-left: var(--space-4); margin-top: var(--space-1); font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+            <li><strong>Windows Taskflow:</strong> Authored PRD for context-aware workspaces; scoped backlog via RICE, defining &lt;3.5s state restoration as P0 KPI with interactive mockup.</li>
+            <li><strong>IRCTC Rail Connect:</strong> Mapped the 120-second Tatkal booking funnel; isolated 4 core friction points and built a 2-step checkout prototype with pre-saved passenger vaults and 1-tap UPI.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PROFESSIONAL EXPERIENCE -->
+      <div style="margin-bottom: var(--space-6);">
+        <h3 style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--accent); border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-1); margin-bottom: var(--space-3);">
+          Professional Experience (Engineering Execution &amp; Transferable PM Skills)
+        </h3>
+
+        <div style="margin-bottom: var(--space-4);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <div>
+              <strong style="color: var(--text-primary); font-size: var(--text-sm);">Nokia Solutions and Networks India Pvt Ltd</strong>
+              <span style="font-size: var(--text-xs); color: var(--text-secondary);"> &mdash; Engineer (Systems &amp; Hardware Diagnostics)</span>
+            </div>
+            <span style="font-size: var(--text-xs); color: var(--text-muted);">Sep 2023 &ndash; Present &middot; Gurugram, India</span>
+          </div>
+          <ul style="list-style: disc; padding-left: var(--space-4); margin-top: var(--space-1); font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+            <li>Execute hands-on diagnostic testing, troubleshooting, and root-cause analysis (RCA) on carrier telecom systems: Nokia SM1660 Matrix E, GPON Fixed Network cards, and Nokia Wi-Fi.</li>
+            <li>Coordinate cross-functional customer escalation triage across customer-facing teams, Site Reliability Engineers (SRE), and repair centre technical personnel.</li>
+            <li>Translate vague field outage tickets into structured, reproducible diagnostic investigation plans, replicating field configurations to isolate intermittent hardware resets and prevent repeat failures.</li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom: var(--space-3);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <div>
+              <strong style="color: var(--text-primary); font-size: var(--text-sm);">Radio Design India Pvt Ltd</strong>
+              <span style="font-size: var(--text-xs); color: var(--text-secondary);"> &mdash; Repair Engineer</span>
+            </div>
+            <span style="font-size: var(--text-xs); color: var(--text-muted);">Dec 2020 &ndash; 2021 &middot; Gurugram, India</span>
+          </div>
+          <ul style="list-style: disc; padding-left: var(--space-4); margin-top: var(--space-1); font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+            <li>Conducted diagnostic fault-finding, frequency tuning, and functional testing on RF routers and power amplifier units across stringent frequency specifications.</li>
+            <li>Standardized alignment and verification procedures to ensure zero-defect deployment across live telecom infrastructure.</li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom: var(--space-3);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <div>
+              <strong style="color: var(--text-primary); font-size: var(--text-sm);">CTDI India Pvt Ltd (Communications Test Design India)</strong>
+              <span style="font-size: var(--text-xs); color: var(--text-secondary);"> &mdash; Repair Engineer</span>
+            </div>
+            <span style="font-size: var(--text-xs); color: var(--text-muted);">Feb 2018 &ndash; Dec 2020 &middot; Gurugram, India</span>
+          </div>
+          <ul style="list-style: disc; padding-left: var(--space-4); margin-top: var(--space-1); font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+            <li>Executed component-level troubleshooting, repair, and qualification across Wi-Fi routers, modems, set-top boxes, and power supplies.</li>
+            <li>Identified common failure modes across test stations, documenting repeatable diagnostic workflows to maintain turnaround standards.</li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom: var(--space-2);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <div>
+              <strong style="color: var(--text-primary); font-size: var(--text-sm);">iQor Global Services India Pvt Ltd</strong>
+              <span style="font-size: var(--text-xs); color: var(--text-secondary);"> &mdash; Repair Engineer</span>
+            </div>
+            <span style="font-size: var(--text-xs); color: var(--text-muted);">Oct 2017 &ndash; Feb 2018 &middot; Gurugram, India</span>
+          </div>
+          <ul style="list-style: disc; padding-left: var(--space-4); margin-top: var(--space-1); font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5;">
+            <li>Performed functional testing, troubleshooting, and calibration for consumer digital set-top boxes (DEN Skyworth &amp; Airtel STB), enforcing strict quality thresholds on borderline units.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- EDUCATION & CREDENTIALS -->
+      <div>
+        <h3 style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--accent); border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-1); margin-bottom: var(--space-3);">
+          Education &amp; Verified Credentials
+        </h3>
+        <ul style="list-style: disc; padding-left: var(--space-4); margin: 0; font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6;">
+          <li><strong>Executive Education: Product Management in the Agentic AI Era</strong> &mdash; IIM Tiruchirappalli &amp; Masai School (Aug 2026 cohort)</li>
+          <li><strong>Product Owner Certification</strong> &mdash; Udemy (Credential ID: F607C4712D38)</li>
+          <li><strong>Python for AI</strong> &mdash; ScholarHat (Credential ID: IJDU240126)</li>
+          <li><strong>Management Consulting &amp; Excel Analytics</strong> &mdash; Jobaaj Learnings (Credential ID: AIJDW103334)</li>
+          <li><strong>Bachelor of Technology (B.Tech) in Mechanical Engineering</strong> &mdash; Kurukshetra University (2014 &ndash; 2017)</li>
+          <li><strong>Diploma in Electronics &amp; Communication Engineering (ECE)</strong> &mdash; Govt. Polytechnic Ambala City (2010 &ndash; 2013)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

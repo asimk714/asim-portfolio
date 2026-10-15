@@ -39,16 +39,18 @@ Environment variable `PORT` can override the default port.
 - `/work/reviewflow/` — ReviewFlow case study: AI product integrity, measurement, verification.
 - `/work/unrot/` — Unrot Daily Retention case study: D1 retention measurement model, experiment design.
 - `/work/experiment-tracker/` — Experiment Tracker case study: product definition, prioritization, verification.
-- `/how-i-work/` — How I Think: six-move accordion (Discover, Define, Decide, Build, Measure, Verify).
-- `/contact/` — Contact: email, phone, GitHub, LinkedIn (unverified URL), resume placeholder.
+- `/how-i-work/` — How I Work: eight-stage Principal PM Operating System (Discover, Decide, Define, Build, Launch, Measure, Learn, Iterate).
+- `/resume/` — Product Management Résumé: verified background, competency mapping, ATS-friendly preview, and direct PDF download.
+- `/contact/` — Contact: email, phone, GitHub, verified LinkedIn profile.
 
 ### Evidence Cards
 
-The Proof of Work hub presents 15 evidence cards linking to real artifacts:
+The Proof of Work hub presents 16 evidence cards linking to real artifacts:
 
 - ReviewFlow: 15-case regression dataset, AI output quality measurement report, 8 product decisions, corrected evaluator results, Phase 11 intervention record.
 - Experiment Tracker: PRODUCT_BRIEF with 7-candidate prioritization, 17-category verification report.
 - Unrot: A/B experiment plan with power analysis, Final QA report (20/20 functional — previously reported, not revalidated; 29/50 tests — 21 DB-dependent failures), D1 retention calculator, architecture document, problem framing, JTBD hypotheses.
+- Jobaaj: SaaS moat transition architecture, cohort retention leakage model, interactive D3 dashboard, live SQL terminal simulator.
 
 All external links point to github.com/asimk714 repositories. Internal links anchor to section IDs within case study pages.
 
@@ -67,7 +69,7 @@ Where evidence is missing, it is stated plainly rather than hidden.
 
 ## Current Status
 
-The website implementation is complete and locally verifiable. All 14 unique pages render successfully (HTTP 200) via Flask test-client verification (25 route decorators serve 14 unique pages, including `/live/` alias variants). The implementation follows the content blueprint documented in `docs/CONTENT-BLUEPRINT.md`.
+The website implementation is complete and locally verifiable. All pages render successfully (HTTP 200) via Flask test-client verification (27 registered route decorators serve 15 unique page templates, 10 live interactive experiences, resume viewer, and direct PDF downloads). The implementation follows the content blueprint documented in `docs/CONTENT-BLUEPRINT.md`.
 
 This is a portfolio project — a proof of how the author thinks about product, not a deployed production site with users.
 

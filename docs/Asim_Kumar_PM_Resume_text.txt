@@ -1,0 +1,76 @@
+--- PAGE 1 ---
+ASIM KUMAR
+ Technical Product Manager Candidate | Product Owner | Systems Engineer
+ Gurugram, Haryana, India  +91 98177 53425  asimkumar613@gmail.com
+Portfolio: github.com/asimk714/asim-portfolio  LinkedIn: linkedin.com/in/asim-kumar-b69558188  GitHub: github.com/asimk714
+PROFESSIONAL SUMMARY
+Product-minded engineer transitioning into Product Management, offering 8+ years of technical systems execution in telecom network
+infrastructure combined with formal Executive Product Management education from IIM Tiruchirappalli. Demonstrated end-to-end product thinking
+across 3 flagship implementations (ReviewFlow, Unrot, Experiment Tracker) and 7 supporting product teardowns—authoring PRDs, Gherkin
+acceptance criteria, RICE/MoSCoW prioritization frameworks, automated verification suites, and interactive prototypes. Proven ability to translate
+ambiguous operational problems into structured technical execution, coordinate cross-functional engineering teams, and design AI workflows with
+rigorous evaluation and anti-hallucination guardrails.
+CORE PRODUCT & TECHNICAL COMPETENCIES
+  Product Strategy & Discovery: Problem discovery, user journey mapping, Jobs-to-be-Done (JTBD), PRD authoring, user stories & Gherkin
+ acceptance criteria, competitive benchmarking.
+ Prioritization & Scoping: RICE & MoSCoW prioritization, Impact vs. Effort matrices, MVP boundary scoping, trade-off documentation, decision
+ records.
+ Experimentation & Metrics: A/B test design, sample size & statistical power calculations, cohort retention modeling (D1/D7), evaluation metrics
+ (precision, hallucination rate).
+ AI Product Integrity: Deterministic AI output grading, prompt architecture, synthetic evaluation fixtures, hallucination mitigation guardrails,
+ executive AI workflows.
+ Technical Execution & Tools: Python, Flask, SQLite, TypeScript, SQL queries & data modeling, REST APIs, Git, Jira, Trello, Confluence
+ documentation, FMEA root-cause analysis.
+FEATURED PRODUCT CASE STUDIES (INDEPENDENT IMPLEMENTATIONS)
+ReviewFlow — AI-Assisted Customer Review Analysis & Response Pipeline [PRD, Evaluation Pipeline & Live Prototype]
+  Scoped product boundaries for an AI review synthesis tool designed to draft context-faithful salon responses while preventing hallucinated claims.
+  Authored 8 structured product decision records; deliberately deprioritized automatic posting to Google to eliminate hallucination liability.
+  Scoped MVP with MoSCoW; developed and verified a 15-case regression suite and automated evaluator measuring rating consistency, superlative
+ drift, and format compliance.
+Unrot — Daily Retention Modeling & Cross-Functional Prioritization [Retention Modeling, Experiment Design & Strategic Decision
+Brief]
+  Investigated educational habit decay; built a Day 1 retention measurement model and formulated testable Jobs-to-be-Done (JTBD) hypotheses.
+  Engineered a complete A/B experiment plan with power calculations and sample size requirements to test return-intent notification timing.
+  Authored a comprehensive 6-role cross-functional decision brief (Product, Business, UX, Data, Eng, QA) establishing clear pre-test verification
+ guardrails.
+Experiment Tracker — Statistical Rigor & Decision-Support System [PRD Scoping, 17-Category Verification & Functional
+Prototype]
+  Identified the 'experiment graveyard' friction point where test results lack structured conclusion capture and explicit launch/kill decision criteria.
+  Authored a 7-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.
+  Verified functionality across an automated 17-category verification suite and 26 test functions covering database integrity and decision gating.
+ Windows Taskflow & IRCTC Rail Connect — Product Teardowns & Prototypes [User Journey Mapping, Concurrency Analysis &
+Clickable Prototypes]
+  Windows Taskflow: Authored PRD for context-aware workspaces; scoped backlog via RICE, defining <3.5s state restoration as P0 KPI with
+ interactive mockup.
+ IRCTC Rail Connect: Mapped the 120-second Tatkal booking funnel; isolated 4 core friction points and built a 2-step checkout prototype with
+ pre-saved passenger vaults and 1-tap UPI.
+PROFESSIONAL EXPERIENCE (ENGINEERING EXECUTION & TRANSFERABLE PM SKILLS)
+Nokia Solutions and Networks India Pvt Ltd — Engineer (Systems & Hardware Diagnostics) (Sep 2023 – Present)
+  Execute hands-on diagnostic testing, troubleshooting, and root-cause analysis (RCA) on carrier telecom systems: Nokia SM1660 Matrix E, GPON
+ Fixed Network cards, and Nokia Wi-Fi.
+ Coordinate cross-functional customer escalation triage across customer-facing teams, Site Reliability Engineers (SRE), and repair centre technical
+ personnel.
+ Translate vague field outage tickets into structured, reproducible diagnostic investigation plans, replicating field configurations to isolate intermittent
+ hardware resets and prevent repeat failures.
+Radio Design India Pvt Ltd — Repair Engineer (Dec 2020 – 2021)
+  Conducted diagnostic fault-finding, frequency tuning, and functional testing on RF routers and power amplifier units across stringent frequency
+ specifications.
+ Standardized alignment and verification procedures to ensure zero-defect deployment across live telecom infrastructure.
+ 
+
+--- PAGE 2 ---
+CTDI India Pvt Ltd (Communications Test Design India) — Repair Engineer (Feb 2018 – Dec 2020)
+  Executed component-level troubleshooting, repair, and qualification across Wi-Fi routers, modems, set-top boxes, and power supplies.
+  Identified common failure modes across test stations, documenting repeatable diagnostic workflows to maintain turnaround standards.
+ iQor Global Services India Pvt Ltd — Repair Engineer (Oct 2017 – Feb 2018)
+  Performed functional testing, troubleshooting, and calibration for consumer digital set-top boxes (DEN Skyworth & Airtel STB), enforcing strict
+ quality thresholds on borderline units.
+EDUCATION & VERIFIED CREDENTIALS
+  Executive Education: Product Management in the Agentic AI Era — IIM Tiruchirappalli & Masai School (Aug 2026 cohort)
+  Product Owner Certification — Udemy (Credential ID: F607C4712D38)
+  Python for AI — ScholarHat (Credential ID: IJDU240126)
+  Management Consulting & Excel Analytics — Jobaaj Learnings (Credential ID: AIJDW103334)
+  Bachelor of Technology (B.Tech) in Mechanical Engineering — Kurukshetra University (2014 – 2017)
+  Diploma in Electronics & Communication Engineering (ECE) — Govt. Polytechnic Ambala City (2010 – 2013)
+ 
+

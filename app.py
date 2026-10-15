@@ -3,7 +3,7 @@ Asim Kumar — Technical Product Manager Portfolio
 Flask + Jinja2 + vanilla JS. Calm, editorial, evidence-driven.
 """
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
 
@@ -324,6 +324,27 @@ EVIDENCE_CARDS = [
         "project": "Unrot",
         "case_study_url": "/work/unrot/",
     },
+    {
+        "title": "Jobaaj Learning — EdTech to SaaS Moat Transition Model & Interactive Sandbox",
+        "type": "Strategic model · Interactive Dashboard",
+        "body": """
+        <p>A strategic product teardown and business model pivot from passive video lecture delivery
+        to an active SaaS learning sandbox. Features an interactive D3.js mindmap architecture,
+        cohort retention leakage modeling, a live SQL terminal simulator, and unit economics sensitivity
+        forecasting.</p>
+        <p style="margin-top: var(--space-2);">
+          <span class="evidence-label evidence-label--simulated">Simulated — strategic model</span>
+          <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not evidenced — no commercial release</span>
+        </p>
+        """,
+        "category": "definition",
+        "css_class": "",
+        "link_url": "/static/prototypes/jobaaj-saas-dashboard.html",
+        "link_label": "Launch Interactive Dashboard",
+        "link_external": False,
+        "project": "Jobaaj",
+        "case_study_url": "/static/prototypes/jobaaj-saas-dashboard.html",
+    },
 ]
 
 
@@ -454,6 +475,17 @@ def how_i_work():
 @app.route("/contact/")
 def contact():
     return render_template("contact.html")
+
+
+@app.route("/resume/")
+def resume_page():
+    return render_template("resume.html")
+
+
+@app.route("/resume/download/")
+def resume_download():
+    resume_dir = os.path.join(app.static_folder, "assets", "resume")
+    return send_from_directory(resume_dir, "Asim-Kumar-Resume.pdf", as_attachment=True)
 
 
 # ---------------------------------------------------------------------------
