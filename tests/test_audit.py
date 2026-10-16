@@ -5,6 +5,8 @@ Ensures no unverified claims, missing resume deliverables, or broken prototype a
 import os
 import re
 import unittest
+import pypdf
+import docx
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
@@ -14,7 +16,7 @@ DOCS_DIR = os.path.join(BASE_DIR, "docs")
 
 class TestPortfolioAudit(unittest.TestCase):
     def test_resume_deliverables_exist(self):
-        """Verifies DOCX, PDF, text extraction, and evidence matrices exist."""
+        """Verifies DOCX, PDF, text extraction, evidence matrices, and clickable links exist with 0 control characters."""
         pdf_path = os.path.join(STATIC_DIR, "assets", "resume", "Asim-Kumar-Resume.pdf")
         docx_path = os.path.join(DOCS_DIR, "Asim_Kumar_PM_Resume.docx")
         txt_path = os.path.join(DOCS_DIR, "Asim_Kumar_PM_Resume_text.txt")
@@ -29,6 +31,35 @@ class TestPortfolioAudit(unittest.TestCase):
         self.assertTrue(os.path.isfile(mapping_path), "Resume evidence mapping missing")
         self.assertTrue(os.path.isfile(analysis_path), "PM requirements analysis missing")
 
+        # Verify PDF structure, 2 pages, and link annotations
+        pdf = pypdf.PdfReader(pdf_path)
+        self.assertEqual(len(pdf.pages), 2, "PDF must be exactly 2 pages")
+        pdf_uris = []
+        for page in pdf.pages:
+            for a in page.get('/Annots', []):
+                obj = a.get_object()
+                uri = obj.get('/A', {}).get('/URI')
+                if uri:
+                    pdf_uris.append(uri)
+        self.assertIn("https://github.com/asimk714/asim-portfolio", pdf_uris)
+        self.assertIn("https://www.linkedin.com/in/asim-kumar-b69558188", pdf_uris)
+        self.assertIn("https://github.com/asimk714", pdf_uris)
+        self.assertIn("mailto:asimkumar613@gmail.com", pdf_uris)
+
+        # Verify DOCX hyperlink relationships
+        doc = docx.Document(docx_path)
+        docx_uris = [rel.target_ref for rel in doc.part.rels.values() if 'hyperlink' in rel.reltype]
+        self.assertIn("https://github.com/asimk714/asim-portfolio", docx_uris)
+        self.assertIn("https://www.linkedin.com/in/asim-kumar-b69558188", docx_uris)
+        self.assertIn("https://github.com/asimk714", docx_uris)
+        self.assertIn("mailto:asimkumar613@gmail.com", docx_uris)
+
+        # Verify 0 control characters in TXT extraction
+        with open(txt_path, "r", encoding="utf-8") as f:
+            txt = f.read()
+        ctrls = [c for c in txt if (ord(c) < 32 and c not in '\n\r\t') or ord(c) == 127]
+        self.assertEqual(len(ctrls), 0, f"TXT contains {len(ctrls)} control characters: {ctrls}")
+
     def test_prototypes_exist(self):
         """Verifies integrated prototypes exist in static/prototypes."""
         jobaaj_proto = os.path.join(STATIC_DIR, "prototypes", "jobaaj-saas-dashboard.html")
@@ -40,7 +71,7 @@ class TestPortfolioAudit(unittest.TestCase):
         self.assertTrue(os.path.isfile(win_proto), "Windows 11 prototype missing")
 
     def test_zero_unverified_claims_in_templates(self):
-        """Audits all templates to ensure CSPO, Scrum Alliance, or ungrounded Senior Engineer claims do not exist."""
+        """Audits all templates and evidence cards to ensure CSPO, Scrum Alliance, or 35/35 claims do not exist."""
         forbidden_patterns = [
             re.compile(r"\bCSPO\b"),
             re.compile(r"Scrum\s+Alliance", re.IGNORECASE),
@@ -62,6 +93,14 @@ class TestPortfolioAudit(unittest.TestCase):
                             match,
                             f"Forbidden pattern '{pattern.pattern}' found in {filepath}: {match.group(0) if match else ''}"
                         )
+
+        # Audit app.py evidence cards for 35/35
+        from app import EVIDENCE_CARDS
+        for card in EVIDENCE_CARDS:
+            title = card.get("title", "")
+            body = card.get("body", "")
+            self.assertNotIn("35/35", title, f"Unsupported 35/35 claim in card title: {title}")
+            self.assertNotIn("35/35", body, f"Unsupported 35/35 claim in card body: {title}")
 
     def test_ats_resume_contains_core_credentials(self):
         """Verifies the exported ATS resume text contains confirmed certifications and accurate title."""

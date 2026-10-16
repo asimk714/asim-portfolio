@@ -198,12 +198,12 @@ EVIDENCE_CARDS = [
         "case_study_url": "/work/unrot/",
     },
     {
-        "title": "Final QA Report — 20/20 Functional, 35/35 Tests",
+        "title": "Final QA Report — 20/20 Functional (previously reported), 29/50 Tests (21 DB-dependent failures)",
         "type": "QA audit",
         "body": """
         <p>Full audit: 20/20 functional verification across 8 routes, responsive at 375/768/1280px,
         accessibility (WCAG 2.1 AA — keyboard, semantic structure, form labels, aria-live, color
-        independence), 35/35 automated tests passing, ESLint 0 errors/0 warnings, Turbopack build
+        independence), 29/50 automated tests (21 DB-dependent failures), ESLint 0 errors/0 warnings, Turbopack build
         0 compilation errors. Demo isolation verified: 0 qualifying returners from demo preview.</p>
         <p style="margin-top: var(--space-2);">
           <span class="evidence-label evidence-label--verified">Verified — QA report exists</span>

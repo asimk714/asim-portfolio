@@ -13,6 +13,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import nsdecls, qn
+import docx.opc.constants
 
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
@@ -42,6 +43,31 @@ def set_cell_margins(cell, top=50, bottom=50, left=100, right=100):
         node.set(qn('w:type'), 'dxa')
         tcMar.append(node)
     tcPr.append(tcMar)
+
+
+def add_docx_hyperlink(paragraph, url, text, color="0E7490", underline=True, font_name="Arial", font_size_pt=8.5):
+    """Adds a clickable external hyperlink relationship to a docx paragraph."""
+    part = paragraph.part
+    r_id = part.relate_to(url, docx.opc.constants.RELATIONSHIP_TYPE.HYPERLINK, is_external=True)
+
+    hyperlink = parse_xml(
+        f'<w:hyperlink xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" '
+        f'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" '
+        f'r:id="{r_id}" w:history="1"/>'
+    )
+    new_run = parse_xml(
+        f'<w:r xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
+        f'<w:rPr>'
+        f'<w:rFonts w:ascii="{font_name}" w:hAnsi="{font_name}"/>'
+        f'<w:color w:val="{color}"/>'
+        + (r'<w:u w:val="single"/>' if underline else '') +
+        f'<w:sz w:val="{int(font_size_pt * 2)}"/>'
+        f'</w:rPr>'
+        f'<w:t xml:space="preserve">{text}</w:t>'
+        f'</w:r>'
+    )
+    hyperlink.append(new_run)
+    paragraph._p.append(hyperlink)
 
 
 def build_docx():
@@ -104,13 +130,32 @@ def build_docx():
     p_contact.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_contact.paragraph_format.space_before = Pt(0)
     p_contact.paragraph_format.space_after = Pt(6)
-    run_c = p_contact.add_run(
-        "Gurugram, Haryana, India  •  +91 98177 53425  •  asimkumar613@gmail.com\n"
-        "Portfolio: github.com/asimk714/asim-portfolio  •  LinkedIn: linkedin.com/in/asim-kumar-b69558188  •  GitHub: github.com/asimk714"
-    )
-    run_c.font.size = Pt(8.5)
-    run_c.font.name = "Arial"
-    run_c.font.color.rgb = color_muted
+    
+    # Line 1: Location, Phone, Email (hyperlink)
+    r_loc = p_contact.add_run("Gurugram, Haryana, India  •  +91 98177 53425  •  ")
+    r_loc.font.size = Pt(8.5)
+    r_loc.font.name = "Arial"
+    r_loc.font.color.rgb = color_muted
+    add_docx_hyperlink(p_contact, "mailto:asimkumar613@gmail.com", "asimkumar613@gmail.com", color="0E7490", underline=False, font_size_pt=8.5)
+
+    # Line 2: Portfolio, LinkedIn, GitHub (hyperlinks)
+    r_nl = p_contact.add_run("\nPortfolio: ")
+    r_nl.font.size = Pt(8.5)
+    r_nl.font.name = "Arial"
+    r_nl.font.color.rgb = color_muted
+    add_docx_hyperlink(p_contact, "https://github.com/asimk714/asim-portfolio", "github.com/asimk714/asim-portfolio", color="0E7490", underline=True, font_size_pt=8.5)
+
+    r_li = p_contact.add_run("  •  LinkedIn: ")
+    r_li.font.size = Pt(8.5)
+    r_li.font.name = "Arial"
+    r_li.font.color.rgb = color_muted
+    add_docx_hyperlink(p_contact, "https://www.linkedin.com/in/asim-kumar-b69558188", "linkedin.com/in/asim-kumar-b69558188", color="0E7490", underline=True, font_size_pt=8.5)
+
+    r_gh = p_contact.add_run("  •  GitHub: ")
+    r_gh.font.size = Pt(8.5)
+    r_gh.font.name = "Arial"
+    r_gh.font.color.rgb = color_muted
+    add_docx_hyperlink(p_contact, "https://github.com/asimk714", "github.com/asimk714", color="0E7490", underline=True, font_size_pt=8.5)
 
     # --- Executive Summary ---
     add_heading_rule("Professional Summary")
@@ -428,8 +473,10 @@ def build_pdf():
     story.append(Paragraph("Technical Product Manager Candidate | Product Owner | Systems Engineer", style_sub))
     story.append(Spacer(1, 2))
     story.append(Paragraph(
-        "Gurugram, Haryana, India  &bull;  +91 98177 53425  &bull;  asimkumar613@gmail.com<br/>"
-        "Portfolio: github.com/asimk714/asim-portfolio  &bull;  LinkedIn: linkedin.com/in/asim-kumar-b69558188  &bull;  GitHub: github.com/asimk714",
+        "Gurugram, Haryana, India  &bull;  +91 98177 53425  &bull;  <a href=\"mailto:asimkumar613@gmail.com\" color=\"#0e7490\">asimkumar613@gmail.com</a><br/>"
+        "Portfolio: <a href=\"https://github.com/asimk714/asim-portfolio\" color=\"#0e7490\"><u>github.com/asimk714/asim-portfolio</u></a>  &bull;  "
+        "LinkedIn: <a href=\"https://www.linkedin.com/in/asim-kumar-b69558188\" color=\"#0e7490\"><u>linkedin.com/in/asim-kumar-b69558188</u></a>  &bull;  "
+        "GitHub: <a href=\"https://github.com/asimk714\" color=\"#0e7490\"><u>github.com/asimk714</u></a>",
         style_contact
     ))
     story.append(Spacer(1, 3))
@@ -559,12 +606,17 @@ def extract_text_and_verify():
     reader = pypdf.PdfReader(PDF_PATH)
     text = ""
     for i, page in enumerate(reader.pages):
-        text += f"--- PAGE {i+1} ---\n" + (page.extract_text() or "") + "\n\n"
+        page_text = page.extract_text() or ""
+        # Clean Helvetica bullet character 0x7f to standard unicode bullet •
+        page_text = page_text.replace('\x7f', '•')
+        text += f"--- PAGE {i+1} ---\n" + page_text + "\n\n"
     with open(TXT_PATH, "w", encoding="utf-8") as f:
         f.write(text)
     print(f"Text extracted to {TXT_PATH} (Total pages: {len(reader.pages)})")
     
-    # Assertions for ATS integrity
+    # Assertions for ATS integrity and no control characters
+    control_chars = [c for c in text if (ord(c) < 32 and c not in '\n\r\t') or ord(c) == 127]
+    assert len(control_chars) == 0, f"Found {len(control_chars)} control characters in extracted text: {control_chars}"
     assert "ASIM KUMAR" in text
     assert "ReviewFlow" in text
     assert "Unrot" in text
@@ -572,7 +624,8 @@ def extract_text_and_verify():
     assert "Nokia" in text
     assert "IIM Tiruchirappalli" in text
     assert "F607C4712D38" in text
-    print("ATS content checks passed successfully!")
+    assert len(reader.pages) == 2, f"PDF page count must be exactly 2, got {len(reader.pages)}"
+    print("ATS content checks and 0 control characters passed successfully!")
 
 
 if __name__ == "__main__":
