@@ -103,7 +103,7 @@ This portfolio positions Asim Kumar as a Technical Product Manager who:
 - PRODUCT_BRIEF.md: problem, user, JTBDs, product question, 7-candidate prioritization with explicit "what it would add" + "why not prioritized"
 - MVP boundary: in/out of scope + trade-offs
 - Conclusion capture implementation
-- 22 automated tests
+- 26 automated test functions across 4 test files
 - 17-category verification report with evidence labels (VERIFIED BY TEST / VERIFIED BY CODE REVIEW / VERIFIED BY RUNTIME / NOT VERIFIED)
 
 **Lifecycle stage:** Define → Build → Verify (strongest), Discover → Validate (weak), Launch → GTM (none), Measure → Optimize (weak — proposed usage metric not measured), Scale → Grow (none).

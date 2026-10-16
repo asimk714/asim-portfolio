@@ -4,7 +4,7 @@ ASIM KUMAR
  Gurugram, Haryana, India • +91 98177 53425 • asimkumar613@gmail.com
 Portfolio: github.com/asimk714/asim-portfolio • LinkedIn: linkedin.com/in/asim-kumar-b69558188 • GitHub: github.com/asimk714
 PROFESSIONAL SUMMARY
-Product-minded engineer transitioning into Product Management, offering 8+ years of technical systems execution in telecom network infrastructure
+Product-minded engineer transitioning into Product Management, offering 7 years of technical systems execution in telecom network infrastructure
 combined with formal Executive Product Management education from IIM Tiruchirappalli. Demonstrated end-to-end product thinking across 3 flagship
 implementations (ReviewFlow, Unrot, Experiment Tracker) and 7 supporting product teardowns—authoring PRDs, Gherkin acceptance criteria,
 RICE/MoSCoW prioritization frameworks, automated verification suites, and interactive prototypes. Proven ability to translate ambiguous operational

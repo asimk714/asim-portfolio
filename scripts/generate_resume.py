@@ -163,7 +163,7 @@ def build_docx():
     p_sum.paragraph_format.space_before = Pt(2)
     p_sum.paragraph_format.space_after = Pt(4)
     run_sum = p_sum.add_run(
-        "Product-minded engineer transitioning into Product Management, offering 8+ years of technical systems execution in telecom network infrastructure combined with formal Executive Product Management training from IIM Tiruchirappalli. Demonstrated end-to-end product thinking across 3 flagship implementations (ReviewFlow, Unrot, Experiment Tracker) and 7 supporting product teardowns—authoring PRDs, Gherkin acceptance criteria, RICE/MoSCoW prioritization frameworks, automated verification suites, and interactive prototypes. Proven ability to translate ambiguous operational problems into structured technical execution, coordinate cross-functional engineering teams, and design AI workflows with rigorous evaluation and anti-hallucination guardrails."
+        "Product-minded engineer transitioning into Product Management, offering 7 years of technical systems execution in telecom network infrastructure combined with formal Executive Product Management training from IIM Tiruchirappalli. Demonstrated end-to-end product thinking across 3 flagship implementations (ReviewFlow, Unrot, Experiment Tracker) and 7 supporting product teardowns—authoring PRDs, Gherkin acceptance criteria, RICE/MoSCoW prioritization frameworks, automated verification suites, and interactive prototypes. Proven ability to translate ambiguous operational problems into structured technical execution, coordinate cross-functional engineering teams, and design AI workflows with rigorous evaluation and anti-hallucination guardrails."
     )
     run_sum.font.size = Pt(9)
     run_sum.font.name = "Arial"
@@ -485,7 +485,7 @@ def build_pdf():
     # Summary
     story.append(Paragraph("PROFESSIONAL SUMMARY", style_heading))
     story.append(Paragraph(
-        "Product-minded engineer transitioning into Product Management, offering 8+ years of technical systems execution in telecom network infrastructure combined with formal Executive Product Management education from IIM Tiruchirappalli. Demonstrated end-to-end product thinking across 3 flagship implementations (ReviewFlow, Unrot, Experiment Tracker) and 7 supporting product teardowns—authoring PRDs, Gherkin acceptance criteria, RICE/MoSCoW prioritization frameworks, automated verification suites, and interactive prototypes. Proven ability to translate ambiguous operational problems into structured technical execution, coordinate cross-functional engineering teams, and design AI workflows with rigorous evaluation and anti-hallucination guardrails.",
+        "Product-minded engineer transitioning into Product Management, offering 7 years of technical systems execution in telecom network infrastructure combined with formal Executive Product Management education from IIM Tiruchirappalli. Demonstrated end-to-end product thinking across 3 flagship implementations (ReviewFlow, Unrot, Experiment Tracker) and 7 supporting product teardowns—authoring PRDs, Gherkin acceptance criteria, RICE/MoSCoW prioritization frameworks, automated verification suites, and interactive prototypes. Proven ability to translate ambiguous operational problems into structured technical execution, coordinate cross-functional engineering teams, and design AI workflows with rigorous evaluation and anti-hallucination guardrails.",
         style_body
     ))
     story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=2.5, spaceAfter=2.5))
