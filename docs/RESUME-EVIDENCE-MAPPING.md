@@ -8,7 +8,7 @@ This document provides complete line-by-line traceability between the statements
 
 | Résumé Statement | Evidentiary Basis & Source Location | Status | Notes |
 | :--- | :--- | :--- | :--- |
-| **"Technical Product Manager Candidate \| Product Owner \| Systems Engineer"** | Primary résumé (`Resume Btech.pdf`), IIM Tiruchirappalli executive PM credentials, Udemy Product Owner certificate (F607C4712D38), 7 years telecom engineering. | **PASS** | Accurately reflects transition candidacy; avoids claiming formal historical PM job title. |
+| **"Technical Product Manager Candidate \| Product Owner \| Systems Engineer"** | Primary résumé (`Resume Btech.pdf`), IIM Tiruchirappalli executive PM credentials, Udemy Product Owner certificate (F607C4712D38), 6+ years telecom engineering. | **PASS** | Accurately reflects transition candidacy; avoids claiming formal historical PM job title. |
 | **Contact info (Gurugram, +91 98177 53425, asimkumar613@gmail.com)** | Primary résumé (`Resume Btech.pdf`), confirmed personal contact channels. | **PASS** | Exact match. |
 | **Links: Portfolio, LinkedIn, GitHub** | `github.com/asimk714/asim-portfolio`, `github.com/asimk714`, `linkedin.com/in/asim-kumar-b69558188`. | **PASS** | Active profiles and repositories. |
 
@@ -18,7 +18,7 @@ This document provides complete line-by-line traceability between the statements
 
 | Résumé Statement | Evidentiary Basis & Source Location | Status | Notes |
 | :--- | :--- | :--- | :--- |
-| **"7 years of technical systems execution in telecom network infrastructure"** | `Resume Btech.pdf`: iQor (4 mos: 2017–2018), CTDI (34 mos: 2018–2020), Radio Design (1–12 mos: 2020–2021), Nokia (37 mos: 2023–Present). | **PASS** | Verified across 4 engineering employers totaling 76–87 active employment months (~7 years excluding 2021–2023 gap). |
+| **"6+ years of technical systems execution in telecom network infrastructure"** | `Resume Btech.pdf`: iQor (4 mos: 2017–2018), CTDI (34 mos: 2018–2020), Radio Design (1–12 mos: 2020–2021), Nokia (37 mos: 2023–Present). | **PASS** | Verified across 4 engineering employers totaling 76–87 active employment months (6.33 to 7.25 years excluding 2021–2023 gap; conservative figure 6+ years adopted pending exact 2021 end month at Radio Design). |
 | **"Formal Executive Product Management education from IIM Tiruchirappalli"** | `_credentials.html`, `docs/PORTFOLIO-STRATEGY.md`, course completion record. | **PASS** | Executive certification in PM in the Agentic AI Era. |
 | **"Demonstrated end-to-end product thinking across 3 flagship implementations (ReviewFlow, Unrot, Experiment Tracker) and 7 supporting product teardowns"** | `app.py`, `templates/work/`, git commits in canonical repo. | **PASS** | All 10 case studies and live interactive experiences are verified in the codebase. |
 | **"Authoring PRDs, Gherkin acceptance criteria, RICE/MoSCoW prioritization frameworks, automated verification suites, and interactive prototypes"** | `templates/work/reviewflow.html`, `templates/work/unrot.html`, `templates/work/experiment-tracker.html`, `templates/work/windows-taskflow.html`, `templates/work/irctc.html`. | **PASS** | Specific documented artifacts in each case study. |

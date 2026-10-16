@@ -8,7 +8,7 @@ This document evaluates Asim Kumar's profile against typical hiring requirements
 
 ```
 [ STRONG EVIDENCE ]
-├── Technical Systems & Constraints Understanding (7 years hardware/network engineering)
+├── Technical Systems & Constraints Understanding (6+ years hardware/network engineering)
 ├── Problem Decomposition & Root-Cause Analysis (FMEA, escalation triage)
 ├── Product Specification (PRDs, user stories, Gherkin acceptance criteria)
 ├── Prioritization Frameworks (RICE, MoSCoW, Impact vs. Effort, decision records)
@@ -34,7 +34,7 @@ This document evaluates Asim Kumar's profile against typical hiring requirements
 
 ### A. Technical Product Manager (TPM) / Platform PO
 * **Fit Level: VERY STRONG**
-* **Why:** 7 years inside carrier-grade telecom and embedded network systems (Nokia, CTDI, Radio Design). Strong technical fluency with engineers, APIs, system architectures, database schemas, and edge constraints.
+* **Why:** 6+ years inside carrier-grade telecom and embedded network systems (Nokia, CTDI, Radio Design). Strong technical fluency with engineers, APIs, system architectures, database schemas, and edge constraints.
 * **Key Evidence:** SM1660 Matrix E, GPON cards, Experiment Tracker database integrity tests, ReviewFlow evaluator scripts.
 * **Gaps to Address:** Experience with cloud distributed microservices (AWS/GCP/Kubernetes) is demonstrated through personal code rather than enterprise production deployments.
 
