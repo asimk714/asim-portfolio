@@ -1,163 +1,144 @@
 <section class="section experience-section" id="experience">
   <div class="container">
-    <div class="experience-section__header animate-in">
+    <div class="experience-section__header animate-in" style="margin-bottom: var(--space-8);">
       <p class="eyebrow section-header__eyebrow">Experience</p>
       <h2 class="section-header__title">
-        Product thinking that grew out of real technical delivery.
+        Product judgment forged in high-reliability systems execution.
       </h2>
       <p class="muted-paragraph section-header__subtitle">
-        I don't claim a Product Manager title I didn't hold. What I claim is the product judgment
-        that grew out of 6+ years inside complex, cross-functional technical delivery — navigating
-        ambiguity, translating requirements into execution, coordinating across stakeholders, and
-        delivering cross-functional work on complex systems in the carrier network, optical, and IP
-        domains at Nokia.
+        I don't claim a Product Manager title I didn't hold. What I claim is the product discipline
+        that grew out of 6+ years inside complex technical delivery — navigating ambiguity, translating
+        system requirements into execution, coordinating cross-functional engineering teams, and
+        delivering carrier-grade reliability across Fixed Networks, IP, and Optical domains at Nokia,
+        Radio Design India, CTDI, and iQor.
       </p>
     </div>
 
-    <div class="experience-grid">
-      <div class="experience-intro experience-text animate-in reveal">
-        <p>
-          At Nokia, I worked on complex technical systems — Fixed Networks, IP, and Optical — where
-          engineers don't get the luxury of fuzzy requirements. You read the system, translate
-          vague directives into buildable technical execution, coordinate across multiple teams, and
-          stay honest about what you don't know.
-        </p>
-        <p>
-          That environment taught me the things a product thinker needs before anything else: how to
-          read a complex system, how to talk to engineers about constraints without pretending to be
-          one, how to translate a vague requirement into something buildable, and how to stay honest
-          about what I don't know.
-        </p>
-        <p>
-              These flagship product builds are the proof that this way of working transferred into product work.
-          Each one is a real product I built end-to-end — with its own measurement,
-          verification, and honest gaps. They are not hypotheticals. They run.
-        </p>
-      </div>
+    <!-- Vertical Alternating Timeline with Animated Traveling Pulse -->
+    <div class="timeline reveal">
+      <div class="timeline-line" aria-hidden="true"></div>
+      <div class="timeline-pulse" aria-hidden="true"></div>
 
-      <!-- Nokia — Engineer: Customer escalation & RCA (collapsible) -->
-      <div class="experience-evidence-item animate-in reveal">
-        <button class="experience-evidence-item__header accordion__header" aria-expanded="false" aria-controls="nokia-escalation-body" id="nokia-escalation-btn" type="button">
-          <span>Nokia — Engineer (Systems &amp; Diagnostics)</span>
-          <svg class="experience-evidence-item__icon accordion__icon" id="nokia-escalation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="experience-evidence-item__body accordion__body" id="nokia-escalation-body" aria-labelledby="nokia-escalation-btn">
-          <div class="experience-evidence-item__field">
-            <span class="experience-evidence-item__field-label">Context</span>
-            <div class="experience-evidence-item__field-text">
-              <p>Customer site repeatedly raised outage-related tickets. After the issue persisted through initial troubleshooting, the team replaced hardware and returned the suspected card to the repair centre.</p>
+      <!-- ROLE 1: NOKIA -->
+      <div class="tl-item">
+        <div class="tl-node" aria-hidden="true"></div>
+        <div class="tl-card">
+          <div class="tl-card-top">
+            <span class="tl-date">SEP 2023 — PRESENT</span>
+            <div class="tl-role">Engineer (Systems &amp; Diagnostics)</div>
+            <div class="tl-company">Nokia Solutions &amp; Networks India · Gurugram</div>
+            <ul>
+              <li>Support GPON Fixed Network Cards, OLT platforms, and IP Routers — troubleshooting complex customer escalations, investigating repeat failures, and supporting field deployments.</li>
+              <li>Adapted structured diagnostic techniques into engineering workflows, improving troubleshooting consistency and root-cause analysis across cross-functional teams.</li>
+              <li>Applying completed IIM Executive Product Management training alongside hands-on prototype and evaluator builds to transition into Product Management.</li>
+            </ul>
+          </div>
+          <button class="case-toggle" data-target="role-nokia" type="button" aria-expanded="false">
+            View role breakdown <span class="chev">⌄</span>
+          </button>
+          <div class="case-detail" id="role-nokia">
+            <div class="case-grid">
+              <div class="case-block">
+                <h4>System Context</h4>
+                <p>Nokia delivers GPON and IP routing equipment to major telecom operators where repeat failures directly threaten operator SLA compliance. That makes root-cause analysis a critical input into contract stability.</p>
+              </div>
+              <div class="case-block">
+                <h4>Cross-Functional Collaboration</h4>
+                <p>Collaborated across customer-handling teams, Site Reliability Engineers, hardware repair technicians, and management to isolate complex transient bugs and verify fixes before field redeployment.</p>
+              </div>
+              <div class="case-block">
+                <h4>Incident Investigation &amp; RCA</h4>
+                <p>Reproduced elusive field failures under controlled bench environments, isolating hardware resets and proposing continuous-power and configuration fixes that resolved multi-year recurring ticket escalations.</p>
+              </div>
+              <div class="case-block">
+                <h4>Framing &amp; Scope Boundary</h4>
+                <p>Scope represents deep technical diagnostics, systems troubleshooting, and cross-functional coordination — not formal Product Manager organizational title.</p>
+              </div>
             </div>
           </div>
-          <div class="experience-evidence-item__field">
-            <span class="experience-evidence-item__field-label">Investigation</span>
-            <div class="experience-evidence-item__field-text">
-              <p>Recreated the field environment at the repair centre and compared unit behaviour between the field site and the controlled environment. The investigation identified sudden power surges causing network cards to reboot.</p>
-            </div>
-          </div>
-          <div class="experience-evidence-item__field">
-            <span class="experience-evidence-item__field-label">Stakeholders</span>
-            <div class="experience-evidence-item__field-text">
-              <p>Customer-handling team, Site Reliability Engineers, relevant stakeholders and managers in the escalation path, and repair-centre technical personnel.</p>
-            </div>
-          </div>
-          <div class="experience-evidence-item__field">
-            <span class="experience-evidence-item__field-label">Decision</span>
-            <div class="experience-evidence-item__field-text">
-              <p>I participated in the investigation and recommendation. I proposed an alternate continuous-power solution. I did not implement the power infrastructure myself.</p>
-            </div>
-          </div>
-          <div class="experience-evidence-item__field">
-            <span class="experience-evidence-item__field-label">Outcome</span>
-            <div class="experience-evidence-item__field-text">
-              <p>The same customer has not raised the same complaint in roughly two years — based on my experience and reporting, not independently measured in this portfolio.</p>
-            </div>
-          </div>
-          <p class="muted-paragraph">
-            Framing: engineering/customer escalation and RCA experience — not formal Product Manager ownership.
-          </p>
         </div>
       </div>
 
-      <!-- Nokia — Engineer: GPON field failure investigation (collapsible) -->
-      <div class="experience-evidence-item animate-in reveal">
-        <button class="experience-evidence-item__header accordion__header" aria-expanded="false" aria-controls="nokia-gpon-body" id="nokia-gpon-btn" type="button">
-          <span>Nokia — GPON Field Failure Investigation</span>
-          <svg class="experience-evidence-item__icon accordion__icon" id="nokia-gpon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="experience-evidence-item__body accordion__body" id="nokia-gpon-body" aria-labelledby="nokia-gpon-btn">
-          <div class="experience-evidence-item__field">
-            <span class="experience-evidence-item__field-label">Context</span>
-            <div class="experience-evidence-item__field-text">
-              <p>GPON Fixed Network system — a site kept going down after the GPON ticket was raised. I was involved from the beginning because I regularly handle customer escalations and RCA.</p>
-            </div>
+      <!-- ROLE 2: RADIO DESIGN INDIA -->
+      <div class="tl-item">
+        <div class="tl-node" aria-hidden="true"></div>
+        <div class="tl-card">
+          <div class="tl-card-top">
+            <span class="tl-date">APR 2022 — SEP 2023</span>
+            <div class="tl-role">RF Engineer</div>
+            <div class="tl-company">Radio Design India · Gurugram</div>
+            <ul>
+              <li>Tuned and validated multi-cavity RF filter assemblies and combiner units for cellular base stations, ensuring signal integrity across multi-operator shared infrastructure.</li>
+              <li>Performed spectrum analyzer measurements, insertion-loss tuning, and passband verification under strict cellular carrier standards.</li>
+              <li>Collaborated with production and quality engineering teams to identify mechanical and electrical tolerances that contributed to manufacturing yield loss.</li>
+            </ul>
           </div>
-          <div class="experience-evidence-item__field">
-            <span class="experience-evidence-item__field-label">Investigation</span>
-            <div class="experience-evidence-item__field-text">
-              <p>I proposed bringing the complete field setup to the Repair Center with the available diagnostic outputs. The investigation established that an NT card was resetting — which could corrupt the flash card holding configuration, ultimately causing the FX-8 shelf to reset. At the Repair Center, I first reproduced the field configuration and then isolated individual boards when the setup initially appeared healthy. Under the field configuration, I observed a slight reset on one NT card, replaced it, and confirmed that the setup then operated normally.</p>
-            </div>
-          </div>
-          <div class="experience-evidence-item__field">
-            <span class="experience-evidence-item__field-label">Stakeholders</span>
-            <div class="experience-evidence-item__field-text">
-              <p>Customer-handling team, SRE, technical personnel, and the Repair Center. The operational workflow follows a clear chain: SRE establishes a site and checks whether it is running smoothly; when a problem occurs, the SRE escalates to the relevant stakeholders or managers depending on the issue and the affected board or component.</p>
-            </div>
-          </div>
-          <div class="experience-evidence-item__field">
-            <span class="experience-evidence-item__field-label">Resolution</span>
-            <div class="experience-evidence-item__field-text">
-              <p>Fault finding, root-cause analysis (RCA), troubleshooting, and dispatching OK / working units. The work spans both hardware and software. I have strong knowledge of the hardware, and when site problems, hardware problems, or repeated issues occur, people contact me because of that hardware knowledge.</p>
-            </div>
-          </div>
-          <p class="muted-paragraph">
-            Operational context: GPON site tickets and returned-unit history are recorded through the
-            operational process, with DOA, repaired-faulty, and repeat-failure cases receiving deeper
-            investigation. This example documents the observed investigation and repair action; it does
-            not claim that I personally performed a formal long-term recurrence analysis for this site.
-          </p>
-          <p class="muted-paragraph">
-            Framing: engineering/RCA and cross-functional coordination — not formal Product Manager ownership.
-          </p>
         </div>
       </div>
 
-      <!-- Skills (full-width) -->
-      <div class="experience-skills">
-        <div class="experience-skills-col">
-          <div class="skill-group__label">Technical</div>
-          <ul class="skill-list">
-            <li><span class="skill-tag">Python</span></li>
-            <li><span class="skill-tag">Flask</span></li>
-            <li><span class="skill-tag">SQLite</span></li>
-            <li><span class="skill-tag">React</span></li>
-            <li><span class="skill-tag">TypeScript</span></li>
-            <li><span class="skill-tag">Next.js</span></li>
-            <li><span class="skill-tag">Supabase</span></li>
-            <li><span class="skill-tag">Edge Functions</span></li>
-            <li><span class="skill-tag">PostgreSQL</span></li>
-            <li><span class="skill-tag">Prisma</span></li>
-            <li><span class="skill-tag">Git</span></li>
-            <li><span class="skill-tag">Testing</span></li>
-            <li><span class="skill-tag">CI</span></li>
-          </ul>
+      <!-- ROLE 3: CTDI -->
+      <div class="tl-item">
+        <div class="tl-node" aria-hidden="true"></div>
+        <div class="tl-card">
+          <div class="tl-card-top">
+            <span class="tl-date">AUG 2020 — APR 2022</span>
+            <div class="tl-role">Telecom Repair &amp; Diagnostics Engineer</div>
+            <div class="tl-company">CTDI · Gurugram</div>
+            <ul>
+              <li>Diagnosed, debugged, and repaired complex multi-layer telecom network cards, power modules, and base station controller boards down to component level.</li>
+              <li>Developed structured, repeatable diagnostic sequence workflows that reduced troubleshooting uncertainty across the repair engineering floor.</li>
+              <li>Maintained strict adherence to ESD, IPC repair standards, and test fixtures to achieve consistent post-repair qualification rates.</li>
+            </ul>
+          </div>
         </div>
-        <div class="experience-skills-col">
-          <div class="skill-group__label">Product</div>
-          <ul class="skill-list">
-            <li><span class="skill-tag">Problem framing</span></li>
-            <li><span class="skill-tag">Prioritization</span></li>
-            <li><span class="skill-tag">Trade-offs</span></li>
-            <li><span class="skill-tag">MVP definition</span></li>
-            <li><span class="skill-tag">Measurement design</span></li>
-            <li><span class="skill-tag">Verification</span></li>
-            <li><span class="skill-tag">AI product integrity</span></li>
-            <li><span class="skill-tag">AI quality measurement</span></li>
-          </ul>
+      </div>
+
+      <!-- ROLE 4: IQOR INDIA -->
+      <div class="tl-item">
+        <div class="tl-node" aria-hidden="true"></div>
+        <div class="tl-card">
+          <div class="tl-card-top">
+            <span class="tl-date">OCT 2017 — AUG 2018</span>
+            <div class="tl-role">Test Engineer</div>
+            <div class="tl-company">iQor India · Manesar</div>
+            <ul>
+              <li>Executed functional, in-circuit, and reliability tests across high-density PCB assemblies and telecom communication boards.</li>
+              <li>Monitored automated test station outputs, flagged recurring defect clusters to manufacturing leads, and verified compliance with QA benchmarks.</li>
+              <li>Built early foundations in hardware verification, failure classification, and empirical quality discipline.</li>
+            </ul>
+          </div>
         </div>
+      </div>
+
+    </div>
+
+    <!-- Skills Matrix -->
+    <div class="experience-skills" style="margin-top: var(--space-12);">
+      <div class="experience-skills-col">
+        <div class="skill-group__label">Technical Systems Execution</div>
+        <ul class="skill-list">
+          <li><span class="skill-tag">Python &amp; Flask</span></li>
+          <li><span class="skill-tag">React &amp; TypeScript</span></li>
+          <li><span class="skill-tag">Next.js &amp; Prisma</span></li>
+          <li><span class="skill-tag">PostgreSQL &amp; SQLite</span></li>
+          <li><span class="skill-tag">Supabase &amp; Edge Functions</span></li>
+          <li><span class="skill-tag">Git, CI &amp; Testing</span></li>
+          <li><span class="skill-tag">Fixed Networks &amp; GPON</span></li>
+          <li><span class="skill-tag">Optical &amp; IP Routing</span></li>
+        </ul>
+      </div>
+      <div class="experience-skills-col">
+        <div class="skill-group__label">Product Management Discipline</div>
+        <ul class="skill-list">
+          <li><span class="skill-tag">Problem Framing &amp; PRD</span></li>
+          <li><span class="skill-tag">RICE &amp; MoSCoW Prioritization</span></li>
+          <li><span class="skill-tag">Trade-Off Analysis</span></li>
+          <li><span class="skill-tag">MVP Scoping</span></li>
+          <li><span class="skill-tag">Retention &amp; Funnel Metrics</span></li>
+          <li><span class="skill-tag">Deterministic AI Evaluation</span></li>
+          <li><span class="skill-tag">Root-Cause Analysis (RCA)</span></li>
+          <li><span class="skill-tag">Cross-Functional Alignment</span></li>
+        </ul>
       </div>
     </div>
   </div>

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Asim Kumar — Technical Product Manager Portfolio</title>
   <meta name="description" content="Asim Kumar — Product thinker. Technical builder. Evidence-driven. AI-assisted review tools, retention analytics, and local-first product tooling.">
-  <meta name="theme-color" content="#fdfcfa">
+  <meta name="theme-color" content="#0a0f1c">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/static/img/favicon.svg">
 
-  <!-- Fonts: Inter + Source Serif 4 + JetBrains Mono -->
+  <!-- Fonts: Space Grotesk + Inter + Source Serif 4 + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;550;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Design tokens -->
   <link rel="stylesheet" href="/static/css/design-tokens.css">
@@ -30,10 +30,25 @@
   <link rel="stylesheet" href="/static/css/components.lifecycle.css">
   <link rel="stylesheet" href="/static/css/pages.css">
 
-  <!-- Analytics / metro tag (minimal, no tracking) -->
+  <!-- Theme toggle & reading progress -->
   <script defer src="/static/js/theme.js"></script>
 </head>
 <body>
+
+  <!-- Ambient background fiber network & grain -->
+  <div class="bg-fiber" aria-hidden="true">
+    <svg viewBox="0 0 1200 900" preserveAspectRatio="none">
+      <path id="fiberPath" d="M -50 700 C 200 600, 300 800, 550 650 S 900 400, 1250 500" stroke="var(--gold)" stroke-width="1" fill="none" opacity="0.35"/>
+      <path d="M -50 200 C 250 100, 400 300, 650 150 S 1000 50, 1250 200" stroke="var(--gold)" stroke-width="1" fill="none" opacity="0.22"/>
+      <circle r="3" fill="var(--gold-bright)">
+        <animateMotion dur="9s" repeatCount="indefinite" path="M -50 700 C 200 600, 300 800, 550 650 S 900 400, 1250 500"/>
+      </circle>
+      <circle r="2.4" fill="var(--gold-bright)">
+        <animateMotion dur="12s" repeatCount="indefinite" path="M -50 200 C 250 100, 400 300, 650 150 S 1000 50, 1250 200"/>
+      </circle>
+    </svg>
+  </div>
+  <div class="bg-grain" aria-hidden="true"></div>
 
   <!-- ============================================================
        HEADER / NAVIGATION
@@ -41,7 +56,7 @@
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a href="/" class="site-brand" aria-label="Asim Kumar Portfolio — Home">
-        <span class="site-brand-mark" aria-hidden="true">AK</span>
+        <span class="brand-dot" aria-hidden="true"></span>
         <span class="site-brand-text">Asim Kumar</span>
       </a>
 

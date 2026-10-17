@@ -109,4 +109,30 @@
       }
     });
   });
+
+  // Case Study in-place expanders (.case-toggle -> .case-detail)
+  document.querySelectorAll('.case-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var targetId = btn.getAttribute('data-target');
+      var detail = document.getElementById(targetId);
+      if (!detail) return;
+      var isOpen = detail.classList.contains('open');
+      if (isOpen) {
+        detail.classList.remove('open');
+        btn.classList.remove('open');
+      } else {
+        detail.classList.add('open');
+        btn.classList.add('open');
+        // Animate KPI bars
+        detail.querySelectorAll('.bar-fill').forEach(function (bar) {
+          var fill = bar.getAttribute('data-fill');
+          if (fill) {
+            setTimeout(function () {
+              bar.style.width = fill + '%';
+            }, 60);
+          }
+        });
+      }
+    });
+  });
 })();
