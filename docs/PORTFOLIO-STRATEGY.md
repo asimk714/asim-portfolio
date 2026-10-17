@@ -100,7 +100,7 @@ This portfolio positions Asim Kumar as a Technical Product Manager who:
 **PM signal:** Product definition + prioritization + trade-offs + verification craft + honest non-claims.
 
 **Strongest evidence:**
-- PRODUCT_BRIEF.md: problem, user, JTBDs, product question, 7-candidate prioritization with explicit "what it would add" + "why not prioritized"
+- PRODUCT_BRIEF.md: problem, user, JTBDs, product question, 8-candidate prioritization with explicit "what it would add" + "why not prioritized"
 - MVP boundary: in/out of scope + trade-offs
 - Conclusion capture implementation
 - 26 automated test functions across 4 test files

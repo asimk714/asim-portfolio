@@ -32,11 +32,11 @@ This document provides complete line-by-line traceability between the statements
 | **ReviewFlow: Scoped product boundaries, 8 decision records, rejected automated posting** | `docs/PRODUCT-DECISIONS.md`, `templates/work/reviewflow.html`, `app.py`. | **PASS** | Explicitly documented decision against Google posting to prevent hallucination risk. |
 | **ReviewFlow: 15-case regression suite, evaluator measuring rating consistency** | `app.py` (EVIDENCE_CARDS[0]), `tests/regression/cases.ts`. | **PASS** | Verified synthetic offline evaluation fixture; 0 live AI calls. |
 | **Unrot: Day 1 retention measurement model, testable JTBD hypotheses** | `templates/work/unrot.html`, `static/js/unrot-live.js`. | **PASS** | Retention model built with mathematical formulations. |
-| **Unrot: A/B experiment plan with power calculations, 6-role cross-functional decision brief** | `templates/work/unrot-cross-functional-decision.html`, `templates/work/unrot.html`. | **PASS** | Comprehensive decision matrix mapping Product, Business, UX, Data, Eng, QA. |
-| **Experiment Tracker: 7-candidate product brief, conclusion capture in ~27 lines** | `docs/CONTENT-BLUEPRINT.md`, `templates/work/experiment-tracker.html`. | **PASS** | Documented prioritization of conclusion capture over charting. |
+| **Unrot: A/B experiment plan with power calculations, simulated 6-role cross-functional decision brief** | `templates/work/unrot-cross-functional-decision.html`, `templates/work/unrot.html`. | **PASS** | Comprehensive decision matrix mapping Product, Business, UX, Data, Eng, QA as portfolio simulation exercise. |
+| **Experiment Tracker: 8-candidate product brief, conclusion capture in ~27 lines** | `docs/CONTENT-BLUEPRINT.md`, `templates/work/experiment-tracker.html`. | **PASS** | Documented prioritization of conclusion capture over charting and other candidates. |
 | **Experiment Tracker: 17-category verification suite, 26 test functions** | `templates/work/experiment-tracker.html:406`. | **PASS** | 17-category verification suite and 26 test functions authored in repository; local full test execution was performed in original development environment. |
 | **Windows Taskflow: PRD, RICE prioritization, <3.5s state restore KPI** | `templates/work/windows-taskflow.html`, `static/js/windows-taskflow-live.js`. | **PASS** | Working simulation and structured specification. |
-| **IRCTC: 120s Tatkal funnel analysis, 4 friction points, 2-step checkout prototype** | `templates/work/irctc.html`, `static/js/irctc-live.js`. | **PASS** | Teardown analyzing high-concurrency drop-off and mobile checkout prototype. |
+| **IRCTC: Illustrative Tatkal funnel analysis, failure mode isolation, interactive checkout prototype** | `templates/work/irctc.html`, `static/js/irctc-live.js`. | **PASS** | Teardown analyzing high-concurrency drop-off and mobile checkout prototype with passenger autofill and queue handling. |
 
 ---
 

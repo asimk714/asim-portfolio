@@ -22,26 +22,28 @@ CORE PRODUCT & TECHNICAL COMPETENCIES
 • Technical Execution & Tools: Python, Flask, SQLite, TypeScript, SQL queries & data modeling, REST APIs, Git, Jira, Trello, Confluence
  documentation, FMEA root-cause analysis.
 FEATURED PRODUCT CASE STUDIES (INDEPENDENT IMPLEMENTATIONS)
-ReviewFlow — AI-Assisted Customer Review Analysis & Response Pipeline [PRD, Evaluation Pipeline & Live Prototype]
- • Scoped product boundaries for an AI review synthesis tool designed to draft context-faithful salon responses while preventing hallucinated claims.
- • Authored 8 structured product decision records; deliberately deprioritized automatic posting to Google to eliminate hallucination liability.
+ReviewFlow — AI-Assisted Customer Review Drafting & Quality Evaluation [PRD, Evaluation Pipeline & Live Prototype]
+ • Scoped product boundaries for an AI review drafting tool helping salon customers articulate authentic Google reviews while preventing hallucinated
+ claims.
+• Authored 8 structured product decision records; deliberately deprioritized automatic posting to Google to eliminate hallucination liability.
  • Scoped MVP with MoSCoW; developed an offline 15-case regression suite and deterministic evaluator measuring rating consistency and format
  compliance.
-Unrot — Daily Retention Modeling & Cross-Functional Prioritization [Retention Modeling, Experiment Design & Strategic Decision Brief]
+Unrot — Daily Retention Modeling & Cross-Functional Prioritization [Retention Modeling, Experiment Design & Simulated Decision
+Brief]
  • Investigated educational habit decay; built a Day 1 retention measurement model and formulated testable Jobs-to-be-Done (JTBD) hypotheses.
  • Engineered a complete A/B experiment plan with power calculations and sample size requirements to test return-intent notification timing.
- • Authored a comprehensive 6-role cross-functional decision brief (Product, Business, UX, Data, Eng, QA) establishing clear pre-test verification
- guardrails.
+ • Authored a simulated 6-role cross-functional decision brief (Product, Business, UX, Data, Eng, QA) demonstrating trade-off alignment as a portfolio
+ exercise.
 Experiment Tracker — Statistical Rigor & Decision-Support System [PRD Scoping, 17-Category Verification & Functional Prototype]
  • Identified the 'experiment graveyard' friction point where test results lack structured conclusion capture and explicit launch/kill decision criteria.
- • Authored a 7-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.
+ • Authored an 8-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.
  • Structured a 17-category verification suite and authored 26 automated test functions covering database integrity and decision gating.
  Windows Taskflow & IRCTC Rail Connect — Product Teardowns & Prototypes [User Journey Mapping, Concurrency Analysis &
 Clickable Prototypes]
  • Windows Taskflow: Authored PRD for context-aware workspaces; scoped backlog via RICE, defining <3.5s state restoration as P0 KPI with
  interactive mockup.
-• IRCTC Rail Connect: Mapped the 120-second Tatkal booking funnel; isolated 4 core friction points and built a 2-step checkout prototype with
- pre-saved passenger vaults and 1-tap UPI.
+• IRCTC Rail Connect: Analyzed high-concurrency booking failure modes (latency, layout shifts, timeouts) across an illustrative funnel; built an
+ interactive prototype with passenger autofill and queue handling.
 
 
 --- PAGE 2 ---

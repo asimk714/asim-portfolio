@@ -78,9 +78,9 @@ I'm strongest at product definition, prioritization, trade-offs, measurement des
 **CTA:** "Read the Unrot case study →"
 
 ### Experiment Tracker (Supporting)
-**One-line:** "Product definition — a local-first experiment tracker with a 7-candidate prioritization analysis, a clear MVP boundary, and a 17-category verification report with 26 automated test functions authored across 4 test files."
+**One-line:** "Product definition — a local-first experiment tracker with an 8-candidate prioritization analysis, a clear MVP boundary, and a 17-category verification report with 26 automated test functions authored across 4 test files."
 **PM signal:** Product definition + prioritization + trade-offs + verification + honest non-claims.
-**Strongest evidence:** PRODUCT_BRIEF.md (problem, user, JTBDs, product question, 7-candidate prioritization with "what it would add" + "why not prioritized"), MVP boundary (in/out of scope + trade-offs), conclusion capture implementation, 26 automated test functions authored across 4 test files, 17-category verification report with evidence labels.
+**Strongest evidence:** PRODUCT_BRIEF.md (problem, user, JTBDs, product question, 8-candidate prioritization with "what it would add" + "why not prioritized"), MVP boundary (in/out of scope + trade-offs), conclusion capture implementation, 26 automated test functions authored across 4 test files, 17-category verification report with evidence labels.
 **Lifecycle stage:** Define → Build → Verify (strongest), Discover → Validate (weak), Launch → GTM (none), Measure → Optimize (weak — proposed usage metric not measured), Scale → Grow (none).
 **Credibility caveat:** No external user research. No external users. No launch. No GTM. No measured product outcomes. No scale/growth.
 **CTA:** "Read the Experiment Tracker case study →"
@@ -95,7 +95,7 @@ I'm strongest at product definition, prioritization, trade-offs, measurement des
 - Evidence: Unrot (D1 retention problem framing + JTBD hypotheses with assumptions/inferences/unknowns), ReviewFlow (AI product principle), Experiment Tracker (experiment data vs. decision gap, JTBDs hypothesized).
 
 **DECIDE:** Prioritize alternatives with explicit criteria. Make trade-offs with rationale. Choose the smallest capability that addresses the most important gap — and record the "why not" for everything left out.
-- Evidence: Experiment Tracker (7-candidate prioritization with "what it would add" + "why not prioritized"), ReviewFlow (guardrail decisions over features, human approval over full automation), Unrot (measurement model over feature breadth, metric hierarchy, must-have instrumentation; simulated cross-functional decision exercise as portfolio demonstration).
+- Evidence: Experiment Tracker (8-candidate prioritization with "what it would add" + "why not prioritized"), ReviewFlow (guardrail decisions over features, human approval over full automation), Unrot (measurement model over feature breadth, metric hierarchy, must-have instrumentation; simulated cross-functional decision exercise as portfolio demonstration).
 
 **DEFINE:** Turn ambiguous problems into defined products with clear boundaries, user needs, and success criteria. Write the product brief before any code.
 - Evidence: Experiment Tracker (PRODUCT_BRIEF.md), ReviewFlow (product decisions, MVP prioritization, architecture doc), Unrot (measurement model, D1 retention model).

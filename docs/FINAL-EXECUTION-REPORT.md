@@ -49,7 +49,7 @@ All claims have been strictly reconciled against primary source records (`Resume
 ### Phase 4: Selective Prototype & Asset Integration (Part E, P1)
 * Selectively imported standalone interactive prototypes from `A:\Portfolio Final` into `static/prototypes/`:
   - `static/prototypes/windows11/`: Standalone Windows 11 multi-tasking simulator (`index.html`, `app.js`, `style.css`, mockup assets).
-  - `static/prototypes/irctc-checkout.html`: 2-step Tatkal checkout prototype with 1-tap UPI and passenger vault.
+  - `static/prototypes/irctc-checkout.html`: Tatkal checkout prototype with passenger autofill, script freeze switch, and queue simulator.
   - `static/prototypes/jobaaj-saas-dashboard.html`: Interactive D3.js mindmap architecture, live SQL sandbox terminal, and unit economics model.
 * Added 16th evidence card to `EVIDENCE_CARDS` in `app.py` for Jobaaj SaaS Moat with explicit simulation and non-commercial disclaimers.
 

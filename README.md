@@ -48,7 +48,7 @@ Environment variable `PORT` can override the default port.
 The Proof of Work hub presents 16 evidence cards linking to real artifacts:
 
 - ReviewFlow: 15-case regression dataset, AI output quality measurement report, 8 product decisions, corrected evaluator results, Phase 11 intervention record.
-- Experiment Tracker: PRODUCT_BRIEF with 7-candidate prioritization, 17-category verification report.
+- Experiment Tracker: PRODUCT_BRIEF with 8-candidate prioritization, 17-category verification report.
 - Unrot: A/B experiment plan with power analysis, Final QA report (20/20 functional — previously reported, not revalidated; 29/50 tests — 21 DB-dependent failures), D1 retention calculator, architecture document, problem framing, JTBD hypotheses.
 - Jobaaj: SaaS moat transition architecture, cohort retention leakage model, interactive D3 dashboard, live SQL terminal simulator.
 

@@ -194,21 +194,21 @@ def build_docx():
     
     projects = [
         {
-            "title": "ReviewFlow — AI-Assisted Customer Review Analysis & Response Pipeline",
+            "title": "ReviewFlow — AI-Assisted Customer Review Drafting & Quality Evaluation",
             "tag": "Product Specification, Evaluation Pipeline & Live Prototype",
             "bullets": [
-                "Defined product boundaries for an AI review synthesis tool designed to draft context-faithful salon responses while preventing hallucinated claims.",
+                "Defined product boundaries for an AI review drafting tool helping salon customers articulate authentic Google reviews while preventing hallucinated claims.",
                 "Authored 8 structured product decision records; deliberately deprioritized automatic posting to Google to eliminate hallucination liability.",
                 "Scoped MVP with MoSCoW; developed an offline 15-case regression suite and deterministic evaluator measuring rating consistency and format compliance."
             ]
         },
         {
             "title": "Unrot — Daily Retention Modeling & Cross-Functional Prioritization",
-            "tag": "Retention Modeling, Experiment Design & Strategic Decision Brief",
+            "tag": "Retention Modeling, Experiment Design & Simulated Decision Brief",
             "bullets": [
                 "Investigated educational habit decay; built a Day 1 retention measurement model and formulated testable Jobs-to-be-Done (JTBD) hypotheses.",
                 "Engineered a complete A/B experiment plan with power calculations and sample size requirements to test return-intent notification timing.",
-                "Authored a comprehensive 6-role cross-functional decision brief (Product, Business, UX, Data, Eng, QA) establishing clear pre-test verification guardrails."
+                "Authored a simulated 6-role cross-functional decision brief (Product, Business, UX, Data, Eng, QA) demonstrating trade-off alignment as a portfolio exercise."
             ]
         },
         {
@@ -216,7 +216,7 @@ def build_docx():
             "tag": "PRD Scoping, 17-Category Verification & Functional Prototype",
             "bullets": [
                 "Identified the 'experiment graveyard' friction point where test results lack structured conclusion capture and explicit launch/kill decision criteria.",
-                "Authored a 7-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.",
+                "Authored an 8-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.",
                 "Structured a 17-category verification suite and authored 26 automated test functions covering database integrity and decision gating."
             ]
         },
@@ -225,7 +225,7 @@ def build_docx():
             "tag": "User Journey Mapping, Concurrency Analysis & Clickable Prototypes",
             "bullets": [
                 "Windows Taskflow: Authored PRD for context-aware workspaces; scoped backlog via RICE, defining <3.5s state restoration as P0 KPI with interactive mockup.",
-                "IRCTC Rail Connect: Mapped the 120-second Tatkal booking funnel; isolated 4 core friction points and built a 2-step checkout prototype with pre-saved passenger vaults and 1-tap UPI."
+                "IRCTC Rail Connect: Analyzed high-concurrency booking failure modes (latency, layout shifts, timeouts) across an illustrative funnel; built an interactive prototype with passenger autofill and queue handling."
             ]
         }
     ]
@@ -507,25 +507,25 @@ def build_pdf():
     story.append(Paragraph("FEATURED PRODUCT CASE STUDIES (INDEPENDENT IMPLEMENTATIONS)", style_heading))
     
     p1 = [
-        Paragraph("<b>ReviewFlow — AI-Assisted Customer Review Analysis & Response Pipeline</b> <font color='#475569'><i>[PRD, Evaluation Pipeline & Live Prototype]</i></font>", style_item_title),
-        Paragraph("&bull; Scoped product boundaries for an AI review synthesis tool designed to draft context-faithful salon responses while preventing hallucinated claims.", style_bullet),
+        Paragraph("<b>ReviewFlow — AI-Assisted Customer Review Drafting & Quality Evaluation</b> <font color='#475569'><i>[PRD, Evaluation Pipeline & Live Prototype]</i></font>", style_item_title),
+        Paragraph("&bull; Scoped product boundaries for an AI review drafting tool helping salon customers articulate authentic Google reviews while preventing hallucinated claims.", style_bullet),
         Paragraph("&bull; Authored 8 structured product decision records; deliberately deprioritized automatic posting to Google to eliminate hallucination liability.", style_bullet),
         Paragraph("&bull; Scoped MVP with MoSCoW; developed an offline 15-case regression suite and deterministic evaluator measuring rating consistency and format compliance.", style_bullet)
     ]
     story.extend(p1)
 
     p2 = [
-        Paragraph("<b>Unrot — Daily Retention Modeling & Cross-Functional Prioritization</b> <font color='#475569'><i>[Retention Modeling, Experiment Design & Strategic Decision Brief]</i></font>", style_item_title),
+        Paragraph("<b>Unrot — Daily Retention Modeling & Cross-Functional Prioritization</b> <font color='#475569'><i>[Retention Modeling, Experiment Design & Simulated Decision Brief]</i></font>", style_item_title),
         Paragraph("&bull; Investigated educational habit decay; built a Day 1 retention measurement model and formulated testable Jobs-to-be-Done (JTBD) hypotheses.", style_bullet),
         Paragraph("&bull; Engineered a complete A/B experiment plan with power calculations and sample size requirements to test return-intent notification timing.", style_bullet),
-        Paragraph("&bull; Authored a comprehensive 6-role cross-functional decision brief (Product, Business, UX, Data, Eng, QA) establishing clear pre-test verification guardrails.", style_bullet)
+        Paragraph("&bull; Authored a simulated 6-role cross-functional decision brief (Product, Business, UX, Data, Eng, QA) demonstrating trade-off alignment as a portfolio exercise.", style_bullet)
     ]
     story.extend(p2)
 
     p3 = [
         Paragraph("<b>Experiment Tracker — Statistical Rigor & Decision-Support System</b> <font color='#475569'><i>[PRD Scoping, 17-Category Verification & Functional Prototype]</i></font>", style_item_title),
         Paragraph("&bull; Identified the 'experiment graveyard' friction point where test results lack structured conclusion capture and explicit launch/kill decision criteria.", style_bullet),
-        Paragraph("&bull; Authored a 7-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.", style_bullet),
+        Paragraph("&bull; Authored an 8-candidate product brief; prioritized conclusion capture (closing the loop in ~27 lines) over non-essential charting and complex auth.", style_bullet),
         Paragraph("&bull; Structured a 17-category verification suite and authored 26 automated test functions covering database integrity and decision gating.", style_bullet)
     ]
     story.extend(p3)
@@ -533,7 +533,7 @@ def build_pdf():
     p4 = [
         Paragraph("<b>Windows Taskflow & IRCTC Rail Connect — Product Teardowns & Prototypes</b> <font color='#475569'><i>[User Journey Mapping, Concurrency Analysis & Clickable Prototypes]</i></font>", style_item_title),
         Paragraph("&bull; <b>Windows Taskflow:</b> Authored PRD for context-aware workspaces; scoped backlog via RICE, defining &lt;3.5s state restoration as P0 KPI with interactive mockup.", style_bullet),
-        Paragraph("&bull; <b>IRCTC Rail Connect:</b> Mapped the 120-second Tatkal booking funnel; isolated 4 core friction points and built a 2-step checkout prototype with pre-saved passenger vaults and 1-tap UPI.", style_bullet)
+        Paragraph("&bull; <b>IRCTC Rail Connect:</b> Analyzed high-concurrency booking failure modes (latency, layout shifts, timeouts) across an illustrative funnel; built an interactive prototype with passenger autofill and queue handling.", style_bullet)
     ]
     story.extend(p4)
 

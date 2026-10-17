@@ -135,12 +135,12 @@ EVIDENCE_CARDS = [
         "case_study_url": "/work/reviewflow/",
     },
     {
-        "title": "PRODUCT_BRIEF — 7-Candidate Prioritization",
+        "title": "PRODUCT_BRIEF — 8-Candidate Prioritization",
         "type": "Product brief",
         "body": """
-        <p>Conclusion capture chosen over charts, search/filter, auth, cloud, AI features, and
-        experiment templates. Each candidate documented with "What it would add" and "Why not
-        prioritized." The smallest capability that closes the experiment→decision loop — ~27 lines
+        <p>Conclusion capture chosen over charts, search/filter, auth, cloud, AI features,
+        experiment templates, and artifact linking. Each candidate documented with "What it would add"
+        and "Why not prioritized." The smallest capability that closes the experiment→decision loop — ~27 lines
         across 3 files.</p>
         <p style="margin-top: var(--space-2);">
           <span class="evidence-label evidence-label--verified">Verified — document exists</span>
