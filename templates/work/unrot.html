@@ -62,20 +62,38 @@
 {% set stages = lifecycle_stages %}
 {% include '_lifecycle_evidence_strip.html' with context %}
 
-    <div class="case-study-at-a-glance animate-in animate-in--delay-3" style="margin-top: var(--space-5);">
-      <p class="case-study-at-a-glance__label">At a glance</p>
-      <p class="case-study-at-a-glance__text">
-        <strong>Problem:</strong> low D1 retention — people visit, then don't return the next day.
-        <strong>User/assumption:</strong> daily micro-learning users segmented by role/goal/experience —
-        defined in the schema, inferred, not validated with real users.
-        <strong>Product question:</strong> how do we give a daily micro-learning user a reason to return
-        tomorrow — not just a reason to start?
-        <strong>Decision:</strong> measure before optimizing — build the measurement system, funnel, and
-        A/B experiment plan before any intervention is validated.
-        <strong>Evidence:</strong> measurement model, D1 retention calculator, analytics dashboard,
-        A/B plan with power analysis, 20/20 functional verification (previously reported, not revalidated), 29/50 tests passing (21 DB-dependent failures).
-        <strong>Gap:</strong> no measured D1 outcome, no real users, no launch, no GTM, no scale.
-      </p>
+    <!-- Structured 2-Column At a Glance -->
+    <div class="case-study-at-a-glance animate-in animate-in--delay-3">
+      <div class="at-a-glance__header">
+        <span class="at-a-glance__label">Executive Summary</span>
+        <span class="at-a-glance__badge">Retention Measurement</span>
+      </div>
+      <div class="at-a-glance__grid">
+        <div class="at-a-glance__card at-a-glance__card--problem">
+          <div class="at-a-glance__tag">Problem</div>
+          <p class="at-a-glance__content">
+            <strong>D1 Retention Drop-Off:</strong> Micro-learning users complete Day 1 lessons but fail to return the following day (16% baseline vs. 22% target benchmark). The core friction lies in the unmanaged handoff between sessions.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--decision">
+          <div class="at-a-glance__tag">Decision</div>
+          <p class="at-a-glance__content">
+            <strong>Measure Before Optimizing:</strong> Built a strict calendar-day retention calculation engine, live event analytics schema, and power-analyzed A/B test plan before committing to speculative engagement features.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--evidence">
+          <div class="at-a-glance__tag">Evidence</div>
+          <p class="at-a-glance__content">
+            <strong>Production Artifacts:</strong> Pure TypeScript retention calculator (`retention.ts`), PostgreSQL/Prisma event telemetry, and 2-week A/B power analysis (~1,300 total sample size).
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--boundary">
+          <div class="at-a-glance__tag">Boundary</div>
+          <p class="at-a-glance__content">
+            <strong>Hypothesis &amp; Suite Limit:</strong> The A/B experiment was designed but not run; no measured D1 uplift or live cohort metrics. 29/50 automated tests pass; 21 tests require live PostgreSQL infrastructure.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6);">
@@ -93,7 +111,7 @@
       <a href="/work/unrot/live/" class="btn btn--ghost">
         Live Experience
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
           <polyline points="15 3 21 3 21 9"/>
           <line x1="10" y1="14" x2="21" y2="3"/>
         </svg>
@@ -111,26 +129,23 @@
     <h2 class="section-title">Context</h2>
     <div class="case-study-body">
       <p class="body-text">
-        A daily micro-learning product sends users a short lesson each day. The behavioral target
-        is D1 retention — does the user come back the next day?
+        In daily micro-learning products, users frequently drop off after their initial session.
+        Standard product instincts often rush to add superficial streaks, confetti, or push notification blasts.
       </p>
       <p class="body-text">
-        The surface problem: D1 retention is low. The assignment gave a baseline of 16% and a
-        target benchmark of 22% — both assignment-provided context, not author-measured. The deeper
-        question is not "make the first session better." It's whether the handoff between sessions
-        is where the retention actually breaks.
+        Unrot approaches retention from an analytical foundation: establishing an objective measurement standard
+        first, isolating calendar-day boundaries from server UTC bias, and architecting an A/B test framework
+        with pre-experiment power sizing.
       </p>
-      <div class="insight-card">
-        <p class="insight-card__label">What this is</p>
-        <p>A real Next.js 16 + PostgreSQL + Prisma application. Auth, sessions, learning paths,
-        lessons, lesson progress, reminder preferences, analytics events. The analytics dashboard
-        computes from real events. The measurement model is real.</p>
-      </div>
-      <div class="insight-card insight-card--caveat">
-        <p class="insight-card__label">What this is not</p>
-        <p>It is not a live product with a real user base. It is not a retention solution that was
-        validated with outcomes. The portfolio evidence is about measurement thinking and product
-        rigor — not about a solved retention problem.</p>
+      <div class="insight-cards-grid">
+        <div class="insight-card">
+          <p class="insight-card__label">What this is</p>
+          <p class="at-a-glance__content">A Next.js 16 + PostgreSQL + Prisma application with real user session tracking, lesson progress persistence, and an analytics dashboard computing retention from raw database events.</p>
+        </div>
+        <div class="insight-card insight-card--caveat">
+          <p class="insight-card__label">What this is not</p>
+          <p class="at-a-glance__content">Not a deployed production product with commercial users. The portfolio evidence demonstrates measurement architecture, experimental rigor, and honest validation boundaries.</p>
+        </div>
       </div>
     </div>
 

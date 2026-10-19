@@ -34,13 +34,56 @@
         </span>
       </div>
       <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
-        Vesper
+        Vesper — Local-First Personal Workspace
       </h1>
       <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
-        A local-first personal workspace. Flask + SQLite. Sidebar of pages, inline block editing
-        (contenteditable), command palette (Ctrl/Cmd+K), content search, autosave with visual feedback,
-        favorites, responsive layout. Local-only, no authentication.
+        A local-first personal workspace built on Flask + SQLite. Features instant autosave, inline block editing,
+        command palette navigation, and zero cloud dependencies.
       </p>
+
+      <!-- Structured 2-Column At a Glance -->
+      <div class="case-study-at-a-glance animate-in animate-in--delay-2" style="margin-top: var(--space-5);">
+        <div class="at-a-glance__header">
+          <span class="at-a-glance__label">Executive Summary</span>
+          <span class="at-a-glance__badge">Local-First Workspace</span>
+        </div>
+        <div class="at-a-glance__grid">
+          <div class="at-a-glance__card at-a-glance__card--problem">
+            <div class="at-a-glance__tag">Problem</div>
+            <p class="at-a-glance__content">
+              <strong>SaaS Note Bloat:</strong> Modern knowledge management platforms impose login walls, subscription tiers, and heavy cloud synchronization on users who just need instantaneous, distraction-free local capture.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--decision">
+            <div class="at-a-glance__tag">Decision</div>
+            <p class="at-a-glance__content">
+              <strong>Zero-Auth Local Persistence:</strong> Built a lightweight Flask + SQLite application prioritizing keyboard velocity: inline contenteditable blocks, global command palette (Ctrl+K), and responsive sidebar navigation.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--evidence">
+            <div class="at-a-glance__tag">Evidence</div>
+            <p class="at-a-glance__content">
+              <strong>Functional Workspace Prototype:</strong> Working local web app (<a href="/work/vesper/live/">launch prototype</a>) with full hierarchical page management, real-time autosave indicators, and instant local search.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--boundary">
+            <div class="at-a-glance__tag">Boundary</div>
+            <p class="at-a-glance__content">
+              <strong>Solo Personal Use:</strong> Strictly a single-user local tool. Has no cloud backup, no multi-user access controls, and no production SaaS user research.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/work/vesper/live/" class="btn btn--primary">
+          Launch Vesper Prototype
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="/work/" class="btn btn--ghost">
+          Back to Proof of Work
+        </a>
+      </div>
     </div>
   </div>
 </header>

@@ -6,6 +6,7 @@ import os
 from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # ---------------------------------------------------------------------------
 # Work hub evidence cards
@@ -108,27 +109,6 @@ EVIDENCE_CARDS = [
         "category": "verify",
         "css_class": "",
         "link_url": "https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/corrected-historical-results.json",
-        "link_label": "View on GitHub",
-        "link_external": True,
-        "project": "ReviewFlow",
-        "case_study_url": "/work/reviewflow/",
-    },
-    {
-        "title": "Phase 11 Intervention Record — honest documentation",
-        "type": "Honest documentation",
-        "body": """
-        <p>The Phase 11 prompt tightening passes deterministic checks (247/247), but <strong>live
-        validation did NOT occur</strong> — no LOVABLE_API_KEY or Supabase credentials in the
-        environment. beforeVsAfterGenuinelyMeasurable: false. The record explicitly avoids claiming
-        improvement. Intervention retained with caveat: unproven until live-validated.</p>
-        <p style="margin-top: var(--space-2);">
-          <span class="evidence-label evidence-label--hypothesis">Hypothesis — not live-validated</span>
-          <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not evidenced — no live AI</span>
-        </p>
-        """,
-        "category": "learn",
-        "css_class": "",
-        "link_url": "https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/intervention-record-phase11.json",
         "link_label": "View on GitHub",
         "link_external": True,
         "project": "ReviewFlow",
@@ -354,7 +334,7 @@ EVIDENCE_CARDS = [
 
 @app.route("/")
 def homepage():
-    return render_template("index.html")
+    return render_template("index.html", evidence_cards=EVIDENCE_CARDS)
 
 
 @app.route("/work/")

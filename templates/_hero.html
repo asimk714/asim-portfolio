@@ -44,100 +44,124 @@
         </div>
       </div>
 
-      <!-- Right column: Animated SVG Circuit Diagram -->
-      <div class="hero-visual" aria-hidden="true">
-        <svg viewBox="0 0 320 460">
-          <line x1="160" y1="20" x2="160" y2="440" stroke="var(--border-strong)" stroke-width="2"/>
-          <g class="pulse-node">
-            <circle cx="160" cy="60" r="7" fill="var(--gold-bright)"/>
-            <text x="180" y="65" fill="var(--text-primary)" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">Product</text>
-          </g>
-          <circle cx="160" cy="170" r="6" fill="var(--gold)" opacity="0.85"/>
-          <text x="180" y="175" fill="var(--text-secondary)" font-family="'JetBrains Mono', monospace" font-size="12">Strategy</text>
-          <circle cx="160" cy="280" r="6" fill="var(--gold)" opacity="0.7"/>
-          <text x="180" y="285" fill="var(--text-secondary)" font-family="'JetBrains Mono', monospace" font-size="12">Optical / IP</text>
-          <circle cx="160" cy="390" r="6" fill="var(--gold)" opacity="0.55"/>
-          <text x="180" y="395" fill="var(--text-muted)" font-family="'JetBrains Mono', monospace" font-size="12">Fixed Networks</text>
-          <circle cx="160" cy="20" r="4.5" fill="var(--gold-bright)">
-            <animateMotion dur="4.5s" repeatCount="indefinite" path="M0 0 L0 420"/>
-            <animate attributeName="opacity" values="0;1;1;0" dur="4.5s" repeatCount="indefinite"/>
-          </circle>
-        </svg>
+      <!-- Right column: 6 Capability Blocks Grid -->
+      <div class="hero-capabilities-col animate-in animate-in--delay-2" aria-label="Core Capability Areas">
+        <div class="hero-capabilities-header">
+          <span class="hero-capabilities-tag">// CORE PM CAPABILITIES</span>
+          <span class="hero-capabilities-sub">Grounded in verified artifacts &amp; teardowns</span>
+        </div>
+        <div class="hero-capabilities-grid">
+          <!-- 1. Strategy & Prioritization -->
+          <div class="hero-cap-card">
+            <div class="hero-cap-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <div class="hero-cap-content">
+              <h3 class="hero-cap-title">Strategy &amp; Prioritization</h3>
+              <p class="hero-cap-desc">Smallest capability closing the critical gap (MoSCoW &amp; RICE).</p>
+            </div>
+          </div>
+
+          <!-- 2. Discovery & JTBD -->
+          <div class="hero-cap-card">
+            <div class="hero-cap-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="hero-cap-content">
+              <h3 class="hero-cap-title">Discovery &amp; JTBD</h3>
+              <p class="hero-cap-desc">Framing user friction into testable jobs before building.</p>
+            </div>
+          </div>
+
+          <!-- 3. AI & Product Systems -->
+          <div class="hero-cap-card">
+            <div class="hero-cap-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="hero-cap-content">
+              <h3 class="hero-cap-title">AI &amp; Product Systems</h3>
+              <p class="hero-cap-desc">Deterministic evaluation, prompt governance, anti-hallucination.</p>
+            </div>
+          </div>
+
+          <!-- 4. Product Definition -->
+          <div class="hero-cap-card">
+            <div class="hero-cap-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="hero-cap-content">
+              <h3 class="hero-cap-title">Product Definition</h3>
+              <p class="hero-cap-desc">Structured PRDs, BDD acceptance criteria, MVP boundaries.</p>
+            </div>
+          </div>
+
+          <!-- 5. Metrics & Experimentation -->
+          <div class="hero-cap-card">
+            <div class="hero-cap-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="hero-cap-content">
+              <h3 class="hero-cap-title">Metrics &amp; Experimentation</h3>
+              <p class="hero-cap-desc">A/B test design, MDE power analysis, retention modeling.</p>
+            </div>
+          </div>
+
+          <!-- 6. Enterprise & Leadership -->
+          <div class="hero-cap-card">
+            <div class="hero-cap-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="hero-cap-content">
+              <h3 class="hero-cap-title">Cross-Functional Coordination</h3>
+              <p class="hero-cap-desc">Technical investigation, communication, and multi-team resolution.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Define / Measure / Verify sequence — The Product Decision Loop -->
+        <div class="cdmv-wrapper">
+          <div class="cdmv-header">
+            <span class="cdmv-eyebrow">// THE PRODUCT DECISION LOOP</span>
+          </div>
+          <div class="cdmv-sequence" role="group" aria-label="The Product Decision Loop: Define, Measure, Verify">
+            <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-define-detail" id="cdmv-define-btn" type="button">
+              <span class="cdmv-stage__label">DEFINE</span>
+              <span class="cdmv-stage__flow" aria-hidden="true">
+                <span class="cdmv-flow-part">Problem</span>
+                <span class="cdmv-flow-sep">&rarr;</span>
+                <span class="cdmv-flow-part">Decision</span>
+              </span>
+              <span class="cdmv-stage__detail sr-only" id="cdmv-define-detail">
+                Product question, MVP boundary, trade-offs, what the product is not.
+              </span>
+            </button>
+
+            <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-measure-detail" id="cdmv-measure-btn" type="button">
+              <span class="cdmv-stage__label">MEASURE</span>
+              <span class="cdmv-stage__flow" aria-hidden="true">
+                <span class="cdmv-flow-part">Hypothesis</span>
+                <span class="cdmv-flow-sep">&rarr;</span>
+                <span class="cdmv-flow-part">Signal</span>
+              </span>
+              <span class="cdmv-stage__detail sr-only" id="cdmv-measure-detail">
+                Metrics, evaluation, experiment design before any outcome is claimed.
+              </span>
+            </button>
+
+            <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-verify-detail" id="cdmv-verify-btn" type="button">
+              <span class="cdmv-stage__label">VERIFY</span>
+              <span class="cdmv-stage__flow" aria-hidden="true">
+                <span class="cdmv-flow-part">Evidence</span>
+                <span class="cdmv-flow-sep">&rarr;</span>
+                <span class="cdmv-flow-part">Claim</span>
+              </span>
+              <span class="cdmv-stage__detail sr-only" id="cdmv-verify-detail">
+                Tests, verification reports, honest gaps. Be clear about what is evidenced and what is not.
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- Define / Measure / Verify sequence -->
-    <div class="cdmv-sequence" role="group" aria-labelledby="cdmv-eyebrow" style="margin-top: var(--space-8);">
-      <p id="cdmv-eyebrow" class="sr-only">How I work: Define, then Measure, then Verify</p>
-
-      <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-define-detail" id="cdmv-define-btn" type="button">
-        <span class="cdmv-stage__label">DEFINE</span>
-        <span class="cdmv-stage__arrow" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </span>
-        <span class="cdmv-stage__flow" aria-hidden="true">
-          <span class="cdmv-flow-part">Problem</span>
-          <svg class="cdmv-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-          <span class="cdmv-flow-part">Decision</span>
-        </span>
-        <span class="cdmv-stage__detail sr-only" id="cdmv-define-detail">
-          Product question, MVP boundary, trade-offs, what the product is not.
-        </span>
-      </button>
-
-      <div class="cdmv-connector" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="1" y1="12" x2="23" y2="12"/><polyline points="18 7 23 12 18 17"/>
-        </svg>
-      </div>
-
-      <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-measure-detail" id="cdmv-measure-btn" type="button">
-        <span class="cdmv-stage__label">MEASURE</span>
-        <span class="cdmv-stage__arrow" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </span>
-        <span class="cdmv-stage__flow" aria-hidden="true">
-          <span class="cdmv-flow-part">Hypothesis</span>
-          <svg class="cdmv-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-          <span class="cdmv-flow-part">Signal</span>
-        </span>
-        <span class="cdmv-stage__detail sr-only" id="cdmv-measure-detail">
-          Metrics, evaluation, experiment design before any outcome is claimed.
-        </span>
-      </button>
-
-      <div class="cdmv-connector" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="1" y1="12" x2="23" y2="12"/><polyline points="18 7 23 12 18 17"/>
-        </svg>
-      </div>
-
-      <button class="cdmv-stage" aria-expanded="false" aria-controls="cdmv-verify-detail" id="cdmv-verify-btn" type="button">
-        <span class="cdmv-stage__label">VERIFY</span>
-        <span class="cdmv-stage__arrow" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </span>
-        <span class="cdmv-stage__flow" aria-hidden="true">
-          <span class="cdmv-flow-part">Evidence</span>
-          <svg class="cdmv-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-          <span class="cdmv-flow-part">What I Can Claim</span>
-        </span>
-        <span class="cdmv-stage__detail sr-only" id="cdmv-verify-detail">
-          Tests, verification reports, honest gaps. Be clear about what is evidenced and what is not.
-        </span>
-      </button>
     </div>
 
     <div class="scroll-cue" aria-hidden="true">

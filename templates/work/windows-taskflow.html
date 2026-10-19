@@ -37,10 +37,53 @@
         Windows 11 — Taskflow: Context-Aware Workspaces
       </h1>
       <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
-        A product teardown of Windows 11's shell proposing "Taskflow" — a feature that saves and restores
-        entire multi-app work contexts (windows, tabs, files) as named, shareable workspaces, turning OneDrive
-        into sticky infrastructure. Concept design + interactive prototype. Not a Microsoft product.
+        A product teardown of Windows 11's shell proposing "Taskflow" — a capability that captures, persists,
+        and restores entire multi-app work contexts (windows, tabs, files) as named workspaces backed by OneDrive sync.
       </p>
+
+      <!-- Structured 2-Column At a Glance -->
+      <div class="case-study-at-a-glance animate-in animate-in--delay-2" style="margin-top: var(--space-5);">
+        <div class="at-a-glance__header">
+          <span class="at-a-glance__label">Executive Summary</span>
+          <span class="at-a-glance__badge">OS Shell Product Teardown</span>
+        </div>
+        <div class="at-a-glance__grid">
+          <div class="at-a-glance__card at-a-glance__card--problem">
+            <div class="at-a-glance__tag">Problem</div>
+            <p class="at-a-glance__content">
+              <strong>Context Fragmentation:</strong> Windows 11 treats the OS as an application launcher. Reboots, docking changes, and context switching force knowledge workers to manually rebuild multi-app window arrangements dozens of times per week.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--decision">
+            <div class="at-a-glance__tag">Decision</div>
+            <p class="at-a-glance__content">
+              <strong>Taskflow Workspace Model:</strong> Elevate the multi-app workspace (active windows, browser tabs, pinned documents) into an atomic, named unit synced via OneDrive, converting cloud storage into sticky productivity infrastructure.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--evidence">
+            <div class="at-a-glance__tag">Evidence</div>
+            <p class="at-a-glance__content">
+              <strong>Interactive Prototype:</strong> Functional browser prototype (<a href="/work/windows-taskflow/live/">live preview</a>) demonstrating workspace capture, window management, and cloud restore workflows alongside a full PRD.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--boundary">
+            <div class="at-a-glance__tag">Boundary</div>
+            <p class="at-a-glance__content">
+              <strong>Concept Teardown:</strong> Independent PM teardown and interaction prototype. Not built within Microsoft Windows or validated with production Windows telemetry.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/work/windows-taskflow/live/" class="btn btn--primary">
+          Launch Windows 11 Prototype
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="/work/" class="btn btn--ghost">
+          Back to Proof of Work
+        </a>
+      </div>
     </div>
   </div>
 </header>

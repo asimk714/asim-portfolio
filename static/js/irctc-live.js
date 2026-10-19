@@ -41,6 +41,10 @@
   var ad2 = document.getElementById('irctc-ad-2');
   var autofillBtn = document.getElementById('irctc-btn-autofill');
   var checkoutBtn = document.getElementById('irctc-btn-checkout');
+  var inputName = document.getElementById('irctc-input-name');
+  var inputAge = document.getElementById('irctc-input-age');
+  var selectBerth = document.getElementById('irctc-select-berth');
+  var autofillBadge = document.getElementById('irctc-autofill-confirmed-badge');
   var waitingQueue = document.getElementById('irctc-waiting-queue');
   var queuePositionEl = document.getElementById('irctc-queue-position');
   var queueBar = document.getElementById('irctc-queue-bar');
@@ -151,6 +155,11 @@
 
     // Reset autofill state
     isAutofilled = false;
+    if (inputName) { inputName.value = ''; inputName.classList.remove('autofilled-field'); }
+    if (inputAge) { inputAge.value = ''; inputAge.classList.remove('autofilled-field'); }
+    if (selectBerth) { selectBerth.selectedIndex = 0; selectBerth.classList.remove('autofilled-field'); }
+    if (autofillBadge) autofillBadge.style.display = 'none';
+    if (checkoutBtn) checkoutBtn.disabled = true;
     if (bookingStatus) {
       bookingStatus.textContent = mode === 'current'
         ? 'Legacy checkout — session timeout fail on attempt.'
@@ -209,10 +218,24 @@
     autofillBtn.addEventListener('click', function () {
       if (currentMode !== 'redesign') return;
       isAutofilled = true;
+      if (inputName) {
+        inputName.value = 'Ramesh Kumar';
+        inputName.classList.add('autofilled-field');
+      }
+      if (inputAge) {
+        inputAge.value = '34, Male';
+        inputAge.classList.add('autofilled-field');
+      }
+      if (selectBerth) {
+        selectBerth.value = 'Lower Berth (Preferred)';
+        selectBerth.classList.add('autofilled-field');
+      }
+      if (autofillBadge) {
+        autofillBadge.style.display = 'block';
+      }
+      if (progressFill) progressFill.style.width = '50%';
       if (checkoutBtn) checkoutBtn.disabled = false;
-      if (bookingStatus) bookingStatus.textContent = 'Passenger details autofilled — ready for checkout.';
-      if (screenCurrent) screenCurrent.style.borderColor = '';
-      if (screenRedesign) screenRedesign.style.borderColor = 'var(--success)';
+      if (bookingStatus) bookingStatus.textContent = 'Passenger details autofilled — ready for 1-Click Checkout.';
     });
   }
 

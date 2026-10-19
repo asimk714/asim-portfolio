@@ -55,6 +55,7 @@
   // DOM references
   var windowsContainer = document.getElementById('wt-windows-container');
   var desktopEmpty = document.getElementById('wt-desktop-empty');
+  var desktopShortcuts = document.getElementById('wt-desktop-shortcuts');
   var taskbarApps = document.getElementById('wt-taskbar-apps');
   var workspaceNameInput = document.getElementById('wt-workspace-name');
   var saveBtn = document.getElementById('wt-save-workspace-btn');
@@ -84,14 +85,35 @@
     return el;
   }
 
+  // Render desktop shortcuts
+  function renderDesktopShortcuts() {
+    if (!desktopShortcuts) return;
+    desktopShortcuts.innerHTML = '';
+    AVAILABLE_APPS.forEach(function (app) {
+      var sc = document.createElement('div');
+      sc.className = 'wt-desktop-shortcut';
+      sc.setAttribute('data-app', app.id);
+      sc.setAttribute('title', 'Launch ' + app.title);
+      sc.innerHTML =
+        '<div class="wt-shortcut-icon">' + app.icon + '</div>' +
+        '<div class="wt-shortcut-label">' + escapeHtml(app.title) + '</div>';
+      sc.addEventListener('click', function () {
+        toggleApp(app.id);
+      });
+      desktopShortcuts.appendChild(sc);
+    });
+  }
+
   // Render taskbar app buttons
   function renderTaskbar() {
+    if (!taskbarApps) return;
     taskbarApps.innerHTML = '';
     AVAILABLE_APPS.forEach(function (app) {
       var btn = document.createElement('button');
       btn.className = 'wt-taskbar-app-btn' + (state.openApps[app.id] ? ' wt-taskbar-app-btn--active' : '');
-      btn.textContent = app.icon + ' ' + app.title;
+      btn.innerHTML = '<span>' + app.icon + '</span> <span>' + escapeHtml(app.title) + '</span>';
       btn.setAttribute('data-app', app.id);
+      btn.setAttribute('title', app.title + (state.openApps[app.id] ? ' (Running)' : ' (Click to launch)'));
       btn.addEventListener('click', function () {
         toggleApp(app.id);
       });
@@ -110,6 +132,116 @@
     updateDesktopEmpty();
   }
 
+  // Render rich mock application body content
+  function renderAppBody(appId, app) {
+    if (appId === 'chrome') {
+      return (
+        '<div class="wt-app-chrome">' +
+          '<div class="wt-chrome-tabs">' +
+            '<div class="wt-chrome-tab active">🌐 Azure Portal</div>' +
+            '<div class="wt-chrome-tab">Stack Overflow</div>' +
+            '<div class="wt-chrome-tab">Q3 Specs</div>' +
+          '</div>' +
+          '<div class="wt-chrome-url">' +
+            '<span style="color:#10b981;font-size:10px;">🔒</span> <span>https://portal.azure.com/#workspaces/review</span>' +
+          '</div>' +
+          '<div class="wt-chrome-page">' +
+            '<div style="font-weight:600;font-size:12px;margin-bottom:6px;color:#fff;">Production Cloud Dashboard</div>' +
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">' +
+              '<div style="background:rgba(255,255,255,0.06);padding:6px;border-radius:4px;font-size:10px;">' +
+                '<div style="color:#94a3b8;">Active Clusters</div>' +
+                '<div style="font-size:12px;font-weight:700;color:#60a5fa;">8 Healthy</div>' +
+              '</div>' +
+              '<div style="background:rgba(255,255,255,0.06);padding:6px;border-radius:4px;font-size:10px;">' +
+                '<div style="color:#94a3b8;">Taskflow Sync</div>' +
+                '<div style="font-size:12px;font-weight:700;color:#10b981;">OneDrive Synced</div>' +
+              '</div>' +
+            '</div>' +
+            '<p style="font-size:10px;color:#94a3b8;margin-top:8px;">Cloud session active. Tabs synchronized across multi-monitor setup.</p>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+    if (appId === 'vscode') {
+      return (
+        '<div class="wt-app-vscode">' +
+          '<div class="wt-vscode-sidebar">' +
+            '<span title="Explorer">📄</span>' +
+            '<span title="Search">🔍</span>' +
+            '<span title="Git">🌿</span>' +
+          '</div>' +
+          '<div class="wt-vscode-editor">' +
+            '<div style="color:#64748b;margin-bottom:4px;">// taskflow-workspace.ts</div>' +
+            '<div><span style="color:#c084fc;">import</span> { Workspace } <span style="color:#c084fc;">from</span> <span style="color:#86efac;">"@windows/shell"</span>;</div>' +
+            '<div><span style="color:#c084fc;">const</span> context = <span style="color:#c084fc;">new</span> <span style="color:#fde047;">Workspace</span>(<span style="color:#86efac;">"Q3 Review"</span>);</div>' +
+            '<div>context.<span style="color:#60a5fa;">registerApp</span>(<span style="color:#86efac;">"vscode"</span>, { activeFile: <span style="color:#86efac;">"main.ts"</span> });</div>' +
+            '<div>context.<span style="color:#60a5fa;">registerApp</span>(<span style="color:#86efac;">"excel"</span>, { sheet: <span style="color:#86efac;">"Audit"</span> });</div>' +
+            '<div>context.<span style="color:#60a5fa;">persistToOneDrive</span>(); <span style="color:#64748b;">// &lt;3.5s target</span></div>' +
+            '<div style="color:#10b981;margin-top:6px;">✓ State synchronized locally</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+    if (appId === 'excel') {
+      return (
+        '<div class="wt-app-excel">' +
+          '<div class="wt-excel-formula">fx =SUM(B2:E2) * 1.15 [Forecast Q3 Actuals]</div>' +
+          '<table class="wt-excel-table">' +
+            '<thead>' +
+              '<tr><th>Category</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Status</th></tr>' +
+            '</thead>' +
+            '<tbody>' +
+              '<tr><td>ARR Growth</td><td>$142k</td><td>$168k</td><td>$195k</td><td style="color:#10b981;">+37%</td></tr>' +
+              '<tr><td>Cloud Infra</td><td>$24k</td><td>$23k</td><td>$25k</td><td style="color:#60a5fa;">Nominal</td></tr>' +
+              '<tr><td>Operating Margin</td><td>68%</td><td>71%</td><td>73%</td><td style="color:#10b981;">Target Met</td></tr>' +
+            '</tbody>' +
+          '</table>' +
+        '</div>'
+      );
+    }
+    if (appId === 'teams') {
+      return (
+        '<div class="wt-app-teams">' +
+          '<div style="font-weight:600;color:#fff;font-size:11px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:4px;"># q3-product-launch · 14 members</div>' +
+          '<div class="wt-teams-bubble">' +
+            '<div style="font-weight:600;color:#c084fc;">Sarah Jenkins <span style="font-size:9px;color:#94a3b8;font-weight:400;">10:14 AM</span></div>' +
+            '<div>Taskflow save latency benchmark is tracking at 2.8s on OneDrive API.</div>' +
+          '</div>' +
+          '<div class="wt-teams-bubble" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1);">' +
+            '<div style="font-weight:600;color:#60a5fa;">Asim Kumar (You) <span style="font-size:9px;color:#94a3b8;font-weight:400;">10:16 AM</span></div>' +
+            '<div>Confirmed. Context snapshot includes open Chrome research and Excel models.</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+    if (appId === 'notion') {
+      return (
+        '<div style="padding:10px;display:flex;flex-direction:column;gap:6px;">' +
+          '<div style="font-weight:700;color:#fff;font-size:12px;">PRD: Windows Taskflow Native Shell</div>' +
+          '<div style="display:flex;gap:4px;">' +
+            '<span style="background:rgba(59,130,246,0.2);color:#93c5fd;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;">P0 CORE</span>' +
+            '<span style="background:rgba(16,185,129,0.2);color:#86efac;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;">IN REVIEW</span>' +
+          '</div>' +
+          '<ul style="margin:4px 0 0;padding-left:16px;font-size:10px;color:#cbd5e1;line-height:1.5;">' +
+            '<li>Automatic grouping of concurrent application windows by intent.</li>' +
+            '<li>One-click session recovery after OS patch restart.</li>' +
+            '<li>Shareable encrypted workspace URI schema.</li>' +
+          '</ul>' +
+        '</div>'
+      );
+    }
+    // outlook
+    return (
+      '<div style="padding:8px;font-size:11px;">' +
+        '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06);">' +
+          '<strong>Architecture Review Signed Off</strong><span style="color:#94a3b8;font-size:9px;">09:40 AM</span>' +
+        '</div>' +
+        '<p style="color:#94a3b8;font-size:10px;margin:6px 0;">From: VP Operating Systems Engineering &lt;exec@microsoft.mock&gt;</p>' +
+        '<p style="color:#cbd5e1;font-size:10px;line-height:1.4;">The Taskflow interaction model addresses our highest reported multitasker friction point. Local restoration under 3.5s is approved for prototype benchmarking.</p>' +
+      '</div>'
+    );
+  }
+
   // Open an app window
   function openApp(appId) {
     if (state.openApps[appId]) return;
@@ -119,26 +251,42 @@
 
     var winId = state.nextWindowId++;
     var windowEl = document.createElement('div');
-    windowEl.className = 'wt-window';
+    windowEl.className = 'wt-window active';
     windowEl.setAttribute('data-window-id', winId);
     windowEl.setAttribute('data-app-id', appId);
-    windowEl.style.width = '280px';
-    windowEl.style.height = '180px';
 
-    // Position: stagger windows so they don't overlap
-    var x = 40 + ((winId - 1) * 30) % 200;
-    var y = 40 + ((winId - 1) * 25) % 150;
+    var containerWidth = windowsContainer ? windowsContainer.offsetWidth : 800;
+    var winW = Math.min(440, Math.max(300, containerWidth - 60));
+    var winH = 260;
+    windowEl.style.width = winW + 'px';
+    windowEl.style.height = winH + 'px';
+
+    // Position: staggered placement
+    var x = 80 + ((winId - 1) * 35) % Math.max(100, containerWidth - winW - 20);
+    var y = 30 + ((winId - 1) * 28) % 180;
     windowEl.style.left = x + 'px';
     windowEl.style.top = y + 'px';
 
     windowEl.innerHTML =
       '<div class="wt-window-header">' +
-        '<span class="wt-window-title">' + escapeHtml(app.title) + '</span>' +
-        '<button class="wt-window-close" aria-label="Close ' + escapeHtml(app.title) + '">×</button>' +
+        '<div class="wt-window-title-group">' +
+          '<span class="wt-window-icon">' + app.icon + '</span>' +
+          '<span class="wt-window-title">' + escapeHtml(app.title) + '</span>' +
+        '</div>' +
+        '<div class="wt-window-controls">' +
+          '<button class="wt-win-btn wt-win-min" title="Minimize">−</button>' +
+          '<button class="wt-win-btn wt-win-snap" title="Maximize">□</button>' +
+          '<button class="wt-win-btn wt-window-close" aria-label="Close ' + escapeHtml(app.title) + '">×</button>' +
+        '</div>' +
       '</div>' +
       '<div class="wt-window-body">' +
-        '<p>' + escapeHtml(app.doc) + '</p>' +
+        renderAppBody(appId, app) +
       '</div>';
+
+    // Window focus on click
+    windowEl.addEventListener('mousedown', function () {
+      bringToFront(windowEl);
+    });
 
     // Close button handler
     windowEl.querySelector('.wt-window-close').addEventListener('click', function (e) {
@@ -148,13 +296,56 @@
       updateDesktopEmpty();
     });
 
+    // Minimize button
+    var minBtn = windowEl.querySelector('.wt-win-min');
+    if (minBtn) {
+      minBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeApp(appId);
+        renderTaskbar();
+        updateDesktopEmpty();
+      });
+    }
+
+    // Maximize/Snap button
+    var snapBtn = windowEl.querySelector('.wt-win-snap');
+    if (snapBtn) {
+      snapBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (windowEl.dataset.maximized === 'true') {
+          windowEl.style.top = windowEl.dataset.origTop || '40px';
+          windowEl.style.left = windowEl.dataset.origLeft || '80px';
+          windowEl.style.width = windowEl.dataset.origWidth || '440px';
+          windowEl.style.height = windowEl.dataset.origHeight || '260px';
+          windowEl.dataset.maximized = 'false';
+        } else {
+          windowEl.dataset.origTop = windowEl.style.top;
+          windowEl.dataset.origLeft = windowEl.style.left;
+          windowEl.dataset.origWidth = windowEl.style.width;
+          windowEl.dataset.origHeight = windowEl.style.height;
+          windowEl.style.top = '10px';
+          windowEl.style.left = '10px';
+          windowEl.style.width = (windowsContainer.offsetWidth - 20) + 'px';
+          windowEl.style.height = (windowsContainer.offsetHeight - 20) + 'px';
+          windowEl.dataset.maximized = 'true';
+        }
+      });
+    }
+
     // Make window draggable
     makeDraggable(windowEl, appId);
 
     windowsContainer.appendChild(windowEl);
     state.openApps[appId] = { id: winId, appId: appId, el: windowEl };
 
+    bringToFront(windowEl);
     updateDesktopEmpty();
+  }
+
+  function bringToFront(el) {
+    var allWins = document.querySelectorAll('.wt-window');
+    allWins.forEach(function (w) { w.classList.remove('active'); });
+    el.classList.add('active');
   }
 
   // Close an app
@@ -371,6 +562,7 @@
   });
 
   // Initialize
+  renderDesktopShortcuts();
   renderTaskbar();
   renderWorkspaceList();
   updateDesktopEmpty();

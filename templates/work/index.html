@@ -15,52 +15,213 @@
       </p>
     </div>
 
-    <!-- Case Studies sub-navigation -->
-    <div class="case-studies-nav" style="margin-bottom: var(--space-8); padding-bottom: var(--space-6); border-bottom: 1px solid var(--border-subtle);">
-      <p class="case-studies-nav__label">Featured Case Studies</p>
-      <p class="case-studies-nav__hint" style="font-size: var(--text-xs); color: var(--text-muted); margin-bottom: var(--space-3);">Featured case studies — the 3 flagship product builds plus B1, a strategy hypothesis with an interactive prototype. Explore the full case-study archive.</p>
-      <div class="case-studies-nav__grid">
-        <a href="/work/reviewflow/" class="case-study-link">
-          <span class="case-study-link__title">ReviewFlow</span>
-          <span class="case-study-link__type">Flagship product build</span>
-        </a>
-        <a href="/work/unrot/" class="case-study-link">
-          <span class="case-study-link__title">Unrot Daily Retention</span>
-          <span class="case-study-link__type">Flagship product build</span>
-        </a>
-        <a href="/work/experiment-tracker/" class="case-study-link">
-          <span class="case-study-link__title">Experiment Tracker</span>
-          <span class="case-study-link__type">Supporting product build</span>
-        </a>
-        <a href="/work/b1/" class="case-study-link">
-          <span class="case-study-link__title">B1</span>
-          <span class="case-study-link__type">Strategy hypothesis</span>
-        </a>
-        <a href="/work/catalyst/" class="case-study-link">
-          <span class="case-study-link__title">Catalyst</span>
-          <span class="case-study-link__type">Keyboard-first interaction design study</span>
-        </a>
-        <a href="/work/vesper/" class="case-study-link">
-          <span class="case-study-link__title">Vesper</span>
-          <span class="case-study-link__type">Local-first personal workspace</span>
-        </a>
-        <a href="/work/context-engine/" class="case-study-link">
-          <span class="case-study-link__title">Context Engine</span>
-          <span class="case-study-link__type">Concept prototype</span>
-        </a>
-        <a href="/work/windows-taskflow/" class="case-study-link">
-          <span class="case-study-link__title">Windows Taskflow</span>
-          <span class="case-study-link__type">Concept teardown + prototype</span>
-        </a>
-        <a href="/work/irctc/" class="case-study-link">
-          <span class="case-study-link__title">IRCTC</span>
-          <span class="case-study-link__type">Checkout UX teardown prototype</span>
-        </a>
-        <a href="/work/lodo/" class="case-study-link">
-          <span class="case-study-link__title">LoDo</span>
-          <span class="case-study-link__type">MSME credit marketplace prototype</span>
-        </a>
-      </div>
+    <!-- Project Inventory by Category -->
+    <div class="work-hub-categories">
+      <!-- 1. Flagship Software Builds -->
+      <section class="work-category">
+        <div class="work-category__header">
+          <div>
+            <h2 class="work-category__title">Flagship Software Builds</h2>
+            <p class="work-category__desc">Full-stack software implementations with documented product architecture, verified test suites, and quantitative measurement models.</p>
+          </div>
+          <span class="work-category__count">3 Projects</span>
+        </div>
+        <div class="work-cards-grid">
+          <!-- ReviewFlow -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Flagship Software Build</span>
+              <h3 class="work-hub-card__title">ReviewFlow</h3>
+            </div>
+            <p class="work-hub-card__desc">AI-assisted review writing tool combining structured attribute capture with prompt templates to shape wording without authoring user judgment.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/reviewflow/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/reviewflow/live/" class="work-hub-card__link work-hub-card__link--proto">Live prototype &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Unrot -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Flagship Software Build</span>
+              <h3 class="work-hub-card__title">Unrot Daily Retention</h3>
+            </div>
+            <p class="work-hub-card__desc">Daily micro-learning retention system with calendar-day cohort calculations, analytics dashboard, and pre-experiment power analysis.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/unrot/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/unrot/live/" class="work-hub-card__link work-hub-card__link--proto">Live prototype &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Experiment Tracker -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Flagship Software Build</span>
+              <h3 class="work-hub-card__title">Experiment Tracker</h3>
+            </div>
+            <p class="work-hub-card__desc">Local-first experiment log that requires every test run to record an explicit decision and next action, preventing lost conclusions.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/experiment-tracker/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/experiment-tracker/live/" class="work-hub-card__link work-hub-card__link--proto">Live prototype &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2. Strategic Frameworks & Teardowns -->
+      <section class="work-category">
+        <div class="work-category__header">
+          <div>
+            <h2 class="work-category__title">Strategic Frameworks &amp; Teardowns</h2>
+            <p class="work-category__desc">System architecture analyses, bottleneck teardowns, and transition governance frameworks grounded in platform mechanics.</p>
+          </div>
+          <span class="work-category__count">3 Projects</span>
+        </div>
+        <div class="work-cards-grid">
+          <!-- Windows Taskflow -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Strategic Teardown</span>
+              <h3 class="work-hub-card__title">Windows Taskflow</h3>
+            </div>
+            <p class="work-hub-card__desc">OS shell product teardown proposing persistent, multi-app workspace taskflows synced via cloud storage to eliminate context reconstruction.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/windows-taskflow/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/windows-taskflow/live/" class="work-hub-card__link work-hub-card__link--proto">Live prototype &rarr;</a>
+            </div>
+          </article>
+
+          <!-- IRCTC -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Strategic Teardown</span>
+              <h3 class="work-hub-card__title">IRCTC Tatkal Teardown</h3>
+            </div>
+            <p class="work-hub-card__desc">Peak-concurrency checkout UX teardown isolating transaction paths from ad banners to eliminate layout shifts and reduce drop-off.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/irctc/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/irctc/live/" class="work-hub-card__link work-hub-card__link--proto">Live prototype &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Enterprise AI Pilot Transition -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Strategic Framework</span>
+              <h3 class="work-hub-card__title">Enterprise AI Pilot Transition</h3>
+            </div>
+            <p class="work-hub-card__desc">A strategy framework for governing the path from AI pilot to production through readiness assessments, policy checkpoints, and ownership transfer.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/b1/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/b1/live/" class="work-hub-card__link work-hub-card__link--proto">Interactive simulator &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. Supporting Prototypes & Concepts -->
+      <section class="work-category">
+        <div class="work-category__header">
+          <div>
+            <h2 class="work-category__title">Supporting Prototypes &amp; Concepts</h2>
+            <p class="work-category__desc">Focused interaction studies, local-first architectures, and marketplace concepts exploring specific interaction paradigms.</p>
+          </div>
+          <span class="work-category__count">4 Projects</span>
+        </div>
+        <div class="work-cards-grid">
+          <!-- Catalyst -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Interaction Design Study</span>
+              <h3 class="work-hub-card__title">Catalyst</h3>
+            </div>
+            <p class="work-hub-card__desc">Keyboard-first productivity web application demonstrating mouse-free list navigation and command execution in pure vanilla JavaScript.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/catalyst/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/catalyst/live/" class="work-hub-card__link work-hub-card__link--proto">Live prototype &rarr;</a>
+            </div>
+          </article>
+
+          <!-- LoDo -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Concept Prototype</span>
+              <h3 class="work-hub-card__title">LoDo Credit Marketplace</h3>
+            </div>
+            <p class="work-hub-card__desc">Reverse-auction marketplace concept allowing MSME borrowers to compare normalized lender offers and qualifying government credit schemes.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/lodo/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/lodo/live/" class="work-hub-card__link work-hub-card__link--proto">Live prototype &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Context Engine -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Concept Prototype</span>
+              <h3 class="work-hub-card__title">Context Engine</h3>
+            </div>
+            <p class="work-hub-card__desc">Ambient workspace intelligence prototype surfacing relevant collaborator signals and file history to reduce cognitive switching costs.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/context-engine/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/context-engine/live/" class="work-hub-card__link work-hub-card__link--proto">Live prototype &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Vesper -->
+          <article class="work-hub-card">
+            <div class="work-hub-card__header">
+              <span class="work-hub-card__status">Concept Prototype</span>
+              <h3 class="work-hub-card__title">Vesper</h3>
+            </div>
+            <p class="work-hub-card__desc">Local-first personal workspace with instant SQLite persistence, inline block editing, and a fast keyboard command palette.</p>
+            <div class="work-hub-card__actions">
+              <a href="/work/vesper/" class="work-hub-card__link">
+                Read case study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="text-faint">·</span>
+              <a href="/work/vesper/live/" class="work-hub-card__link work-hub-card__link--proto">Live prototype &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </section>
     </div>
 
     <div class="pwo-filters" style="margin-bottom: var(--space-8);" id="pwo-filters">

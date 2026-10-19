@@ -367,54 +367,53 @@
    ============================================================ */
 
 .projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .projects-list {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
 }
 
 .project-card {
+  display: flex;
+  flex-direction: column;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 0;
 }
 
 .project-card:hover {
   border-color: var(--border-strong);
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
 }
 
 .project-top {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 0;
-}
-
-@media (max-width: 900px) {
-  .project-top {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-media {
   position: relative;
   background: var(--bg-elevated);
-  border-right: 1px solid var(--border);
-  min-height: 290px;
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 220px;
+  min-height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-}
-
-@media (max-width: 900px) {
-  .project-media {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    min-height: 240px;
-  }
 }
 
 .project-media iframe {
@@ -427,6 +426,12 @@
   transform-origin: top left;
   pointer-events: auto;
   background: #fff;
+}
+
+@media (max-width: 768px) {
+  .project-media iframe {
+    pointer-events: none;
+  }
 }
 
 .project-media-badge {
@@ -496,7 +501,7 @@
 }
 
 .project-body {
-  padding: 32px 34px;
+  padding: 24px 26px;
   display: flex;
   flex-direction: column;
 }
@@ -505,7 +510,7 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .project-tag {
@@ -519,24 +524,37 @@
 }
 
 .project-body h3 {
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: var(--text-primary);
+  line-height: 1.25;
 }
 
 .project-role {
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-.project-summary {
+.project-signal-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 0.86rem;
+  line-height: 1.5;
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
+}
+
+.signal-item {
+  margin: 0;
+}
+
+.signal-item strong {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .project-kpis {
@@ -753,4 +771,203 @@
   font-size: 0.92rem;
   color: var(--text);
   margin-top: 14px;
+}
+
+/* Windows 11 Taskflow Card Preview (Legible, Unscaled) */
+.wt-card-preview {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: #0b1324;
+  background-image: radial-gradient(circle at 50% 15%, rgba(30, 58, 138, 0.3) 0%, transparent 65%);
+  overflow: hidden;
+  font-family: var(--font-sans);
+  user-select: none;
+}
+
+.wt-cp-desktop {
+  flex: 1;
+  position: relative;
+  padding: 14px 14px 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.wt-cp-window {
+  background: rgba(23, 33, 53, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wt-cp-window-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(15, 23, 42, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wt-cp-win-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  opacity: 0.85;
+}
+
+.wt-cp-window-title {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wt-cp-window-body {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.wt-cp-line {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 2px;
+}
+
+.wt-cp-grid-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.wt-cp-grid-cell {
+  height: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+.wt-cp-taskflow-pill {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 14, 8, 0.94);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 5px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  color: var(--gold-bright);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 10px rgba(229, 169, 59, 0.25);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.wt-cp-taskflow-pill strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.wt-cp-pill-tag {
+  background: rgba(229, 169, 59, 0.2);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 1px 7px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+.wt-cp-taskbar {
+  height: 38px;
+  background: rgba(15, 23, 42, 0.96);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 14px;
+}
+
+.wt-cp-taskbar-dock {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.wt-cp-dock-item {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.15s ease;
+}
+
+.wt-cp-dock-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.wt-cp-dock-item--active {
+  background: rgba(229, 169, 59, 0.18);
+}
+
+.wt-cp-active-indicator {
+  position: absolute;
+  bottom: 2px;
+  width: 4px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--gold-bright);
+}
+
+.wt-cp-app-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.wt-cp-app--chrome { background: linear-gradient(135deg, #ea4335, #fbbc05, #34a853, #4285f4); }
+.wt-cp-app--vscode { background: #007acc; }
+.wt-cp-app--excel  { background: #107c41; }
+.wt-cp-app--teams  { background: #5059c9; }
+
+.wt-cp-taskbar-tray {
+  position: absolute;
+  right: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 480px) {
+  .wt-cp-desktop {
+    grid-template-columns: 1fr;
+  }
+  .wt-cp-window--right {
+    display: none;
+  }
 }

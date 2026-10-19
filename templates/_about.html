@@ -4,7 +4,7 @@
       <p class="eyebrow section-header__eyebrow">About</p>
       <h2 class="section-header__title">Not a resume. The story underneath it.</h2>
       <p class="muted-paragraph section-header__subtitle">
-        6+ years of technical systems execution across carrier telecom infrastructure — translating technical depth, analytical reasoning, and user empathy into structured Product Management.
+        6+ years of technical systems execution across carrier telecom infrastructure — turning failure analysis and structured problem-solving into product decisions.
       </p>
     </div>
 
@@ -12,12 +12,12 @@
       <!-- Left Column: Portrait & Stats -->
       <div class="about-card">
         <div class="about-photo">
-          <img src="/static/assets/images/profile.jpg" alt="Portrait of Asim Kumar — Technical Product Manager Candidate" loading="lazy">
+          <img src="/static/assets/images/profile.jpg" alt="Portrait of Asim Kumar — Technical Product Manager Candidate" width="1536" height="1536" loading="lazy">
         </div>
         <div class="role">Asim Kumar</div>
         <div class="loc">Gurugram, Haryana · India</div>
-        <p style="color:var(--text-dim); font-size:0.92rem; line-height:1.6;">
-          Systems Engineer with 6+ years of technical systems execution, pursuing opportunities in Product Management, supported by completed Executive Education in Product Management in the Agentic AI Era from IIM Tiruchirappalli.
+        <p class="about-bio">
+          Systems Engineer at Nokia, moving into product management. Completed coursework in Product Management in the Agentic AI Era at IIM Tiruchirappalli in 2026; certificate issuance is pending.
         </p>
 
         <div class="stat-row">
@@ -27,35 +27,76 @@
           </div>
           <div>
             <div class="num">4</div>
-            <div class="lbl">Companies across execution path</div>
+            <div class="lbl">Employers across execution path</div>
           </div>
           <div>
             <div class="num">3</div>
             <div class="lbl">Network domains: Fixed, IP, Optical</div>
           </div>
           <div>
-            <div class="num">3</div>
-            <div class="lbl">Languages spoken fluently</div>
+            <div class="num">4</div>
+            <div class="lbl">Featured projects</div>
           </div>
         </div>
 
         <div class="lang-tags">
-          <span class="lang-tag">EN — Professional</span>
-          <span class="lang-tag">HI — Native</span>
-          <span class="lang-tag">PA — Native</span>
+          <span class="lang-tag">English — Professional</span>
+          <span class="lang-tag">Hindi — Native</span>
+          <span class="lang-tag">Punjabi — Native</span>
         </div>
       </div>
 
       <!-- Right Column: Narrative Grid -->
       <div class="about-text">
-        <div class="story-grid">
-          <div class="story-block">
-            <span class="tag">Who I Am</span>
-            <p>
-              Underneath title changes across Test Engineer, Repair Engineer, RF Engineer, and Systems Engineer at Nokia, Radio Design India, CTDI, and iQor, I have held the same discipline: standing at the point where a complex system either delivers on its promise to a user or fails, and ensuring that it holds.
-            </p>
+        <!-- Featured Proof Card -->
+        <div class="story-featured">
+          <div class="story-featured__top">
+            <span class="tag story-featured__tag">PROOF, NOT ADJECTIVES</span>
+            <span class="story-featured__context">Nokia Systems RCA</span>
           </div>
+          <p class="story-featured__narrative">
+            A customer's site kept going down. I recreated the field setup at the repair centre, traced the outages to power surges rebooting network cards, and proposed a continuous-power fix. According to my reporting, the customer has not raised the same complaint in roughly two years; that period has not been independently measured.
+          </p>
+          <div class="story-featured__steps">
+            <div class="rca-step">
+              <span class="rca-step__num">1</span>
+              <div class="rca-step__content">
+                <strong class="rca-step__title">Customer problem:</strong>
+                <span class="rca-step__text">Recurring site dropouts and repeated card reboots threatening carrier SLA uptime.</span>
+              </div>
+            </div>
+            <div class="rca-step">
+              <span class="rca-step__num">2</span>
+              <div class="rca-step__content">
+                <strong class="rca-step__title">Recreated conditions:</strong>
+                <span class="rca-step__text">Bench-replicated field topology and electrical load at the repair centre.</span>
+              </div>
+            </div>
+            <div class="rca-step">
+              <span class="rca-step__num">3</span>
+              <div class="rca-step__content">
+                <strong class="rca-step__title">Root cause identified:</strong>
+                <span class="rca-step__text">Transient power surges triggering hardware reset cycles on installed network cards.</span>
+              </div>
+            </div>
+            <div class="rca-step">
+              <span class="rca-step__num">4</span>
+              <div class="rca-step__content">
+                <strong class="rca-step__title">Proposed corrective action:</strong>
+                <span class="rca-step__text">Continuous-power regulation and updated site power configuration procedures.</span>
+              </div>
+            </div>
+            <div class="rca-step rca-step--limitation">
+              <span class="rca-step__num">5</span>
+              <div class="rca-step__content">
+                <strong class="rca-step__title">Outcome &amp; limitation:</strong>
+                <span class="rca-step__text">Customer has not raised the complaint in roughly two years (self-reported; not independently measured).</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div class="story-grid">
           <div class="story-block">
             <span class="tag">Why Product Management</span>
             <p>
@@ -71,7 +112,7 @@
           </div>
 
           <div class="story-block">
-            <span class="tag">Leadership Philosophy</span>
+            <span class="tag">How I Align Teams</span>
             <p>
               I lead with evidence before authority. In complex hardware and software incidents, getting cross-functional teams to align requires placing the failure mode and reproducible data on the table, not personal opinion. Evidence is the only thing that convinces without needing a title.
             </p>
@@ -84,7 +125,7 @@
             </p>
           </div>
 
-          <div class="story-block">
+          <div class="story-block story-block--wide">
             <span class="tag">Decision Making</span>
             <p>
               My decision frameworks are deliberate and transparent. I reach for RICE, MoSCoW, or Impact-vs-Effort matrices because they ground trade-offs in visible criteria that any engineer, designer, or business partner can inspect and challenge.

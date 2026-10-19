@@ -25,7 +25,7 @@ class TestPortfolioRoutes(unittest.TestCase):
     def test_work_hub(self):
         response = self.client.get("/work/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(EVIDENCE_CARDS), 16)
+        self.assertEqual(len(EVIDENCE_CARDS), 15)
 
     def test_flagship_routes(self):
         routes = [

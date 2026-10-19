@@ -8,17 +8,54 @@
 
   <div class="work-header nested">
     <span class="work-badge">Case Study</span>
-    <h1 class="work-title">IRCTC — Peak-Hour Checkout UX Teardown & Redesign Prototype</h1>
+    <h1 class="work-title">IRCTC — Peak-Hour Checkout UX Teardown &amp; Redesign Prototype</h1>
     <p class="work-subtitle">
       Interactive prototype of a redesigned booking checkout addressing concurrency-driven UX degradation on India's railway reservation platform. Concept prototype + interactive mockup. Not a productized feature.
     </p>
-    <p class="work-meta">
-      <span>Portfolio route:</span>
-      <a href="/work/irctc/">/work/irctc/</a>
-      &nbsp;|&nbsp;
-      <span>Live experience:</span>
-      <a href="/work/irctc/live/">/work/irctc/live/</a>
-    </p>
+
+    <!-- Structured 2-Column At a Glance -->
+    <div class="case-study-at-a-glance" style="margin-top: var(--space-5);">
+      <div class="at-a-glance__header">
+        <span class="at-a-glance__label">Executive Summary</span>
+        <span class="at-a-glance__badge">High-Concurrency UX Teardown</span>
+      </div>
+      <div class="at-a-glance__grid">
+        <div class="at-a-glance__card at-a-glance__card--problem">
+          <div class="at-a-glance__tag">Problem</div>
+          <p class="at-a-glance__content">
+            <strong>Peak Concurrency Degradation:</strong> During high-demand Tatkal reservation windows (10–11 AM), massive booking surges trigger gateway timeouts and erratic layout shifts from programmatic ad scripts, driving user drop-off.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--decision">
+          <div class="at-a-glance__tag">Decision</div>
+          <p class="at-a-glance__content">
+            <strong>Transaction Path Isolation:</strong> Freeze third-party ad tracking scripts during checkout to eliminate cumulative layout shifts (CLS); add predictable client-side queue states to preserve user input across gateway retries.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--evidence">
+          <div class="at-a-glance__tag">Evidence</div>
+          <p class="at-a-glance__content">
+            <strong>Interactive Smartphone Simulation:</strong> Live mobile prototype (<a href="/work/irctc/live/">launch prototype</a>) demonstrating side-by-side legacy vs. redesigned checkout, latency metrics, and funnel drop-off models.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--boundary">
+          <div class="at-a-glance__tag">Boundary</div>
+          <p class="at-a-glance__content">
+            <strong>External Teardown:</strong> Built entirely on observable web behaviors and category UX patterns; not affiliated with IRCTC or derived from internal production telemetry.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-study-ctas" style="margin-top: var(--space-5); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+      <a href="/work/irctc/live/" class="btn btn--primary">
+        Launch Tatkal Checkout Prototype
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+      <a href="/work/" class="btn btn--ghost">
+        Back to Proof of Work
+      </a>
+    </div>
   </div>
 
   <section class="work-section">

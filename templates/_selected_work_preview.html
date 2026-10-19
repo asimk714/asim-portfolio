@@ -4,9 +4,7 @@
       <p class="eyebrow section-header__eyebrow">Selected Work</p>
       <h2 class="section-header__title">Case studies, working prototypes, and evidence discipline.</h2>
       <p class="muted-paragraph section-header__subtitle">
-        Every project below features a live, interactive prototype embedded directly in the card face.
-        Click open any card to inspect the complete product breakdown: problem definition, prioritization frameworks,
-        verification test reports, and honest boundaries.
+        Four featured product initiatives shown in a compact comparative grid. Each card pairs an embedded interactive prototype preview with core problem framing, architectural decisions, and verifiable evidence.
       </p>
     </div>
 
@@ -35,9 +33,13 @@
             </div>
             <h3>ReviewFlow — AI Review Integrity &amp; Offline Evaluator</h3>
             <div class="project-role">Solo Product Build · AI UX, Deterministic Evaluation, Decision Log</div>
-            <p class="project-summary">
-              A review-drafting application that helps customers articulate genuine feedback through structured inputs and AI-assisted drafting, governed by 8 architectural decision records and a 247-check deterministic offline evaluator.
-            </p>
+
+            <div class="project-signal-block">
+              <p class="signal-item"><strong>Problem:</strong> Unconstrained LLMs generate sycophantic praise, hallucinated services, and FTC policy violations when drafting customer reviews.</p>
+              <p class="signal-item"><strong>Key Decision:</strong> Prioritized structured input fields, explicit rating preservation, and an offline deterministic evaluation harness over direct Google API posting.</p>
+              <p class="signal-item"><strong>Strongest Evidence:</strong> 247/247 deterministic checks passing across 15 synthetic cases. <span class="evidence-badge evidence-badge--verified" style="margin-left: 6px;">Verified</span></p>
+            </div>
+
             <div class="project-kpis">
               <div class="kpi-box">
                 <div class="kpi-num">247</div>
@@ -47,7 +49,7 @@
               <div class="kpi-box">
                 <div class="kpi-num">15</div>
                 <div class="kpi-delta">Offline test harness</div>
-                <div class="kpi-lbl">Synthetic regression cases</div>
+                <div class="kpi-lbl">Regression cases</div>
               </div>
               <div class="kpi-box">
                 <div class="kpi-num">0</div>
@@ -64,7 +66,7 @@
         </div>
 
         <button class="case-toggle" data-target="case-reviewflow" type="button" aria-expanded="false">
-          View full case study <span class="chev">⌄</span>
+          View case breakdown <span class="chev">⌄</span>
         </button>
 
         <div class="case-detail" id="case-reviewflow">
@@ -102,7 +104,7 @@
                 </div>
               </div>
               <div class="learnings">
-                <strong>Key Takeaway:</strong> AI product integrity requires separating generation from evaluation. Offline deterministic harnesses allow engineering teams to catch quality regressions before paying live inference costs.
+                <strong>Key Takeaway:</strong> Prompt engineering without deterministic regression tests is guesswork. AI product quality must be treated as an engineering discipline with automated verification gates.
               </div>
             </div>
           </div>
@@ -117,7 +119,7 @@
               <span class="liveDot" aria-hidden="true"></span>
               Live Prototype
             </span>
-            <iframe src="/work/unrot/live/" title="Unrot daily retention interactive prototype preview" loading="lazy"></iframe>
+            <iframe src="/work/unrot/live/" title="Unrot Daily Retention interactive prototype preview" loading="lazy"></iframe>
             <div class="project-media-cta">
               <a href="/work/unrot/live/" target="_blank" rel="noopener noreferrer">
                 Open full prototype ↗
@@ -126,35 +128,38 @@
           </div>
           <div class="project-body">
             <div class="project-tags">
-              <span class="project-tag">Retention Modeling</span>
-              <span class="project-tag">Timezone Math</span>
+              <span class="project-tag">Retention Strategy</span>
+              <span class="project-tag">A/B Experiment Design</span>
               <span class="project-tag">Next.js 16 + Prisma</span>
             </div>
-            <h3>Unrot — Daily Micro-Learning &amp; Retention Model</h3>
-            <div class="project-role">Solo Product Build · Funnel Analytics, Timezone Logic, A/B Test Plan</div>
-            <p class="project-summary">
-              A daily micro-learning application built to model habit decay and Day-1 retention curves, featuring strict calendar-day boundary math, a 7-stage instrumented funnel, and a simulated 6-role cross-functional decision brief.
-            </p>
+            <h3>Unrot — Daily Micro-Learning Retention &amp; A/B Plan</h3>
+            <div class="project-role">Solo Product Build · JTBD Discovery, Retention Modeling, Experiment Design</div>
+
+            <div class="project-signal-block">
+              <p class="signal-item"><strong>Problem:</strong> Micro-learning platforms suffer severe D1 drop-off (baseline ~16%); feature teams build aimlessly without behavioral hypotheses.</p>
+              <p class="signal-item"><strong>Key Decision:</strong> Decomposed retention into 4 distinct user jobs and designed a controlled A/B experiment for the return-intent nudge before expanding feature breadth.</p>
+              <p class="signal-item"><strong>Strongest Evidence:</strong> Complete measurement model, MDE power calculation, and 29/50 tests passing (21 DB-dependent failures disclosed). <span class="evidence-badge evidence-badge--inferred" style="margin-left: 6px;">Planned Experiment</span></p>
+            </div>
+
             <div class="project-kpis">
               <div class="kpi-box">
-                <div class="kpi-num">D1</div>
-                <div class="kpi-delta">Calendar boundary math</div>
-                <div class="kpi-lbl">Retention North Star</div>
-              </div>
-              <div class="kpi-box">
-                <div class="kpi-num">7-Stage</div>
-                <div class="kpi-delta">Instrumented telemetry</div>
-                <div class="kpi-lbl">Activation funnel</div>
-              </div>
-              <div class="kpi-box">
                 <div class="kpi-num">29/50</div>
-                <div class="kpi-delta">21 DB-dependent</div>
-                <div class="kpi-lbl">Passing unit tests</div>
+                <div class="kpi-delta">21 DB tests disclosed</div>
+                <div class="kpi-lbl">Automated test suite</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-num">4 / 7</div>
+                <div class="kpi-delta">Explicit testable jobs</div>
+                <div class="kpi-lbl">JTBD / Hypotheses</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-num">20/20</div>
+                <div class="kpi-delta">Previously reported</div>
+                <div class="kpi-lbl">Functional QA routes</div>
               </div>
             </div>
             <div class="project-actions">
               <a href="/work/unrot/" class="btn btn--primary btn-sm">Full Case Study →</a>
-              <a href="/work/unrot/cross-functional-decision/" class="btn btn--ghost btn-sm">Decision Brief →</a>
               <a href="/work/unrot/live/" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">Open Prototype ↗</a>
               <a href="https://github.com/asimk714/Unrot-Daily-Retention" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
             </div>
@@ -162,52 +167,52 @@
         </div>
 
         <button class="case-toggle" data-target="case-unrot" type="button" aria-expanded="false">
-          View full case study <span class="chev">⌄</span>
+          View case breakdown <span class="chev">⌄</span>
         </button>
 
         <div class="case-detail" id="case-unrot">
           <div class="case-grid">
             <div class="case-block">
               <h4>Problem Statement</h4>
-              <p>EdTech micro-learning platforms suffer severe Day-1 drop-off. Most analytics dashboards conflate rolling 24-hour windows with calendar days, producing distorted retention cohorts across global timezones.</p>
+              <p>Micro-learning platforms suffer catastrophic day-1 drop-off. The assignment baseline is 16% D1 retention, with a hypothetical target of 22%. The product failure isn't lack of content; it's absent habit loops and friction at the return threshold.</p>
             </div>
             <div class="case-block">
-              <h4>Cross-Functional Alignment</h4>
-              <p>Formulated a simulated 6-role cross-functional decision brief (Product, Design, Engineering, Analytics, Operations, Leadership) addressing streak forgiveness trade-offs vs. measurement contamination.</p>
+              <h4>JTBD &amp; Behavioral Hypotheses</h4>
+              <p>Mapped 4 distinct Jobs-to-be-Done and derived 7 intervention hypotheses. Isolated H4 (return-intent commitment at the end of Session 1) as the highest-impact, lowest-effort experiment candidate.</p>
             </div>
             <div class="case-block">
-              <h4>Measurement Architecture</h4>
-              <p>Constructed an instrumented 7-stage event funnel tracking every transition from landing to Day-2 streak confirmation, paired with sample-size power calculations for future A/B testing.</p>
+              <h4>Measurement Model &amp; A/B Design</h4>
+              <p>Architected full experiment specification: primary metric (D1 return rate), guardrail metric (session completion quality), minimum detectable effect (MDE) statistical power analysis, and explicit decision rules for shipping.</p>
             </div>
             <div class="case-block">
-              <h4>Verification &amp; Honest Boundaries</h4>
-              <p>29 unit tests pass in isolated environments; 21 tests require live PostgreSQL/Prisma integration. Honest boundary: 16% baseline and 22% benchmark are assignment-provided standards, not live author-measured outcomes.</p>
+              <h4>Honest Disclosures &amp; Reality</h4>
+              <p>Full honesty: 29 of 50 automated tests pass locally; 21 fail without live PostgreSQL credentials. The 16% baseline is context, not measured user data. No live experiment has been run on production traffic.</p>
             </div>
             <div class="case-block wide">
-              <h4>KPIs &amp; Impact Model</h4>
+              <h4>KPIs &amp; Experiment Metrics</h4>
               <div class="case-kpi-row">
                 <div class="case-kpi">
-                  <div class="top"><span>Timezone Boundary Math</span><strong>Calendar-day verified</strong></div>
-                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                  <div class="top"><span>D1 Retention Target</span><strong>22.0% (Hypothesis)</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="65"></div></div>
                 </div>
                 <div class="case-kpi">
-                  <div class="top"><span>Funnel Event Instrumentation</span><strong>7 Stages Defined</strong></div>
-                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                  <div class="top"><span>Baseline Context</span><strong>16.0% (Context)</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="45"></div></div>
                 </div>
                 <div class="case-kpi">
-                  <div class="top"><span>Isolated Unit Test Suite</span><strong>29 / 50 Passing</strong></div>
+                  <div class="top"><span>Automated Tests Passing</span><strong>29 / 50 Passing</strong></div>
                   <div class="bar-track"><div class="bar-fill" data-fill="58"></div></div>
                 </div>
               </div>
               <div class="learnings">
-                <strong>Key Takeaway:</strong> Retention measurement is only as trustworthy as timezone arithmetic. Defining Day-1 as calendar-day return rather than elapsed 24-hour blocks prevents artificial metric inflation.
+                <strong>Key Takeaway:</strong> Retention problems cannot be solved with feature addition. They require identifying the precise behavioral transition that fails and instrumenting an experiment around that single moment.
               </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- PROJECT 3: EXPERIMENT TRACKER (Supporting Build) -->
+      <!-- PROJECT 3: EXPERIMENT TRACKER (Supporting Product Build) -->
       <article class="project-card" id="project-tracker">
         <div class="project-top">
           <div class="project-media">
@@ -224,30 +229,34 @@
           </div>
           <div class="project-body">
             <div class="project-tags">
-              <span class="project-tag">Product Decision Support</span>
-              <span class="project-tag">Local-First</span>
+              <span class="project-tag">Scope Prioritization</span>
+              <span class="project-tag">Local-First Architecture</span>
               <span class="project-tag">Flask + SQLite</span>
             </div>
-            <h3>Experiment Tracker — Closing the Conclusion Loop</h3>
-            <div class="project-role">Solo Product Build · PRD &amp; Brief, 26 Test Functions, SQLite Integrity</div>
-            <p class="project-summary">
-              A local-first experiment management tool designed to eliminate "zombie experiments" by requiring teams to record explicit decisions and next actions before closing a test, verified by 26 automated unit tests.
-            </p>
+            <h3>Experiment Tracker — Evaluation &amp; Conclusion Capture</h3>
+            <div class="project-role">Solo Product Build · Prioritization Brief, SQLite Architecture, Verification</div>
+
+            <div class="project-signal-block">
+              <p class="signal-item"><strong>Problem:</strong> Product teams run growth tests but fail to capture decisions, abandoning data in spreadsheets and lost Slack channels.</p>
+              <p class="signal-item"><strong>Key Decision:</strong> Prioritized conclusion capture over charts, search, and auth — the smallest capability closing the experiment-to-decision loop (~27 lines).</p>
+              <p class="signal-item"><strong>Strongest Evidence:</strong> 8-candidate prioritization matrix with explicit "why not" criteria and 17-category verification report. <span class="evidence-badge evidence-badge--verified" style="margin-left: 6px;">Verified</span></p>
+            </div>
+
             <div class="project-kpis">
               <div class="kpi-box">
-                <div class="kpi-num">26</div>
-                <div class="kpi-delta">17 categories verified</div>
-                <div class="kpi-lbl">Automated test functions</div>
+                <div class="kpi-num">8</div>
+                <div class="kpi-delta">Documented trade-offs</div>
+                <div class="kpi-lbl">Candidates evaluated</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-num">17</div>
+                <div class="kpi-delta">Comprehensive audit</div>
+                <div class="kpi-lbl">Verification categories</div>
               </div>
               <div class="kpi-box">
                 <div class="kpi-num">~27</div>
-                <div class="kpi-delta">Low-friction UI</div>
-                <div class="kpi-lbl">Lines to close loop</div>
-              </div>
-              <div class="kpi-box">
-                <div class="kpi-num">100%</div>
-                <div class="kpi-delta">No vendor lock-in</div>
-                <div class="kpi-lbl">Local SQLite portability</div>
+                <div class="kpi-delta">Minimal intervention</div>
+                <div class="kpi-lbl">Lines to close the loop</div>
               </div>
             </div>
             <div class="project-actions">
@@ -259,237 +268,205 @@
         </div>
 
         <button class="case-toggle" data-target="case-tracker" type="button" aria-expanded="false">
-          View full case study <span class="chev">⌄</span>
+          View case breakdown <span class="chev">⌄</span>
         </button>
 
         <div class="case-detail" id="case-tracker">
           <div class="case-grid">
             <div class="case-block">
               <h4>Problem Statement</h4>
-              <p>Product teams run dozens of experiments but frequently fail to document definitive conclusions or next actions, leaving inconclusive tests that get re-run months later and waste engineering bandwidth.</p>
+              <p>Experimentation tools focus heavily on statistical power calculators and feature flagging, but completely abandon the post-test decision record. Teams repeatedly run duplicate tests because learnings are lost.</p>
             </div>
             <div class="case-block">
-              <h4>Product Requirements (PRD)</h4>
-              <p>Authored a rigorous 8-candidate product brief prioritizing a simple, mandatory conclusion loop over heavy statistical engines that teams abandon.</p>
+              <h4>8-Candidate Prioritization</h4>
+              <p>Evaluated 8 potential features (visual charts, full-text search, user auth, cloud sync, conclusion capture, templates, tag filtering, artifact linking). Scoped only conclusion capture: closing the decision loop in ~27 lines.</p>
             </div>
             <div class="case-block">
-              <h4>Data Architecture</h4>
-              <p>Designed a local-first SQLite schema with clean migrations, atomic transactions, and relational tracking between hypotheses, metric observations, decisions, and action items.</p>
+              <h4>Local-First Architecture</h4>
+              <p>Zero-dependency Python/Flask/SQLite stack. Runs instantly with zero cloud configuration, no credentials, and no external tracking dependencies — designed for speed and reliability.</p>
             </div>
             <div class="case-block">
-              <h4>Verification &amp; Honest Boundaries</h4>
-              <p>26 automated test functions confirm database migrations, schema constraints, and route logic across 17 categories. Honest boundary: proposed usage metric has not yet been field-measured with external teams.</p>
+              <h4>Verification &amp; Test Coverage</h4>
+              <p>Comprehensive 17-category verification report auditing database integrity, state transitions, validation rules, and error recovery. Preserves test traceability without inflating claims.</p>
             </div>
             <div class="case-block wide">
-              <h4>KPIs &amp; Impact Model</h4>
+              <h4>KPIs &amp; Audit Traceability</h4>
               <div class="case-kpi-row">
                 <div class="case-kpi">
-                  <div class="top"><span>Test Suite Execution</span><strong>26 / 26 Passed</strong></div>
+                  <div class="top"><span>Verification Categories</span><strong>17 / 17 Verified</strong></div>
                   <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
                 </div>
                 <div class="case-kpi">
-                  <div class="top"><span>Conclusion Form Friction</span><strong>&lt; 30 Seconds</strong></div>
-                  <div class="bar-track"><div class="bar-fill" data-fill="95"></div></div>
+                  <div class="top"><span>Candidate Evaluated</span><strong>8 Candidates</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
                 </div>
                 <div class="case-kpi">
-                  <div class="top"><span>Database Portability</span><strong>100% SQLite</strong></div>
+                  <div class="top"><span>Setup Overhead</span><strong>0 Cloud Config</strong></div>
                   <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
                 </div>
               </div>
               <div class="learnings">
-                <strong>Key Takeaway:</strong> The value of an experiment is zero until the decision is recorded. Forcing a clear conclusion and next step turns dead test data into institutional memory.
+                <strong>Key Takeaway:</strong> Scope discipline is knowing what NOT to build. Choosing the smallest capability that solves the core problem creates more product velocity than building an unmaintained feature suite.
               </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- PROJECT 4: WINDOWS 11 TASKFLOW (Concept & Teardown) -->
+      <!-- PROJECT 4: WINDOWS 11 TASKFLOW (Concept Teardown + Prototype) -->
       <article class="project-card" id="project-windows">
         <div class="project-top">
           <div class="project-media">
             <span class="project-media-badge">
-              <span class="liveDot" aria-hidden="true"></span>
-              Live Prototype
+              <span class="liveDot" aria-hidden="true" style="background: var(--gold-bright); box-shadow: 0 0 8px var(--gold-bright);"></span>
+              Taskflow Concept Preview
             </span>
-            <iframe src="/static/prototypes/windows11/index.html" title="Windows 11 Taskflow interactive prototype preview" loading="lazy"></iframe>
+            <div class="wt-card-preview" aria-label="Windows 11 Taskflow interface preview">
+              <div class="wt-cp-desktop">
+                <div class="wt-cp-window wt-cp-window--left">
+                  <div class="wt-cp-window-header">
+                    <span class="wt-cp-win-dot"></span>
+                    <span class="wt-cp-window-title">Chrome · Q3 Research</span>
+                  </div>
+                  <div class="wt-cp-window-body">
+                    <div class="wt-cp-line" style="width: 85%;"></div>
+                    <div class="wt-cp-line" style="width: 60%;"></div>
+                    <div class="wt-cp-line" style="width: 40%;"></div>
+                  </div>
+                </div>
+                <div class="wt-cp-window wt-cp-window--right">
+                  <div class="wt-cp-window-header">
+                    <span class="wt-cp-win-dot"></span>
+                    <span class="wt-cp-window-title">Excel · Financial Model</span>
+                  </div>
+                  <div class="wt-cp-window-body wt-cp-grid-body">
+                    <div class="wt-cp-grid-cell"></div>
+                    <div class="wt-cp-grid-cell"></div>
+                    <div class="wt-cp-grid-cell"></div>
+                    <div class="wt-cp-grid-cell"></div>
+                  </div>
+                </div>
+                <div class="wt-cp-taskflow-pill">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="4"/>
+                    <path d="M6 12h12M12 6v12"/>
+                  </svg>
+                  <span>Context: <strong>Q3 Financial Review</strong></span>
+                  <span class="wt-cp-pill-tag">3 Apps Grouped</span>
+                </div>
+              </div>
+              <div class="wt-cp-taskbar">
+                <div class="wt-cp-taskbar-dock">
+                  <div class="wt-cp-dock-item" title="Start">
+                    <svg viewBox="0 0 16 16" width="12" height="12" fill="#0078d4">
+                      <rect x="1" y="1" width="6" height="6"/>
+                      <rect x="9" y="1" width="6" height="6"/>
+                      <rect x="1" y="9" width="6" height="6"/>
+                      <rect x="9" y="9" width="6" height="6"/>
+                    </svg>
+                  </div>
+                  <div class="wt-cp-dock-item wt-cp-dock-item--active" title="Taskflow (Active Context)">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="var(--gold-bright)">
+                      <rect x="2" y="2" width="20" height="20" rx="4"/>
+                      <path d="M6 12h12M12 6v12" stroke="#100b05" stroke-width="2.5"/>
+                    </svg>
+                    <span class="wt-cp-active-indicator"></span>
+                  </div>
+                  <div class="wt-cp-dock-item"><span class="wt-cp-app-icon wt-cp-app--chrome"></span></div>
+                  <div class="wt-cp-dock-item"><span class="wt-cp-app-icon wt-cp-app--vscode"></span></div>
+                  <div class="wt-cp-dock-item"><span class="wt-cp-app-icon wt-cp-app--excel"></span></div>
+                  <div class="wt-cp-dock-item"><span class="wt-cp-app-icon wt-cp-app--teams"></span></div>
+                </div>
+                <div class="wt-cp-taskbar-tray">
+                  <span>04:30 PM</span>
+                </div>
+              </div>
+            </div>
             <div class="project-media-cta">
-              <a href="/static/prototypes/windows11/index.html" target="_blank" rel="noopener noreferrer">
+              <a href="/work/windows-taskflow/live/" target="_blank" rel="noopener noreferrer">
                 Open full prototype ↗
               </a>
             </div>
           </div>
           <div class="project-body">
             <div class="project-tags">
-              <span class="project-tag">OS / Platform</span>
-              <span class="project-tag">Enterprise UX</span>
-              <span class="project-tag">0→1 Concept</span>
+              <span class="project-tag">Desktop OS UX</span>
+              <span class="project-tag">Multitasking Teardown</span>
+              <span class="project-tag">HEART Framework</span>
             </div>
-            <h3>Windows 11 — Taskflow: Context-Aware Workspaces</h3>
-            <div class="project-role">Solo Product Teardown &amp; PRD · Strategy, Prototype, KPI Model</div>
-            <p class="project-summary">
-              A product teardown of Windows 11's shell proposing "Taskflow" — saving and restoring entire multi-app work contexts (windows, tabs, files) as named workspaces, turning OneDrive into sticky productivity infrastructure.
-            </p>
+            <h3>Windows 11 Taskflow — Shell Multitasking Teardown</h3>
+            <div class="project-role">Solo Product Teardown · 20-Phase Analysis, UX Prototyping, PRD</div>
+
+            <div class="project-signal-block">
+              <p class="signal-item"><strong>Problem:</strong> Multitasking across 5+ active windows creates repetitive manual re-tiling, lost context on reboot, and cognitive fatigue.</p>
+              <p class="signal-item"><strong>Key Decision:</strong> Benchmarked macOS Stage Manager and ChromeOS Virtual Desks; formulated native shell-level Taskflow with HEART framework metrics.</p>
+              <p class="signal-item"><strong>Strongest Evidence:</strong> 20-phase strategic product teardown, interactive task-grouping prototype simulator, and full PRD. <span class="evidence-badge evidence-badge--observed" style="margin-left: 6px;">Concept Prototype</span></p>
+            </div>
+
             <div class="project-kpis">
               <div class="kpi-box">
-                <div class="kpi-num">&lt;3.5s</div>
-                <div class="kpi-delta">Design performance bar</div>
-                <div class="kpi-lbl">State-restore latency</div>
+                <div class="kpi-num">20</div>
+                <div class="kpi-delta">Complete framework</div>
+                <div class="kpi-lbl">Teardown phases</div>
               </div>
               <div class="kpi-box">
-                <div class="kpi-num">P0</div>
-                <div class="kpi-delta">Non-negotiable scope</div>
-                <div class="kpi-lbl">Native save / resume</div>
+                <div class="kpi-num">5</div>
+                <div class="kpi-delta">User journey mapped</div>
+                <div class="kpi-lbl">Target personas</div>
               </div>
               <div class="kpi-box">
-                <div class="kpi-num">Retention</div>
-                <div class="kpi-delta">Strategic hypothesis</div>
-                <div class="kpi-lbl">OneDrive stickiness lever</div>
+                <div class="kpi-num">HEART</div>
+                <div class="kpi-delta">Structured success</div>
+                <div class="kpi-lbl">Metrics framework</div>
               </div>
             </div>
             <div class="project-actions">
               <a href="/work/windows-taskflow/" class="btn btn--primary btn-sm">Full Case Study →</a>
-              <a href="/static/prototypes/windows11/index.html" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">Open Prototype ↗</a>
+              <a href="/work/windows-taskflow/live/" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">Open Prototype ↗</a>
             </div>
           </div>
         </div>
 
         <button class="case-toggle" data-target="case-windows" type="button" aria-expanded="false">
-          View full case study <span class="chev">⌄</span>
+          View case breakdown <span class="chev">⌄</span>
         </button>
 
         <div class="case-detail" id="case-windows">
           <div class="case-grid">
             <div class="case-block">
               <h4>Problem Statement</h4>
-              <p>Modern OS shells still behave like basic app launchers — every reboot, reconnect, or context switch forces knowledge workers to manually reconstruct multi-app arrangements, taxing focus dozens of times per week.</p>
+              <p>Windows 11 users with 5+ open windows face constant context-switching overhead, manual window repositioning, and complete loss of working state upon system restart. Existing Snap Layouts solve layout, not intent.</p>
             </div>
             <div class="case-block">
               <h4>Competitive Benchmarking</h4>
-              <p>Benchmarked against macOS Stage Manager and ChromeOS Tab Groups — both isolate windows or tabs. Taskflow differentiates by packaging full cross-app state (apps + tabs + documents) with shareable cloud links.</p>
+              <p>Analyzed macOS Stage Manager, macOS Spaces, ChromeOS Virtual Desks, and Linux workspace managers. Identified the critical gap: desktop operating systems organize windows by application, not by task.</p>
             </div>
             <div class="case-block">
-              <h4>Prioritization Framework</h4>
-              <p>Evaluated feature candidates using RICE and MoSCoW. Native local state restore under 3.5 seconds scored highest on Reach and Impact, establishing the non-negotiable performance standard.</p>
+              <h4>Feature Formulation — Taskflow</h4>
+              <p>Architected 'Windows Taskflow' — an intelligent task-clustering shell flyout that groups apps by active project, preserves state across reboots, and offers quick context restoration from the taskbar.</p>
             </div>
             <div class="case-block">
-              <h4>Research Methodology</h4>
-              <p>Desk research, direct teardown of Windows 11 taskbar/shell interactions, and synthesis of public developer forums — noted plainly as structured product teardown rather than primary user interviews.</p>
+              <h4>HEART Success Metrics</h4>
+              <p>Defined structured measurement framework: Happiness (CSAT on multitasking), Engagement (tasks created per week), Adoption (% of users grouping 2+ windows), Retention (D30 task usage), Task Success (time to switch contexts).</p>
             </div>
             <div class="case-block wide">
-              <h4>KPIs &amp; Business Impact</h4>
+              <h4>KPIs &amp; Teardown Metrics</h4>
               <div class="case-kpi-row">
                 <div class="case-kpi">
-                  <div class="top"><span>State-Restore Latency</span><strong>Target: &lt;3.5s</strong></div>
-                  <div class="bar-track"><div class="bar-fill" data-fill="90"></div></div>
+                  <div class="top"><span>Teardown Depth</span><strong>20 Phases Covered</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
                 </div>
                 <div class="case-kpi">
-                  <div class="top"><span>Cross-App Workspace Save</span><strong>Priority: P0</strong></div>
-                  <div class="bar-track"><div class="bar-fill" data-fill="95"></div></div>
+                  <div class="top"><span>Persona Mapping</span><strong>5 Personas</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
                 </div>
                 <div class="case-kpi">
-                  <div class="top"><span>Shareable Workspace Links</span><strong>Priority: P1</strong></div>
-                  <div class="bar-track"><div class="bar-fill" data-fill="65"></div></div>
+                  <div class="top"><span>Interactive Fidelity</span><strong>Functional Simulator</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
                 </div>
               </div>
               <div class="learnings">
-                <strong>Key Takeaway:</strong> State restoration only feels native when latency stays strictly under 3.5 seconds. Above that threshold, users revert to manual app launching.
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 5: IRCTC TATKAL (High-Concurrency Teardown) -->
-      <article class="project-card" id="project-irctc">
-        <div class="project-top">
-          <div class="project-media">
-            <span class="project-media-badge">
-              <span class="liveDot" aria-hidden="true"></span>
-              Live Prototype
-            </span>
-            <iframe src="/static/prototypes/irctc-checkout.html" title="IRCTC Rail Connect checkout interactive prototype preview" loading="lazy"></iframe>
-            <div class="project-media-cta">
-              <a href="/static/prototypes/irctc-checkout.html" target="_blank" rel="noopener noreferrer">
-                Open full prototype ↗
-              </a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-tags">
-              <span class="project-tag">Consumer UX</span>
-              <span class="project-tag">Checkout Conversion</span>
-              <span class="project-tag">High Concurrency</span>
-            </div>
-            <h3>IRCTC Rail Connect — Checkout &amp; Concurrency Redesign</h3>
-            <div class="project-role">Solo Product Teardown · UX Diagnostics, Redesign, Interactive Prototype</div>
-            <p class="project-summary">
-              A checkout teardown and redesign for India's highest-stakes 75-minute booking window — Tatkal ticketing — where asynchronous ad scripts and sudden layout shifts quietly cause transaction drop-offs for millions of users.
-            </p>
-            <div class="project-kpis">
-              <div class="kpi-box">
-                <div class="kpi-num">75 min</div>
-                <div class="kpi-delta">Highest-stakes window</div>
-                <div class="kpi-lbl">Daily Tatkal peak load</div>
-              </div>
-              <div class="kpi-box">
-                <div class="kpi-num">3</div>
-                <div class="kpi-delta">Root-cause diagnosed</div>
-                <div class="kpi-lbl">Core failure modes</div>
-              </div>
-              <div class="kpi-box">
-                <div class="kpi-num">P0</div>
-                <div class="kpi-delta">Critical path addressed</div>
-                <div class="kpi-lbl">Script freeze &amp; queue</div>
-              </div>
-            </div>
-            <div class="project-actions">
-              <a href="/work/irctc/" class="btn btn--primary btn-sm">Full Case Study →</a>
-              <a href="/static/prototypes/irctc-checkout.html" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">Open Prototype ↗</a>
-            </div>
-          </div>
-        </div>
-
-        <button class="case-toggle" data-target="case-irctc" type="button" aria-expanded="false">
-          View full case study <span class="chev">⌄</span>
-        </button>
-
-        <div class="case-detail" id="case-irctc">
-          <div class="case-grid">
-            <div class="case-block">
-              <h4>Problem Statement</h4>
-              <p>During the 10:00–11:15 AM Tatkal window, IRCTC's checkout asynchronously loads heavy ad scripts mid-transaction, causing sudden Cumulative Layout Shifts (CLS), mis-taps, payment gateway timeouts, and lost bookings.</p>
-            </div>
-            <div class="case-block">
-              <h4>Funnel Diagnostics</h4>
-              <p>Isolated three severe failure modes: layout-shift-driven invalid taps on form buttons, unthrottled non-essential scripts competing for client thread bandwidth, and silent session expiry under peak concurrency.</p>
-            </div>
-            <div class="case-block">
-              <h4>Product Strategy</h4>
-              <p>Protect the critical booking path: freeze non-essential third-party advertising scripts during the 75-minute window and introduce an explicit client-side virtual waiting queue rather than silent failure.</p>
-            </div>
-            <div class="case-block">
-              <h4>Prioritization &amp; Implementation</h4>
-              <p>MoSCoW triage: P0 — Passenger Autofill and Peak-Hour Ad-Free Script Freeze (removes the primary leak points); P1 — Client-Side Virtual Queue (stabilizes user perception under server backpressure).</p>
-            </div>
-            <div class="case-block wide">
-              <h4>KPIs &amp; Business Impact</h4>
-              <div class="case-kpi-row">
-                <div class="case-kpi">
-                  <div class="top"><span>Checkout Completion (Peak Window)</span><strong>Target: ↑</strong></div>
-                  <div class="bar-track"><div class="bar-fill" data-fill="85"></div></div>
-                </div>
-                <div class="case-kpi">
-                  <div class="top"><span>Checkout Latency</span><strong>Priority: High</strong></div>
-                  <div class="bar-track"><div class="bar-fill" data-fill="90"></div></div>
-                </div>
-                <div class="case-kpi">
-                  <div class="top"><span>Layout-Shift Incidents</span><strong>Addressed by P0</strong></div>
-                  <div class="bar-track"><div class="bar-fill" data-fill="95"></div></div>
-                </div>
-              </div>
-              <div class="learnings">
-                <strong>Key Takeaway:</strong> In high-stakes, time-boxed transactions, protecting the critical path is worth far more than short-term ad revenue. A transparent waiting state beats an unexplained timeout every time.
+                <strong>Key Takeaway:</strong> Operating system shell enhancements succeed when they reduce cognitive friction rather than adding visual complexity. Features must align with existing spatial memory.
               </div>
             </div>
           </div>
@@ -498,13 +475,13 @@
 
     </div>
 
-    <div class="pwo-cta-row animate-in" style="margin-top: var(--space-10); text-align: center;">
+    <!-- Supporting Work Sub-Bar -->
+    <div class="pwo-cta-row animate-in" style="margin-top: var(--space-8); text-align: center;">
+      <p class="muted-paragraph" style="margin-bottom: var(--space-3); font-size: var(--text-sm);">
+        Looking for additional teardowns, models, and live prototypes?
+      </p>
       <a href="/work/" class="btn btn--ghost">
-        See the full Proof of Work &amp; Evidence Directory
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;margin-left:6px;">
-          <line x1="5" y1="12" x2="19" y2="12"/>
-          <polyline points="12 5 19 12 12 19"/>
-        </svg>
+        Explore all strategic frameworks &amp; prototypes (Windows Taskflow, IRCTC, Enterprise AI Pilot Transition, Catalyst, LoDo, Context Engine, Vesper) →
       </a>
     </div>
   </div>

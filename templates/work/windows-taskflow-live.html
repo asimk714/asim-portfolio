@@ -53,73 +53,117 @@
       </svg>
       Prototype functionality is demonstrated here. This is not a Microsoft product.
     </div>
+
+    <div style="margin-top: var(--space-4); display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+      <a href="/static/prototypes/windows11/index.html?view=prototype" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); padding: var(--space-2) var(--space-4);">
+        <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+          <rect x="1" y="1" width="6" height="6"/>
+          <rect x="9" y="1" width="6" height="6"/>
+          <rect x="1" y="9" width="6" height="6"/>
+          <rect x="9" y="9" width="6" height="6"/>
+        </svg>
+        Launch Standalone Windows 11 Simulator (Slide Deck + OS Shell) ↗
+      </a>
+      <a href="/work/windows-taskflow/" class="btn btn--ghost" style="font-size: var(--text-xs); padding: var(--space-2) var(--space-4);">
+        Back to case study
+      </a>
+    </div>
   </div>
 </header>
 
 <!-- ============================================================
      LIVE EXPERIENCE: TASKFLOW WORKSPACE PROTOTYPE
      ============================================================ -->
-<section class="wt-live-section" style="padding: var(--space-12) 0 var(--space-16);">
+<section class="wt-live-section" style="padding: var(--space-8) 0 var(--space-16);">
   <div class="container">
-    <div class="wt-prototype-layout" style="display: grid; grid-template-columns: 1fr; gap: var(--space-5);">
+    <div class="wt-prototype-layout">
 
       <!-- Mock desktop -->
-      <div class="wt-desktop" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; min-height: 420px;">
+      <div class="wt-desktop">
 
         <!-- Desktop header (title bar) -->
-        <div class="wt-desktop-header" style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-2) var(--space-4); background: var(--bg-elevated); border-bottom: 1px solid var(--border-subtle);">
-          <span style="font-size: var(--text-xs); font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: var(--tracking-wide);">Desktop</span>
-          <span id="wt-clock" style="font-size: var(--text-xs); color: var(--text-muted); font-family: var(--font-mono);"></span>
+        <div class="wt-desktop-header">
+          <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="#0078d4">
+              <rect x="1" y="1" width="6" height="6"/>
+              <rect x="9" y="1" width="6" height="6"/>
+              <rect x="1" y="9" width="6" height="6"/>
+              <rect x="9" y="9" width="6" height="6"/>
+            </svg>
+            <span style="font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); letter-spacing: var(--tracking-wide);">Windows 11 · Taskflow Workspace Environment</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+            <a href="/static/prototypes/windows11/index.html?view=prototype" target="_blank" rel="noopener noreferrer" class="wt-popout-link" title="Open full standalone prototype in new tab">
+              <span>Pop out standalone simulator ↗</span>
+            </a>
+            <span id="wt-clock" style="font-size: var(--text-xs); color: var(--text-muted); font-family: var(--font-mono);"></span>
+          </div>
         </div>
 
         <!-- Desktop area (where windows live) -->
-        <div class="wt-desktop-area" style="flex: 1; position: relative; background: var(--bg); background-image: radial-gradient(circle at 20% 30%, var(--border) 0%, transparent 50%), radial-gradient(circle at 80% 70%, var(--border) 0%, transparent 50%); overflow: hidden;">
+        <div class="wt-desktop-area" id="wt-desktop-area">
+          <!-- Desktop App Shortcuts (click to launch) -->
+          <div class="wt-desktop-shortcuts" id="wt-desktop-shortcuts" aria-label="Desktop application shortcuts">
+            <!-- Shortcuts injected by JS -->
+          </div>
+
           <!-- App windows rendered here by JS -->
           <div id="wt-windows-container" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
             <!-- Windows injected by JS -->
           </div>
 
-          <!-- Empty desktop state -->
-          <div id="wt-desktop-empty" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: var(--text-sm); gap: var(--space-2);">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="opacity: 0.4;">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M3 9h18M9 21V9"/>
+          <!-- Empty desktop state overlay -->
+          <div id="wt-desktop-empty" class="wt-desktop-empty-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="color: var(--gold-bright);">
+              <rect x="2" y="2" width="20" height="20" rx="4"/>
+              <path d="M6 12h12M12 6v12"/>
             </svg>
-            <span>No apps open. Click apps from the taskbar to open them.</span>
+            <span>Click desktop icons or taskbar apps to assemble a Taskflow context</span>
           </div>
         </div>
 
         <!-- Taskbar -->
-        <div class="wt-taskbar" style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); background: var(--bg-elevated); border-top: 1px solid var(--border-subtle); flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; gap: var(--space-2); margin-right: auto;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="4"/>
-              <path d="M6 12h12M12 6v12" stroke="var(--bg)" stroke-width="2"/>
-            </svg>
-            <span style="font-weight: 600; font-size: var(--text-sm); color: var(--text-primary);">Taskflow</span>
+        <div class="wt-taskbar">
+          <!-- Centered dock items -->
+          <div class="wt-taskbar-dock">
+            <button class="wt-taskbar-start" title="Start">
+              <svg viewBox="0 0 16 16" width="16" height="16" fill="#0078d4">
+                <rect x="1" y="1" width="6" height="6"/>
+                <rect x="9" y="1" width="6" height="6"/>
+                <rect x="1" y="9" width="6" height="6"/>
+                <rect x="9" y="9" width="6" height="6"/>
+              </svg>
+            </button>
+            <div class="wt-taskbar-taskflow-badge" title="Windows Taskflow (Active Session)">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--gold-bright)">
+                <rect x="2" y="2" width="20" height="20" rx="4"/>
+                <path d="M6 12h12M12 6v12" stroke="#000" stroke-width="2.5"/>
+              </svg>
+              <span>Taskflow</span>
+            </div>
+
+            <!-- Running apps in taskbar -->
+            <div id="wt-taskbar-apps" class="wt-taskbar-apps-tray">
+              <!-- Running app buttons injected by JS -->
+            </div>
           </div>
 
-          <!-- Running apps in taskbar -->
-          <div id="wt-taskbar-apps" style="display: flex; gap: var(--space-1); flex-wrap: wrap;">
-            <!-- Running app buttons injected by JS -->
-          </div>
-
-          <!-- Workspace controls -->
-          <div class="wt-workspace-controls" style="display: flex; align-items: center; gap: var(--space-2); padding-left: var(--space-3); border-left: 1px solid var(--border-subtle); margin-left: var(--space-2);">
-            <input type="text" id="wt-workspace-name" placeholder="Workspace name..." style="padding: var(--space-1) var(--space-2); font-size: var(--text-xs); color: var(--text-primary); background: var(--bg); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); width: 120px; outline: none; font-family: var(--font-sans);">
-            <button id="wt-save-workspace-btn" style="padding: var(--space-1) var(--space-2); font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); background: var(--accent); border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap;">Save Workspace</button>
-            <button id="wt-restore-workspace-btn" style="padding: var(--space-1) var(--space-2); font-size: var(--text-xs); font-weight: 500; color: var(--text-primary); background: var(--bg); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap;">Restore</button>
+          <!-- Workspace quick controls -->
+          <div class="wt-workspace-controls">
+            <input type="text" id="wt-workspace-name" placeholder="Workspace name..." aria-label="Workspace name" style="padding: var(--space-1) var(--space-2); font-size: var(--text-xs); color: var(--text-primary); background: rgba(0,0,0,0.5); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); width: 130px; outline: none; font-family: var(--font-sans);">
+            <button id="wt-save-workspace-btn" style="padding: var(--space-1) var(--space-3); font-size: var(--text-xs); font-weight: 600; color: #000; background: var(--gold-bright); border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap;">Save</button>
+            <button id="wt-restore-workspace-btn" style="padding: var(--space-1) var(--space-3); font-size: var(--text-xs); font-weight: 500; color: var(--text-primary); background: rgba(255,255,255,0.08); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap;">Restore</button>
           </div>
         </div>
       </div>
 
       <!-- Workspace panel -->
-      <div class="wt-workspace-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-4);">
+      <div class="wt-workspace-panel">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3);">
           <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0;">Saved Workspaces</p>
           <span id="wt-workspace-count" style="font-size: var(--text-xs); color: var(--text-muted);">0 saved</span>
         </div>
-        <div id="wt-workspace-list" style="display: flex; flex-direction: column; gap: var(--space-2); max-height: 200px; overflow-y: auto;">
+        <div id="wt-workspace-list" style="display: flex; flex-direction: column; gap: var(--space-2); max-height: 220px; overflow-y: auto;">
           <!-- Saved workspaces injected by JS -->
           <p id="wt-workspace-empty" style="color: var(--text-muted); font-size: var(--text-sm); text-align: center; padding: var(--space-4);">No workspaces saved yet. Arrange apps, then save.</p>
         </div>
@@ -127,17 +171,16 @@
         <div style="margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle);">
           <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-2);">How to try it</p>
           <ol style="margin: 0; padding-left: var(--space-4); font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-relaxed);">
-            <li>Click an app in the taskbar to open it on the desktop</li>
-            <li>Click a window's close button to close it</li>
-            <li>Arrange the open apps to represent a work context</li>
-            <li>Enter a name and click "Save Workspace"</li>
-            <li>Open more apps, then click "Restore" to return to a saved workspace</li>
+            <li>Click desktop icons or taskbar buttons to launch application windows.</li>
+            <li>Drag windows by their titlebars to arrange your multi-app layout.</li>
+            <li>Type a context name (e.g. <em>"Q3 Revenue Review"</em>) and click <strong>Save</strong>.</li>
+            <li>Close or rearrange apps, then click <strong>Restore</strong> to instantly recover the workspace context.</li>
           </ol>
         </div>
 
         <div style="margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-size: var(--text-xs); color: var(--text-muted);">
           <span style="font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--text-muted); display: block; margin-bottom: var(--space-1);">Concept prototype</span>
-          This is a demonstration of the Taskflow interaction model. No real apps, no real OS, no persistence beyond this session.
+          Demonstrating shell-level workspace continuity. State is maintained locally within the active browser session.
         </div>
       </div>
     </div>
@@ -162,23 +205,37 @@
      ============================================================ -->
 <style>
   .wt-live-section {
-    padding: var(--space-12) 0 var(--space-16);
+    padding: var(--space-8) 0 var(--space-16);
   }
 
   .wt-prototype-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-5);
+    gap: var(--space-6);
   }
 
+  .wt-popout-link {
+    font-size: var(--text-xs);
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+  .wt-popout-link:hover {
+    color: var(--gold-bright);
+    text-decoration: underline;
+  }
+
+  /* Authentic Windows 11 Desktop Chassis */
   .wt-desktop {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-xl);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 420px;
+    min-height: 600px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
 
   .wt-desktop-header {
@@ -186,39 +243,116 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--space-2) var(--space-4);
-    background: var(--bg-elevated);
-    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  /* Bloom Wallpaper Canvas */
   .wt-desktop-area {
     flex: 1;
     position: relative;
-    background: var(--bg);
-    background-image: radial-gradient(circle at 20% 30%, var(--border) 0%, transparent 50%), radial-gradient(circle at 80% 70%, var(--border) 0%, transparent 50%);
+    background: #0b1329 url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    min-height: 520px;
+  }
+
+  /* Desktop App Shortcuts */
+  .wt-desktop-shortcuts {
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .wt-desktop-shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 72px;
+    padding: 6px 4px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all var(--transition-fast);
+    user-select: none;
+    text-align: center;
+  }
+
+  .wt-desktop-shortcut:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+  }
+
+  .wt-shortcut-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  }
+
+  .wt-shortcut-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  /* Desktop notification pill */
+  .wt-desktop-empty-pill {
+    position: absolute;
+    bottom: var(--space-6);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-full);
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    pointer-events: none;
+    z-index: 5;
+    transition: opacity var(--transition-base);
+  }
+
+  /* Fluent App Windows */
+  .wt-window {
+    position: absolute;
+    background: rgba(20, 27, 45, 0.94);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    min-height: 220px;
+    user-select: none;
+    transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+    z-index: 20;
     overflow: hidden;
   }
 
-  .wt-window {
-    position: absolute;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    display: flex;
-    flex-direction: column;
-    min-width: 200px;
-    min-height: 120px;
-    cursor: move;
-    user-select: none;
-    transition: box-shadow var(--transition-fast);
-  }
-
-  .wt-window:hover {
-    box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+  .wt-window.active {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.75), 0 0 0 1px var(--accent-soft);
+    z-index: 50;
   }
 
   .wt-window.dragging {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    opacity: 0.95;
     z-index: 100;
   }
 
@@ -226,157 +360,321 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-2) var(--space-3);
-    background: var(--bg-muted);
-    border-bottom: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    padding: 6px 12px;
+    background: rgba(30, 41, 67, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     cursor: move;
   }
 
-  .wt-window-title {
-    font-size: var(--text-xs);
-    font-weight: 600;
-    color: var(--text-primary);
+  .wt-window-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     flex: 1;
+    overflow: hidden;
   }
 
-  .wt-window-close {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
+  .wt-window-icon {
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .wt-window-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #e2e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .wt-window-controls {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .wt-win-btn {
+    width: 24px;
+    height: 22px;
     border: none;
     background: transparent;
-    color: var(--text-muted);
+    color: #94a3b8;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    transition: background var(--transition-fast);
+    font-size: 11px;
+    border-radius: 4px;
+    transition: all var(--transition-fast);
   }
-
+  .wt-win-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
   .wt-window-close:hover {
-    background: var(--color-error-soft);
-    color: var(--color-error);
+    background: #ef4444 !important;
+    color: #fff !important;
   }
 
   .wt-window-body {
     flex: 1;
-    padding: var(--space-3);
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
     overflow: auto;
-    min-height: 80px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    background: rgba(15, 23, 42, 0.85);
   }
 
-  .wt-window-body p {
-    margin: 0 0 var(--space-2);
+  /* Specific App Theme Bodies */
+  .wt-app-chrome {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .wt-chrome-tabs {
+    display: flex;
+    background: rgba(15, 23, 42, 0.9);
+    padding: 4px 8px 0;
+    gap: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .wt-chrome-tab {
+    padding: 4px 10px;
+    font-size: 11px;
+    border-radius: 6px 6px 0 0;
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+    cursor: pointer;
+  }
+  .wt-chrome-tab.active {
+    background: rgba(30, 41, 67, 0.9);
+    color: #fff;
+    font-weight: 500;
+  }
+  .wt-chrome-url {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    margin: 6px 8px;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .wt-chrome-page {
+    padding: 10px 14px;
+    flex: 1;
+    overflow-y: auto;
+    color: #cbd5e1;
   }
 
-  .wt-window-body p:last-child {
-    margin-bottom: 0;
+  .wt-app-vscode {
+    display: flex;
+    height: 100%;
+    font-family: var(--font-mono);
+  }
+  .wt-vscode-sidebar {
+    width: 36px;
+    background: rgba(15, 23, 42, 0.95);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+    gap: 12px;
+    font-size: 14px;
+    color: #64748b;
+  }
+  .wt-vscode-editor {
+    flex: 1;
+    padding: 10px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #93c5fd;
+    overflow-y: auto;
   }
 
+  .wt-app-excel {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .wt-excel-formula {
+    background: rgba(0,0,0,0.3);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #10b981;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .wt-excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    color: #cbd5e1;
+  }
+  .wt-excel-table th, .wt-excel-table td {
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 4px 8px;
+  }
+  .wt-excel-table th {
+    background: rgba(255,255,255,0.05);
+    color: #94a3b8;
+    text-align: left;
+  }
+
+  .wt-app-teams {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+  }
+  .wt-teams-bubble {
+    background: rgba(98, 100, 167, 0.15);
+    border: 1px solid rgba(98, 100, 167, 0.3);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  /* Centered Windows 11 Taskbar */
   .wt-taskbar {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    background: var(--bg-elevated);
-    border-top: 1px solid var(--border-subtle);
-    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 6px var(--space-4);
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 48px;
+    gap: var(--space-3);
+  }
+
+  .wt-taskbar-dock {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 auto;
+  }
+
+  .wt-taskbar-start {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .wt-taskbar-start:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .wt-taskbar-taskflow-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(212, 167, 44, 0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold-bright);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(212, 167, 44, 0.2);
+  }
+
+  .wt-taskbar-apps-tray {
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
   .wt-taskbar-app-btn {
-    padding: var(--space-1) var(--space-2);
-    font-size: var(--text-xs);
-    color: var(--text-secondary);
-    background: var(--bg);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
+    padding: 5px 9px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
     cursor: pointer;
     transition: all var(--transition-fast);
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
   .wt-taskbar-app-btn:hover {
-    border-color: var(--accent);
-    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
   }
 
   .wt-taskbar-app-btn--active {
-    background: var(--accent-soft);
+    background: rgba(255, 255, 255, 0.12);
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--gold-bright);
+    box-shadow: inset 0 -2px 0 var(--gold-bright);
   }
 
   .wt-workspace-controls {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
-    padding-left: var(--space-3);
-    border-left: 1px solid var(--border-subtle);
-    margin-left: var(--space-2);
+    gap: 6px;
+    margin-left: auto;
   }
 
   .wt-workspace-panel {
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
-    padding: var(--space-4);
+    padding: var(--space-5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
 
-  .wt-save-feedback {
+  .wt-save-feedback, .wt-restore-feedback {
     margin-top: var(--space-2);
     padding: var(--space-2) var(--space-3);
-    background: var(--evidence-verified-bg);
-    border: 1px solid var(--evidence-verified-bg);
     border-radius: var(--radius-sm);
     font-size: var(--text-xs);
-    color: var(--evidence-verified);
     display: none;
   }
-
-  .wt-save-feedback--visible {
+  .wt-save-feedback--visible, .wt-restore-feedback--visible {
     display: block;
   }
 
-  .wt-restore-feedback {
-    margin-top: var(--space-2);
-    padding: var(--space-2) var(--space-3);
-    background: var(--evidence-observed-bg);
-    border: 1px solid var(--evidence-observed-bg);
-    border-radius: var(--radius-sm);
-    font-size: var(--text-xs);
-    color: var(--evidence-observed);
-    display: none;
-  }
-
-  .wt-restore-feedback--visible {
-    display: block;
-  }
-
-  @media (max-width: 640px) {
+  @media (max-width: 820px) {
     .wt-taskbar {
-      flex-direction: column;
-      align-items: stretch;
+      flex-wrap: wrap;
     }
-
+    .wt-taskbar-dock {
+      margin: 0;
+      overflow-x: auto;
+      max-width: 100%;
+    }
     .wt-workspace-controls {
-      border-left: none;
-      border-top: 1px solid var(--border-subtle);
-      margin-left: 0;
-      padding-left: 0;
-      padding-top: var(--space-2);
-    }
-
-    .wt-workspace-controls input {
       width: 100%;
+      margin-left: 0;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
-
-    .wt-workspace-controls button {
+    .wt-workspace-controls input {
       flex: 1;
-      justify-content: center;
     }
   }
 </style>

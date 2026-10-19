@@ -34,13 +34,55 @@
         </span>
       </div>
       <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
-        Catalyst
+        Catalyst — Keyboard-First Interaction Study
       </h1>
       <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
-        A keyboard-first interaction design study — a working product built as vanilla JS with localStorage,
-        demonstrating the interaction paradigm inspired by Linear. Not a clone. Three documented improvements
-        over the reference. No framework. No backend.
+        A working web application built in vanilla JavaScript and localStorage exploring keyboard-first UX paradigms inspired by Linear. Built with zero dependencies, zero build steps, and instant client-side state.
       </p>
+
+      <!-- Structured 2-Column At a Glance -->
+      <div class="case-study-at-a-glance animate-in animate-in--delay-2" style="margin-top: var(--space-5);">
+        <div class="at-a-glance__header">
+          <span class="at-a-glance__label">Executive Summary</span>
+          <span class="at-a-glance__badge">Interaction Design Study</span>
+        </div>
+        <div class="at-a-glance__grid">
+          <div class="at-a-glance__card at-a-glance__card--problem">
+            <div class="at-a-glance__tag">Problem</div>
+            <p class="at-a-glance__content">
+              <strong>Mouse Drag in Productivity Tools:</strong> Productivity software often treats the mouse as primary and keyboard shortcuts as an afterthought, creating high physical context switching during repetitive triage and backlog workflows.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--decision">
+            <div class="at-a-glance__tag">Decision</div>
+            <p class="at-a-glance__content">
+              <strong>Keyboard-Native Architecture:</strong> Engineered every navigation path, modal, and state update to trigger via key sequences in vanilla JavaScript with localStorage persistence—eliminating frameworks, bundling, and server round-trips.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--evidence">
+            <div class="at-a-glance__tag">Evidence</div>
+            <p class="at-a-glance__content">
+              <strong>Functional Tool:</strong> Live interactive web prototype (<a href="/work/catalyst/live/">launch prototype</a>) with keyboard command mapping, item state cycling, and persistent browser storage.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--boundary">
+            <div class="at-a-glance__tag">Boundary</div>
+            <p class="at-a-glance__content">
+              <strong>Study Prototype:</strong> Built as a solo interaction design exploration; not tested with external user usability benchmarks or validated against enterprise collaboration requirements.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/work/catalyst/live/" class="btn btn--primary">
+          Launch Catalyst Prototype
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="/work/" class="btn btn--ghost">
+          Back to Proof of Work
+        </a>
+      </div>
     </div>
   </div>
 </header>
