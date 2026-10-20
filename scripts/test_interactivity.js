@@ -6,6 +6,7 @@ const { spawn } = require('child_process');
 
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const DEBUG_PORT = 9223;
+const BASE_URL = process.env.TEST_BASE_URL || 'http://127.0.0.1:5000';
 
 async function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -40,19 +41,20 @@ function httpPut(url) {
 }
 
 async function runTest() {
-  // 0. Preflight check for running server on 127.0.0.1:5000
+  // 0. Preflight check for running server on BASE_URL
   try {
     await new Promise((resolve, reject) => {
-      const req = http.get('http://127.0.0.1:5000/', { timeout: 2000 }, (res) => {
+      const targetUrl = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
+      const req = http.get(targetUrl, { timeout: 2000 }, (res) => {
         resolve();
       });
       req.on('error', reject);
-      req.on('timeout', () => { req.destroy(); reject(new Error('Timeout connecting to 127.0.0.1:5000')); });
+      req.on('timeout', () => { req.destroy(); reject(new Error(`Timeout connecting to ${BASE_URL}`)); });
     });
-    console.log('[OK] Server preflight passed: 127.0.0.1:5000 is live.');
+    console.log(`[OK] Server preflight passed: ${BASE_URL} is live.`);
   } catch (err) {
-    console.error('[FAIL] Server preflight failed: Flask server is not responding on http://127.0.0.1:5000.');
-    console.error('Please ensure the Flask app is running before executing this test.');
+    console.error(`[FAIL] Server preflight failed: Server is not responding on ${BASE_URL}.`);
+    console.error('Please ensure the web server is running before executing this test.');
     process.exit(1);
   }
 
@@ -150,7 +152,7 @@ async function runTest() {
     }
 
     console.log('--> Testing /work/windows-taskflow/live/...');
-    await navigateTo('http://127.0.0.1:5000/work/windows-taskflow/live/');
+    await navigateTo(`${BASE_URL}/work/windows-taskflow/live/`);
 
     let wtState = await evaluate(`({
       hasTaskbarApps: document.querySelectorAll('.wt-taskbar-app-btn').length,
@@ -178,7 +180,7 @@ async function runTest() {
 
     // 2. Test Standalone Windows 11 prototype: /static/prototypes/windows11/index.html
     console.log('\n--> Testing /static/prototypes/windows11/index.html...');
-    await navigateTo('http://127.0.0.1:5000/static/prototypes/windows11/index.html');
+    await navigateTo(`${BASE_URL}/static/prototypes/windows11/index.html`);
 
     let win11State = await evaluate(`({
       activeView: document.querySelector('.view-section.active') ? document.querySelector('.view-section.active').id : null,
@@ -201,7 +203,7 @@ async function runTest() {
 
     // 3. Test IRCTC live route: /work/irctc/live/
     console.log('\n--> Testing /work/irctc/live/...');
-    await navigateTo('http://127.0.0.1:5000/work/irctc/live/');
+    await navigateTo(`${BASE_URL}/work/irctc/live/`);
 
     let irctcState = await evaluate(`({
       btnToggleCurrent: !!document.getElementById('irctc-btn-toggle-current'),
@@ -237,7 +239,7 @@ async function runTest() {
 
     // 4. Test Standalone IRCTC: /static/prototypes/irctc-checkout.html
     console.log('\n--> Testing /static/prototypes/irctc-checkout.html...');
-    await navigateTo('http://127.0.0.1:5000/static/prototypes/irctc-checkout.html');
+    await navigateTo(`${BASE_URL}/static/prototypes/irctc-checkout.html`);
 
     let irctcStandalone = await evaluate(`({
       title: document.title,
