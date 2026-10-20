@@ -45,7 +45,8 @@ async function runTest() {
   try {
     await new Promise((resolve, reject) => {
       const targetUrl = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
-      const req = http.get(targetUrl, { timeout: 2000 }, (res) => {
+      const client = targetUrl.startsWith('https:') ? require('https') : http;
+      const req = client.get(targetUrl, { timeout: 4000 }, (res) => {
         resolve();
       });
       req.on('error', reject);
