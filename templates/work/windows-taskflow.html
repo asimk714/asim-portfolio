@@ -1,0 +1,430 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     WINDOWS 11 TASKFLOW — CASE STUDY
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to Proof of Work
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Windows Taskflow</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Concept teardown + prototype</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in">
+      <div class="inline-flex items-center gap-2 mb-3" style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--observed" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-observed-bg); color: var(--evidence-observed); border: 1px solid var(--evidence-observed-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-observed); flex-shrink: 0;"></span>
+          Concept prototype
+        </span>
+        <span class="evidence-label evidence-label--not-evidenced" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); border: 1px solid var(--evidence-not-evidenced-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-not-evidenced); flex-shrink: 0; opacity: 0.5;"></span>
+          Unvalidated concept
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Windows 11 — Taskflow: Context-Aware Workspaces
+      </h1>
+      <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
+        A product teardown of Windows 11's shell proposing "Taskflow" — a capability that captures, persists,
+        and restores entire multi-app work contexts (windows, tabs, files) as named workspaces backed by OneDrive sync.
+      </p>
+
+      <!-- Structured 2-Column At a Glance -->
+      <div class="case-study-at-a-glance animate-in animate-in--delay-2" style="margin-top: var(--space-5);">
+        <div class="at-a-glance__header">
+          <span class="at-a-glance__label">Executive Summary</span>
+          <span class="at-a-glance__badge">OS Shell Product Teardown</span>
+        </div>
+        <div class="at-a-glance__grid">
+          <div class="at-a-glance__card at-a-glance__card--problem">
+            <div class="at-a-glance__tag">Problem</div>
+            <p class="at-a-glance__content">
+              <strong>Context Fragmentation:</strong> Windows 11 treats the OS as an application launcher. Reboots, docking changes, and context switching force knowledge workers to manually rebuild multi-app window arrangements dozens of times per week.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--decision">
+            <div class="at-a-glance__tag">Decision</div>
+            <p class="at-a-glance__content">
+              <strong>Taskflow Workspace Model:</strong> Elevate the multi-app workspace (active windows, browser tabs, pinned documents) into an atomic, named unit synced via OneDrive, converting cloud storage into sticky productivity infrastructure.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--evidence">
+            <div class="at-a-glance__tag">Evidence</div>
+            <p class="at-a-glance__content">
+              <strong>Interactive Prototype:</strong> Functional browser prototype (<a href="/work/windows-taskflow/live/">live preview</a>) demonstrating workspace capture, window management, and cloud restore workflows alongside a full PRD.
+            </p>
+          </div>
+          <div class="at-a-glance__card at-a-glance__card--boundary">
+            <div class="at-a-glance__tag">Boundary</div>
+            <p class="at-a-glance__content">
+              <strong>Concept Teardown:</strong> Independent PM teardown and interaction prototype. Not built within Microsoft Windows or validated with production Windows telemetry.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <a href="/work/windows-taskflow/live/" class="btn btn--primary">
+          Launch Windows 11 Prototype
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="/work/" class="btn btn--ghost">
+          Back to Proof of Work
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 — CONTEXT
+     ============================================================ -->
+<article class="case-study-section" id="context">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Context</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        Windows 11's shell is a capable OS interface, but it still behaves primarily as an app launcher —
+        every reboot, reconnect, or device switch forces users to manually rebuild the arrangement of windows,
+        tabs, and files they were mid-task on. For knowledge workers who operate across multiple applications
+        simultaneously, this context reconstruction happens dozens of times a week, quietly taxing focus.
+      </p>
+      <p class="body-text">
+        This case study is a solo product teardown of Windows 11's shell, proposing "Taskflow" — a native
+        capability that saves and restores entire multi-app work contexts as named, shareable workspaces.
+        The concept was developed as a PRD + interactive prototype exercise, not as a Microsoft product or a
+        validated feature proposal.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     02 — PROBLEM STATEMENT
+     ============================================================ -->
+<article class="case-study-section" id="problem">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Problem Statement</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The problem statement is a product hypothesis, developed from desk research and hands-on teardown —
+          not from primary user interviews.
+        </p>
+      </div>
+      <p class="body-text">
+        Modern OS shells still behave like app launchers — every reboot, reconnect, or device switch forces
+        users to manually rebuild the exact arrangement of windows, tabs, and files they were mid-task on.
+        This quietly taxes focus dozens of times a week and breaks the continuity of complex multi-app workflows.
+      </p>
+      <p class="body-text" style="margin-top: var(--space-3);">
+        The deeper problem is not that Windows doesn't remember open apps — it does, broadly. The problem is
+        that it doesn't remember <em>work contexts</em>: the specific arrangement of apps, windows, tabs, and
+        files that together constitute "what I was doing." A reboot restores apps, but not the workspace.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     03 — PRODUCT DECISION
+     ============================================================ -->
+<article class="case-study-section" id="decision">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Product Decision</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The decisions below are product choices for the concept. They are not validated with users or with
+          Microsoft.
+        </p>
+      </div>
+
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">What Taskflow would do</div>
+        <p class="decision-card__text">
+          Save and restore entire multi-app work contexts — windows, tabs, files — as named, shareable
+          workspaces. A user arranges their workspace (e.g., "Q3 Financial Review" with Chrome research tabs,
+          Excel audit file, VS Code notes, Teams channel), saves it as a Taskflow workspace, and can restore it
+          later or share it with a colleague as a link.
+        </p>
+      </div>
+
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">OneDrive as sticky infrastructure</div>
+        <p class="decision-card__text">
+          The concept positions OneDrive as sticky, workspace-critical infrastructure rather than passive backup.
+          Workspace state lives in OneDrive, so it follows the user across devices and becomes part of the working
+          flow — not something they think about separately.
+        </p>
+      </div>
+
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">Native, not third-party</div>
+        <p class="decision-card__text">
+          Taskflow is scoped as a native Windows Shell capability tied to OneDrive and Copilot, not a
+          third-party tool. Native integration gives it access to window state, tab state, and file state that
+          third-party tools cannot reliably capture. The concept is designed for enterprise and power-user
+          segments first.
+        </p>
+      </div>
+
+      <div class="decision-card">
+        <div class="decision-card__label">What the concept does not claim</div>
+        <p class="decision-card__text">
+          This is a concept design and interactive prototype exercise. It is not a Microsoft product proposal
+          that has been reviewed, validated, or approved. It does not claim to be feasible within Microsoft's
+          actual engineering constraints, roadmap, or business model. It does not claim to be a real product.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     04 — HOW IT WORKS (CONCEPT)
+     ============================================================ -->
+<article class="case-study-section" id="how-it-works">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">How It Works (Concept)</h2>
+    <div class="case-study-body">
+      <p class="body-text">
+        The concept has four layers: workspace capture, workspace storage, workspace restore, and workspace
+        sharing. The interactive prototype demonstrates the capture and restore flow — arranging apps, saving a
+        workspace, and launching it to see the apps animate into place.
+      </p>
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">Capture</div>
+        <p class="decision-card__text">
+          The user arranges their desktop — opens apps, positions windows, snaps layouts, opens browser tabs and
+          files. Taskflow captures this arrangement as a workspace state: which apps are open, their positions,
+          which tabs are active, which files are referenced.
+        </p>
+      </div>
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">Storage</div>
+        <p class="decision-card__text">
+          Workspace state is stored in OneDrive, associated with the user's account. This makes workspaces
+          available across devices and turns OneDrive into workspace-critical infrastructure rather than passive
+          backup.
+        </p>
+      </div>
+      <div class="decision-card" style="margin-bottom: var(--space-4);">
+        <div class="decision-card__label">Restore</div>
+        <p class="decision-card__text">
+          The user opens a workspace (by name, by recent list, or by search), and Taskflow restores the captured
+          state — apps launch, windows arrange, tabs open, files reference. The target is near-instant restore so
+          the workspace feels native, not like a setup chore.
+        </p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card__label">Share</div>
+        <p class="decision-card__text">
+          Workspaces can be shared as links. A colleague opens the link and gets the same workspace state —
+          useful for handoffs, reviews, and collaborative contexts. The share link is designed as a natural viral
+          loop each time a workspace is handed off.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     05 — PRIORITIZATION
+     ============================================================ -->
+<article class="case-study-section" id="prioritization">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Prioritization</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          Feature candidates were scored with RICE and MoSCoW. These are proposed prioritization decisions for
+          the concept, not validated priorities.
+        </p>
+      </div>
+      <p class="body-text">
+        Local state-restore under 3.5 seconds ranked highest on Reach and Impact, setting the non-negotiable
+        performance bar the rest of the design had to clear. Cross-app workspace save is P0. Shareable workspace
+        links are P1 — high impact as a viral loop, but secondary to the core save/restore experience.
+      </p>
+      <div class="decision-card">
+        <div class="decision-card__label">P0 — Native save / resume</div>
+        <p class="decision-card__text">
+          Save and restore the current multi-app workspace locally under 3.5 seconds. This is the non-negotiable
+          bar: above ~3.5 seconds, users likely default back to manual re-setup, and the feature loses its value.
+        </p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-card__label">P1 — Shareable workspace links</div>
+        <p class="decision-card__text">
+          Enable sharing workspaces as links for handoffs and collaboration. High impact as a viral loop; secondary
+          to core save/restore.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     06 — KPI MODEL
+     ============================================================ -->
+<article class="case-study-section" id="kpis">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">KPI Model</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--hypothesis">Hypothesis</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The KPIs below are a design target / hypothesis model for the concept. They are not measured results.
+        </p>
+      </div>
+      <p class="body-text">
+        The concept's success would be measured against three dimensions: performance (does restore feel native?),
+        adoption (do users save and restore workspaces?), and business impact (does OneDrive stickiness increase?).
+      </p>
+      <div class="kpi-grid" style="display: grid; grid-template-columns: 1fr; gap: var(--space-3); margin-top: var(--space-4);">
+        <div class="kpi-card" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p style="font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent); margin: 0 0 var(--space-1);">State-Restore Latency</p>
+          <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-1);">Target: &lt;3.5s</p>
+          <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 0;">Design target — the threshold below which restore feels native. Above this, users likely default to manual re-setup.</p>
+        </div>
+        <div class="kpi-card" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p style="font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent); margin: 0 0 var(--space-1);">Cross-App Workspace Save</p>
+          <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-1);">Priority: P0</p>
+          <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 0;">Non-negotiable — the core save/restore experience without which the concept has no value.</p>
+        </div>
+        <div class="kpi-card" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+          <p style="font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent); margin: 0 0 var(--space-1);">Shareable Workspace Links</p>
+          <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-1);">Priority: P1</p>
+          <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 0;">Viral loop — each workspace handoff is a natural distribution channel. High impact, secondary to core.</p>
+        </div>
+      </div>
+      <div class="label-block label-block--caveat" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          These are design targets and prioritization decisions for a concept. They are not measured outcomes.
+          No adoption, retention, or business impact data exists for this concept.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     07 — EVIDENCE LIMITS
+     ============================================================ -->
+<article class="case-study-section" id="evidence-limits">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">Evidence Limits</h2>
+    <div class="case-study-body">
+      <div class="limits-block" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+        <p class="limits-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-3);">What Windows Taskflow demonstrates</p>
+        <ul class="body-list" style="margin: 0;">
+          <li>A complete product teardown of Windows 11's shell — problem, concept, prioritization, KPI model</li>
+          <li>An interactive prototype demonstrating workspace capture, save, and restore</li>
+          <li>A concept design with RICE/MoSCoW prioritization and a KPI model</li>
+          <li>Solo product work — teardown, PRD, prototype, KPI model — done end to end</li>
+        </ul>
+        <p class="limits-block__label" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); margin-top: var(--space-4); margin-bottom: var(--space-3);">What Windows Taskflow does not claim</p>
+        <ul class="body-list" style="margin: 0;">
+          <li>That Taskflow is a real Microsoft product or proposal</li>
+          <li>User research or primary interviews</li>
+          <li>Validated demand or adoption</li>
+          <li>Measured performance, retention, or business impact</li>
+          <li>That the concept is feasible within Microsoft's actual constraints</li>
+          <li>That the 3.5s target is the right threshold — it is a design assumption</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     08 — WHAT I WOULD VALIDATE NEXT
+     ============================================================ -->
+<article class="case-study-section" id="next">
+  <div class="container">
+    <div class="case-study-toc-target"></div>
+    <h2 class="section-title">What I Would Validate Next</h2>
+    <div class="case-study-body">
+      <div class="label-block">
+        <span class="evidence-label evidence-label--proposed">Proposed</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          The validation steps below are proposed. None have been done for this concept.
+        </p>
+      </div>
+      <ol class="body-list">
+        <li><strong>Problem validation.</strong> Confirm with real Windows users that workspace reconstruction after
+        reboot/reconnect is a painful enough problem to warrant a dedicated shell capability.</li>
+        <li><strong>Performance threshold.</strong> Test whether the ~3.5s restore threshold is the right cut point
+        — above what latency do users actually default to manual re-setup?</li>
+        <li><strong>Concept testing.</strong> Show the prototype to potential users and observe whether the workspace
+        capture/restore flow matches what they actually need.</li>
+        <li><strong>Business model.</strong> Assess whether OneDrive-as-sticky-infrastructure is a viable positioning
+        — does it increase retention, storage upsell, or both?</li>
+      </ol>
+      <div class="label-block label-block--caveat" style="margin-top: var(--space-4);">
+        <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
+        <p class="body-text" style="margin-top: var(--space-2);">
+          None of the above has been done. Windows Taskflow is a concept teardown and prototype. It is a way to
+          demonstrate product thinking — not a validated product.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============================================================
+     CTA ROW
+     ============================================================ -->
+<div class="container" style="margin-top: var(--space-10); display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+  <a href="/work/windows-taskflow/live/" class="btn btn--ghost">
+    Live Experience
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  </a>
+  <a href="/static/prototypes/windows11/index.html" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: var(--space-2);">
+    Launch Windows 11 Prototype
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  </a>
+  <a href="/work/" class="btn btn--ghost">
+    Back to Proof of Work
+  </a>
+</div>
+
+<div class="container" style="margin-top: var(--space-6); padding-bottom: var(--space-8); text-align: center;">
+  <p class="text-muted" style="font-size: var(--text-sm); max-width: 480px; margin-inline: auto;">
+    Windows Taskflow is a concept teardown and prototype. The thinking is concrete. The product is not.
+  </p>
+</div>
+
+{% endblock %}

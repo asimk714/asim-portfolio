@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Asim Kumar — Technical Product Manager Portfolio</title>
   <meta name="description" content="Asim Kumar — Product thinker. Technical builder. Evidence-driven. AI-assisted review tools, retention analytics, and local-first product tooling.">
-  <meta name="theme-color" content="#fdfcfa">
+  <meta name="theme-color" content="#0a0f1c">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/static/img/favicon.svg">
 
-  <!-- Fonts: Inter + Source Serif 4 + JetBrains Mono -->
+  <!-- Fonts: Space Grotesk + Inter + Source Serif 4 + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;550;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Design tokens -->
   <link rel="stylesheet" href="/static/css/design-tokens.css">
@@ -30,10 +30,25 @@
   <link rel="stylesheet" href="/static/css/components.lifecycle.css">
   <link rel="stylesheet" href="/static/css/pages.css">
 
-  <!-- Analytics / metro tag (minimal, no tracking) -->
+  <!-- Theme toggle & reading progress -->
   <script defer src="/static/js/theme.js"></script>
 </head>
 <body>
+
+  <!-- Ambient background fiber network & grain -->
+  <div class="bg-fiber" aria-hidden="true">
+    <svg viewBox="0 0 1200 900" preserveAspectRatio="none">
+      <path id="fiberPath" d="M -50 700 C 200 600, 300 800, 550 650 S 900 400, 1250 500" stroke="var(--gold)" stroke-width="1" fill="none" opacity="0.35"/>
+      <path d="M -50 200 C 250 100, 400 300, 650 150 S 1000 50, 1250 200" stroke="var(--gold)" stroke-width="1" fill="none" opacity="0.22"/>
+      <circle r="3" fill="var(--gold-bright)">
+        <animateMotion dur="9s" repeatCount="indefinite" path="M -50 700 C 200 600, 300 800, 550 650 S 900 400, 1250 500"/>
+      </circle>
+      <circle r="2.4" fill="var(--gold-bright)">
+        <animateMotion dur="12s" repeatCount="indefinite" path="M -50 200 C 250 100, 400 300, 650 150 S 1000 50, 1250 200"/>
+      </circle>
+    </svg>
+  </div>
+  <div class="bg-grain" aria-hidden="true"></div>
 
   <!-- ============================================================
        HEADER / NAVIGATION
@@ -41,7 +56,7 @@
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a href="/" class="site-brand" aria-label="Asim Kumar Portfolio — Home">
-        <span class="site-brand-mark" aria-hidden="true">AK</span>
+        <span class="brand-dot" aria-hidden="true"></span>
         <span class="site-brand-text">Asim Kumar</span>
       </a>
 
@@ -49,6 +64,7 @@
         <ul class="nav-list">
           <li><a href="/work/" class="nav-link" data-nav="work">Work</a></li>
           <li><a href="/how-i-work/" class="nav-link" data-nav="method">How I Work</a></li>
+          <li><a href="/resume/" class="nav-link" data-nav="resume">Resume</a></li>
           <li><a href="/#contact" class="nav-link" data-nav="contact">Contact</a></li>
         </ul>
       </nav>
@@ -94,6 +110,7 @@
       <ul class="mobile-nav-list">
         <li><a href="/work/" class="mobile-nav-link" data-mobile-nav="work">Work</a></li>
         <li><a href="/how-i-work/" class="mobile-nav-link" data-mobile-nav="how-i-work">How I Work</a></li>
+        <li><a href="/resume/" class="mobile-nav-link" data-mobile-nav="resume">Resume</a></li>
         <li><a href="/#contact" class="mobile-nav-link" data-mobile-nav="contact">Contact</a></li>
         <li><a href="/contact/" class="mobile-nav-link mobile-nav-link--cta" data-mobile-nav="contact-page">Contact</a></li>
       </ul>
@@ -123,15 +140,16 @@
           <li><a href="/work/reviewflow/">ReviewFlow</a></li>
           <li><a href="/work/unrot/">Unrot</a></li>
           <li><a href="/work/experiment-tracker/">Experiment Tracker</a></li>
-          <li><a href="/work/b1/">B1 — Strategy Hypothesis</a></li>
+          <li><a href="/work/b1/">Enterprise AI Pilot Transition</a></li>
           <li><a href="/how-i-work/">How I Work</a></li>
+          <li><a href="/resume/">Resume</a></li>
           <li><a href="/contact/">Contact</a></li>
           <li>
-            <a href="https://www.linkedin.com/in/asim-kumar-kh512" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <a href="https://www.linkedin.com/in/asim-kumar-b69558188" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.447 20.452h-8.934v-7.777c0-3.375 3.346-5.373 5.671-5.373h3.52V7.777c0-1.925.875-2.843 2.147-2.843 1.036 0 1.572.686 1.667 1.036l.161 1.488c.07.623.397 1.054.84 1.268l.846 1.054c.513.635 1.347 1.054 2.147 1.054 2.306 0 4.128-1.822 4.128-4.128v-7.777h-4.674v-3.52h4.674c4.328 0 7.307 3.002 7.307 6.928 0 3.927-2.98 6.93-7.307 6.93h-4.674v-3.52zM6.379 14.232c-1.282 0-2.373-1.097-2.373-2.373s1.091-2.373 2.373-2.373 2.373 1.097 2.373 2.373-1.091 2.373-2.373 2.373z"/>
               </svg>
-              linkedin.com/in/asim-kumar-kh512
+              linkedin.com/in/asim-kumar-b69558188
             </a>
           </li>
         </ul>

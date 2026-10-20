@@ -1,0 +1,401 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     EXPERIMENT TRACKER LIVE EXPERIENCE
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/experiment-tracker/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to case study
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Experiment Tracker</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Live Experience</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in">
+      <div class="inline-flex items-center gap-2 mb-3" style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--verified" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-verified-bg); color: var(--evidence-verified); border: 1px solid var(--evidence-verified-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-verified); flex-shrink: 0;"></span>
+          Working prototype
+        </span>
+        <span class="evidence-label evidence-label--not-evidenced" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); border: 1px solid var(--evidence-not-evidenced-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-not-evidenced); flex-shrink: 0; opacity: 0.5;"></span>
+          Illustrative data
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Try the experiment lifecycle
+      </h1>
+    </div>
+
+    <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
+      This interactive demonstrates the Experiment Tracker workflow: create an experiment, add runs,
+      compare results, and record a conclusion. The app is intentionally small — the point is closing
+      the loop between experimentation and decision, not building a complex tool.
+    </p>
+
+    <div class="inline-flex items-center gap-2" style="display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-4); font-size: var(--text-xs); color: var(--text-muted);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; opacity: 0.6;">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      Prototype functionality is demonstrated here. No real-user outcome is claimed.
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     DEMO: EXPERIMENT LIFECYCLE INTERACTIVE
+     ============================================================ -->
+<section class="et-live-section" style="padding: var(--space-12) 0 var(--space-16);">
+  <div class="container">
+    <div class="et-live-layout" style="display: grid; grid-template-columns: 1fr; gap: var(--space-8); align-items: start;">
+
+      <!-- LEFT: Experiment form + list -->
+      <div class="et-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column;">
+        <div class="et-panel-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-5);">
+          <div>
+            <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">Experiment</p>
+            <h2 style="font-size: var(--text-xl); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">Create an experiment</h2>
+          </div>
+          <span class="et-step-badge" style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); background: var(--bg-muted); border: 1px solid var(--border-subtle); padding: var(--space-1) var(--space-2); border-radius: var(--radius-full);">Step 1</span>
+        </div>
+
+        <form id="et-experiment-form" style="display: flex; flex-direction: column; gap: var(--space-4);">
+          <div>
+            <label style="display: block; font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Experiment name <span style="color: var(--accent); font-weight: 700;">*</span></label>
+            <input type="text" id="et-name" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans);" placeholder="e.g. Does reminder timing affect D1 retention?" required>
+          </div>
+          <div>
+            <label style="display: block; font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Hypothesis</label>
+            <textarea id="et-hypothesis" rows="2" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans); resize: vertical;" placeholder="e.g. Sending reminders at 9am increases D1 retention vs 6pm."></textarea>
+          </div>
+          <div>
+            <label style="display: block; font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Description</label>
+            <textarea id="et-description" rows="2" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans); resize: vertical;" placeholder="What are you testing and why?"></textarea>
+          </div>
+          <div>
+            <label style="display: block; font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Status</label>
+            <select id="et-status" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans); appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;12&quot; height=&quot;12&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;6 9 12 15 18 9&quot;/></svg>'); background-repeat: no-repeat; background-position: right var(--space-3) center; padding-right: var(--space-8); cursor: pointer;">
+              <option value="planned">planned</option>
+              <option value="running">running</option>
+              <option value="completed">completed</option>
+              <option value="failed">failed</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn--primary" id="et-create-btn" style="width: 100%; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-right: var(--space-1);">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Create Experiment
+          </button>
+        </form>
+
+        <!-- Existing experiments (illustrative) -->
+        <div style="margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--border-subtle);">
+          <p style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); margin: 0 0 var(--space-3);">Existing experiments (illustrative)</p>
+          <div id="et-experiment-list" style="display: flex; flex-direction: column; gap: var(--space-2);">
+            <!-- populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Experiment detail + runs + conclusion -->
+      <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+
+        <!-- Experiment detail -->
+        <div class="et-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column;">
+          <div class="et-panel-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+            <div>
+              <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">Detail</p>
+              <h2 style="font-size: var(--text-lg); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;" id="et-detail-title">Select an experiment</h2>
+            </div>
+            <span class="et-step-badge" style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); background: var(--bg-muted); border: 1px solid var(--border-subtle); padding: var(--space-1) var(--space-2); border-radius: var(--radius-full);">Step 2</span>
+          </div>
+
+          <div id="et-detail-content" style="display: none; flex: 1;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4);">
+              <div>
+                <p style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); margin: 0 0 var(--space-1);">Hypothesis</p>
+                <p id="et-detail-hypothesis" style="font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0;"></p>
+              </div>
+              <div>
+                <p style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); margin: 0 0 var(--space-1);">Status</p>
+                <span id="et-detail-status" style="display: inline-block; padding: var(--space-1) var(--space-2); font-size: var(--text-xs); font-weight: 600; border-radius: var(--radius-sm); text-transform: uppercase; letter-spacing: var(--tracking-wide);"></span>
+              </div>
+            </div>
+            <div style="margin-bottom: var(--space-4);">
+              <p style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); margin: 0 0 var(--space-1);">Description</p>
+              <p id="et-detail-description" style="font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0;"></p>
+            </div>
+          </div>
+
+          <div id="et-empty-detail" style="padding: var(--space-6); text-align: center; color: var(--text-muted); font-size: var(--text-sm);">
+            Select an experiment from the list to see details.
+          </div>
+        </div>
+
+        <!-- Runs -->
+        <div class="et-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column;">
+          <div class="et-panel-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+            <div>
+              <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">Runs</p>
+              <h2 style="font-size: var(--text-lg); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">Compare runs</h2>
+            </div>
+            <span class="et-step-badge" style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); background: var(--bg-muted); border: 1px solid var(--border-subtle); padding: var(--space-1) var(--space-2); border-radius: var(--radius-full);">Step 3</span>
+          </div>
+
+          <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-4);">
+            Select two runs to compare side by side. The Experiment Tracker's compare feature lets you see
+            runs next to each other — that's the comparison, not a chart.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              <select id="et-run-a" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans); appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;12&quot; height=&quot;12&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;6 9 12 15 18 9&quot;/></svg>'); background-repeat: no-repeat; background-position: right var(--space-3) center; padding-right: var(--space-8); cursor: pointer;">
+                <option value="">Select run A</option>
+              </select>
+              <select id="et-run-b" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans); appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;12&quot; height=&quot;12&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;6 9 12 15 18 9&quot;/></svg>'); background-repeat: no-repeat; background-position: right var(--space-3) center; padding-right: var(--space-8); cursor: pointer;">
+                <option value="">Select run B</option>
+              </select>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: flex-end;">
+              <button id="et-compare-btn" class="btn btn--ghost" style="font-size: var(--text-xs);">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-right: var(--space-1);">
+                  <line x1="18" y1="20" x2="18" y2="10"/>
+                  <line x1="12" y1="20" x2="12" y2="4"/>
+                  <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+                Compare
+              </button>
+            </div>
+          </div>
+
+          <div id="et-compare-result" style="margin-top: var(--space-4); display: none;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); padding: var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+              <div>
+                <p style="font-size: var(--text-xs); font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: var(--tracking-wide); margin: 0 0 var(--space-1);">Run A</p>
+                <p id="et-compare-a-name" style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin: 0 0 var(--space-1);"></p>
+                <p id="et-compare-a-result" style="font-size: var(--text-xs); color: var(--text-secondary); margin: 0;"></p>
+              </div>
+              <div>
+                <p style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); margin: 0 0 var(--space-1);">Run B</p>
+                <p id="et-compare-b-name" style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin: 0 0 var(--space-1);"></p>
+                <p id="et-compare-b-result" style="font-size: var(--text-xs); color: var(--text-secondary); margin: 0;"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="et-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column;">
+          <div class="et-panel-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+            <div>
+              <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">Conclusion</p>
+              <h2 style="font-size: var(--text-lg); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">Record what you concluded</h2>
+            </div>
+            <span class="et-step-badge" style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); background: var(--bg-muted); border: 1px solid var(--border-subtle); padding: var(--space-1) var(--space-2); border-radius: var(--radius-full);">Step 4 — Core</span>
+          </div>
+
+          <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-4);">
+            The conclusion is the product. Four fields: outcome, decision, next action, plus timestamps.
+            One conclusion per experiment. This is the smallest thing that closes the loop.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <div>
+              <label style="display: block; font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Outcome</label>
+              <textarea id="et-outcome" rows="2" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans); resize: vertical;" placeholder="What happened?"></textarea>
+            </div>
+            <div>
+              <label style="display: block; font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Decision</label>
+              <textarea id="et-decision" rows="2" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans); resize: vertical;" placeholder="What does this mean? What do you do next?"></textarea>
+            </div>
+            <div>
+              <label style="display: block; font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Next action</label>
+              <input type="text" id="et-next-action" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans);" placeholder="What's the next step?">
+            </div>
+          </div>
+
+          <button id="et-save-conclusion-btn" class="btn btn--primary" style="margin-top: var(--space-4); width: 100%; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-right: var(--space-1);">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+              <polyline points="17 21 17 13 7 13 7 21"/>
+              <polyline points="7 3 7 8 15 8"/>
+            </svg>
+            Save Conclusion
+          </button>
+
+          <div id="et-conclusion-result" style="margin-top: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--evidence-verified-bg); border: 1px solid var(--evidence-verified-bg); border-radius: var(--radius-md); display: none;">
+            <p style="font-size: var(--text-sm); color: var(--evidence-verified); font-weight: 600; margin: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: inline; vertical-align: -2px; margin-right: var(--space-1);">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Conclusion saved. Outcome, decision, and next action are now connected to this experiment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="et-nav-row" style="margin-top: var(--space-8); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+      <a href="/work/experiment-tracker/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;">
+          <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Experiment Tracker case study
+      </a>
+      <a href="/work/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESPONSIVE
+     ============================================================ -->
+<style>
+  .et-live-section {
+    padding: var(--space-12) 0 var(--space-16);
+  }
+
+  .et-live-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .et-live-layout {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  .et-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .et-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .et-step-badge {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+
+  .et-nav-row {
+    margin-top: var(--space-8);
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .experiment-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .experiment-item:hover {
+    border-color: var(--border-default);
+    background: var(--bg-surface);
+  }
+
+  .experiment-item--selected {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .experiment-item__name {
+    flex: 1;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .experiment-item__status {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+  }
+
+  .status-planned { background: var(--evidence-hypothesis-bg); color: var(--evidence-hypothesis); }
+  .status-running { background: var(--evidence-observed-bg); color: var(--evidence-observed); }
+  .status-completed { background: var(--evidence-verified-bg); color: var(--evidence-verified); }
+  .status-failed { background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .et-panel {
+      padding: var(--space-4);
+    }
+
+    .et-panel-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .et-nav-row {
+      flex-direction: column;
+    }
+
+    .et-nav-row a {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .et-live-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script src="/static/js/experiment-tracker-live.js" defer></script>
+
+{% endblock %}

@@ -24,7 +24,7 @@ This is a core differentiator. Most PM portfolios don't make this distinction ex
 **How to use:** For claims that can be directly verified by inspecting the project.
 
 **Examples:**
-- "22 automated tests pass" (Experiment Tracker — observed in test_smoke.py + test output)
+- "26 automated test functions authored across 4 test files" (Experiment Tracker — observed in repository test suite; 17-category verification matrix)
 - "247 deterministic prompt checks" (ReviewFlow — observed in tests/regression/ai-quality-measurement.ts)
 - "Measurement model with metric hierarchy and 7-stage funnel" (Unrot — observed in documentation)
 - "Flask + SQLite + Jinja2 + vanilla JS stack" (Experiment Tracker — observed in app.py, db.py, requirements.txt)
@@ -174,7 +174,7 @@ NOT EVIDENCED  ←  PROPOSED  ←  HYPOTHESIS  ←  INFERRED  ←  VERIFIED  ←
 
 | Claim | Label | Evidence |
 |---|---|---|
-| "22 automated tests pass" | OBSERVED | test_smoke.py + test output |
+| "26 automated test functions authored across 4 test files" | OBSERVED | 4 test modules in repository (local audit execution marked not yet tested) |
 | "17-category verification report" | OBSERVED | VERIFICATION.md |
 | "Database integrity verified" | VERIFIED | Tests + runtime inspection |
 | "Conclusion capture implemented" | VERIFIED | Routes + DB layer + templates + tests |

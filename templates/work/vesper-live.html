@@ -1,0 +1,326 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     VESPER — LIVE EXPERIENCE
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/vesper/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to case study
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Vesper</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Live Experience</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in">
+      <div class="inline-flex items-center gap-2 mb-3" style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--verified" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-verified-bg); color: var(--evidence-verified); border: 1px solid var(--evidence-verified-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-verified); flex-shrink: 0;"></span>
+          Working prototype
+        </span>
+        <span class="evidence-label evidence-label--not-evidenced" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); border: 1px solid var(--evidence-not-evidenced-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-not-evidenced); flex-shrink: 0; opacity: 0.5;"></span>
+          In-memory demo
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Try the local-first workspace
+      </h1>
+    </div>
+
+    <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
+      This interactive demonstrates Vesper's core interaction patterns: a sidebar of pages, inline block editing
+      with contenteditable blocks, a command palette (Ctrl/Cmd+K) for page search, and visual autosave feedback.
+      The demo runs in-memory in your browser — no backend, no database, no persistence beyond this session.
+    </p>
+
+    <div class="inline-flex items-center gap-2" style="display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-4); font-size: var(--text-xs); color: var(--text-muted);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; opacity: 0.6;">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      Prototype functionality is demonstrated here. No real users, no real data, no persistence.
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     LIVE EXPERIENCE: VESPER WORKSPACE DEMO
+     ============================================================ -->
+<section class="vesper-live-section" style="padding: var(--space-12) 0 var(--space-16);">
+  <div class="container">
+    <div class="vesper-live-layout" style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-5); align-items: start;">
+
+      <!-- Sidebar -->
+      <aside class="vesper-sidebar" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-4);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+          <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0;">Pages</p>
+          <button id="vesper-new-page-btn" class="btn btn--ghost" style="padding: var(--space-1) var(--space-2); font-size: var(--text-xs); display: inline-flex; align-items: center; gap: var(--space-1);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            New page
+          </button>
+        </div>
+        <div id="vesper-sidebar-pages" style="display: flex; flex-direction: column; gap: var(--space-1); max-height: 380px; overflow-y: auto;">
+          <!-- populated by JS -->
+        </div>
+        <div style="margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); font-size: var(--text-xs); color: var(--text-muted); display: flex; justify-content: space-between;">
+          <span id="vesper-page-count">0 pages</span>
+          <button id="vesper-reset-btn" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: var(--text-xs);">Reset demo</button>
+        </div>
+      </aside>
+
+      <!-- Editor area -->
+      <main class="vesper-editor" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); display: flex; flex-direction: column; overflow: hidden;">
+
+        <!-- Editor toolbar -->
+        <div class="vesper-toolbar" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border-subtle); flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2c-1.5 2-3 3.5-3 5.5 0 2 1.5 3.5 3 3.5s3-1.5 3-3.5c0-2-1.5-3.5-3-5.5z"/>
+              <path d="M12 12v10"/>
+            </svg>
+            <span style="font-weight: 600; color: var(--text-primary); font-size: var(--text-sm);">Vesper</span>
+          </div>
+          <div class="vesper-toolbar-actions" style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+            <button id="vesper-save-indicator" style="display: none; padding: var(--space-1) var(--space-2); font-size: var(--text-xs); font-weight: 500; color: var(--text-secondary); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+              <span id="vesper-save-text">Saving…</span>
+            </button>
+            <button id="vesper-favorite-btn" style="padding: var(--space-1) var(--space-2); font-size: var(--text-xs); display: inline-flex; align-items: center; gap: var(--space-1); background: none; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-muted); cursor: pointer;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              Favorite
+            </button>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); color: var(--text-muted);">
+            <span class="vesper-kbd-hint" style="display: inline-flex; align-items: center; gap: 4px;">
+              <kbd class="vesper-kbd" style="display: inline-block; padding: 1px 5px; font-size: var(--text-xs); font-family: var(--font-mono); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: 3px; color: var(--text-secondary);">Ctrl+K</kbd>
+              palette
+            </span>
+          </div>
+        </div>
+
+        <!-- Page title -->
+        <div style="padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--border-subtle);">
+          <input type="text" id="vesper-page-title" class="vesper-page-title-input" style="width: 100%; font-size: var(--text-lg); font-weight: 600; color: var(--text-primary); background: transparent; border: none; outline: none; font-family: var(--font-serif); padding: 0; border-bottom: 2px solid transparent;" placeholder="Untitled" value="Welcome to Vesper">
+        </div>
+
+        <!-- Blocks -->
+        <div class="vesper-blocks" style="flex: 1; overflow-y: auto; max-height: 400px; padding: var(--space-4) var(--space-5);" id="vesper-blocks-container">
+          <!-- populated by JS -->
+        </div>
+
+        <!-- Autosave status -->
+        <div style="padding: var(--space-2) var(--space-4); border-top: 1px solid var(--border-subtle); font-size: var(--text-xs); color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+          <span id="vesper-autosave-status">Autosave: idle</span>
+          <span style="color: var(--text-muted);">Blocks: <span id="vesper-block-count">0</span></span>
+        </div>
+      </main>
+    </div>
+
+    <!-- Command palette overlay trigger hint -->
+    <div class="vesper-palette-hint" style="margin-top: var(--space-4); padding: var(--space-3) var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--text-secondary); display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap;">
+      <span style="display: inline-flex; align-items: center; gap: var(--space-1); font-family: var(--font-mono); font-weight: 600; color: var(--accent);">
+        <kbd class="vesper-kbd" style="display: inline-block; padding: 2px 7px; font-size: var(--text-xs); font-family: var(--font-mono); background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 3px; color: var(--text-primary);">Ctrl+K</kbd>
+        or
+        <kbd class="vesper-kbd" style="display: inline-block; padding: 2px 7px; font-size: var(--text-xs); font-family: var(--font-mono); background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 3px; color: var(--text-primary);">Cmd+K</kbd>
+      </span>
+      <span style="color: var(--text-muted);">to open the command palette and search pages</span>
+    </div>
+
+    <!-- CTA row -->
+    <div style="margin-top: var(--space-8); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+      <a href="/work/vesper/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;">
+          <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Vesper case study
+      </a>
+      <a href="/work/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESPONSIVE
+     ============================================================ -->
+<style>
+  .vesper-live-section {
+    padding: var(--space-12) 0 var(--space-16);
+  }
+
+  .vesper-live-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .vesper-sidebar {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+  }
+
+  .vesper-editor {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .vesper-toolbar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .vesper-blocks {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .vesper-block {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    position: relative;
+    min-height: 32px;
+  }
+
+  .vesper-block:last-child {
+    border-bottom: none;
+  }
+
+  .vesper-block__type-badge {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1px 6px;
+    flex-shrink: 0;
+    margin-top: 3px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .vesper-block__content {
+    flex: 1;
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    line-height: var(--leading-relaxed);
+    outline: none;
+    padding: 2px 0;
+    min-height: 20px;
+  }
+
+  .vesper-block__content[contenteditable="true"]:empty::before {
+    content: attr(data-placeholder);
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  .vesper-block__actions {
+    position: absolute;
+    right: var(--space-2);
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    gap: var(--space-1);
+  }
+
+  .vesper-block:hover .vesper-block__actions {
+    display: flex;
+  }
+
+  .vesper-block-add-btn {
+    background: none;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  .vesper-block-add-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-default);
+  }
+
+  .vesper-palette-hint {
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .vesper-kbd {
+    display: inline-block;
+    padding: 1px 6px;
+    font-size: var(--text-xs);
+    font-family: var(--font-mono);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 3px;
+    color: var(--text-primary);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .vesper-live-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .vesper-sidebar {
+      order: 2;
+    }
+
+    .vesper-editor {
+      order: 1;
+    }
+  }
+</style>
+
+<script src="/static/js/vesper-live.js" defer></script>
+
+{% endblock %}

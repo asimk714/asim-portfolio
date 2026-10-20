@@ -62,20 +62,38 @@
 {% set stages = lifecycle_stages %}
 {% include '_lifecycle_evidence_strip.html' with context %}
 
-    <div class="case-study-at-a-glance animate-in animate-in--delay-3" style="margin-top: var(--space-5);">
-      <p class="case-study-at-a-glance__label">At a glance</p>
-      <p class="case-study-at-a-glance__text">
-        <strong>Problem:</strong> low D1 retention — people visit, then don't return the next day.
-        <strong>User/assumption:</strong> daily micro-learning users segmented by role/goal/experience —
-        defined in the schema, inferred, not validated with real users.
-        <strong>Product question:</strong> how do we give a daily micro-learning user a reason to return
-        tomorrow — not just a reason to start?
-        <strong>Decision:</strong> measure before optimizing — build the measurement system, funnel, and
-        A/B experiment plan before any intervention is validated.
-        <strong>Evidence:</strong> measurement model, D1 retention calculator, analytics dashboard,
-        A/B plan with power analysis, 20/20 functional verification, 35/35 tests.
-        <strong>Gap:</strong> no measured D1 outcome, no real users, no launch, no GTM, no scale.
-      </p>
+    <!-- Structured 2-Column At a Glance -->
+    <div class="case-study-at-a-glance animate-in animate-in--delay-3">
+      <div class="at-a-glance__header">
+        <span class="at-a-glance__label">Executive Summary</span>
+        <span class="at-a-glance__badge">Retention Measurement</span>
+      </div>
+      <div class="at-a-glance__grid">
+        <div class="at-a-glance__card at-a-glance__card--problem">
+          <div class="at-a-glance__tag">Problem</div>
+          <p class="at-a-glance__content">
+            <strong>D1 Retention Drop-Off:</strong> Micro-learning users complete Day 1 lessons but fail to return the following day (16% baseline vs. 22% target benchmark). The core friction lies in the unmanaged handoff between sessions.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--decision">
+          <div class="at-a-glance__tag">Decision</div>
+          <p class="at-a-glance__content">
+            <strong>Measure Before Optimizing:</strong> Built a strict calendar-day retention calculation engine, live event analytics schema, and power-analyzed A/B test plan before committing to speculative engagement features.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--evidence">
+          <div class="at-a-glance__tag">Evidence</div>
+          <p class="at-a-glance__content">
+            <strong>Production Artifacts:</strong> Pure TypeScript retention calculator (`retention.ts`), PostgreSQL/Prisma event telemetry, and 2-week A/B power analysis (~1,300 total sample size).
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--boundary">
+          <div class="at-a-glance__tag">Boundary</div>
+          <p class="at-a-glance__content">
+            <strong>Hypothesis &amp; Suite Limit:</strong> The A/B experiment was designed but not run; no measured D1 uplift or live cohort metrics. 29/50 automated tests pass; 21 tests require live PostgreSQL infrastructure.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6);">
@@ -90,6 +108,14 @@
       <span class="case-study-cta-note">
         Working prototype — local/demo environment · no verified public deployment
       </span>
+      <a href="/work/unrot/live/" class="btn btn--ghost">
+        Live Experience
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
       <a href="/work/" class="btn btn--ghost">
         Back to Proof of Work
       </a>
@@ -103,28 +129,34 @@
     <h2 class="section-title">Context</h2>
     <div class="case-study-body">
       <p class="body-text">
-        A daily micro-learning product sends users a short lesson each day. The behavioral target
-        is D1 retention — does the user come back the next day?
+        In daily micro-learning products, users frequently drop off after their initial session.
+        Standard product instincts often rush to add superficial streaks, confetti, or push notification blasts.
       </p>
       <p class="body-text">
-        The surface problem: D1 retention is low. The assignment gave a baseline of 16% and a
-        target benchmark of 22% — both assignment-provided context, not author-measured. The deeper
-        question is not "make the first session better." It's whether the handoff between sessions
-        is where the retention actually breaks.
+        Unrot approaches retention from an analytical foundation: establishing an objective measurement standard
+        first, isolating calendar-day boundaries from server UTC bias, and architecting an A/B test framework
+        with pre-experiment power sizing.
       </p>
-      <div class="insight-card">
-        <p class="insight-card__label">What this is</p>
-        <p>A real Next.js 16 + PostgreSQL + Prisma application. Auth, sessions, learning paths,
-        lessons, lesson progress, reminder preferences, analytics events. The analytics dashboard
-        computes from real events. The measurement model is real.</p>
-      </div>
-      <div class="insight-card insight-card--caveat">
-        <p class="insight-card__label">What this is not</p>
-        <p>It is not a live product with a real user base. It is not a retention solution that was
-        validated with outcomes. The portfolio evidence is about measurement thinking and product
-        rigor — not about a solved retention problem.</p>
+      <div class="insight-cards-grid">
+        <div class="insight-card">
+          <p class="insight-card__label">What this is</p>
+          <p class="at-a-glance__content">A Next.js 16 + PostgreSQL + Prisma application with real user session tracking, lesson progress persistence, and an analytics dashboard computing retention from raw database events.</p>
+        </div>
+        <div class="insight-card insight-card--caveat">
+          <p class="insight-card__label">What this is not</p>
+          <p class="at-a-glance__content">Not a deployed production product with commercial users. The portfolio evidence demonstrates measurement architecture, experimental rigor, and honest validation boundaries.</p>
+        </div>
       </div>
     </div>
+
+    <p class=\"body-text\" style=\"margin-top: var(--space-5); border-top: 1px solid var(--border-subtle); padding-top: var(--space-4);\">
+      <strong>Where this case study's decision tension is worked through:</strong> the cross-functional
+      decision of whether to ship the return-intent nudge before the JTBD is validated is explored in
+      the <a href=\"/work/unrot/cross-functional-decision/\">Cross-Functional Product Decision — Portfolio
+      Exercise</a>. That artifact is a simulated decision exercise — it demonstrates how I would bring
+      business, product, UX, data, engineering, and QA/ops together around this trade-off; it does not
+      claim these stakeholders met or that a decision was made this way.
+    </p>
   </div>
 </article>
 
@@ -390,14 +422,14 @@
       <div class="label-block">
         <span class="evidence-label evidence-label--verified">Verified</span>
         <p class="body-text" style="margin-top: var(--space-2);">
-          <strong>20/20 functional verification</strong>: 8 routes verified, including auth flows,
+          <strong>20/20 functional verification</strong> (previously reported, not revalidated): 8 routes verified, including auth flows,
           learning path view, lesson reader, reminder form, analytics dashboard, health endpoint.
         </p>
       </div>
       <div class="label-block">
         <span class="evidence-label evidence-label--verified">Verified</span>
         <p class="body-text" style="margin-top: var(--space-2);">
-          <strong>35/35 automated tests passing</strong>: retention logic, reminder form, lesson reader,
+          <strong>29/50 automated tests passing</strong> (21 failures due to PostgreSQL at 127.0.0.1:5432 being unavailable): retention logic, reminder form, lesson reader,
           onboarding. Real test suite, real results.
         </p>
       </div>
@@ -482,7 +514,7 @@
           <p class="body-text" style="margin-top: var(--space-2);">
             A complete measurement system was built and verified. The analytics dashboard computes from
             a real database. The D1 calculator is correct. The experiment plan is rigorous. The QA report
-            is real: 20/20 functional, 35/35 tests, accessibility by code review, build/lint/typecheck
+            is real: 20/20 functional (previously reported, not revalidated), 29/50 tests (21 DB-dependent failures), accessibility by code review, build/lint/typecheck
             pass, demo isolation verified.
           </p>
         </div>
@@ -573,8 +605,8 @@
         </div>
         <div class="evidence-item">
           <span class="evidence-label evidence-label--verified">Verified</span>
-          <div><strong>Final QA Report — 20/20 Functional, 35/35 Tests</strong>
-            <p class="muted-paragraph" style="margin-top: var(--space-1);">Full audit: functional, responsive (375/768/1280), accessibility (WCAG 2.1 AA), tests, ESLint, build. Real report.</p></div>
+          <div><strong>QA Results and Verification Limitations — 20/20 Functional (previously reported, not revalidated), 29/50 Tests</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Full audit: functional, responsive (375/768/1280), accessibility considerations reviewed in code; formal WCAG 2.1 AA conformance not verified, tests (29/50 passed — 21 failures due to PostgreSQL at 127.0.0.1:5432 being unavailable), ESLint, build. Real report.</p></div>
         </div>
         <div class="evidence-item">
           <span class="evidence-label evidence-label--verified">Verified</span>
@@ -589,7 +621,16 @@
         <div class="evidence-item">
           <span class="evidence-label evidence-label--verified">Verified</span>
           <div><strong>Research Preparation — research plan, discovery question register, operations kit</strong>
-            <p class="muted-paragraph" style="margin-top: var(--space-1);">Research plan (R1–R7, protocol, evidence classification, decision rules, privacy/consent), discovery question register (8 open questions, evidence boundary, decision gate), and operations kit (study design, moderator field guide, observation sheet, consent & privacy, evidence-capture model, per-participant summary). The framework is designed to guide a first moderated session once participants are recruited — but no sessions have been conducted.</p></div>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Research plan (R1–R7, protocol, evidence classification, decision rules, privacy/consent), discovery question register (8 open questions, evidence boundary, decision gate), and operations kit (study design, moderator field guide, observation sheet, consent & privacy, evidence-capture model, per-participant summary). The framework is designed to guide a first moderated session once participants are recruited — but no sessions have been conducted.
+            <a href="https://github.com/asimk714/Unrot-Daily-Retention/tree/main/docs/research" class="evidence-card__link" style="margin-top: var(--space-2); display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--text-sm); color: var(--accent);">
+              View on GitHub
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+            </p></div>
         </div>
         <div class="evidence-item">
           <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>

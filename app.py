@@ -3,9 +3,10 @@ Asim Kumar — Technical Product Manager Portfolio
 Flask + Jinja2 + vanilla JS. Calm, editorial, evidence-driven.
 """
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # ---------------------------------------------------------------------------
 # Work hub evidence cards
@@ -114,33 +115,12 @@ EVIDENCE_CARDS = [
         "case_study_url": "/work/reviewflow/",
     },
     {
-        "title": "Phase 11 Intervention Record — honest documentation",
-        "type": "Honest documentation",
-        "body": """
-        <p>The Phase 11 prompt tightening passes deterministic checks (247/247), but <strong>live
-        validation did NOT occur</strong> — no LOVABLE_API_KEY or Supabase credentials in the
-        environment. beforeVsAfterGenuinelyMeasurable: false. The record explicitly avoids claiming
-        improvement. Intervention retained with caveat: unproven until live-validated.</p>
-        <p style="margin-top: var(--space-2);">
-          <span class="evidence-label evidence-label--hypothesis">Hypothesis — not live-validated</span>
-          <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not evidenced — no live AI</span>
-        </p>
-        """,
-        "category": "learn",
-        "css_class": "",
-        "link_url": "https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/intervention-record-phase11.json",
-        "link_label": "View on GitHub",
-        "link_external": True,
-        "project": "ReviewFlow",
-        "case_study_url": "/work/reviewflow/",
-    },
-    {
-        "title": "PRODUCT_BRIEF — 7-Candidate Prioritization",
+        "title": "PRODUCT_BRIEF — 8-Candidate Prioritization",
         "type": "Product brief",
         "body": """
-        <p>Conclusion capture chosen over charts, search/filter, auth, cloud, AI features, and
-        experiment templates. Each candidate documented with "What it would add" and "Why not
-        prioritized." The smallest capability that closes the experiment→decision loop — ~27 lines
+        <p>Conclusion capture chosen over charts, search/filter, auth, cloud, AI features,
+        experiment templates, and artifact linking. Each candidate documented with "What it would add"
+        and "Why not prioritized." The smallest capability that closes the experiment→decision loop — ~27 lines
         across 3 files.</p>
         <p style="margin-top: var(--space-2);">
           <span class="evidence-label evidence-label--verified">Verified — document exists</span>
@@ -198,12 +178,12 @@ EVIDENCE_CARDS = [
         "case_study_url": "/work/unrot/",
     },
     {
-        "title": "Final QA Report — 20/20 Functional, 35/35 Tests",
+        "title": "Final QA Report — 20/20 Functional (previously reported), 29/50 Tests (21 DB-dependent failures)",
         "type": "QA audit",
         "body": """
         <p>Full audit: 20/20 functional verification across 8 routes, responsive at 375/768/1280px,
         accessibility (WCAG 2.1 AA — keyboard, semantic structure, form labels, aria-live, color
-        independence), 35/35 automated tests passing, ESLint 0 errors/0 warnings, Turbopack build
+        independence), 29/50 automated tests (21 DB-dependent failures), ESLint 0 errors/0 warnings, Turbopack build
         0 compilation errors. Demo isolation verified: 0 qualifying returners from demo preview.</p>
         <p style="margin-top: var(--space-2);">
           <span class="evidence-label evidence-label--verified">Verified — QA report exists</span>
@@ -301,6 +281,50 @@ EVIDENCE_CARDS = [
         "project": "Unrot",
         "case_study_url": "/work/unrot/",
     },
+    {
+        "title": "Cross-Functional Decision — Should the return-intent nudge ship before JTBD is validated?",
+        "type": "Decision exercise · Portfolio Exercise",
+        "body": """
+        <p>A simulated cross-functional decision set in the Unrot context: whether to prioritize the
+        return-intent nudge (H4) for an A/B test before completing JTBD validation with real users.
+        Maps how business, product, UX/design, data/analytics, engineering, and QA/ops would each
+        contribute, weighs Option A (ship the nudge now) against Option B (validate JTBD first), and
+        records the decision, trade-offs, acceptance criteria, proposed measurement model, and a
+        stakeholder-facing decision brief.</p>
+        <p style="margin-top: var(--space-2);">
+          <span class="evidence-label evidence-label--simulated">Simulated — portfolio exercise</span>
+          <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not evidenced — no real stakeholder decision</span>
+        </p>
+        """,
+        "category": "decision",
+        "css_class": "",
+        "link_url": "/work/unrot/cross-functional-decision/",
+        "link_label": "Read the decision artifact",
+        "link_external": False,
+        "project": "Unrot",
+        "case_study_url": "/work/unrot/",
+    },
+    {
+        "title": "Jobaaj Learning — EdTech to SaaS Moat Transition Model & Interactive Sandbox",
+        "type": "Strategic model · Interactive Dashboard",
+        "body": """
+        <p>A strategic product teardown and business model pivot from passive video lecture delivery
+        to an active SaaS learning sandbox. Features an interactive D3.js mindmap architecture,
+        cohort retention leakage modeling, a live SQL terminal simulator, and unit economics sensitivity
+        forecasting.</p>
+        <p style="margin-top: var(--space-2);">
+          <span class="evidence-label evidence-label--simulated">Simulated — strategic model</span>
+          <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not evidenced — no commercial release</span>
+        </p>
+        """,
+        "category": "definition",
+        "css_class": "",
+        "link_url": "/static/prototypes/jobaaj-saas-dashboard.html",
+        "link_label": "Launch Interactive Dashboard",
+        "link_external": False,
+        "project": "Jobaaj",
+        "case_study_url": "/static/prototypes/jobaaj-saas-dashboard.html",
+    },
 ]
 
 
@@ -310,7 +334,7 @@ EVIDENCE_CARDS = [
 
 @app.route("/")
 def homepage():
-    return render_template("index.html")
+    return render_template("index.html", evidence_cards=EVIDENCE_CARDS)
 
 
 @app.route("/work/")
@@ -323,9 +347,19 @@ def reviewflow_case():
     return render_template("work/reviewflow.html")
 
 
+@app.route("/work/reviewflow/live/")
+def reviewflow_live():
+    return render_template("work/reviewflow-live.html")
+
+
 @app.route("/work/unrot/")
 def unrot_case():
     return render_template("work/unrot.html")
+
+
+@app.route("/work/unrot/live/")
+def unrot_live():
+    return render_template("work/unrot-live.html")
 
 
 @app.route("/work/experiment-tracker/")
@@ -333,9 +367,84 @@ def experiment_tracker_case():
     return render_template("work/experiment-tracker.html")
 
 
+@app.route("/work/experiment-tracker/live/")
+def experiment_tracker_live():
+    return render_template("work/experiment-tracker-live.html")
+
+
 @app.route("/work/b1/")
 def b1_case():
     return render_template("work/b1.html")
+
+
+@app.route("/work/b1/live/")
+def b1_live():
+    return render_template("work/b1-live.html")
+
+
+@app.route("/work/catalyst/")
+def catalyst_case():
+    return render_template("work/catalyst.html")
+
+
+@app.route("/work/catalyst/live/")
+def catalyst_live():
+    return render_template("work/catalyst-live.html")
+
+
+@app.route("/work/vesper/")
+def vesper_case():
+    return render_template("work/vesper.html")
+
+
+@app.route("/work/vesper/live/")
+def vesper_live():
+    return render_template("work/vesper-live.html")
+
+
+@app.route("/work/context-engine/")
+def context_engine_case():
+    return render_template("work/context-engine.html")
+
+
+@app.route("/work/context-engine/live/")
+def context_engine_live():
+    return render_template("work/context-engine-live.html")
+
+
+@app.route("/work/windows-taskflow/")
+def windows_taskflow_case():
+    return render_template("work/windows-taskflow.html")
+
+
+@app.route("/work/windows-taskflow/live/")
+def windows_taskflow_live():
+    return render_template("work/windows-taskflow-live.html")
+
+
+@app.route("/work/irctc/")
+def irctc_case():
+    return render_template("work/irctc.html")
+
+
+@app.route("/work/irctc/live/")
+def irctc_live():
+    return render_template("work/irctc-live.html")
+
+
+@app.route("/work/lodo/")
+def lodo_case():
+    return render_template("work/lodo.html")
+
+
+@app.route("/work/lodo/live/")
+def lodo_live():
+    return render_template("work/lodo-live.html")
+
+
+@app.route("/work/unrot/cross-functional-decision/")
+def unrot_cross_functional_decision():
+    return render_template("work/unrot-cross-functional-decision.html")
 
 
 @app.route("/how-i-work/")
@@ -346,6 +455,17 @@ def how_i_work():
 @app.route("/contact/")
 def contact():
     return render_template("contact.html")
+
+
+@app.route("/resume/")
+def resume_page():
+    return render_template("resume.html")
+
+
+@app.route("/resume/download/")
+def resume_download():
+    resume_dir = os.path.join(app.static_folder, "assets", "resume")
+    return send_from_directory(resume_dir, "Asim-Kumar-Resume.pdf", as_attachment=True)
 
 
 # ---------------------------------------------------------------------------

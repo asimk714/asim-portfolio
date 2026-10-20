@@ -5,13 +5,18 @@
       <h2 class="section-header__title">Don't take my word for it.</h2>
       <p class="muted-paragraph section-header__subtitle">
         The actual artifacts behind the claims — prioritization tables, verification reports,
-        evaluator results, test output, architecture decisions. Every artifact has an evidence label.
+        evaluator results, test output, and architecture decisions. Every artifact carries an explicit evidence label.
+      </p>
+
+      <p class="muted-paragraph" style="margin-top: var(--space-2); font-size: var(--text-sm);">
+        Six curated thematic artifacts representing core product disciplines across the portfolio.
       </p>
     </div>
 
-    <!-- Curated samples from the full archive at /work/ -->
+    <!-- Curated thematic samples from the full archive at /work/ -->
     <div class="pwo-grid">
-      <article class="evidence-card reveal" data-category="definition">
+      <!-- 1. Product decisions and prioritization -->
+      <article class="evidence-card reveal" data-category="decision">
         <div class="evidence-card__header">
           <div class="evidence-card__title-group">
             <span class="evidence-card__project">ReviewFlow</span>
@@ -20,7 +25,7 @@
           <span class="evidence-card__type">Decision record</span>
         </div>
         <div class="evidence-card__body">
-          <p>Structured decisions: structured input vs blank box, anti-hallucination constraints,
+          <p>Structured architectural decisions: structured input vs blank box, anti-hallucination constraints,
           rating preservation, short+detailed drafts, editable draft, manual Google handoff, no
           database, no auth. Each with options considered, trade-offs, confidence, and validation
           approach.</p>
@@ -47,43 +52,7 @@
         </div>
       </article>
 
-      <article class="evidence-card reveal" data-category="measure">
-        <div class="evidence-card__header">
-          <div class="evidence-card__title-group">
-            <span class="evidence-card__project">ReviewFlow</span>
-            <h3 class="evidence-card__title">AI Output Quality Measurement Report</h3>
-          </div>
-          <span class="evidence-card__type">Measurement report</span>
-        </div>
-        <div class="evidence-card__body">
-          <p>15 historical outputs (2026-09-10) evaluated with corrected evaluator: 47% rating match,
-          0% invented detail, 60% marketing/superlative, 27% overall strict pass, 100% format
-          compliance. Per-case detail included. Evidence types A (deterministic), B (historical live
-          outputs), C (new live — skipped).</p>
-          <p style="margin-top: var(--space-2);">
-            <span class="evidence-label evidence-label--verified">Verified</span>
-            <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not live — historical outputs</span>
-          </p>
-        </div>
-        <div class="evidence-card__links">
-          <a href="/work/reviewflow/" class="evidence-card__link evidence-card__link--case-study">
-            Read in case study
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
-          <a href="https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/ai-quality-report.md" class="evidence-card__link evidence-card__link--external" target="_blank" rel="noopener noreferrer">
-            View on GitHub
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/>
-              <line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-
+      <!-- 2. AI evaluation and corrected measurement -->
       <article class="evidence-card reveal" data-category="verify">
         <div class="evidence-card__header">
           <div class="evidence-card__title-group">
@@ -99,7 +68,7 @@
           accurate — Phase 9 was 53% because of false positives, not model improvement.</p>
           <p style="margin-top: var(--space-2);">
             <span class="evidence-label evidence-label--verified">Verified</span>
-            <span class="evidence-label evidence-label--hypothesis" style="margin-left: var(--space-1);">Hypothesis — live effect not validated</span>
+            <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Historical outputs — not live AI</span>
           </p>
         </div>
         <div class="evidence-card__links">
@@ -121,22 +90,20 @@
         </div>
       </article>
 
-      <article class="evidence-card reveal" data-category="build">
+      <!-- 3. Discovery and JTBD -->
+      <article class="evidence-card reveal" data-category="discovery">
         <div class="evidence-card__header">
           <div class="evidence-card__title-group">
             <span class="evidence-card__project">Unrot</span>
-            <h3 class="evidence-card__title">Final QA Report — 20/20 Functional, 35/35 Tests</h3>
+            <h3 class="evidence-card__title">JTBD Hypotheses — 4 jobs, 7 intervention hypotheses</h3>
           </div>
-          <span class="evidence-card__type">QA audit</span>
+          <span class="evidence-card__type">Discovery artifact</span>
         </div>
         <div class="evidence-card__body">
-          <p>Full audit: 20/20 functional verification across 8 routes, responsive at 375/768/1280px,
-          accessibility (WCAG 2.1 AA — keyboard, semantic structure, form labels, aria-live, color
-          independence), 35/35 automated tests passing, ESLint 0 errors/0 warnings, Turbopack build
-          0 compilation errors. Demo isolation verified: 0 qualifying returners from demo preview.</p>
+          <p>Structured problem framing decomposing low D1 retention into 4 distinct user jobs and 7 testable intervention hypotheses. Connects friction points to observable behaviors before proposing solutions.</p>
           <p style="margin-top: var(--space-2);">
-            <span class="evidence-label evidence-label--verified">Verified — QA report exists</span>
-            <span class="evidence-label evidence-label--missing" style="margin-left: var(--space-1);">Missing — browser QA blocked</span>
+            <span class="evidence-label evidence-label--verified">Verified — document exists</span>
+            <span class="evidence-label evidence-label--hypothesis" style="margin-left: var(--space-1);">Hypothesis — user research pending</span>
           </p>
         </div>
         <div class="evidence-card__links">
@@ -147,7 +114,7 @@
               <polyline points="12 5 19 12 12 19"/>
             </svg>
           </a>
-          <a href="https://github.com/asimk714/Unrot-Daily-Retention/blob/main/docs/final-qa-report.md" class="evidence-card__link evidence-card__link--external" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/asimk714/Unrot-Daily-Retention/blob/main/docs/jtbd-hypotheses.md" class="evidence-card__link evidence-card__link--external" target="_blank" rel="noopener noreferrer">
             View on GitHub
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -158,21 +125,54 @@
         </div>
       </article>
 
-      <article class="evidence-card reveal" data-category="decision">
+      <!-- 4. Experiment design and proposed decision rules -->
+      <article class="evidence-card reveal" data-category="measure">
+        <div class="evidence-card__header">
+          <div class="evidence-card__title-group">
+            <span class="evidence-card__project">Unrot</span>
+            <h3 class="evidence-card__title">Measurement Model — A/B Experiment Plan</h3>
+          </div>
+          <span class="evidence-card__type">Measurement model</span>
+        </div>
+        <div class="evidence-card__body">
+          <p>Metric hierarchy (primary, secondary, guardrail), minimum detectable effect (MDE) power analysis, calendar-day retention calculation logic, and explicit go/no-go decision rules for shipping the return-intent nudge.</p>
+          <p style="margin-top: var(--space-2);">
+            <span class="evidence-label evidence-label--planned">Planned Experiment</span>
+            <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not run — proposal</span>
+          </p>
+        </div>
+        <div class="evidence-card__links">
+          <a href="/work/unrot/" class="evidence-card__link evidence-card__link--case-study">
+            Read in case study
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a href="https://github.com/asimk714/Unrot-Daily-Retention/blob/main/docs/measurement-model.md" class="evidence-card__link evidence-card__link--external" target="_blank" rel="noopener noreferrer">
+            View on GitHub
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 5. Build verification and scope trade-offs -->
+      <article class="evidence-card reveal" data-category="verify">
         <div class="evidence-card__header">
           <div class="evidence-card__title-group">
             <span class="evidence-card__project">Experiment Tracker</span>
-            <h3 class="evidence-card__title">PRODUCT_BRIEF — 7-Candidate Prioritization</h3>
+            <h3 class="evidence-card__title">17-Category Verification Report</h3>
           </div>
-          <span class="evidence-card__type">Product brief</span>
+          <span class="evidence-card__type">Verification artifact</span>
         </div>
         <div class="evidence-card__body">
-          <p>Conclusion capture chosen over charts, search/filter, auth, cloud, AI features, and
-          experiment templates. Each candidate documented with "What it would add" and "Why not
-          prioritized." The smallest capability that closes the experiment→decision loop — ~27 lines
-          across 3 files.</p>
+          <p>Local-first SQLite data model verified across 17 audit categories covering conclusion-capture logic, schema migrations, and UI states. Built to close the experiment-to-decision loop without cloud dependencies.</p>
           <p style="margin-top: var(--space-2);">
-            <span class="evidence-label evidence-label--verified">Verified — document exists</span>
+            <span class="evidence-label evidence-label--verified">Verified</span>
           </p>
         </div>
         <div class="evidence-card__links">
@@ -193,38 +193,36 @@
         </div>
       </article>
 
-      <article class="evidence-card reveal" data-category="learn">
+      <!-- 6. Interactive workflow/product-analysis prototypes -->
+      <article class="evidence-card reveal" data-category="definition">
         <div class="evidence-card__header">
           <div class="evidence-card__title-group">
-            <span class="evidence-card__project">ReviewFlow</span>
-            <h3 class="evidence-card__title">Phase 11 Intervention Record — honest documentation</h3>
+            <span class="evidence-card__project">Jobaaj Learning</span>
+            <h3 class="evidence-card__title">EdTech to SaaS Moat Transition Model &amp; Interactive Sandbox</h3>
           </div>
-          <span class="evidence-card__type">Honest documentation</span>
+          <span class="evidence-card__type">Strategic model · Interactive Dashboard</span>
         </div>
         <div class="evidence-card__body">
-          <p>The Phase 11 prompt tightening passes deterministic checks (247/247), but <strong>live
-          validation did NOT occur</strong> — no LOVABLE_API_KEY or Supabase credentials in the
-          environment. beforeVsAfterGenuinelyMeasurable: false. The record explicitly avoids claiming
-          improvement. Intervention retained with caveat: unproven until live-validated.</p>
+          <p>A strategic product teardown and business model pivot from passive video lecture delivery to an active SaaS learning sandbox. Features an interactive D3.js mindmap architecture, cohort retention leakage modeling, a live SQL terminal simulator, and unit economics sensitivity forecasting.</p>
           <p style="margin-top: var(--space-2);">
-            <span class="evidence-label evidence-label--hypothesis">Hypothesis — not live-validated</span>
-            <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not evidenced — no live AI</span>
+            <span class="evidence-label evidence-label--simulated">Simulated — strategic model</span>
+            <span class="evidence-label evidence-label--not-evidenced" style="margin-left: var(--space-1);">Not evidenced — no commercial release</span>
           </p>
         </div>
         <div class="evidence-card__links">
-          <a href="/work/reviewflow/" class="evidence-card__link evidence-card__link--case-study">
-            Read in case study
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
-          <a href="https://github.com/asimk714/salon-review-bot/blob/main/tests/regression/intervention-record-phase11.json" class="evidence-card__link evidence-card__link--external" target="_blank" rel="noopener noreferrer">
-            View on GitHub
+          <a href="/static/prototypes/jobaaj-saas-dashboard.html" class="evidence-card__link" target="_blank" rel="noopener noreferrer">
+            Open Interactive Model ↗
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
               <polyline points="15 3 21 3 21 9"/>
               <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+          <a href="/work/" class="evidence-card__link evidence-card__link--case-study">
+            View in archive
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
             </svg>
           </a>
         </div>
@@ -233,8 +231,8 @@
 
     <div class="pwo-cta-row animate-in" style="margin-top: var(--space-8);">
       <a href="/work/" class="btn btn--ghost">
-        See the full evidence archive — 13 artifacts, filtered by category
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;">
+        See the full evidence archive — {{ evidence_cards|length if evidence_cards else 15 }} artifacts, filtered by category
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;margin-left:6px;">
           <line x1="5" y1="12" x2="19" y2="12"/>
           <polyline points="12 5 19 12 12 19"/>
         </svg>

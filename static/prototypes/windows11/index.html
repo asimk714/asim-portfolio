@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows 11 Product Teardown & Taskflow Prototype</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=4">
+  <!-- FontAwesome Icons (for UI elements) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-mode">
+  <div class="app-container">
+    <!-- Main App Header Bar -->
+    <header class="app-header">
+      <div class="logo-area">
+        <svg class="win-logo" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M0 0h11.4v11.4H0V0zm12.6 0H24v11.4H12.6V0zM0 12.6h11.4V24H0V12.6zm12.6 0H24V24H12.6V12.6z" fill="#0078d4"/>
+        </svg>
+        <span class="app-title">Windows 11 <span class="accent-text">Product Teardown</span></span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <div class="header-nav">
+          <button id="btn-view-slides" class="nav-btn active"><i class="fa-solid fa-person-chalkboard"></i> Slide Deck</button>
+          <button id="btn-view-prototype" class="nav-btn"><i class="fa-solid fa-desktop"></i> Interactive Prototype</button>
+          <button id="btn-view-teardown" class="nav-btn"><i class="fa-solid fa-file-text"></i> Written Report</button>
+        </div>
+        <button id="btn-toggle-theme" class="theme-toggle-btn" title="Toggle Windows 11 Dark Theme">
+          <i class="fa-solid fa-sun" style="color: #ffaa00;"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace Area -->
+    <main class="main-content">
+      
+      <!-- VIEW 1: SLIDE DECK VIEW -->
+      <section id="view-slides" class="view-section active">
+        <div class="deck-layout">
+          <!-- Slide Selector / Index Sidebar -->
+          <aside class="slides-sidebar">
+            <h3 class="sidebar-title">Slide Index</h3>
+            <div class="slide-list" id="slide-list">
+              <!-- Dynamically populated index links -->
+            </div>
+          </aside>
+
+          <!-- Main Slide Viewer Area -->
+          <div class="slide-viewer">
+            <div class="slide-container" id="slide-container">
+              <!-- Slides will be injected here dynamically by JS -->
+            </div>
+
+            <!-- Slide Navigation Controls -->
+            <div class="slide-controls">
+              <button id="btn-prev-slide" class="control-btn"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <div class="slide-counter" id="slide-counter">Slide 1 of 12</div>
+              <button id="btn-next-slide" class="control-btn">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Slide Presentation Sidebar (Strategic Context & Expected Q&A) -->
+          <aside class="presentation-info">
+            <div class="info-tabs">
+              <button id="tab-speaker" class="info-tab active">Strategic Context</button>
+              <button id="tab-qa" class="info-tab">Executive Q&A</button>
+            </div>
+            <div class="info-content">
+              <div id="content-speaker" class="tab-pane active">
+                <!-- Speaker notes go here -->
+              </div>
+              <div id="content-qa" class="tab-pane">
+                <!-- Q&A goes here -->
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- VIEW 2: INTERACTIVE PROTOTYPE VIEW (MOCK OS ENVIRONMENT) -->
+      <section id="view-prototype" class="view-section">
+        <div class="prototype-instructions">
+          <div class="instructions-card">
+            <h4><i class="fa-solid fa-info-circle text-accent"></i> Windows Taskflow Simulator</h4>
+            <p>Experience the proposed <strong>Windows Taskflow</strong> workspace feature. Arrange application windows, open browser tabs, snap windows, and save them as virtual workspaces. Launch different taskflows to see the windows instantly animate and restore state.</p>
+            <div class="instruction-steps">
+              <span><strong>1. Arrange Windows:</strong> Drag, maximize, or use snap guides.</span>
+              <span><strong>2. Open Apps:</strong> Click taskbar/desktop apps to toggle.</span>
+              <span><strong>3. Save Taskflow:</strong> Open taskbar Taskflow icon, name & save.</span>
+              <span><strong>4. Share:</strong> Click share to generate link and mock recipient views.</span>
+            </div>
+            <div style="margin-top: 0.75rem; display: flex; justify-content: flex-end;">
+              <button class="btn-primary" id="btn-toggle-annotations" style="background-color: var(--sparkle); font-size: 0.7rem; padding: 0.35rem 0.75rem;">
+                <i class="fa-solid fa-tags"></i> PM Annotations: OFF
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mock-desktop" id="mock-desktop">
+          
+          <!-- PM Annotations Layer -->
+          <div class="pm-annotations-layer" id="pm-annotations-layer" style="display: none;">
+            
+            <!-- Dot 1: Taskflow Centered Icon -->
+            <div class="annotation-dot" style="bottom: 18px; left: 50%; transform: translateX(-95px);" data-tooltip="CTR & Discovery Hub: Centering the Taskflow launcher in the core shell increases visibility by 32% based on eye-tracking, serving as a high-intent onboarding trigger.">
+              <span class="pulse-ring"></span>
+              <span class="dot-number">1</span>
+            </div>
+
+            <!-- Dot 2: Widgets Tray -->
+            <div class="annotation-dot tooltip-right" style="bottom: 18px; left: 20px;" data-tooltip="Commercializing Widgets: Replacing MSN clickbait with targeted, premium widgets improves CSAT by 14% and stabilizes search query market share.">
+              <span class="pulse-ring"></span>
+              <span class="dot-number">2</span>
+            </div>
+
+            <!-- Dot 3: Snapping Edges -->
+            <div class="annotation-dot tooltip-bottom" style="top: 10px; right: 50%;" data-tooltip="Friction Reduction: Clear boundary snap guides guide users into custom split-screen layouts, saving an average of 4.2 seconds per session.">
+              <span class="pulse-ring"></span>
+              <span class="dot-number">3</span>
+            </div>
+
+            <!-- Dot 4: Start Menu Pinned Apps -->
+            <div class="annotation-dot tooltip-bottom" style="bottom: 300px; left: 50%; transform: translateX(80px);" data-tooltip="Ecosystem Lock-in: Native OS focus blocks in third-party PM tools (Jira, Figma, Notion) inside Start Menu, preventing developer churn to macOS.">
+              <span class="pulse-ring"></span>
+              <span class="dot-number">4</span>
+            </div>
+
+            <!-- Dot 5: Recommended Files -->
+            <div class="annotation-dot" style="bottom: 120px; left: 50%; transform: translateX(-120px);" data-tooltip="Cloud Upsell Trigger: Recommended items sync files directly from OneDrive, creating a natural conversion funnel for premium subscription upgrades.">
+              <span class="pulse-ring"></span>
+              <span class="dot-number">5</span>
+            </div>
+
+          </div>
+          
+          <!-- Mock Apps Grid (Desktop Shortcuts) -->
+          <div class="desktop-icons">
+            <div class="desktop-icon" data-app="chrome">
+              <img src="https://cdn-icons-png.flaticon.com/512/888/888846.png" alt="Browser" class="icon-img">
+              <span>Google Chrome</span>
+            </div>
+            <div class="desktop-icon" data-app="vscode">
+              <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" alt="VS Code" class="icon-img">
+              <span>VS Code</span>
+            </div>
+            <div class="desktop-icon" data-app="excel">
+              <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="Excel" class="icon-img">
+              <span>Excel</span>
+            </div>
+            <div class="desktop-icon" data-app="teams">
+              <img src="https://cdn-icons-png.flaticon.com/512/906/906349.png" alt="Teams" class="icon-img">
+              <span>Teams</span>
+            </div>
+            <div class="desktop-icon" data-app="jira">
+              <img src="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" alt="Jira" class="icon-img">
+              <span>Jira Board</span>
+            </div>
+            <div class="desktop-icon" data-app="figma">
+              <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Figma" class="icon-img">
+              <span>Figma Spec</span>
+            </div>
+            <div class="desktop-icon" data-app="mixpanel">
+              <img src="https://cdn-icons-png.flaticon.com/512/4219/4219159.png" alt="Mixpanel" class="icon-img">
+              <span>Mixpanel</span>
+            </div>
+            <div class="desktop-icon" data-app="notion">
+              <img src="https://cdn-icons-png.flaticon.com/512/5968/5968916.png" alt="Notion" class="icon-img">
+              <span>Notion PRD</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Windows Containment Area -->
+          <div class="windows-container" id="windows-container">
+            
+            <!-- Window 1: VS Code -->
+            <div class="window active" id="win-vscode" style="top: 80px; left: 100px; width: 680px; height: 420px; z-index: 10;">
+              <div class="window-header">
+                <div class="window-title-bar">
+                  <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" width="16" height="16">
+                  <span>workspace.js - Visual Studio Code</span>
+                </div>
+                <div class="window-controls">
+                  <span class="win-minimize"><i class="fa-solid fa-minus"></i></span>
+                  <span class="win-maximize" data-app="vscode"><i class="fa-solid fa-square-envelope"></i></span>
+                  <span class="win-close" data-app="vscode"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+              </div>
+              <div class="window-content vscode-content">
+                <div class="vscode-sidebar">
+                  <div class="sidebar-icon active"><i class="fa-solid fa-copy"></i></div>
+                  <div class="sidebar-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                  <div class="sidebar-icon"><i class="fa-solid fa-code-branch"></i></div>
+                </div>
+                <div class="vscode-editor">
+                  <div class="code-lines">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
+                  <div class="code-text">
+                    <span class="keyword">const</span> <span class="variable">taskflow</span> = <span class="keyword">new</span> <span class="class">TaskflowWorkspace</span>();<br>
+                    <span class="variable">taskflow</span>.<span class="function">registerApp</span>(<span class="string">'vscode'</span>, { line: 12, path: <span class="string">'/src'</span> });<br>
+                    <span class="variable">taskflow</span>.<span class="function">registerApp</span>(<span class="string">'chrome'</span>, { tabs: [<span class="string">'docs.microsoft.com'</span>] });<br>
+                    <span class="variable">taskflow</span>.<span class="function">saveState</span>();<br>
+                    <span class="comment">// Workspace active state operational</span><br>
+                    <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">'Taskflow snapshot taken locally.'</span>);
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Window 2: Chrome Browser -->
+            <div class="window" id="win-chrome" style="top: 120px; left: 350px; width: 620px; height: 400px; z-index: 5;">
+              <div class="window-header">
+                <div class="window-title-bar">
+                  <img src="https://cdn-icons-png.flaticon.com/512/888/888846.png" width="16" height="16">
+                  <span>Google Chrome</span>
+                </div>
+                <div class="window-controls">
+                  <span class="win-minimize"><i class="fa-solid fa-minus"></i></span>
+                  <span class="win-maximize" data-app="chrome"><i class="fa-solid fa-square-envelope"></i></span>
+                  <span class="win-close" data-app="chrome"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+              </div>
+              <div class="window-content chrome-content">
+                <div class="chrome-tabs">
+                  <div class="chrome-tab active" id="tab-0">
+                    <span>Azure Portal</span> <i class="fa-solid fa-xmark tab-close"></i>
+                  </div>
+                  <div class="chrome-tab" id="tab-1">
+                    <span>StackOverflow</span> <i class="fa-solid fa-xmark tab-close"></i>
+                  </div>
+                  <button class="chrome-new-tab"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <div class="chrome-url-bar">
+                  <div class="url-nav-arrows">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-rotate-right"></i>
+                  </div>
+                  <div class="url-input">
+                    <i class="fa-solid fa-lock text-success"></i> <span id="chrome-url-text">https://portal.azure.com</span>
+                  </div>
+                </div>
+                <div class="chrome-web-page">
+                  <div class="azure-dashboard-mock">
+                    <div class="dashboard-header">Azure Dashboard</div>
+                    <div class="dashboard-grid">
+                      <div class="db-card">VM Instances (4 Running)</div>
+                      <div class="db-card">Database IOPS (98% Normal)</div>
+                      <div class="db-card">App Service Costs ($132.40)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Window 3: Excel -->
+            <div class="window" id="win-excel" style="top: 150px; left: 150px; width: 580px; height: 360px; z-index: 2; display: none;">
+              <div class="window-header">
+                <div class="window-title-bar">
+                  <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" width="16" height="16">
+                  <span>Q2_Financial_Audit.xlsx - Excel</span>
+                </div>
+                <div class="window-controls">
+                  <span class="win-minimize"><i class="fa-solid fa-minus"></i></span>
+                  <span class="win-maximize" data-app="excel"><i class="fa-solid fa-square-envelope"></i></span>
+                  <span class="win-close" data-app="excel"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+              </div>
+              <div class="window-content excel-content">
+                <div class="excel-ribbon">
+                  <span>Home</span><span>Insert</span><span>Page Layout</span><span>Formulas</span><span>Data</span>
+                </div>
+                <div class="excel-grid-container">
+                  <table class="excel-table">
+                    <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+                    <tr><td>1</td><td class="bold">Cost Category</td><td class="bold">Q1 Actual</td><td class="bold">Q2 Budget</td><td class="bold">Variance</td></tr>
+                    <tr><td>2</td><td>Engineering</td><td>$145,000</td><td>$150,000</td><td class="text-success">-$5,000</td></tr>
+                    <tr><td>3</td><td>Marketing</td><td>$84,200</td><td>$80,000</td><td class="text-danger">+$4,200</td></tr>
+                    <tr><td>4</td><td>Infrastructure</td><td>$112,000</td><td>$115,000</td><td class="text-success">-$3,000</td></tr>
+                    <tr><td>5</td><td class="bold">Total</td><td class="bold">$341,200</td><td class="bold">$345,000</td><td class="bold">-$3,800</td></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Window 4: Teams -->
+            <div class="window" id="win-teams" style="top: 140px; left: 420px; width: 520px; height: 390px; z-index: 2; display: none;">
+              <div class="window-header">
+                <div class="window-title-bar">
+                  <img src="https://cdn-icons-png.flaticon.com/512/906/906349.png" width="16" height="16">
+                  <span>Microsoft Teams Chat</span>
+                </div>
+                <div class="window-controls">
+                  <span class="win-minimize"><i class="fa-solid fa-minus"></i></span>
+                  <span class="win-maximize" data-app="teams"><i class="fa-solid fa-square-envelope"></i></span>
+                  <span class="win-close" data-app="teams"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+              </div>
+              <div class="window-content teams-content" style="background-color: #201f1f; color: white; display: flex; flex-direction: column; height: 100%;">
+                <div class="teams-header" style="background-color: #292828; padding: 0.5rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 0.5rem;">
+                  <span class="bold" style="font-size: 0.85rem;"><i class="fa-solid fa-users text-accent"></i> Core Shell Sync Group</span>
+                </div>
+                <div class="teams-messages" style="flex: 1; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.8rem; overflow-y: auto; text-align: left;">
+                  <div class="message"><span class="bold" style="color: var(--sparkle);">Sarah (Design):</span> Sent over the Figma taskflow spec link! Let's check it.</div>
+                  <div class="message"><span class="bold" style="color: var(--accent);">Alex (Dev):</span> Got it, working on the local memory mapping in visual studio code now.</div>
+                  <div class="message"><span class="bold" style="color: var(--success);">Marc (PM):</span> RICE matrix scores are updated on the project slides, OneDrive sync has highest reach.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Window 5: Jira -->
+            <div class="window" id="win-jira" style="top: 100px; left: 200px; width: 660px; height: 420px; z-index: 1; display: none;">
+              <div class="window-header">
+                <div class="window-title-bar">
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" width="16" height="16">
+                  <span>Jira - WIN-11 Agile Sprint Board</span>
+                </div>
+                <div class="window-controls">
+                  <span class="win-minimize"><i class="fa-solid fa-minus"></i></span>
+                  <span class="win-maximize" data-app="jira"><i class="fa-solid fa-square-envelope"></i></span>
+                  <span class="win-close" data-app="jira"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+              </div>
+              <div class="window-content jira-content">
+                <div class="jira-header">
+                  <span class="jira-project-title">Windows Core Shell Sprint 24</span>
+                  <div class="jira-filters"><span>Active Sprint</span><span>Backlog</span></div>
+                </div>
+                <div class="jira-board">
+                  <div class="jira-col">
+                    <div class="col-title">To Do (2)</div>
+                    <div class="jira-task-card">
+                      <span class="task-key">WIN-2401</span>
+                      <p>Integrate NPU local cache indexes</p>
+                      <div class="task-meta"><span class="priority-arrow text-danger">▲</span> <span class="assignee">ALEX</span></div>
+                    </div>
+                    <div class="jira-task-card">
+                      <span class="task-key">WIN-2403</span>
+                      <p>Resolve Taskbar side coordinates</p>
+                      <div class="task-meta"><span class="priority-arrow text-accent">▲</span> <span class="assignee">MARC</span></div>
+                    </div>
+                  </div>
+                  <div class="jira-col">
+                    <div class="col-title">In Progress (1)</div>
+                    <div class="jira-task-card">
+                      <span class="task-key">WIN-2399</span>
+                      <p>Figma UI specs alignment reviews</p>
+                      <div class="task-meta"><span class="priority-arrow text-success">▼</span> <span class="assignee">SARAH</span></div>
+                    </div>
+                  </div>
+                  <div class="jira-col">
+                    <div class="col-title">Done (1)</div>
+                    <div class="jira-task-card done">
+                      <span class="task-key">WIN-2384</span>
+                      <p>Taskflow schema database setup</p>
+                      <div class="task-meta"><span class="priority-arrow text-success">▼</span> <span class="assignee">ALEX</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Window 6: Figma -->
+            <div class="window" id="win-figma" style="top: 80px; left: 300px; width: 720px; height: 440px; z-index: 1; display: none;">
+              <div class="window-header">
+                <div class="window-title-bar">
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" width="16" height="16">
+                  <span>Figma - Windows Taskflow Visual Specs</span>
+                </div>
+                <div class="window-controls">
+                  <span class="win-minimize"><i class="fa-solid fa-minus"></i></span>
+                  <span class="win-maximize" data-app="figma"><i class="fa-solid fa-square-envelope"></i></span>
+                  <span class="win-close" data-app="figma"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+              </div>
+              <div class="window-content figma-content">
+                <div class="figma-sidebar">
+                  <div class="figma-section-title">Layers</div>
+                  <div class="figma-layer-item"><i class="fa-solid fa-crop"></i> Desktop Canvas</div>
+                  <div class="figma-layer-item"><i class="fa-solid fa-table-columns"></i> Taskflow Drawer</div>
+                  <div class="figma-layer-item"><i class="fa-solid fa-rectangle-ad"></i> Snapshot Card</div>
+                  <div class="figma-layer-item"><i class="fa-solid fa-lines-leaning"></i> Snapping Guide Overlay</div>
+                </div>
+                <div class="figma-canvas">
+                  <div class="figma-canvas-header">
+                    <span>Taskflow Design Board</span>
+                    <span class="zoom-level">65%</span>
+                  </div>
+                  <div class="figma-canvas-art">
+                    <div class="figma-artboard">
+                      <div class="artboard-title">Drawer UI Specs</div>
+                      <div class="artboard-mock">
+                        <div class="mock-card">Taskflow Workspace</div>
+                        <div class="mock-card accent">Save Current State</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Window 7: Mixpanel -->
+            <div class="window" id="win-mixpanel" style="top: 130px; left: 180px; width: 680px; height: 410px; z-index: 1; display: none;">
+              <div class="window-header">
+                <div class="window-title-bar">
+                  <img src="https://cdn-icons-png.flaticon.com/512/4219/4219159.png" width="16" height="16">
+                  <span>Mixpanel Product Analytics - Windows Taskflow</span>
+                </div>
+                <div class="window-controls">
+                  <span class="win-minimize"><i class="fa-solid fa-minus"></i></span>
+                  <span class="win-maximize" data-app="mixpanel"><i class="fa-solid fa-square-envelope"></i></span>
+                  <span class="win-close" data-app="mixpanel"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+              </div>
+              <div class="window-content mixpanel-content">
+                <div class="mixpanel-sidebar">
+                  <div class="mp-nav-item active"><i class="fa-solid fa-chart-line"></i> Funnels</div>
+                  <div class="mp-nav-item"><i class="fa-solid fa-users-gear"></i> Cohorts</div>
+                  <div class="mp-nav-item"><i class="fa-solid fa-clock-rotate-left"></i> Retention</div>
+                </div>
+                <div class="mixpanel-body">
+                  <div class="mp-header">Taskflow Conversion & Retention Dashboard</div>
+                  <div class="mp-stats-row">
+                    <div class="mp-stat-card">
+                      <span class="stat-lbl">Weekly Active Taskflows</span>
+                      <span class="stat-val">12.4M</span>
+                      <span class="stat-change text-success"><i class="fa-solid fa-arrow-trend-up"></i> +14.2%</span>
+                    </div>
+                    <div class="mp-stat-card">
+                      <span class="stat-lbl">Avg. Switching Latency</span>
+                      <span class="stat-val">3.4s</span>
+                      <span class="stat-change text-success"><i class="fa-solid fa-arrow-trend-down"></i> -8.3%</span>
+                    </div>
+                    <div class="mp-stat-card">
+                      <span class="stat-lbl">OneDrive Storage Upsells</span>
+                      <span class="stat-val">+4.8%</span>
+                      <span class="stat-change text-success"><i class="fa-solid fa-arrow-trend-up"></i> +1.2%</span>
+                    </div>
+                  </div>
+                  <div class="mp-chart-area">
+                    <div class="chart-title">Workspace Retention Curve (W1 to W12)</div>
+                    <div class="chart-bars-container">
+                      <div class="chart-bar-col"><div class="chart-bar" style="height: 90%;"></div><span>W1</span></div>
+                      <div class="chart-bar-col"><div class="chart-bar" style="height: 72%;"></div><span>W2</span></div>
+                      <div class="chart-bar-col"><div class="chart-bar" style="height: 60%;"></div><span>W4</span></div>
+                      <div class="chart-bar-col"><div class="chart-bar" style="height: 52%;"></div><span>W8</span></div>
+                      <div class="chart-bar-col"><div class="chart-bar" style="height: 48%;"></div><span>W12</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Window 8: Notion -->
+            <div class="window" id="win-notion" style="top: 110px; left: 240px; width: 600px; height: 430px; z-index: 1; display: none;">
+              <div class="window-header">
+                <div class="window-title-bar">
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968916.png" width="16" height="16">
+                  <span>PRD-01: Windows Taskflow - Notion</span>
+                </div>
+                <div class="window-controls">
+                  <span class="win-minimize"><i class="fa-solid fa-minus"></i></span>
+                  <span class="win-maximize" data-app="notion"><i class="fa-solid fa-square-envelope"></i></span>
+                  <span class="win-close" data-app="notion"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+              </div>
+              <div class="window-content notion-content">
+                <div class="notion-workspace-body">
+                  <div class="notion-breadcrumbs">🚀 Product / PRDs / Shell Features</div>
+                  <h1 class="notion-title">PRD-01: Windows Taskflow Workspaces</h1>
+                  
+                  <div class="notion-meta-table">
+                    <div class="meta-row"><span>Status</span><span class="tag-badge in-progress">In Progress</span></div>
+                    <div class="meta-row"><span>PM Owner</span><span>Asim Kumar</span></div>
+                    <div class="meta-row"><span>Engineering Lead</span><span>Alex Chen</span></div>
+                  </div>
+
+                  <h3 class="notion-h3">1. Executive Overview</h3>
+                  <p class="notion-p">Modern operating systems behave as application launchers. Taskflow pivots the shell to manage user <strong>contexts</strong>, saving all related files, folders, and web tabs as a named project workspace.</p>
+                  
+                  <h3 class="notion-h3">2. Core Requirements</h3>
+                  <ul class="notion-ul">
+                    <li>NPU local state coordination must execute in &lt; 3.5 seconds.</li>
+                    <li>Support OneDrive synchronization configuration parameters.</li>
+                    <li>Generate viral collaboration links for simple coworker handoff setups.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TASKFLOW INTERACTIVE FLYOUT UI (CENTERED OVER THE TASKFLOW ICON) -->
+          <div class="taskflow-flyout" id="taskflow-flyout">
+            <div class="flyout-header">
+              <h3><i class="fa-solid fa-network-wired text-accent"></i> Windows Taskflow</h3>
+              <span class="subtitle">Context-Aware Workspaces</span>
+            </div>
+            
+            <div class="flyout-actions">
+              <div class="input-group">
+                <input type="text" id="new-workspace-name" placeholder="Name current layout (e.g. Code Work)...">
+                <button id="btn-save-workspace" class="btn-primary-mini"><i class="fa-solid fa-plus"></i> Save</button>
+              </div>
+              <button id="btn-clean-slate" class="btn-secondary-mini"><i class="fa-solid fa-eraser"></i> Switch to Clean Slate</button>
+            </div>
+
+            <div class="workspaces-section">
+              <h4>Active Workspaces</h4>
+              <div class="workspaces-list" id="workspaces-list">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+
+            <div class="flyout-ai-recommendations">
+              <div class="ai-header">
+                <i class="fa-solid fa-wand-magic-sparkles text-spark"></i> <span>Copilot Suggestions</span>
+              </div>
+              <div class="ai-suggestion-card" id="ai-suggest">
+                <p>"Based on current files, resume 'Figma UI Redesign' from your Surface Pro?"</p>
+                <button class="btn-ai-action" id="btn-ai-resume">Resume Workspace</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Window Snapping Layout Guide Indicator overlays -->
+          <div class="snap-preview-box" id="snap-preview"></div>
+
+          <!-- Windows 11 Bottom Taskbar -->
+          <footer class="mock-taskbar">
+            <!-- Left Corner (Widgets Mock) -->
+            <div class="taskbar-widgets" id="btn-widget-panel">
+              <i class="fa-solid fa-cloud-sun"></i>
+              <span>72°F, Rain</span>
+            </div>
+
+            <!-- Centered Taskbar App Icons -->
+            <div class="taskbar-icons">
+              <button class="tb-icon" id="tb-start" title="Start Menu">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path d="M0 0h11.4v11.4H0V0zm12.6 0H24v11.4H12.6V0zM0 12.6h11.4V24H0V12.6zm12.6 0H24V24H12.6V12.6z" fill="#ffffff"/>
+                </svg>
+              </button>
+              
+              <button class="tb-icon tb-search-bar" id="tb-search" title="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Search</span>
+              </button>
+              
+              <!-- THE TARGET FEATURE ICON -->
+              <button class="tb-icon active-glow" id="tb-taskflow" title="Windows Taskflow">
+                <i class="fa-solid fa-network-wired text-accent"></i>
+              </button>
+
+              <button class="tb-icon app-tb-icon active" data-app="vscode" id="tb-app-vscode" title="VS Code">
+                <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" width="20" height="20">
+              </button>
+              <button class="tb-icon app-tb-icon active" data-app="chrome" id="tb-app-chrome" title="Google Chrome">
+                <img src="https://cdn-icons-png.flaticon.com/512/888/888846.png" width="20" height="20">
+              </button>
+              <button class="tb-icon app-tb-icon" data-app="excel" id="tb-app-excel" title="Excel">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" width="20" height="20">
+              </button>
+              <button class="tb-icon app-tb-icon" data-app="teams" id="tb-app-teams" title="Teams">
+                <img src="https://cdn-icons-png.flaticon.com/512/906/906349.png" width="20" height="20">
+              </button>
+              <button class="tb-icon app-tb-icon" data-app="jira" id="tb-app-jira" title="Jira">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" width="20" height="20">
+              </button>
+              <button class="tb-icon app-tb-icon" data-app="figma" id="tb-app-figma" title="Figma">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" width="20" height="20">
+              </button>
+              <button class="tb-icon app-tb-icon" data-app="mixpanel" id="tb-app-mixpanel" title="Mixpanel">
+                <img src="https://cdn-icons-png.flaticon.com/512/4219/4219159.png" width="20" height="20">
+              </button>
+              <button class="tb-icon app-tb-icon" data-app="notion" id="tb-app-notion" title="Notion">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968916.png" width="20" height="20">
+              </button>
+            </div>
+
+            <!-- Right Corner (Tray Icons, Clock) -->
+            <div class="taskbar-tray">
+              <i class="fa-solid fa-chevron-up"></i>
+              <div class="tray-status-icons">
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-volume-high"></i>
+                <i class="fa-solid fa-battery-three-quarters"></i>
+              </div>
+              <div class="tray-clock">
+                <span class="time">8:30 PM</span>
+                <span class="date">7/16/2026</span>
+              </div>
+            </div>
+          </footer>
+
+          <!-- Widgets Board Simulation Panel -->
+          <div class="widgets-board" id="widgets-board">
+            <div class="widgets-header">
+              <h3>Widgets Board</h3>
+              <i class="fa-solid fa-gear"></i>
+            </div>
+            <div class="widgets-grid">
+              <div class="widget-card weather-widget">
+                <h4>Weather</h4>
+                <div class="weather-temp">72°</div>
+                <div>Rain showers expected tonight</div>
+              </div>
+              <div class="widget-card stock-widget">
+                <h4>Stocks</h4>
+                <div class="stock-row"><span>MSFT</span><span class="text-success">+1.4%</span></div>
+                <div class="stock-row"><span>AAPL</span><span class="text-success">+0.8%</span></div>
+              </div>
+              <div class="widget-card news-widget">
+                <h4>News (MSN)</h4>
+                <p class="news-item">10 Secrets Windows Power Users Always Hide From You!</p>
+                <p class="news-item">Local NPU Chips Set to Change PC Design in Late 2026</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Windows 11 Dedicated Search Flyout Panel -->
+          <div class="search-flyout" id="search-flyout">
+            <div class="start-menu-search">
+              <i class="fa-solid fa-magnifying-glass font-search-icon"></i>
+              <input type="text" id="search-flyout-input" placeholder="Search apps, files, settings, and web...">
+            </div>
+            
+            <div class="search-flyout-content">
+              <!-- Top Apps Section -->
+              <div class="search-section">
+                <h4>Top Apps</h4>
+                <div class="search-top-apps">
+                  <div class="top-app-item" data-app="chrome">
+                    <img src="https://cdn-icons-png.flaticon.com/512/888/888846.png">
+                    <span>Chrome</span>
+                  </div>
+                  <div class="top-app-item" data-app="vscode">
+                    <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png">
+                    <span>VS Code</span>
+                  </div>
+                  <div class="top-app-item" data-app="notion">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968916.png">
+                    <span>Notion</span>
+                  </div>
+                  <div class="top-app-item" data-app="teams">
+                    <img src="https://cdn-icons-png.flaticon.com/512/906/906349.png">
+                    <span>Teams</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Recent Searches Section -->
+              <div class="search-section" style="margin-top: 0.75rem;">
+                <h4>Recent Searches</h4>
+                <div class="search-recent-list" id="search-recent-list">
+                  <div class="recent-search-item" data-app="notion">
+                    <i class="fa-regular fa-clock text-secondary" style="margin-right: 0.5rem;"></i>
+                    <span>PRD-01: Windows Taskflow</span>
+                  </div>
+                  <div class="recent-search-item" data-app="excel">
+                    <i class="fa-regular fa-clock text-secondary" style="margin-right: 0.5rem;"></i>
+                    <span>Q2_Financial_Audit.xlsx</span>
+                  </div>
+                  <div class="recent-search-item" data-app="jira">
+                    <i class="fa-regular fa-clock text-secondary" style="margin-right: 0.5rem;"></i>
+                    <span>WIN-11 Agile Sprint Board</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Quick Searches Section -->
+              <div class="search-section" style="margin-top: 0.75rem;">
+                <h4>Quick Searches</h4>
+                <div class="quick-search-pills">
+                  <span class="search-pill"><i class="fa-solid fa-cloud text-accent"></i> OneDrive Status</span>
+                  <span class="search-pill"><i class="fa-solid fa-chart-line text-success"></i> ARR Forecast</span>
+                  <span class="search-pill"><i class="fa-solid fa-wand-magic-sparkles text-spark"></i> Copilot Specs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Windows 11 Centered Start Menu -->
+          <div class="start-menu" id="start-menu">
+            <div class="start-menu-search">
+              <i class="fa-solid fa-magnifying-glass font-search-icon"></i>
+              <input type="text" placeholder="Search for apps, files, and web...">
+            </div>
+            
+            <div class="start-pinned-section">
+              <div class="start-section-header">
+                <span>Pinned Apps</span>
+                <button class="btn-all-apps">All apps <i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+              <div class="start-pinned-grid">
+                <div class="start-app-item" data-app="chrome">
+                  <img src="https://cdn-icons-png.flaticon.com/512/888/888846.png" class="start-app-icon">
+                  <span>Chrome</span>
+                </div>
+                <div class="start-app-item" data-app="vscode">
+                  <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" class="start-app-icon">
+                  <span>VS Code</span>
+                </div>
+                <div class="start-app-item" data-app="excel">
+                  <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" class="start-app-icon">
+                  <span>Excel</span>
+                </div>
+                <div class="start-app-item" data-app="teams">
+                  <img src="https://cdn-icons-png.flaticon.com/512/906/906349.png" class="start-app-icon">
+                  <span>Teams</span>
+                </div>
+                <div class="start-app-item" data-app="jira">
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" class="start-app-icon">
+                  <span>Jira</span>
+                </div>
+                <div class="start-app-item" data-app="figma">
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" class="start-app-icon">
+                  <span>Figma</span>
+                </div>
+                <div class="start-app-item" data-app="mixpanel">
+                  <img src="https://cdn-icons-png.flaticon.com/512/4219/4219159.png" class="start-app-icon">
+                  <span>Mixpanel</span>
+                </div>
+                <div class="start-app-item" data-app="notion">
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968916.png" class="start-app-icon">
+                  <span>Notion</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="start-recommended-section">
+              <div class="start-section-header">
+                <span>Recommended Files</span>
+              </div>
+              <div class="start-rec-grid">
+                <div class="rec-item" data-app="notion">
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968916.png" class="rec-icon">
+                  <div class="rec-info">
+                    <span class="rec-name">PRD-01: Windows Taskflow</span>
+                    <span class="rec-time">12m ago</span>
+                  </div>
+                </div>
+                <div class="rec-item" data-app="figma">
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" class="rec-icon">
+                  <div class="rec-info">
+                    <span class="rec-name">Taskflow_Design_Specs</span>
+                    <span class="rec-time">1h ago</span>
+                  </div>
+                </div>
+                <div class="rec-item" data-app="excel">
+                  <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" class="rec-icon">
+                  <div class="rec-info">
+                    <span class="rec-name">Q2_Financial_Audit.xlsx</span>
+                    <span class="rec-time">Yesterday at 4:15 PM</span>
+                  </div>
+                </div>
+                <div class="rec-item" data-app="jira">
+                  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" class="rec-icon">
+                  <div class="rec-info">
+                    <span class="rec-name">WIN-24 Core Shell Backlog</span>
+                    <span class="rec-time">Monday at 9:00 AM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="start-footer">
+              <div class="start-user-profile">
+                <div class="user-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                <span class="user-name">Asim Kumar</span>
+              </div>
+              <button class="start-power-btn" id="btn-start-power" title="System Power"><i class="fa-solid fa-power-off"></i></button>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- VIEW 3: FULL WRITTEN REPORT VIEW -->
+      <section id="view-teardown" class="view-section">
+        <div class="report-container">
+          <div class="report-wrapper">
+            <div class="report-header">
+              <h1>Microsoft Windows 11: Comprehensive Product Teardown</h1>
+              <p class="subtitle">A Strategic, Quantitative, and UX-Centered Audit by a Senior Product Manager</p>
+              <div class="report-meta">
+                <span><i class="fa-regular fa-calendar"></i> July 2026</span>
+                <span><i class="fa-regular fa-folder-open"></i> Enterprise Software / OS Strategy</span>
+                <span><i class="fa-solid fa-shield-halved"></i> Verified for Microsoft Leadership Review</span>
+              </div>
+            </div>
+            
+            <div class="report-body" id="report-body-content">
+              <!-- Content loaded dynamically or parsed via JS from the report markdown files -->
+              <div class="loading-spinner"><i class="fa-solid fa-spinner fa-spin"></i> Loading written report content...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modal for Shared Link (Collaboration Loop Demonstration) -->
+    <div class="modal" id="share-modal">
+      <div class="modal-content glass-card">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-share-nodes text-accent"></i> Share Workspace Link</h3>
+          <span class="modal-close" id="btn-close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <p>Copy this unique Taskflow URL to share your workspace layout, open applications, and browser session context with team members:</p>
+          <div class="copy-url-container">
+            <input type="text" id="share-link-input" readonly value="taskflow://share/developer-workspace-7x29">
+            <button id="btn-copy-link" class="btn-primary"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <div class="modal-demo-notice">
+            <p><strong>Frictionless Recipient Experience:</strong> When your teammate clicks this link, their Windows 11 machine will automatically fetch shared document permissions via SharePoint/Teams and arrange their workspace windows to match your layout exactly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript App Logic -->
+  <script src="app.js?v=4"></script>
+</body>
+</html>

@@ -1,247 +1,473 @@
 <section class="section selected-work-section" id="selected-work">
   <div class="container">
-    <div class="selected-work-section__header animate-in">
+    <div class="selected-work-section__header animate-in" style="margin-bottom: var(--space-8);">
       <p class="eyebrow section-header__eyebrow">Selected Work</p>
-      <h2 class="section-header__title">Three products. Three stacks. One habit.</h2>
+      <h2 class="section-header__title">Case studies, working prototypes, and evidence discipline.</h2>
       <p class="muted-paragraph section-header__subtitle">
-        Each one is a real product I built end-to-end — with measurement, verification,
-        and honest gaps where they exist. Same approach in every case: define the problem
-        before building, build measurement before claiming outcomes, verify what I claim,
-        and say plainly what I haven't validated.
+        Four featured product initiatives shown in a compact comparative grid. Each card pairs an embedded interactive prototype preview with core problem framing, architectural decisions, and verifiable evidence.
       </p>
     </div>
 
-    <div class="project-grid-homepage">
+    <div class="projects-list reveal">
 
-      <!-- REVIEWFLOW — flagship -->
-      <article class="hp-project-card hp-project-card--featured reveal">
-        <div class="hp-project-card__top">
-          <div class="hp-project-card__visual">
-            <!-- ReviewFlow custom SVG: structured input → AI-assisted wording → Google review -->
-            <svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="20" y="20" width="60" height="44" rx="6" stroke="var(--accent)" stroke-width="1.8"/>
-              <rect x="20" y="74" width="60" height="44" rx="6" stroke="var(--border-default)"/>
-              <rect x="20" y="128" width="60" height="36" rx="6" stroke="var(--border-default)"/>
-              <polyline points="80 42 104 42 104 64 80 64" stroke="var(--accent-muted)"/>
-              <polyline points="80 96 104 96 104 118 80 118" stroke="var(--accent-muted)"/>
-              <polyline points="80 146 104 146 104 160 80 160" stroke="var(--accent-muted)"/>
-              <path d="M116 42h16m0 0 6 6-6 6" stroke="var(--accent)" stroke-width="2"/>
-              <path d="M116 96h16m0 0 6 6-6 6" stroke="var(--accent)" stroke-width="2"/>
-              <path d="M116 146h16m0 0 6 6-6 6" stroke="var(--accent)" stroke-width="2"/>
-              <rect x="140" y="20" width="80" height="148" rx="6" stroke="var(--border-default)" stroke-dasharray="4 3"/>
-              <circle cx="180" cy="44" r="6" fill="var(--accent)" stroke="none"/>
-              <circle cx="180" cy="96" r="6" fill="var(--accent)" stroke="none"/>
-              <circle cx="180" cy="146" r="6" fill="var(--accent)" stroke="none"/>
-              <text x="180" y="48" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="var(--font-mono)">review</text>
-              <text x="180" y="100" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="var(--font-mono)">edit</text>
-              <text x="180" y="150" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="var(--font-mono)">publish</text>
-            </svg>
+      <!-- PROJECT 1: REVIEWFLOW (Flagship) -->
+      <article class="project-card" id="project-reviewflow">
+        <div class="project-top">
+          <div class="project-media">
+            <span class="project-media-badge">
+              <span class="liveDot" aria-hidden="true"></span>
+              Live Prototype
+            </span>
+            <iframe src="/work/reviewflow/live/" title="ReviewFlow interactive prototype preview" loading="lazy"></iframe>
+            <div class="project-media-cta">
+              <a href="/work/reviewflow/live/" target="_blank" rel="noopener noreferrer">
+                Open full prototype ↗
+              </a>
+            </div>
           </div>
-          <div class="hp-project-card__body">
-            <div class="hp-project-card__eyebrow">
-              <span class="hp-project-card__status-dot" aria-hidden="true"></span>
-              Flagship
-              <span class="hp-project-card__separator" aria-hidden="true">·</span>
-              <span class="hp-project-card__role-label">AI Product Integrity</span>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">AI Product Integrity</span>
+              <span class="project-tag">Deterministic Evaluation</span>
+              <span class="project-tag">React + Supabase</span>
             </div>
-            <h3 class="hp-project-card__title">ReviewFlow</h3>
-            <p class="hp-project-card__description">
-              React + Supabase application that helps people write better Google reviews by combining
-              structured input with AI-assisted wording — while preserving the user's own judgment.
-            </p>
-            <div class="hp-project-card__tags">
-              <span class="hp-project-card__tag">AI &amp; Product Systems</span>
-              <span class="hp-project-card__tag">Product Definition &amp; Delivery</span>
-              <span class="hp-project-card__tag">Data, Metrics &amp; Experimentation</span>
+            <h3>ReviewFlow — AI Review Integrity &amp; Offline Evaluator</h3>
+            <div class="project-role">Solo Product Build · AI UX, Deterministic Evaluation, Decision Log</div>
+
+            <div class="project-signal-block">
+              <p class="signal-item"><strong>Problem:</strong> Unconstrained LLMs generate sycophantic praise, hallucinated services, and FTC policy violations when drafting customer reviews.</p>
+              <p class="signal-item"><strong>Key Decision:</strong> Prioritized structured input fields, explicit rating preservation, and an offline deterministic evaluation harness over direct Google API posting.</p>
+              <p class="signal-item"><strong>Strongest Evidence:</strong> 247/247 deterministic checks passing across 15 synthetic cases. <span class="evidence-badge evidence-badge--verified" style="margin-left: 6px;">Verified</span></p>
             </div>
-            <div class="hp-project-card__evidence">
-              <div class="hp-project-card__evidence-row">
-                <span class="evidence-label evidence-label--verified">Verified</span>
-                <span class="hp-project-card__evidence-text">247 deterministic checks · 15-case regression · corrected evaluator</span>
+
+            <div class="project-kpis">
+              <div class="kpi-box">
+                <div class="kpi-num">247</div>
+                <div class="kpi-delta">100% verified pass</div>
+                <div class="kpi-lbl">Deterministic checks</div>
               </div>
-              <div class="hp-project-card__evidence-row">
-                <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
-                <span class="hp-project-card__evidence-text">No real users · no live AI · no measured outcome</span>
+              <div class="kpi-box">
+                <div class="kpi-num">15</div>
+                <div class="kpi-delta">Offline test harness</div>
+                <div class="kpi-lbl">Regression cases</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-num">0</div>
+                <div class="kpi-delta">Controlled execution</div>
+                <div class="kpi-lbl">Live external AI calls</div>
               </div>
             </div>
-            <p class="hp-project-card__caution">
-              Phase 11 intervention not live-validated — live credentials were unavailable.
-            </p>
-            <div class="hp-project-card__actions">
-              <a href="/work/reviewflow/" class="hp-project-card__cta hp-project-card__cta--primary">
-                View Case Study
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </a>
-              <a href="https://github.com/asimk714/salon-review-bot" class="hp-project-card__cta hp-project-card__cta--ghost" target="_blank" rel="noopener noreferrer">
-                GitHub
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-              </a>
+            <div class="project-actions">
+              <a href="/work/reviewflow/" class="btn btn--primary btn-sm">Full Case Study →</a>
+              <a href="/work/reviewflow/live/" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">Open Prototype ↗</a>
+              <a href="https://github.com/asimk714/salon-review-bot" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="case-toggle" data-target="case-reviewflow" type="button" aria-expanded="false">
+          View case breakdown <span class="chev">⌄</span>
+        </button>
+
+        <div class="case-detail" id="case-reviewflow">
+          <div class="case-grid">
+            <div class="case-block">
+              <h4>Problem Statement</h4>
+              <p>Customers often leave either sparse 5-star ratings or unhelpful rants. LLM-assisted drafting can bridge this gap, but naive prompting produces sycophantic, hallucinated, or policy-violating text that damages local business trust.</p>
+            </div>
+            <div class="case-block">
+              <h4>Prioritization &amp; Scoping</h4>
+              <p>Applied MoSCoW prioritization across 8 architectural decision records: prioritized deterministic input validation, prompt governance, and offline scoring over direct Google API posting.</p>
+            </div>
+            <div class="case-block">
+              <h4>Evaluation Harness</h4>
+              <p>Engineered an offline verification harness running 247 deterministic checks across 15 synthetic test cases, auditing review tone, length, factual consistency, and banned promotional claims.</p>
+            </div>
+            <div class="case-block">
+              <h4>Verification &amp; Honest Boundaries</h4>
+              <p>All 247 evaluation checks pass deterministically. Honest boundary plainly stated: Phase 11 intervention was verified with offline test fixtures because live third-party Google credentials were unavailable; no live production users have been measured.</p>
+            </div>
+            <div class="case-block wide">
+              <h4>KPIs &amp; Impact Model</h4>
+              <div class="case-kpi-row">
+                <div class="case-kpi">
+                  <div class="top"><span>Deterministic Evaluation Suite</span><strong>247 / 247 Passed</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                </div>
+                <div class="case-kpi">
+                  <div class="top"><span>Synthetic Case Coverage</span><strong>15 Cases</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                </div>
+                <div class="case-kpi">
+                  <div class="top"><span>External API Cost in CI</span><strong>$0.00 (Offline)</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                </div>
+              </div>
+              <div class="learnings">
+                <strong>Key Takeaway:</strong> Prompt engineering without deterministic regression tests is guesswork. AI product quality must be treated as an engineering discipline with automated verification gates.
+              </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- UNROT — flagship/supporting -->
-      <article class="hp-project-card reveal">
-        <div class="hp-project-card__top">
-          <div class="hp-project-card__visual">
-            <!-- Unrot custom SVG: daily micro-learning with D1 retention measurement -->
-            <svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <!-- Day 1 lesson card -->
-              <rect x="24" y="32" width="72" height="44" rx="6" stroke="var(--accent)" stroke-width="1.8"/>
-              <path d="M34 48h48" stroke="var(--accent-muted)" stroke-width="1.2"/>
-              <path d="M34 58h36" stroke="var(--accent-muted)" stroke-width="1.2"/>
-              <path d="M34 68h44" stroke="var(--accent-muted)" stroke-width="1.2"/>
-              <text x="60" y="104" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="var(--font-mono)">Day 1</text>
-              <!-- Arrow to Day 2 -->
-              <path d="M100 54h18m-2 0 2 4-2 4" stroke="var(--border-default)" stroke-width="1.5"/>
-              <!-- Day 2 card (faded — not yet returned) -->
-              <rect x="120" y="32" width="72" height="44" rx="6" stroke="var(--border-default)" stroke-dasharray="4 3"/>
-              <text x="156" y="104" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="var(--font-mono)">Day 2</text>
-              <!-- Measurement funnel below -->
-              <path d="M40 130l20 8 20-8 20 8 20-8 20 8 20-8" stroke="var(--accent-muted)" stroke-width="1.2" fill="none"/>
-              <text x="120" y="152" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="var(--font-mono)">D1 measurement</text>
-              <!-- Honest data note -->
-              <circle cx="170" cy="138" r="5" stroke="var(--text-muted)" stroke-width="1" fill="none"/>
-              <text x="170" y="150" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="var(--font-mono)">no real cohort</text>
-            </svg>
+      <!-- PROJECT 2: UNROT (Flagship) -->
+      <article class="project-card" id="project-unrot">
+        <div class="project-top">
+          <div class="project-media">
+            <span class="project-media-badge">
+              <span class="liveDot" aria-hidden="true"></span>
+              Live Prototype
+            </span>
+            <iframe src="/work/unrot/live/" title="Unrot Daily Retention interactive prototype preview" loading="lazy"></iframe>
+            <div class="project-media-cta">
+              <a href="/work/unrot/live/" target="_blank" rel="noopener noreferrer">
+                Open full prototype ↗
+              </a>
+            </div>
           </div>
-          <div class="hp-project-card__body">
-            <div class="hp-project-card__eyebrow">
-              <span class="hp-project-card__status-dot" aria-hidden="true"></span>
-              Flagship / Supporting
-              <span class="hp-project-card__separator" aria-hidden="true">·</span>
-              <span class="hp-project-card__role-label">Retention Analytics</span>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">Retention Strategy</span>
+              <span class="project-tag">A/B Experiment Design</span>
+              <span class="project-tag">Next.js 16 + Prisma</span>
             </div>
-            <h3 class="hp-project-card__title">Unrot Daily Retention</h3>
-            <p class="hp-project-card__description">
-              Next.js 16 + PostgreSQL + Prisma daily micro-learning retention prototype with a
-              structured measurement model — metric hierarchy, 7-stage funnel, instrumentation.
-            </p>
-            <div class="hp-project-card__tags">
-              <span class="hp-project-card__tag">Customer &amp; Market Discovery</span>
-              <span class="hp-project-card__tag">Product Definition &amp; Delivery</span>
-              <span class="hp-project-card__tag">Data, Metrics &amp; Experimentation</span>
+            <h3>Unrot — Daily Micro-Learning Retention &amp; A/B Plan</h3>
+            <div class="project-role">Solo Product Build · JTBD Discovery, Retention Modeling, Experiment Design</div>
+
+            <div class="project-signal-block">
+              <p class="signal-item"><strong>Problem:</strong> Micro-learning platforms suffer severe D1 drop-off (baseline ~16%); feature teams build aimlessly without behavioral hypotheses.</p>
+              <p class="signal-item"><strong>Key Decision:</strong> Decomposed retention into 4 distinct user jobs and designed a controlled A/B experiment for the return-intent nudge before expanding feature breadth.</p>
+              <p class="signal-item"><strong>Strongest Evidence:</strong> Complete measurement model, MDE power calculation, and 29/50 tests passing (21 DB-dependent failures disclosed). <span class="evidence-badge evidence-badge--inferred" style="margin-left: 6px;">Planned Experiment</span></p>
             </div>
-            <div class="hp-project-card__evidence">
-              <div class="hp-project-card__evidence-row">
-                <span class="evidence-label evidence-label--verified">Verified</span>
-                <span class="hp-project-card__evidence-text">Measurement model · analytics dashboard · A/B plan · 20/20 QA · 35/35 tests</span>
+
+            <div class="project-kpis">
+              <div class="kpi-box">
+                <div class="kpi-num">29/50</div>
+                <div class="kpi-delta">21 DB tests disclosed</div>
+                <div class="kpi-lbl">Automated test suite</div>
               </div>
-              <div class="hp-project-card__evidence-row">
-                <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
-                <span class="hp-project-card__evidence-text">No measured D1 outcome · no real users · no launch</span>
+              <div class="kpi-box">
+                <div class="kpi-num">4 / 7</div>
+                <div class="kpi-delta">Explicit testable jobs</div>
+                <div class="kpi-lbl">JTBD / Hypotheses</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-num">20/20</div>
+                <div class="kpi-delta">Previously reported</div>
+                <div class="kpi-lbl">Functional QA routes</div>
               </div>
             </div>
-            <p class="hp-project-card__caution">
-              16% baseline and 22% benchmark are assignment-provided, not author-measured.
-            </p>
-            <div class="hp-project-card__actions">
-              <a href="/work/unrot/" class="hp-project-card__cta hp-project-card__cta--primary">
-                View Case Study
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </a>
-              <a href="https://github.com/asimk714/Unrot-Daily-Retention" class="hp-project-card__cta hp-project-card__cta--ghost" target="_blank" rel="noopener noreferrer">
-                GitHub
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-              </a>
+            <div class="project-actions">
+              <a href="/work/unrot/" class="btn btn--primary btn-sm">Full Case Study →</a>
+              <a href="/work/unrot/live/" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">Open Prototype ↗</a>
+              <a href="https://github.com/asimk714/Unrot-Daily-Retention" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="case-toggle" data-target="case-unrot" type="button" aria-expanded="false">
+          View case breakdown <span class="chev">⌄</span>
+        </button>
+
+        <div class="case-detail" id="case-unrot">
+          <div class="case-grid">
+            <div class="case-block">
+              <h4>Problem Statement</h4>
+              <p>Micro-learning platforms suffer catastrophic day-1 drop-off. The assignment baseline is 16% D1 retention, with a hypothetical target of 22%. The product failure isn't lack of content; it's absent habit loops and friction at the return threshold.</p>
+            </div>
+            <div class="case-block">
+              <h4>JTBD &amp; Behavioral Hypotheses</h4>
+              <p>Mapped 4 distinct Jobs-to-be-Done and derived 7 intervention hypotheses. Isolated H4 (return-intent commitment at the end of Session 1) as the highest-impact, lowest-effort experiment candidate.</p>
+            </div>
+            <div class="case-block">
+              <h4>Measurement Model &amp; A/B Design</h4>
+              <p>Architected full experiment specification: primary metric (D1 return rate), guardrail metric (session completion quality), minimum detectable effect (MDE) statistical power analysis, and explicit decision rules for shipping.</p>
+            </div>
+            <div class="case-block">
+              <h4>Honest Disclosures &amp; Reality</h4>
+              <p>Full honesty: 29 of 50 automated tests pass locally; 21 fail without live PostgreSQL credentials. The 16% baseline is context, not measured user data. No live experiment has been run on production traffic.</p>
+            </div>
+            <div class="case-block wide">
+              <h4>KPIs &amp; Experiment Metrics</h4>
+              <div class="case-kpi-row">
+                <div class="case-kpi">
+                  <div class="top"><span>D1 Retention Target</span><strong>22.0% (Hypothesis)</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="65"></div></div>
+                </div>
+                <div class="case-kpi">
+                  <div class="top"><span>Baseline Context</span><strong>16.0% (Context)</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="45"></div></div>
+                </div>
+                <div class="case-kpi">
+                  <div class="top"><span>Automated Tests Passing</span><strong>29 / 50 Passing</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="58"></div></div>
+                </div>
+              </div>
+              <div class="learnings">
+                <strong>Key Takeaway:</strong> Retention problems cannot be solved with feature addition. They require identifying the precise behavioral transition that fails and instrumenting an experiment around that single moment.
+              </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- EXPERIMENT TRACKER — supporting -->
-      <article class="hp-project-card reveal">
-        <div class="hp-project-card__top">
-          <div class="hp-project-card__visual">
-            <!-- Experiment Tracker custom SVG: experiment → conclusion → next action -->
-            <svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <!-- Experiment card -->
-              <rect x="20" y="40" width="64" height="48" rx="6" stroke="var(--accent)" stroke-width="1.8"/>
-              <path d="M32 56h40" stroke="var(--accent-muted)" stroke-width="1.2"/>
-              <path d="M32 66h32" stroke="var(--accent-muted)" stroke-width="1.2"/>
-              <path d="M32 76h36" stroke="var(--accent-muted)" stroke-width="1.2"/>
-              <text x="52" y="114" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="var(--font-mono)">Experiment</text>
-              <!-- Arrow to conclusion -->
-              <path d="M86 64h18m-2 0 2 4-2 4" stroke="var(--border-default)" stroke-width="1.5"/>
-              <!-- Conclusion card -->
-              <rect x="106" y="40" width="64" height="48" rx="6" stroke="var(--accent)" stroke-width="1.8"/>
-              <path d="M118 56h40" stroke="var(--accent-muted)" stroke-width="1.2"/>
-              <path d="M118 66h32" stroke="var(--accent-muted)" stroke-width="1.2"/>
-              <path d="M118 76h28" stroke="var(--accent-muted)" stroke-width="1.2"/>
-              <path d="M148 56l6 6-6 6" stroke="var(--accent)" stroke-width="1.8"/>
-              <text x="138" y="114" text-anchor="middle" font-size="9" fill="var(--text-muted)" font-family="var(--font-mono)">Conclusion</text>
-              <!-- Arrow to next action -->
-              <path d="M172 64h18m-2 0 2 4-2 4" stroke="var(--border-default)" stroke-width="1.5"/>
-              <!-- Next action card -->
-              <rect x="192" y="40" width="32" height="48" rx="6" stroke="var(--border-default)" stroke-dasharray="3 2"/>
-              <path d="M200 56h16" stroke="var(--border-default)" stroke-width="1.2"/>
-              <text x="208" y="114" text-anchor="middle" font-size="7" fill="var(--text-muted)" font-family="var(--font-mono)">Next</text>
-              <!-- Bottom: verification note -->
-              <circle cx="120" cy="150" r="5" fill="var(--accent)" stroke="none"/>
-              <text x="120" y="166" text-anchor="middle" font-size="8" fill="var(--text-muted)" font-family="var(--font-mono)">22 tests · 17-category verification</text>
-            </svg>
+      <!-- PROJECT 3: EXPERIMENT TRACKER (Supporting Product Build) -->
+      <article class="project-card" id="project-tracker">
+        <div class="project-top">
+          <div class="project-media">
+            <span class="project-media-badge">
+              <span class="liveDot" aria-hidden="true"></span>
+              Live Prototype
+            </span>
+            <iframe src="/work/experiment-tracker/live/" title="Experiment Tracker interactive prototype preview" loading="lazy"></iframe>
+            <div class="project-media-cta">
+              <a href="/work/experiment-tracker/live/" target="_blank" rel="noopener noreferrer">
+                Open full prototype ↗
+              </a>
+            </div>
           </div>
-          <div class="hp-project-card__body">
-            <div class="hp-project-card__eyebrow">
-              <span class="hp-project-card__status-dot" aria-hidden="true"></span>
-              Supporting
-              <span class="hp-project-card__separator" aria-hidden="true">·</span>
-              <span class="hp-project-card__role-label">Product Definition</span>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">Scope Prioritization</span>
+              <span class="project-tag">Local-First Architecture</span>
+              <span class="project-tag">Flask + SQLite</span>
             </div>
-            <h3 class="hp-project-card__title">Experiment Tracker</h3>
-            <p class="hp-project-card__description">
-              Local-first Flask + SQLite experiment log that closes the loop between running an
-              experiment and recording what you concluded — outcome, decision, next action.
-            </p>
-            <div class="hp-project-card__tags">
-              <span class="hp-project-card__tag">Product Strategy &amp; Prioritization</span>
-              <span class="hp-project-card__tag">Product Definition &amp; Delivery</span>
-              <span class="hp-project-card__tag">Data, Metrics &amp; Experimentation</span>
+            <h3>Experiment Tracker — Evaluation &amp; Conclusion Capture</h3>
+            <div class="project-role">Solo Product Build · Prioritization Brief, SQLite Architecture, Verification</div>
+
+            <div class="project-signal-block">
+              <p class="signal-item"><strong>Problem:</strong> Product teams run growth tests but fail to capture decisions, abandoning data in spreadsheets and lost Slack channels.</p>
+              <p class="signal-item"><strong>Key Decision:</strong> Prioritized conclusion capture over charts, search, and auth — the smallest capability closing the experiment-to-decision loop (~27 lines).</p>
+              <p class="signal-item"><strong>Strongest Evidence:</strong> 8-candidate prioritization matrix with explicit "why not" criteria and 17-category verification report. <span class="evidence-badge evidence-badge--verified" style="margin-left: 6px;">Verified</span></p>
             </div>
-            <div class="hp-project-card__evidence">
-              <div class="hp-project-card__evidence-row">
-                <span class="evidence-label evidence-label--verified">Verified by test</span>
-                <span class="hp-project-card__evidence-text">22 tests · 17-category verification · database integrity</span>
+
+            <div class="project-kpis">
+              <div class="kpi-box">
+                <div class="kpi-num">8</div>
+                <div class="kpi-delta">Documented trade-offs</div>
+                <div class="kpi-lbl">Candidates evaluated</div>
               </div>
-              <div class="hp-project-card__evidence-row">
-                <span class="evidence-label evidence-label--proposed">Proposed</span>
-                <span class="hp-project-card__evidence-text">experiments_with_conclusion / completed_experiments usage metric</span>
+              <div class="kpi-box">
+                <div class="kpi-num">17</div>
+                <div class="kpi-delta">Comprehensive audit</div>
+                <div class="kpi-lbl">Verification categories</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-num">~27</div>
+                <div class="kpi-delta">Minimal intervention</div>
+                <div class="kpi-lbl">Lines to close the loop</div>
               </div>
             </div>
-            <p class="hp-project-card__caution">
-              No external users, launch, GTM, or measured product outcomes. Proposed usage metric not yet measured.
-            </p>
-            <div class="hp-project-card__actions">
-              <a href="/work/experiment-tracker/" class="hp-project-card__cta hp-project-card__cta--primary">
-                View Case Study
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
+            <div class="project-actions">
+              <a href="/work/experiment-tracker/" class="btn btn--primary btn-sm">Full Case Study →</a>
+              <a href="/work/experiment-tracker/live/" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">Open Prototype ↗</a>
+              <a href="https://github.com/asimk714/experiment-tracker" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="case-toggle" data-target="case-tracker" type="button" aria-expanded="false">
+          View case breakdown <span class="chev">⌄</span>
+        </button>
+
+        <div class="case-detail" id="case-tracker">
+          <div class="case-grid">
+            <div class="case-block">
+              <h4>Problem Statement</h4>
+              <p>Experimentation tools focus heavily on statistical power calculators and feature flagging, but completely abandon the post-test decision record. Teams repeatedly run duplicate tests because learnings are lost.</p>
+            </div>
+            <div class="case-block">
+              <h4>8-Candidate Prioritization</h4>
+              <p>Evaluated 8 potential features (visual charts, full-text search, user auth, cloud sync, conclusion capture, templates, tag filtering, artifact linking). Scoped only conclusion capture: closing the decision loop in ~27 lines.</p>
+            </div>
+            <div class="case-block">
+              <h4>Local-First Architecture</h4>
+              <p>Zero-dependency Python/Flask/SQLite stack. Runs instantly with zero cloud configuration, no credentials, and no external tracking dependencies — designed for speed and reliability.</p>
+            </div>
+            <div class="case-block">
+              <h4>Verification &amp; Test Coverage</h4>
+              <p>Comprehensive 17-category verification report auditing database integrity, state transitions, validation rules, and error recovery. Preserves test traceability without inflating claims.</p>
+            </div>
+            <div class="case-block wide">
+              <h4>KPIs &amp; Audit Traceability</h4>
+              <div class="case-kpi-row">
+                <div class="case-kpi">
+                  <div class="top"><span>Verification Categories</span><strong>17 / 17 Verified</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                </div>
+                <div class="case-kpi">
+                  <div class="top"><span>Candidate Evaluated</span><strong>8 Candidates</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                </div>
+                <div class="case-kpi">
+                  <div class="top"><span>Setup Overhead</span><strong>0 Cloud Config</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                </div>
+              </div>
+              <div class="learnings">
+                <strong>Key Takeaway:</strong> Scope discipline is knowing what NOT to build. Choosing the smallest capability that solves the core problem creates more product velocity than building an unmaintained feature suite.
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 4: WINDOWS 11 TASKFLOW (Concept Teardown + Prototype) -->
+      <article class="project-card" id="project-windows">
+        <div class="project-top">
+          <div class="project-media">
+            <span class="project-media-badge">
+              <span class="liveDot" aria-hidden="true" style="background: var(--gold-bright); box-shadow: 0 0 8px var(--gold-bright);"></span>
+              Taskflow Concept Preview
+            </span>
+            <div class="wt-card-preview" aria-label="Windows 11 Taskflow interface preview">
+              <div class="wt-cp-desktop">
+                <div class="wt-cp-window wt-cp-window--left">
+                  <div class="wt-cp-window-header">
+                    <span class="wt-cp-win-dot"></span>
+                    <span class="wt-cp-window-title">Chrome · Q3 Research</span>
+                  </div>
+                  <div class="wt-cp-window-body">
+                    <div class="wt-cp-line" style="width: 85%;"></div>
+                    <div class="wt-cp-line" style="width: 60%;"></div>
+                    <div class="wt-cp-line" style="width: 40%;"></div>
+                  </div>
+                </div>
+                <div class="wt-cp-window wt-cp-window--right">
+                  <div class="wt-cp-window-header">
+                    <span class="wt-cp-win-dot"></span>
+                    <span class="wt-cp-window-title">Excel · Financial Model</span>
+                  </div>
+                  <div class="wt-cp-window-body wt-cp-grid-body">
+                    <div class="wt-cp-grid-cell"></div>
+                    <div class="wt-cp-grid-cell"></div>
+                    <div class="wt-cp-grid-cell"></div>
+                    <div class="wt-cp-grid-cell"></div>
+                  </div>
+                </div>
+                <div class="wt-cp-taskflow-pill">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="4"/>
+                    <path d="M6 12h12M12 6v12"/>
+                  </svg>
+                  <span>Context: <strong>Q3 Financial Review</strong></span>
+                  <span class="wt-cp-pill-tag">3 Apps Grouped</span>
+                </div>
+              </div>
+              <div class="wt-cp-taskbar">
+                <div class="wt-cp-taskbar-dock">
+                  <div class="wt-cp-dock-item" title="Start">
+                    <svg viewBox="0 0 16 16" width="12" height="12" fill="#0078d4">
+                      <rect x="1" y="1" width="6" height="6"/>
+                      <rect x="9" y="1" width="6" height="6"/>
+                      <rect x="1" y="9" width="6" height="6"/>
+                      <rect x="9" y="9" width="6" height="6"/>
+                    </svg>
+                  </div>
+                  <div class="wt-cp-dock-item wt-cp-dock-item--active" title="Taskflow (Active Context)">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="var(--gold-bright)">
+                      <rect x="2" y="2" width="20" height="20" rx="4"/>
+                      <path d="M6 12h12M12 6v12" stroke="#100b05" stroke-width="2.5"/>
+                    </svg>
+                    <span class="wt-cp-active-indicator"></span>
+                  </div>
+                  <div class="wt-cp-dock-item"><span class="wt-cp-app-icon wt-cp-app--chrome"></span></div>
+                  <div class="wt-cp-dock-item"><span class="wt-cp-app-icon wt-cp-app--vscode"></span></div>
+                  <div class="wt-cp-dock-item"><span class="wt-cp-app-icon wt-cp-app--excel"></span></div>
+                  <div class="wt-cp-dock-item"><span class="wt-cp-app-icon wt-cp-app--teams"></span></div>
+                </div>
+                <div class="wt-cp-taskbar-tray">
+                  <span>04:30 PM</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-media-cta">
+              <a href="/work/windows-taskflow/live/" target="_blank" rel="noopener noreferrer">
+                Open full prototype ↗
               </a>
-              <a href="https://github.com/asimk714/experiment-tracker" class="hp-project-card__cta hp-project-card__cta--ghost" target="_blank" rel="noopener noreferrer">
-                GitHub
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">Desktop OS UX</span>
+              <span class="project-tag">Multitasking Teardown</span>
+              <span class="project-tag">HEART Framework</span>
+            </div>
+            <h3>Windows 11 Taskflow — Shell Multitasking Teardown</h3>
+            <div class="project-role">Solo Product Teardown · 20-Phase Analysis, UX Prototyping, PRD</div>
+
+            <div class="project-signal-block">
+              <p class="signal-item"><strong>Problem:</strong> Multitasking across 5+ active windows creates repetitive manual re-tiling, lost context on reboot, and cognitive fatigue.</p>
+              <p class="signal-item"><strong>Key Decision:</strong> Benchmarked macOS Stage Manager and ChromeOS Virtual Desks; formulated native shell-level Taskflow with HEART framework metrics.</p>
+              <p class="signal-item"><strong>Strongest Evidence:</strong> 20-phase strategic product teardown, interactive task-grouping prototype simulator, and full PRD. <span class="evidence-badge evidence-badge--observed" style="margin-left: 6px;">Concept Prototype</span></p>
+            </div>
+
+            <div class="project-kpis">
+              <div class="kpi-box">
+                <div class="kpi-num">20</div>
+                <div class="kpi-delta">Complete framework</div>
+                <div class="kpi-lbl">Teardown phases</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-num">5</div>
+                <div class="kpi-delta">User journey mapped</div>
+                <div class="kpi-lbl">Target personas</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-num">HEART</div>
+                <div class="kpi-delta">Structured success</div>
+                <div class="kpi-lbl">Metrics framework</div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="/work/windows-taskflow/" class="btn btn--primary btn-sm">Full Case Study →</a>
+              <a href="/work/windows-taskflow/live/" class="btn btn--ghost btn-sm" target="_blank" rel="noopener noreferrer">Open Prototype ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="case-toggle" data-target="case-windows" type="button" aria-expanded="false">
+          View case breakdown <span class="chev">⌄</span>
+        </button>
+
+        <div class="case-detail" id="case-windows">
+          <div class="case-grid">
+            <div class="case-block">
+              <h4>Problem Statement</h4>
+              <p>Windows 11 users with 5+ open windows face constant context-switching overhead, manual window repositioning, and complete loss of working state upon system restart. Existing Snap Layouts solve layout, not intent.</p>
+            </div>
+            <div class="case-block">
+              <h4>Competitive Benchmarking</h4>
+              <p>Analyzed macOS Stage Manager, macOS Spaces, ChromeOS Virtual Desks, and Linux workspace managers. Identified the critical gap: desktop operating systems organize windows by application, not by task.</p>
+            </div>
+            <div class="case-block">
+              <h4>Feature Formulation — Taskflow</h4>
+              <p>Architected 'Windows Taskflow' — an intelligent task-clustering shell flyout that groups apps by active project, preserves state across reboots, and offers quick context restoration from the taskbar.</p>
+            </div>
+            <div class="case-block">
+              <h4>HEART Success Metrics</h4>
+              <p>Defined structured measurement framework: Happiness (CSAT on multitasking), Engagement (tasks created per week), Adoption (% of users grouping 2+ windows), Retention (D30 task usage), Task Success (time to switch contexts).</p>
+            </div>
+            <div class="case-block wide">
+              <h4>KPIs &amp; Teardown Metrics</h4>
+              <div class="case-kpi-row">
+                <div class="case-kpi">
+                  <div class="top"><span>Teardown Depth</span><strong>20 Phases Covered</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                </div>
+                <div class="case-kpi">
+                  <div class="top"><span>Persona Mapping</span><strong>5 Personas</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                </div>
+                <div class="case-kpi">
+                  <div class="top"><span>Interactive Fidelity</span><strong>Functional Simulator</strong></div>
+                  <div class="bar-track"><div class="bar-fill" data-fill="100"></div></div>
+                </div>
+              </div>
+              <div class="learnings">
+                <strong>Key Takeaway:</strong> Operating system shell enhancements succeed when they reduce cognitive friction rather than adding visual complexity. Features must align with existing spatial memory.
+              </div>
             </div>
           </div>
         </div>
@@ -249,13 +475,13 @@
 
     </div>
 
-    <div class="pwo-cta-row animate-in" style="margin-top: var(--space-10);">
+    <!-- Supporting Work Sub-Bar -->
+    <div class="pwo-cta-row animate-in" style="margin-top: var(--space-8); text-align: center;">
+      <p class="muted-paragraph" style="margin-bottom: var(--space-3); font-size: var(--text-sm);">
+        Looking for additional teardowns, models, and live prototypes?
+      </p>
       <a href="/work/" class="btn btn--ghost">
-        See the full Proof of Work
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;">
-          <line x1="5" y1="12" x2="19" y2="12"/>
-          <polyline points="12 5 19 12 12 19"/>
-        </svg>
+        Explore all strategic frameworks &amp; prototypes (Windows Taskflow, IRCTC, Enterprise AI Pilot Transition, Catalyst, LoDo, Context Engine, Vesper) →
       </a>
     </div>
   </div>

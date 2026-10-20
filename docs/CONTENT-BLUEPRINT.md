@@ -15,7 +15,7 @@ Section order:
 1. **Hero** — Identity, positioning, value proposition, primary CTA
 2. **Product Thesis / How I Think** — Product philosophy, principles
 3. **Selected Work** — Three case study cards (ReviewFlow, Unrot, Experiment Tracker)
-4. **Product Operating System** — DISCOVER → DEFINE → DECIDE → BUILD → MEASURE → LEARN
+4. **Product Operating System** — DISCOVER → DECIDE → DEFINE → BUILD → LAUNCH → MEASURE → LEARN → ITERATE
 5. **Product Lab** — Evidence/credibility system (OBSERVED / VERIFIED / INFERRED / HYPOTHESIS / PROPOSED / NOT EVIDENCED)
 6. **Experience** — Nokia + IIM + skills
 7. **Credentials** — IIM Tiruchirappalli, relevant credentials
@@ -45,7 +45,7 @@ Section order:
 
 "I build products that work and verify that they work — and I'm honest about what I haven't proven.
 
-I've built three implemented products across three stacks: an AI-assisted review tool with rigorous AI quality measurement (247 deterministic checks, an output evaluator, 15 historical test cases, a corrected evaluator, and a failure analysis system), a retention analytics prototype with a structured measurement model (metric hierarchy, 7-stage funnel, must-have instrumentation), and a local-first experiment tracker with a 17-category verification report and 22 automated tests.
+I've built three implemented products across three stacks: an AI-assisted review tool with rigorous AI quality measurement (247 deterministic checks, an output evaluator, 15 historical test cases, a corrected evaluator, and a failure analysis system), a retention analytics prototype with a structured measurement model (metric hierarchy, 7-stage funnel, must-have instrumentation), and a local-first experiment tracker with a 17-category verification report and 26 automated test functions authored across 4 test files.
 
 Across all three, the pattern is the same: identify a meaningful problem, define the product with clear trade-offs, build measurement systems that tell me whether it's working, verify what I claim, and be honest about what I haven't validated.
 
@@ -78,9 +78,9 @@ I'm strongest at product definition, prioritization, trade-offs, measurement des
 **CTA:** "Read the Unrot case study →"
 
 ### Experiment Tracker (Supporting)
-**One-line:** "Product definition — a local-first experiment tracker with a 7-candidate prioritization analysis, a clear MVP boundary, and a 17-category verification report with 22 automated tests."
+**One-line:** "Product definition — a local-first experiment tracker with an 8-candidate prioritization analysis, a clear MVP boundary, and a 17-category verification report with 26 automated test functions authored across 4 test files."
 **PM signal:** Product definition + prioritization + trade-offs + verification + honest non-claims.
-**Strongest evidence:** PRODUCT_BRIEF.md (problem, user, JTBDs, product question, 7-candidate prioritization with "what it would add" + "why not prioritized"), MVP boundary (in/out of scope + trade-offs), conclusion capture implementation, 22 automated tests, 17-category verification report with evidence labels.
+**Strongest evidence:** PRODUCT_BRIEF.md (problem, user, JTBDs, product question, 8-candidate prioritization with "what it would add" + "why not prioritized"), MVP boundary (in/out of scope + trade-offs), conclusion capture implementation, 26 automated test functions authored across 4 test files, 17-category verification report with evidence labels.
 **Lifecycle stage:** Define → Build → Verify (strongest), Discover → Validate (weak), Launch → GTM (none), Measure → Optimize (weak — proposed usage metric not measured), Scale → Grow (none).
 **Credibility caveat:** No external user research. No external users. No launch. No GTM. No measured product outcomes. No scale/growth.
 **CTA:** "Read the Experiment Tracker case study →"
@@ -89,25 +89,31 @@ I'm strongest at product definition, prioritization, trade-offs, measurement des
 
 ## Product Operating System
 
-**Framework:** DISCOVER → DEFINE → DECIDE → BUILD → MEASURE → LEARN
+**Framework:** DISCOVER → DECIDE → DEFINE → BUILD → LAUNCH → MEASURE → LEARN → ITERATE
 
-**DISCOVER:** Identify meaningful problems. Frame them with user segments and JTBD hypotheses. Label assumptions explicitly.
-- Evidence: ReviewFlow (AI product principle), Unrot (D1 retention problem framing, JTBD hypotheses with assumptions/inferences/unknowns), Experiment Tracker (experiment data vs. decision gap, JTBDs hypothesized).
+**DISCOVER:** Identify meaningful problems. Frame them with user segments and JTBD hypotheses. Label assumptions explicitly — before the first line of code is discussed.
+- Evidence: Unrot (D1 retention problem framing + JTBD hypotheses with assumptions/inferences/unknowns), ReviewFlow (AI product principle), Experiment Tracker (experiment data vs. decision gap, JTBDs hypothesized).
 
-**DEFINE:** Turn ambiguous problems into defined products with clear boundaries, user needs, and success criteria.
-- Evidence: ReviewFlow (product decisions, MVP prioritization, architecture doc), Unrot (measurement model, D1 retention model), Experiment Tracker (PRODUCT_BRIEF.md).
+**DECIDE:** Prioritize alternatives with explicit criteria. Make trade-offs with rationale. Choose the smallest capability that addresses the most important gap — and record the "why not" for everything left out.
+- Evidence: Experiment Tracker (8-candidate prioritization with "what it would add" + "why not prioritized"), ReviewFlow (guardrail decisions over features, human approval over full automation), Unrot (measurement model over feature breadth, metric hierarchy, must-have instrumentation; simulated cross-functional decision exercise as portfolio demonstration).
 
-**DECIDE:** Prioritize alternatives with explicit criteria. Make trade-offs with rationale. Choose the smallest capability that addresses the most important gap.
-- Evidence: ReviewFlow (AI guardrails over AI features, human approval over full automation, narrow MVP), Unrot (measurement model over feature breadth, metric hierarchy, must-have instrumentation), Experiment Tracker (7-candidate prioritization with "what it would add" + "why not prioritized").
+**DEFINE:** Turn ambiguous problems into defined products with clear boundaries, user needs, and success criteria. Write the product brief before any code.
+- Evidence: Experiment Tracker (PRODUCT_BRIEF.md), ReviewFlow (product decisions, MVP prioritization, architecture doc), Unrot (measurement model, D1 retention model).
 
-**BUILD:** Build working products — or work closely with engineering to build them — across multiple stacks, with verification in mind.
-- Evidence: ReviewFlow (React + Supabase + Edge Functions + TypeScript, CI/test infrastructure, production-quality error handling, frontend timeout handling), Unrot (TypeScript/Next.js + PostgreSQL + Prisma + auth, health endpoint, deployment-shaped architecture, build/lint/typecheck), Experiment Tracker (Flask + SQLite + Jinja2 + vanilla JS, clean separation, 22 tests, 17-category verification report).
+**BUILD:** Build working products across multiple stacks — or work closely with engineering — with verification in mind from the first implementation. Not a slide or prototype that only works in a deck.
+- Evidence: ReviewFlow (React + Supabase + Edge Functions + TypeScript, CI/test infrastructure, production-quality error handling, frontend timeout handling), Unrot (TypeScript/Next.js + PostgreSQL + Prisma + auth, health endpoint, deployment-shaped architecture, build/lint/typecheck), Experiment Tracker (Flask + SQLite + Jinja2 + vanilla JS, clean separation, 26 automated test functions authored across 4 test files, 17-category verification report).
 
-**MEASURE:** Define success metrics. Build measurement systems. Design experiments to test hypotheses.
-- Evidence: ReviewFlow (metrics plan, experiment plan, AI quality measurement — 247 deterministic checks, output evaluator, corrected evaluator, 15 historical cases, failure analysis, prompt intervention, intervention record), Unrot (measurement model — metric hierarchy, 7-stage funnel, must-have instrumentation, analytics, guardrails), Experiment Tracker (proposed usage metric — experiments_with_conclusion / completed_experiments — not yet measured).
+**LAUNCH:** Make the product available to real people. Beta, rollout, GTM, stakeholder communication. Distribution is a product decision, not an afterthought.
+- Evidence: Not evidenced — The three flagship product builds are built and verified in local/demo environments. None has a verified public deployment, measured adoption, or GTM strategy.
 
-**LEARN:** Use evidence to make decisions. Verify what you claim. Be honest about what you haven't validated.
-- Evidence: ReviewFlow (AI quality regression — failure analysis, prompt intervention, intervention record honestly documented), Unrot (measurement model + analytics design, analytics persistence evidence from earlier validation), Experiment Tracker (17-category verification report with evidence labels, 22 tests), KAIRO (Verification Truthfulness Protocol, evidence discipline).
+**MEASURE:** Define success metrics. Build measurement systems. Design experiments to test hypotheses. Measure before claiming — otherwise the claim isn't worth trusting.
+- Evidence: ReviewFlow (metrics plan, experiment plan, AI quality measurement — 247 deterministic checks, output evaluator, corrected evaluator, 15 historical cases, failure analysis, intervention record), Unrot (measurement model — metric hierarchy, 7-stage funnel, must-have instrumentation, analytics, guardrails), Experiment Tracker (proposed usage metric — experiments_with_conclusion / completed_experiments — not yet measured).
+
+**LEARN:** What happened? What worked? What did not? At what confidence level? Learning is where verification meets honesty — and it's where the discipline shows up.
+- Evidence: ReviewFlow (failure analysis + intervention record honestly documented), Unrot (analytics design + honest "not enough data yet" state), Experiment Tracker (17-category verification report with evidence labels, 26 automated test functions authored), KAIRO (Verification Truthfulness Protocol, evidence discipline).
+
+**ITERATE:** Feed what you learned back into the next decision. Change the product. Propose the next experiment. Update the roadmap. The lifecycle doesn't end at launch — it loops.
+- Evidence: Each case study closes with "What I Would Do Next" — specific proposed next steps, never pretending they've been completed (ReviewFlow: live-validate Phase 11; Unrot: run the A/B experiment; Experiment Tracker: validate user model with real users).
 
 ---
 
@@ -206,7 +212,7 @@ The most distinctive signal. Shows the author understands AI products — what A
 Shows the author can frame a retention problem, define a measurement model with metric hierarchy and funnel instrumentation, identify user segments and JTBD hypotheses, and build a production-shaped prototype with auth + deployment-shaped architecture.
 
 **Experiment Tracker = Product definition + prioritization + trade-offs + verification**
-Shows the author can take a personal-product problem, evaluate seven alternatives with explicit criteria, choose the smallest capability that closes the loop, define a clear MVP boundary with trade-offs, implement it, and verify it with a 17-category verification report and 22 automated tests.
+Shows the author can take a personal-product problem, evaluate seven alternatives with explicit criteria, choose the smallest capability that closes the loop, define a clear MVP boundary with trade-offs, implement it, and verify it with a 17-category verification report and 26 automated test functions authored across 4 test files.
 
 **Why this combination is stronger than unrelated projects:**
 All three share a common product-engineering philosophy: identify a meaningful problem, define the product with clear trade-offs, build measurement systems, verify what you claim, and be honest about what you haven't validated. This thread ties them together as the work of one coherent product thinker, not three random technical demos.

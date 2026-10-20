@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC Rail Connect Redesign: Interactive PM Prototype</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy-primary: #0F2A4A;
+            --orange-accent: #FF8C00;
+            --slate-text: #4A5568;
+            --slate-light: #718096;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+            
+            --success: #10B981;
+            --error: #EF4444;
+            --warning: #F59E0B;
+            --blue-link: #3B82F6;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: #0B1528; /* Deep premium dark canvas */
+            color: #E2E8F0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: rgba(15, 42, 74, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-badge {
+            background-color: var(--orange-accent);
+            color: var(--navy-primary);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        .logo-text h1 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: #94A3B8;
+        }
+
+        .header-links a {
+            color: #E2E8F0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .header-links a:hover {
+            background: var(--orange-accent);
+            color: var(--navy-primary);
+            border-color: var(--orange-accent);
+        }
+
+        /* Main Workspace Container */
+        .workspace {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            padding: 2rem;
+            gap: 2.5rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        @media (max-width: 1100px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* LEFT SIDE: PM Explanation & Controller */
+        .pm-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .badge-pill {
+            display: inline-block;
+            padding: 0.35rem 0.8rem;
+            background: rgba(255, 140, 0, 0.15);
+            color: var(--orange-accent);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(255, 140, 0, 0.2);
+        }
+
+        .badge-pill.blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60A5FA;
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        h2.card-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .pm-panel p.intro {
+            color: #94A3B8;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mode Selector Tabs */
+        .mode-selector {
+            display: flex;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.4rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .mode-tab {
+            flex: 1;
+            padding: 0.85rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            color: #94A3B8;
+            background: transparent;
+        }
+
+        .mode-tab.active-current {
+            background: var(--error);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .mode-tab.active-redesign {
+            background: var(--success);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Metric Comparison Dashboard */
+        .metric-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .metric-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .metric-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .metric-header {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94A3B8;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-box {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+
+        .metric-value {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .metric-value.red { color: var(--error); }
+        .metric-value.green { color: var(--success); }
+
+        .metric-change {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        .metric-change.positive {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success);
+        }
+
+        .metric-change.negative {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--error);
+        }
+
+        .metric-desc {
+            font-size: 0.75rem;
+            color: #64748B;
+            margin-top: 0.5rem;
+            line-height: 1.4;
+        }
+
+        /* Strategic Feature Callouts */
+        .feature-list {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateX(4px);
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .feature-icon.p0 {
+            background: rgba(255, 140, 0, 0.15);
+            color: var(--orange-accent);
+        }
+
+        .feature-icon.p1 {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60A5FA;
+        }
+
+        .feature-text h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text p {
+            font-size: 0.85rem;
+            color: #94A3B8;
+            line-height: 1.5;
+        }
+
+
+        /* RIGHT SIDE: INTERACTIVE SMARTPHONE MOCKUP */
+        .device-panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .smartphone {
+            width: 390px;
+            height: 820px;
+            background: #1E293B;
+            border: 12px solid #334155;
+            border-radius: 54px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6), 0 0 0 4px rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Phone notch */
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 28px;
+            background: #334155;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .notch::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #1E293B;
+            border-radius: 10px;
+            margin-bottom: 4px;
+        }
+
+        /* Screen Canvas */
+        .screen {
+            flex: 1;
+            background-color: var(--bg-light);
+            color: var(--navy-primary);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding-top: 28px; /* Offset for notch */
+            font-family: var(--font-body);
+        }
+
+        /* App Shell Header */
+        .app-header {
+            background-color: var(--navy-primary);
+            color: var(--white);
+            padding: 0.85rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-md);
+            flex-shrink: 0;
+        }
+
+        .app-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .app-header-icons {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        /* Step Progress Indicator (Redesign Only) */
+        .step-indicator {
+            background: var(--white);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--muted-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--slate-text);
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 4px;
+            background: #E2E8F0;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--orange-accent);
+            width: 66%; /* Step 2 */
+            transition: width 0.3s ease;
+        }
+
+        /* Screen Content Area */
+        .screen-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        /* MOCKUP CARDS & COMPONENTS */
+        .route-summary {
+            background: #F1F5F9;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 0.85rem;
+        }
+
+        .route-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--navy-primary);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+
+        .route-sub {
+            font-size: 0.75rem;
+            color: var(--slate-text);
+        }
+
+        .section-header {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--slate-light);
+            margin: 0.5rem 0 0.25rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Form Inputs */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .input-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--slate-text);
+        }
+
+        .input-field {
+            background: var(--white);
+            border: 1.5px solid #CBD5E1;
+            border-radius: 8px;
+            padding: 0.6rem 0.75rem;
+            font-size: 0.85rem;
+            font-family: inherit;
+            color: var(--navy-primary);
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-field:focus {
+            border-color: var(--orange-accent);
+        }
+
+        /* Autofill Suggestions Pill Container */
+        .autofill-suggestion {
+            background: #EFF6FF;
+            border: 1.5px dashed var(--blue-link);
+            border-radius: 10px;
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .autofill-suggestion:hover {
+            background: #DBEAFE;
+            transform: translateY(-1px);
+        }
+
+        .autofill-pill-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--navy-primary);
+        }
+
+        .autofill-btn-trigger {
+            background: var(--blue-link);
+            color: var(--white);
+            border: none;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Passenger Card inside Mockup */
+        .passenger-card {
+            background: var(--white);
+            border: 1.5px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 0.85rem;
+            position: relative;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .passenger-card.autofilled {
+            border-color: var(--orange-accent);
+            box-shadow: 0 4px 12px rgba(255, 140, 0, 0.08);
+        }
+
+        .passenger-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--navy-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .passenger-details {
+            font-size: 0.75rem;
+            color: var(--slate-text);
+            line-height: 1.4;
+        }
+
+        /* CAPTCHA BLOCK (CURRENT UI) */
+        .captcha-block {
+            background: #E2E8F0;
+            border: 1px solid #CBD5E1;
+            border-radius: 8px;
+            padding: 0.75rem;
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 0.3em;
+            color: #475569;
+            user-select: none;
+            margin: 0.5rem 0;
+            position: relative;
+            background-image: linear-gradient(45deg, #cbd5e1 25%, transparent 25%), 
+                              linear-gradient(-45deg, #cbd5e1 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #cbd5e1 75%), 
+                              linear-gradient(-45deg, transparent 75%, #cbd5e1 75%);
+            background-size: 20px 20px;
+        }
+
+        /* BANNER AD (CURRENT UI - CAUSES LAYOUT SHIFTS) */
+        .banner-ad {
+            background: #FEE2E2;
+            border: 2px solid #FCA5A5;
+            color: #991B1B;
+            border-radius: 10px;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            animation: adFlicker 3s infinite alternate;
+            margin: 0.5rem 0;
+            cursor: pointer;
+        }
+        
+        .banner-ad h5 {
+            font-size: 0.85rem;
+            margin-bottom: 0.15rem;
+        }
+
+        /* Bottom Fixed Checkout Bar */
+        .bottom-action-bar {
+            background: var(--white);
+            border-top: 1px solid #E2E8F0;
+            padding: 0.85rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .price-summary {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 0.7rem;
+            color: var(--slate-light);
+            text-transform: uppercase;
+        }
+
+        .price-val {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--navy-primary);
+        }
+
+        .price-subtext {
+            font-size: 0.65rem;
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .pay-btn {
+            background-color: var(--orange-accent);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(255, 140, 0, 0.2);
+        }
+
+        .pay-btn:hover {
+            background-color: #E07B00;
+        }
+        
+        .pay-btn.red {
+            background-color: var(--error);
+            box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2);
+        }
+        .pay-btn.red:hover {
+            background-color: #DC2626;
+        }
+
+        /* VIRTUAL WAITING QUEUE OVERLAY */
+        .queue-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 26, 42, 0.95);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 500;
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .queue-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid var(--orange-accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        .queue-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .queue-desc {
+            font-size: 0.85rem;
+            color: #94A3B8;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .queue-status-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.85rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .queue-pos {
+            color: var(--orange-accent);
+            font-weight: 800;
+        }
+
+        /* SUCCESS SCREEN OVERLAY */
+        .success-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-light);
+            z-index: 600;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .success-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .success-header {
+            background: var(--success);
+            color: var(--white);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-header h4 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .success-body {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .ticket-card {
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ticket-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .ticket-label {
+            color: var(--slate-light);
+        }
+
+        .ticket-value {
+            font-weight: 700;
+            color: var(--navy-primary);
+        }
+
+        .ticket-pnr {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--orange-accent);
+        }
+
+        .success-upsell {
+            background: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            border-radius: 12px;
+            padding: 0.85rem;
+        }
+
+        .success-upsell h5 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 0.25rem;
+        }
+
+        .success-upsell p {
+            font-size: 0.75rem;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-upsell-btn {
+            background: #1E40AF;
+            color: var(--white);
+            border: none;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .reset-btn {
+            background: var(--navy-primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* ANCILLARY MODALS / POPUPS */
+        .toast-shift {
+            position: absolute;
+            background: #FEE2E2;
+            border: 1.5px solid var(--error);
+            border-radius: 8px;
+            padding: 0.5rem;
+            z-index: 100;
+            font-size: 0.7rem;
+            color: #991B1B;
+            width: 140px;
+            pointer-events: none;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        /* Animation Styles */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes adFlicker {
+            0% { opacity: 0.95; }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+
+        /* Footer Info */
+        footer {
+            background-color: #0F172A;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #64748B;
+            margin-top: auto;
+        }
+
+        footer p a {
+            color: var(--orange-accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-group">
+            <div class="logo-badge">IRCTC PM</div>
+            <div class="logo-text">
+                <h1>Rail Connect UX Mockup</h1>
+                <p>Interactive Checkout Redesign & Concurrency Prototype</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="workspace">
+        <!-- LEFT SIDE: PM METRICS & EXPLANATION PANEL -->
+        <div class="pm-panel">
+            
+            <div class="glass-card">
+                <span class="badge-pill">PM Assignment Context</span>
+                <h2 class="card-title">The Concurrency vs. UX Challenge</h2>
+                <p class="intro">
+                    IRCTC experiences massive database loads, specifically during peak Tatkal booking windows (10:00 AM & 11:00 AM). In the legacy application, the user experience is heavily degraded by programmatic banner advertisements that load asynchronously, causing sudden page shifts (Layout Shifts) and session drops. 
+                </p>
+                
+                <div class="mode-selector">
+                    <button class="mode-tab active-current" id="btn-toggle-current" onclick="setMode('current')">
+                        🔴 Legacy Cluttered UI
+                    </button>
+                    <button class="mode-tab" id="btn-toggle-redesign" onclick="setMode('redesign')">
+                        🟢 Redesigned Minimalist UI
+                    </button>
+                </div>
+
+                <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem;">
+                    Key Funnel Diagnostics Comparison
+                </h3>
+                
+                <div class="metric-comparison">
+                    <div class="metric-card">
+                        <div class="metric-header">Peak Checkout Latency</div>
+                        <div class="metric-box">
+                            <span class="metric-value red" id="metric-latency-val">980ms</span>
+                            <span class="metric-change negative" id="metric-latency-change">Slow</span>
+                        </div>
+                        <p class="metric-desc" id="metric-latency-desc">Heavy script files (ad trackers, analytic bundles) load during the transaction, slowing checkout responses.</p>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">Tatkal Success Rate</div>
+                        <div class="metric-box">
+                            <span class="metric-value red" id="metric-success-val">77.4%</span>
+                            <span class="metric-change negative" id="metric-success-change">Leaky</span>
+                        </div>
+                        <p class="metric-desc" id="metric-success-desc">Frequent time-out errors, layout shifts leading to invalid taps, and session expiry causes user drop-off.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <span class="badge-pill blue">Core Strategic Initiatives</span>
+                <h2 class="card-title" style="font-size: 1.5rem;">P0/P1 Features Implemented in Redesign</h2>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon p0">P0</div>
+                        <div class="feature-text">
+                            <h4>Smart Passenger Autofill</h4>
+                            <p>Suggests and auto-populates frequent traveler profiles dynamically based on historical bookings. Removes the need to manually type fields during high-stakes Tatkal windows.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon p0">P0</div>
+                        <div class="feature-text">
+                            <h4>Peak-Hour Ad-Free Script Freeze</h4>
+                            <p>Automatically freezes non-essential Google AdMob and tracking scripts between 10:00–11:15 AM. Eliminates visual shifts and layout displacement.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon p1">P1</div>
+                        <div class="feature-text">
+                            <h4>Client-Side Virtual Waiting Queue</h4>
+                            <p>Instead of crashing or dropping connections, user requests are routed to a client-side queue. Displays transparent live progress status to lower booking anxiety.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: SMARTPHONE DEVICE PROTOTYPE -->
+        <div class="device-panel">
+            <div class="smartphone">
+                <div class="notch"></div>
+                
+                <div class="screen">
+                    <!-- App Shell Header -->
+                    <div class="app-header">
+                        <h3 id="app-title-text">IRCTC Rail Connect</h3>
+                        <div class="app-header-icons">
+                            <span>🔔</span>
+                            <span>👤</span>
+                        </div>
+                    </div>
+
+                    <!-- Step progress bar (Redesign only) -->
+                    <div class="progress-bar-container" id="step-progress-container" style="display: none;">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <div class="step-indicator" id="step-text-container" style="display: none;">
+                        <span>NDLS -> BCT</span>
+                        <span>Step 2 of 3 (Passenger)</span>
+                    </div>
+
+                    <!-- Screen Content -->
+                    <div class="screen-content" id="phone-screen-content">
+                        <!-- Content will render dynamically based on mode -->
+                    </div>
+
+                    <!-- Bottom Action Checkout Bar -->
+                    <div class="bottom-action-bar" id="phone-bottom-bar">
+                        <div class="price-summary">
+                            <span class="price-label">Fare Summary</span>
+                            <span class="price-val" id="price-val-text">Rs. 2,140</span>
+                            <span class="price-subtext" id="price-sub-text">Direct booking i-Pay rate</span>
+                        </div>
+                        <button class="pay-btn" id="main-action-btn" onclick="triggerCheckoutAction()">
+                            Pay & Book
+                        </button>
+                    </div>
+
+                    <!-- Virtual Waiting Queue Overlay -->
+                    <div class="queue-overlay" id="waiting-queue">
+                        <div class="spinner"></div>
+                        <h4 class="queue-title">Connecting to Server Node...</h4>
+                        <p class="queue-desc">High traffic concurrency detected. Please do not close the app or tap the back button. We are reserving your slot.</p>
+                        <div class="queue-status-box">
+                            Queue Position: <span class="queue-pos" id="queue-position-val">284</span>
+                        </div>
+                    </div>
+
+                    <!-- Success Screen Overlay -->
+                    <div class="success-overlay" id="success-screen">
+                        <div class="success-header">
+                            <div class="success-icon">✓</div>
+                            <h4>Booking Confirmed!</h4>
+                            <p>Ticket details sent to your registered phone & email</p>
+                        </div>
+                        <div class="success-body">
+                            <div class="ticket-card">
+                                <div class="ticket-row" style="border-bottom: 1.5px dashed #E2E8F0; padding-bottom: 0.5rem; margin-bottom: 0.85rem;">
+                                    <span class="ticket-label">PNR NUMBER</span>
+                                    <span class="ticket-pnr">248-1930485</span>
+                                </div>
+                                <div class="ticket-row">
+                                    <span class="ticket-label">Train Number / Name</span>
+                                    <span class="ticket-value">12952 / Rajdhani Express</span>
+                                </div>
+                                <div class="ticket-row">
+                                    <span class="ticket-label">Departure Station</span>
+                                    <span class="ticket-value">NDLS (New Delhi)</span>
+                                </div>
+                                <div class="ticket-row">
+                                    <span class="ticket-label">Passenger Name</span>
+                                    <span class="ticket-value">Ramesh Kumar (M, 34)</span>
+                                </div>
+                                <div class="ticket-row">
+                                    <span class="ticket-label">Coach / Berth</span>
+                                    <span class="ticket-value">A1 / Berth 12 (Lower Berth)</span>
+                                </div>
+                                <div class="ticket-row">
+                                    <span class="ticket-label">Payment Gateway</span>
+                                    <span class="ticket-value">IRCTC i-Pay (Instant Credit)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Ancillary Upsell Promotion (Highly contextual) -->
+                            <div class="success-upsell">
+                                <h5>Meals on Track (E-Catering)</h5>
+                                <p>Pre-order hot, hygienic restaurant meals. Delivered directly to your coach berth at Kota Junction.</p>
+                                <button class="success-upsell-btn" onclick="alert('Food ordered successfully! Verified brands will deliver to Coach A1 Berth 12.')">
+                                    Order Meals Now
+                                </button>
+                            </div>
+
+                            <button class="reset-btn" onclick="resetPrototype()">
+                                Book Another Ticket
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Shift Alert Toast (Legacy UI ad shift simulation) -->
+                    <div class="toast-shift" id="toast-shift-alert">
+                        ⚠️ Visual Layout Shift! Ad loaded dynamically.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>IRCTC Rail Connect Product Teardown Prototype | Generated for Senior Leadership Strategy Presentation</p>
+    </footer>
+
+    <!-- Interactive Prototype Script -->
+    <script>
+        let currentMode = 'current'; // default legacy
+        let isAutofilled = false;
+
+        // Mode content templates
+        const templates = {
+            current: `
+                <!-- Legacy Cluttered UI Content -->
+                <div class="banner-ad" id="ad-banner-1" onclick="triggerAdClick()">
+                    <h5>★ QUICK CASH LOANS NOW! ★</h5>
+                    <p>Get Rs. 50,000 instantly in your bank account. Click here!</p>
+                </div>
+                
+                <div class="route-summary">
+                    <div class="route-title">
+                        <span>New Delhi -> Mumbai Central</span>
+                        <span style="color:var(--error)">12952 - Rajdhani Express</span>
+                    </div>
+                    <div class="route-sub">Date: 12th July | Class: 3 AC Sleeper</div>
+                </div>
+
+                <div class="banner-ad" id="ad-banner-2" onclick="triggerAdClick()" style="background:#EFF6FF; border-color:#93C5FD; color:#1E40AF;">
+                    <h5>✈️ BOOK CHEAP FLIGHTS ✈️</h5>
+                    <p>Flat 20% off on all domestic flights. Tap to book!</p>
+                </div>
+
+                <div class="section-header">Passenger Entry Form (Manual Entry Required)</div>
+                
+                <div class="input-group">
+                    <label class="input-label">Full Name</label>
+                    <input type="text" class="input-field" placeholder="Enter traveler full name" id="input-manual-name">
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Age & Gender</label>
+                    <div style="display:flex; gap:0.5rem;">
+                        <input type="text" class="input-field" placeholder="Age" style="width:70px;">
+                        <select class="input-field" style="flex:1;">
+                            <option>Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="captcha-block" id="captcha-block">
+                    K 3 8 X 9
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Enter Captcha Shown Above</label>
+                    <input type="text" class="input-field" placeholder="Enter captcha characters">
+                </div>
+
+                <div class="banner-ad" id="ad-banner-3" onclick="triggerAdClick()" style="background:#FFFBEB; border-color:#FCD34D; color:#92400E; margin-top:0.5rem;">
+                    <h5>🛎️ BOOK LUXURY HOTELS</h5>
+                    <p>Compare deals and get up to 50% discount tonight!</p>
+                </div>
+            `,
+            redesign: `
+                <!-- Redesigned UI Content -->
+                <div class="route-summary" style="background:#E2E8F0; border-left: 4px solid var(--orange-accent);">
+                    <div class="route-title">
+                        <span>New Delhi (NDLS) -> Mumbai (BCT)</span>
+                        <span style="color:var(--navy-primary)">12952 - Rajdhani Express</span>
+                    </div>
+                    <div class="route-sub">Departure: 16:55 | Arrives: 08:35 | Class: 3 AC</div>
+                </div>
+
+                <div class="section-header">
+                    <span>Passenger Profiles</span>
+                    <span style="font-size:0.75rem; color:var(--blue-link); text-transform:none;">1 Profile Found</span>
+                </div>
+
+                <!-- Smart Autofill suggestion bar -->
+                <div class="autofill-suggestion" id="autofill-suggestion-bar" onclick="triggerSmartAutofill()">
+                    <div style="display:flex; flex-direction:column; gap:0.15rem;">
+                        <span class="autofill-pill-text">💡 Quick Autofill Ramesh Kumar?</span>
+                        <span style="font-size:0.7rem; color:var(--slate-light);">Frequently books NDLS -> BCT route</span>
+                    </div>
+                    <button class="autofill-btn-trigger">Autofill</button>
+                </div>
+
+                <div id="passenger-container-redesign">
+                    <!-- Blank card, waits for Autofill -->
+                    <div class="passenger-card" id="blank-passenger-card">
+                        <div class="passenger-details" style="text-align:center; padding:1rem; color:var(--slate-light);">
+                            Tap "Quick Autofill" above or click the button to add passenger details instantly.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Minimalist Non-intrusive ancillary promotion block (No layout shifting ads!) -->
+                <div class="passenger-card" style="background: #FFFBEB; border-color: #FDE68A;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <h5 style="font-size:0.8rem; font-weight:700; color:#B45309; margin-bottom:0.15rem;">Travel Insurance Selected</h5>
+                            <p style="font-size:0.7rem; color:#92400E;">Coverage of Rs. 10 Lakhs during journey at Rs. 0.35/person.</p>
+                        </div>
+                        <input type="checkbox" checked style="width:18px; height:18px; accent-color:var(--orange-accent);">
+                    </div>
+                </div>
+            `
+        };
+
+        function setMode(mode) {
+            currentMode = mode;
+            isAutofilled = false;
+            
+            // UI Button toggling
+            const btnCurrent = document.getElementById('btn-toggle-current');
+            const btnRedesign = document.getElementById('btn-toggle-redesign');
+            const stepProgress = document.getElementById('step-progress-container');
+            const stepText = document.getElementById('step-text-container');
+            const mainActionBtn = document.getElementById('main-action-btn');
+            const priceSubText = document.getElementById('price-sub-text');
+            const appTitleText = document.getElementById('app-title-text');
+            
+            if (mode === 'current') {
+                btnCurrent.className = 'mode-tab active-current';
+                btnRedesign.className = 'mode-tab';
+                stepProgress.style.display = 'none';
+                stepText.style.display = 'none';
+                appTitleText.innerText = "IRCTC Rail Connect";
+                
+                mainActionBtn.innerText = "Pay & Book";
+                mainActionBtn.className = "pay-btn red";
+                priceSubText.innerText = "Convenience Fee (+Rs 35) & ads apply";
+                priceSubText.style.color = "var(--error)";
+                
+                // Set PM Metrics to Legacy values
+                document.getElementById('metric-latency-val').innerText = "980ms";
+                document.getElementById('metric-latency-val').className = "metric-value red";
+                document.getElementById('metric-latency-change').className = "metric-change negative";
+                document.getElementById('metric-latency-change').innerText = "Slow";
+                document.getElementById('metric-latency-desc').innerText = "Heavy script files (ad trackers, analytic bundles) load during the transaction, slowing checkout responses.";
+                
+                document.getElementById('metric-success-val').innerText = "77.4%";
+                document.getElementById('metric-success-val').className = "metric-value red";
+                document.getElementById('metric-success-change').className = "metric-change negative";
+                document.getElementById('metric-success-change').innerText = "Leaky";
+                document.getElementById('metric-success-desc').innerText = "Frequent time-out errors, layout shifts leading to invalid taps, and session expiry causes user drop-off.";
+                
+                renderScreenContent(templates.current);
+                
+                // Simulate periodic layout shifts on Legacy UI by shifting ad boxes around
+                startAdLayoutShiftSimulation();
+                
+            } else {
+                btnCurrent.className = 'mode-tab';
+                btnRedesign.className = 'mode-tab active-redesign';
+                stepProgress.style.display = 'block';
+                stepText.style.display = 'flex';
+                appTitleText.innerText = "IRCTC Connect Lite";
+                
+                mainActionBtn.innerText = "Pay via i-Pay";
+                mainActionBtn.className = "pay-btn";
+                priceSubText.innerText = "Zero Convenience Fee via direct i-Pay";
+                priceSubText.style.color = "var(--success)";
+                
+                // Set PM Metrics to Redesigned targets
+                document.getElementById('metric-latency-val').innerText = "120ms";
+                document.getElementById('metric-latency-val').className = "metric-value green";
+                document.getElementById('metric-latency-change').className = "metric-change positive";
+                document.getElementById('metric-latency-change').innerText = "Fast";
+                document.getElementById('metric-latency-desc').innerText = "Frozen third-party scripts during booking hours. Clean, isolated HTML/CSS layouts load instantly.";
+                
+                document.getElementById('metric-success-val').innerText = "91.2%";
+                document.getElementById('metric-success-val').className = "metric-value green";
+                document.getElementById('metric-success-change').className = "metric-change positive";
+                document.getElementById('metric-success-change').innerText = "Stable";
+                document.getElementById('metric-success-desc').innerText = "Autofill saves input time. No layout shifts or session redirect delays, ensuring high transaction success.";
+                
+                renderScreenContent(templates.redesign);
+                stopAdLayoutShiftSimulation();
+            }
+        }
+
+        function renderScreenContent(htmlContent) {
+            document.getElementById('phone-screen-content').innerHTML = htmlContent;
+        }
+
+        // Simulate Ad click penalty
+        function triggerAdClick() {
+            alert("⚠️ Accidental Click Registered!\nYou were redirected away from the booking path because the dynamic advertisement shifted the layout frame right before you clicked.\n\nThis is the core layout-shift issue we are eliminating.");
+        }
+
+        // Smart Autofill Action
+        function triggerSmartAutofill() {
+            if (currentMode !== 'redesign') return;
+            
+            const container = document.getElementById('passenger-container-redesign');
+            container.innerHTML = `
+                <div class="passenger-card autofilled">
+                    <div class="passenger-name">1. Ramesh Kumar (Primary)</div>
+                    <div class="passenger-details">
+                        <strong>Age/Gender:</strong> 34, Male <br>
+                        <strong>Contact:</strong> +91 98765 43210 | ramesh@email.com <br>
+                        <strong>Berth Preference:</strong> Lower Berth (Preferred) <br>
+                        <span style="color:var(--orange-accent); font-weight:700; font-size:0.7rem;">✓ Autofilled from history profile</span>
+                    </div>
+                </div>
+            `;
+            
+            // Hide the autofill suggestion bar since it has been applied
+            document.getElementById('autofill-suggestion-bar').style.display = 'none';
+            isAutofilled = true;
+        }
+
+        // Checkout button click
+        function triggerCheckoutAction() {
+            if (currentMode === 'current') {
+                // Legacy fail scenario: Captcha/Timeout simulator
+                alert("❌ Booking Failed (Session Timeout)\nSystem experienced high concurrency load at the gateway during transaction processing. Captcha validation timed out after 60 seconds.");
+            } else {
+                // Redesigned scenario: Virtual Waiting Queue -> Success
+                if (!isAutofilled) {
+                    alert("Please select 'Quick Autofill' or populate passenger details before proceeding.");
+                    return;
+                }
+                
+                const queueOverlay = document.getElementById('waiting-queue');
+                const queuePosText = document.getElementById('queue-position-val');
+                queueOverlay.classList.add('active');
+                
+                let position = 284;
+                queuePosText.innerText = position;
+                
+                // Countdown simulator
+                let timer = setInterval(() => {
+                    position -= Math.floor(Math.random() * 80) + 20;
+                    if (position <= 0) {
+                        position = 0;
+                        clearInterval(timer);
+                        
+                        // Transition to Success Overlay
+                        queueOverlay.classList.remove('active');
+                        document.getElementById('success-screen').classList.add('active');
+                    } else {
+                        queuePosText.innerText = position;
+                    }
+                }, 800);
+            }
+        }
+
+        function resetPrototype() {
+            document.getElementById('success-screen').classList.remove('active');
+            setMode('redesign');
+        }
+
+        // Ad Layout Shift Simulator
+        let adShiftInterval = null;
+        function startAdLayoutShiftSimulation() {
+            if (adShiftInterval) clearInterval(adShiftInterval);
+            
+            const toast = document.getElementById('toast-shift-alert');
+            
+            adShiftInterval = setInterval(() => {
+                const ad1 = document.getElementById('ad-banner-1');
+                const ad2 = document.getElementById('ad-banner-2');
+                
+                if (ad1 && ad2) {
+                    // Randomly swap the heights or toggle ad banner visibility to cause screen displacements
+                    const randomVal = Math.random();
+                    if (randomVal < 0.4) {
+                        ad1.style.height = ad1.style.height === '90px' ? '60px' : '90px';
+                    } else if (randomVal < 0.8) {
+                        ad2.style.display = ad2.style.display === 'none' ? 'block' : 'none';
+                    }
+                    
+                    // Flash shift alert toast briefly on mockup screen
+                    toast.style.opacity = 1;
+                    setTimeout(() => {
+                        toast.style.opacity = 0;
+                    }, 1200);
+                }
+            }, 4000);
+        }
+
+        function stopAdLayoutShiftSimulation() {
+            if (adShiftInterval) {
+                clearInterval(adShiftInterval);
+                adShiftInterval = null;
+            }
+            document.getElementById('toast-shift-alert').style.opacity = 0;
+        }
+
+        // Initial setup
+        setMode('current');
+    </script>
+</body>
+</html>

@@ -31,7 +31,7 @@
     <div class="case-study-meta animate-in animate-in--delay-2">
       <div class="case-study-meta__row">
         <span class="evidence-label evidence-label--verified">Verified by test</span>
-        <span class="meta-text">— 22 tests passing, 17-category verification, database integrity</span>
+        <span class="meta-text">— 26 test functions, 17-category verification, database integrity</span>
       </div>
       <div class="case-study-meta__row">
         <span class="evidence-label evidence-label--not-evidenced">Not evidenced</span>
@@ -63,29 +63,45 @@
 {% set stages = lifecycle_stages %}
 {% include '_lifecycle_evidence_strip.html' with context %}
 
-    <div class="case-study-at-a-glance animate-in animate-in--delay-3" style="margin-top: var(--space-5);">
-      <p class="case-study-at-a-glance__label">At a glance</p>
-      <p class="case-study-at-a-glance__text">
-        <strong>Problem:</strong> experiments and their conclusions were disconnected — I'd run
-        something, decide something, and later lose the thread.
-        <strong>User/assumption:</strong> a practitioner who runs small local experiments and wants to
-        keep them connected to decisions — inferred, not validated with external users.
-        <strong>Product question:</strong> what is the smallest capability that closes the loop between
-        experiment and decision?
-        <strong>Decision:</strong> conclusion capture — outcome, decision, next action — chosen over
-        charts, search, auth, cloud, AI, and templates.
-        <strong>Evidence:</strong> 22 tests, 17-category verification, database integrity, one-
-        conclusion-per-experiment, cascade delete.
-        <strong>Gap:</strong> no external users, no launch, no GTM, no measured outcomes, no browser
-        rendering verification.
-      </p>
+    <!-- Structured 2-Column At a Glance -->
+    <div class="case-study-at-a-glance animate-in animate-in--delay-3">
+      <div class="at-a-glance__header">
+        <span class="at-a-glance__label">Executive Summary</span>
+        <span class="at-a-glance__badge">Decision Tracking Architecture</span>
+      </div>
+      <div class="at-a-glance__grid">
+        <div class="at-a-glance__card at-a-glance__card--problem">
+          <div class="at-a-glance__tag">Problem</div>
+          <p class="at-a-glance__content">
+            <strong>Disconnected Decisions:</strong> Running local experiments is easy, but tracking conclusions is brittle. Experiments, test runs, and final decisions live in fragmented scratchpads, severing the link between evidence and next steps.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--decision">
+          <div class="at-a-glance__tag">Decision</div>
+          <p class="at-a-glance__content">
+            <strong>Enforced Conclusion Capture:</strong> Built a 1:1 relational constraint linking each experiment to a verified conclusion (outcome, decision, next action). Rejected bloated cloud features, auth, and AI summaries to stay local-first.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--evidence">
+          <div class="at-a-glance__tag">Evidence</div>
+          <p class="at-a-glance__content">
+            <strong>26 Automated Tests:</strong> 17-category test suite verifying foreign key constraints, one-conclusion-per-experiment uniqueness, cascade deletions (experiment &rarr; runs + conclusions), and Flask test-client response rendering.
+          </p>
+        </div>
+        <div class="at-a-glance__card at-a-glance__card--boundary">
+          <div class="at-a-glance__tag">Boundary</div>
+          <p class="at-a-glance__content">
+            <strong>Local Tooling Only:</strong> Designed strictly for single-practitioner local workflows. No multi-tenant cloud sync, no external customer adoption, and no verified cross-browser end-to-end rendering suite.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="case-study-ctas animate-in animate-in--delay-3" style="margin-top: var(--space-6);">
       <a href="https://github.com/asimk714/experiment-tracker" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
         View on GitHub
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"/>
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
           <polyline points="15 3 21 3 21 9"/>
           <line x1="10" y1="14" x2="21" y2="3"/>
         </svg>
@@ -93,6 +109,14 @@
       <span class="case-study-cta-note">
         Working prototype — local/demo environment · no verified public deployment
       </span>
+      <a href="/work/experiment-tracker/live/" class="btn btn--ghost">
+        Live Experience
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
       <a href="/work/" class="btn btn--ghost">
         Back to Proof of Work
       </a>
@@ -105,24 +129,17 @@
     <div class="case-study-toc-target"></div>
     <h2 class="section-title">Context</h2>
     <div class="case-study-body">
-      <p class="body-text">I run experiments. Small ones. Local ones. Things like "does this approach
-      work better than that one" or "what happens if I change this variable." I was losing the
-      conclusions.</p>
-      <p class="body-text">The problem wasn't running experiments. It was that the experiments, the
-      runs, and the conclusions lived in different places — a notes file here, a results folder there,
-      a memory of what I decided somewhere else. The loop between "I tested something" and "I know what
-      to do next" was broken.</p>
-      <div class="insight-card">
-        <p class="insight-card__label">What this is</p>
-        <p>A local-first Flask + SQLite experiment log. Create experiments. Add runs. Compare runs.
-        Most importantly: record a conclusion for each experiment — the outcome, the decision, and the
-        next action — and connect it back to the experiment it came from.</p>
-      </div>
-      <div class="insight-card insight-card--caveat">
-        <p class="insight-card__label">What this is not</p>
-        <p>It is not a cloud product. It is not multi-user. It has no authentication. It has no charts
-        or visualization. It is not a collaboration tool. It is a personal local tool for a specific
-        job: keeping experiments and their conclusions connected.</p>
+      <p class="body-text">When running technical iterations, tests, and prompt variations, the runs themselves often accumulate while the underlying decision rationale evaporates.</p>
+      <p class="body-text">Experiment Tracker was engineered to solve that specific provenance gap: ensuring that every test cycle produces a tangible decision and an actionable next step stored directly in the relational schema.</p>
+      <div class="insight-cards-grid">
+        <div class="insight-card">
+          <p class="insight-card__label">What this is</p>
+          <p class="at-a-glance__content">A local-first Flask + SQLite tool with enforced schema constraints, run comparison views, and explicit conclusion records capturing outcome, decision, and next action.</p>
+        </div>
+        <div class="insight-card insight-card--caveat">
+          <p class="insight-card__label">What this is not</p>
+          <p class="at-a-glance__content">Not an enterprise SaaS or cloud analytics suite. Has no external authentication or collaboration features; built for disciplined personal practitioner rigor.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -219,13 +236,13 @@
     <h2 class="section-title">Discovery / Research</h2>
     <div class="case-study-body">
       <p class="body-text">
-        The discovery work is the PRODUCT_BRIEF. It evaluates seven candidate capabilities against the
+        The discovery work is the PRODUCT_BRIEF. It evaluates eight candidate capabilities against the
         core question: what closes the loop, and what doesn't?
       </p>
       <div class="label-block">
         <span class="evidence-label evidence-label--observed">Observed</span>
         <p class="body-text" style="margin-top: var(--space-2);">
-          The PRODUCT_BRIEF exists. It lists seven candidates with "What it would add" and "Why not
+          The PRODUCT_BRIEF exists. It lists eight candidates with "What it would add" and "Why not
           prioritized" for each. This is real product thinking — not generic prioritization, but a
           specific trade-off against a specific product question.
         </p>
@@ -239,7 +256,7 @@
     <div class="case-study-toc-target"></div>
     <h2 class="section-title">Prioritization</h2>
     <div class="case-study-body">
-      <p class="body-text">Seven candidates were evaluated. One was chosen.</p>
+      <p class="body-text">Eight candidates were evaluated. One was chosen.</p>
       <div style="overflow-x: auto; width: 100%;">
         <table class="prioritization-table" style="margin-top: var(--space-3); width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
         <thead>
@@ -310,7 +327,7 @@
       <div class="label-block" style="margin-top: var(--space-3);">
         <span class="evidence-label evidence-label--verified">Verified</span>
         <p class="body-text" style="margin-top: var(--space-2);">
-          The PRODUCT_BRIEF exists. The 7-candidate prioritization is documented. The table above is a
+          The PRODUCT_BRIEF exists. The 8-candidate prioritization is documented. The table above is a
           faithful summary of the actual document.
         </p>
       </div>
@@ -375,8 +392,9 @@
       <div class="label-block label-block--caveat">
         <span class="evidence-label evidence-label--missing">Missing</span>
         <p class="body-text" style="margin-top: var(--space-2);">
-          Browser rendering not verified — Termux environment has no GUI browser. Flask test client
-          verifies HTML generation (10 HTML tests included in the 22), but it is not a browser.
+          Browser rendering not verified — Termux environment has no GUI browser. The Flask test client
+          verifies HTTP status and HTML generation (10 HTML assertion checks within the test suite), but does not
+          execute JavaScript or perform browser-level layout rendering.
         </p>
       </div>
     </div>
@@ -393,12 +411,12 @@
         review, not a self-assessment.
       </p>
       <div class="label-block">
-        <span class="evidence-label evidence-label--verified">Verified by test</span>
+        <span class="evidence-label evidence-label--verified">Documented test suite</span>
         <p class="body-text" style="margin-top: var(--space-2);">
-          <strong>22 automated tests</strong> (test_experiment_tracker.py). Database integrity, conclusion
+          <strong>26 automated test functions authored</strong> in external project repository tests (test_experiment_tracker.py). Covers database integrity, conclusion
           CRUD, one-conclusion-per-experiment, cascade deletion, run detail route, existing CRUD
-          regression, compare workflow, error handling, timestamps, HTML rendering (Flask test client,
-          10 HTML tests), session-scoped test database (never touches real database).
+          regression, compare workflow, error handling, timestamps, and HTML response checks (Flask test client,
+          10 HTML checks; not browser-level layout rendering), with a session-scoped test database.
         </p>
       </div>
       <div class="label-block">
@@ -464,7 +482,7 @@
         <div class="label-block">
           <span class="evidence-label evidence-label--verified by test">Verified by test</span>
           <p class="body-text" style="margin-top: var(--space-2);">
-            The conclusion-capture feature was built and verified. 22 tests passing. 17-category
+            The conclusion-capture feature was built and verified. 26 test functions. 17-category
             verification report complete. Database integrity confirmed. One-conclusion-per-experiment
             constraint enforced. Cascade deletion working. HTML generation verified via Flask test
             client.
@@ -549,8 +567,8 @@
       <div class="evidence-list">
         <div class="evidence-item">
           <span class="evidence-label evidence-label--verified">Verified</span>
-          <div><strong>PRODUCT_BRIEF — 7-Candidate Prioritization</strong>
-            <p class="muted-paragraph" style="margin-top: var(--space-1);">Conclusion capture chosen over 7 alternatives. Each with "What it would add" and "Why not prioritized." Real document.</p></div>
+          <div><strong>PRODUCT_BRIEF — 8-Candidate Prioritization</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">Conclusion capture chosen over 7 alternatives (8 candidates evaluated total). Each candidate documented with "What it would add" and "Why not prioritized." Real document.</p></div>
         </div>
         <div class="evidence-item">
           <span class="evidence-label evidence-label--verified">Verified</span>
@@ -559,8 +577,8 @@
         </div>
         <div class="evidence-item">
           <span class="evidence-label evidence-label--verified">Verified</span>
-          <div><strong>22 Automated Tests</strong>
-            <p class="muted-paragraph" style="margin-top: var(--space-1);">test_experiment_tracker.py. Database integrity, conclusion CRUD, constraints, routes, HTML generation (Flask test client). Real tests, all passing.</p></div>
+          <div><strong>26 Automated Test Functions</strong>
+            <p class="muted-paragraph" style="margin-top: var(--space-1);">26 test functions authored in external repository tests (test_experiment_tracker.py). Covers database integrity, conclusion CRUD, constraints, routes, and HTML response checks (Flask test client). Documented test suite in repository.</p></div>
         </div>
         <div class="evidence-item">
           <span class="evidence-label evidence-label--verified">Verified</span>

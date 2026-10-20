@@ -1,0 +1,1118 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="work-live">
+  <nav class="work-nav">
+    <a href="/work/lodo/">Back to LoDo case study</a>
+    <a href="/work/">Back to Proof of Work</a>
+  </nav>
+
+  <div class="work-live-header">
+    <span class="work-live-badge work-live-badge-prototype">Prototype flow demonstration</span>
+    <span class="work-live-badge work-live-badge-illustrative">Illustrative lender data</span>
+    <span class="work-live-badge work-live-badge-concept">Concept — not a real lending marketplace</span>
+    <h1>LoDo — Reverse Auction Credit Experience</h1>
+    <p class="live-subtitle">
+      Interactive demonstration of the LoDo borrower flow: create a credit intent, watch lender bids arrive in a reverse auction, compare normalized offers, and accept one.
+      <span class="inline-note">
+        <strong>Source:</strong> Kotlin/Android prototype at <span class="mono">projects/project-lodo/</span> (Room + Compose).
+        This is a portfolio-side web demonstration of the same flow, not the Android app itself.
+      </span>
+    </p>
+    <p class="live-evidence-note">
+      <strong>Evidence note:</strong> All lender offers, borrower profile, and scheme data shown here are <strong>illustrative demo data</strong> from the source prototype's seed data — not real lending offers, not real borrowers, not a production marketplace.
+      This demonstration does not execute a real loan application, does not connect to real lenders, and does not imply borrower verification or lender participation has occurred.
+    </p>
+  </div>
+
+  <div class="lodo-live-workspace">
+    <!-- LEFT: flow panel -->
+    <div class="lodo-flow-panel">
+      <div class="lodo-flow-steps">
+        <div class="lodo-step lodo-step-active" data-step="1">
+          <div class="lodo-step-num">1</div>
+          <div class="lodo-step-label">Credit Intent</div>
+        </div>
+        <div class="lodo-step-arrow"></div>
+        <div class="lodo-step" data-step="2">
+          <div class="lodo-step-num">2</div>
+          <div class="lodo-step-label">Auction</div>
+        </div>
+        <div class="lodo-step-arrow"></div>
+        <div class="lodo-step" data-step="3">
+          <div class="lodo-step-num">3</div>
+          <div class="lodo-step-label">Compare</div>
+        </div>
+        <div class="lodo-step-arrow"></div>
+        <div class="lodo-step" data-step="4">
+          <div class="lodo-step-num">4</div>
+          <div class="lodo-step-label">Decision</div>
+        </div>
+      </div>
+
+      <div class="lodo-trust-note">
+        <div class="lodo-trust-tag">Trust &amp; auditability trade-off</div>
+        <p>
+          Faster first offer is not automatically the goal if the borrower cannot understand or verify the offer.
+          LoDo's concept prioritizes a structured intent, a visible multi-lender auction, and a normalized comparison over speed alone.
+        </p>
+      </div>
+    </div>
+
+    <!-- CENTER: main interactive area -->
+    <div class="lodo-main-panel">
+
+      <!-- STEP 1: Credit Intent Form -->
+      <div class="lodo-screen" id="lodo-screen-1">
+        <div class="lodo-screen-header">
+          <h2 class="lodo-screen-title">New Credit Intent</h2>
+          <p class="lodo-screen-sub">Initialize a new loan request for the marketplace auction.</p>
+        </div>
+
+        <div class="lodo-card lodo-form-card">
+          <div class="lodo-stepper">
+            <div class="lodo-stepper-dot lodo-stepper-active" data-step="1">
+              <span class="lodo-stepper-num">1</span>
+              <span class="lodo-stepper-label">Details</span>
+            </div>
+            <div class="lodo-stepper-line" data-step="1"></div>
+            <div class="lodo-stepper-dot" data-step="2">
+              <span class="lodo-stepper-num">2</span>
+              <span class="lodo-stepper-label">Collateral</span>
+            </div>
+            <div class="lodo-stepper-line" data-step="2"></div>
+            <div class="lodo-stepper-dot" data-step="3">
+              <span class="lodo-stepper-num">3</span>
+              <span class="lodo-stepper-label">Review</span>
+            </div>
+          </div>
+
+          <div class="lodo-form-body">
+            <div class="lodo-form-section">
+              <label class="lodo-label">Requested Amount (INR)</label>
+              <div class="lodo-input-row">
+                <input type="number" id="lodo-amount" class="lodo-input" value="500000" min="100000" step="10000">
+                <span class="lodo-input-hint">Minimum ₹100,000</span>
+              </div>
+            </div>
+
+            <div class="lodo-form-section">
+              <label class="lodo-label">Primary Purpose</label>
+              <select id="lodo-purpose" class="lodo-select">
+                <option value="Home Renovation">Home Renovation</option>
+                <option value="Equipment Purchase">Equipment Purchase</option>
+                <option value="Working Capital">Working Capital</option>
+                <option value="Business Expansion">Business Expansion</option>
+              </select>
+            </div>
+
+            <div class="lodo-form-section">
+              <label class="lodo-label">Tenure (months)</label>
+              <div class="lodo-input-row">
+                <input type="number" id="lodo-tenure" class="lodo-input" value="60" min="12" max="84" step="1">
+                <span class="lodo-input-hint">12–84 months</span>
+              </div>
+            </div>
+
+            <div class="lodo-form-section">
+              <label class="lodo-label">Short description</label>
+              <textarea id="lodo-description" class="lodo-textarea" rows="2" placeholder="e.g. Kitchen renovation for home-based catering setup">Kitchen renovation for home-based catering setup</textarea>
+            </div>
+          </div>
+
+          <div class="lodo-form-actions">
+            <button id="lodo-next-btn" class="lodo-btn lodo-btn-primary">Continue to Collateral</button>
+          </div>
+        </div>
+
+        <!-- Collateral step -->
+        <div class="lodo-card lodo-form-card lodo-form-card-hidden" id="lodo-collateral-screen">
+          <div class="lodo-form-body">
+            <div class="lodo-form-section">
+              <label class="lodo-label">Collateral type (optional)</label>
+              <select id="lodo-collateral" class="lodo-select">
+                <option value="">None / Unsecured</option>
+                <option value="Property">Property</option>
+                <option value="Equipment">Equipment</option>
+                <option value="Inventory">Inventory</option>
+                <option value="Personal Guarantee">Personal Guarantee</option>
+              </select>
+            </div>
+            <div class="lodo-form-section">
+              <label class="lodo-label">Estimated collateral value (INR)</label>
+              <input type="number" id="lodo-collateral-value" class="lodo-input" value="200000" min="0" step="10000">
+            </div>
+          </div>
+          <div class="lodo-form-actions">
+            <button id="lodo-back-btn-1" class="lodo-btn lodo-btn-secondary">Back</button>
+            <button id="lodo-next-btn-1" class="lodo-btn lodo-btn-primary">Review Intent</button>
+          </div>
+        </div>
+
+        <!-- Review step -->
+        <div class="lodo-card lodo-form-card lodo-form-card-hidden" id="lodo-review-screen">
+          <div class="lodo-form-body">
+            <h3 class="lodo-review-title">Review Credit Intent</h3>
+            <div class="lodo-review-grid">
+              <div class="lodo-review-item">
+                <span class="lodo-review-label">Amount</span>
+                <span class="lodo-review-value" id="lodo-review-amount">₹500,000</span>
+              </div>
+              <div class="lodo-review-item">
+                <span class="lodo-review-label">Purpose</span>
+                <span class="lodo-review-value" id="lodo-review-purpose">Home Renovation</span>
+              </div>
+              <div class="lodo-review-item">
+                <span class="lodo-review-label">Tenure</span>
+                <span class="lodo-review-value" id="lodo-review-tenure">60 months</span>
+              </div>
+              <div class="lodo-review-item">
+                <span class="lodo-review-label">Collateral</span>
+                <span class="lodo-review-value" id="lodo-review-collateral">None / Unsecured</span>
+              </div>
+            </div>
+            <div class="lodo-review-description">
+              <span class="lodo-review-label">Description</span>
+              <p id="lodo-review-desc">Kitchen renovation for home-based catering setup</p>
+            </div>
+          </div>
+          <div class="lodo-form-actions">
+            <button id="lodo-back-btn-2" class="lodo-btn lodo-btn-secondary">Back</button>
+            <button id="lodo-create-btn" class="lodo-btn lodo-btn-primary">Create Intent &amp; Start Auction</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: Auction -->
+      <div class="lodo-screen lodo-screen-hidden" id="lodo-screen-2">
+        <div class="lodo-screen-header">
+          <button id="lodo-auction-back-btn" class="lodo-btn lodo-btn-ghost">← New Intent</button>
+        </div>
+
+        <div class="lodo-auction-header">
+          <div class="lodo-auction-title-row">
+            <h2 class="lodo-screen-title">Live Auction</h2>
+            <span class="lodo-badge lodo-badge-live">Live</span>
+          </div>
+          <div class="lodo-auction-timer">
+            <svg class="lodo-timer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="lodo-timer-value" id="lodo-timer">02:43:28</span>
+          </div>
+        </div>
+
+        <div class="lodo-intent-summary">
+          <div class="lodo-intent-title" id="lodo-auction-title">Personal Loan</div>
+          <div class="lodo-intent-meta">
+            <span class="lodo-intent-meta-item"><strong>₹500,000</strong> — <span id="lodo-auction-purpose">Home Renovation</span></span>
+            <span class="lodo-intent-meta-item"><span id="lodo-auction-tenure">60</span> months</span>
+          </div>
+        </div>
+
+        <div class="lodo-bids-header">
+          <span class="lodo-bids-label">Lender Bids</span>
+          <div class="lodo-bids-count" id="lodo-bids-count">0 bids</div>
+        </div>
+
+        <div class="lodo-bids-list" id="lodo-bids-list">
+          <!-- Bids injected here -->
+        </div>
+
+        <div class="lodo-auction-empty lodo-card" id="lodo-auction-empty">
+          <svg class="lodo-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>
+          <p class="lodo-empty-text">No bids yet. The auction is open — lenders can submit offers.</p>
+        </div>
+
+        <div class="lodo-auction-footer">
+          <button id="lodo-auction-to-compare-btn" class="lodo-btn lodo-btn-primary lodo-btn-disabled" disabled>
+            Compare Offers (0 selected)
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Compare -->
+      <div class="lodo-screen lodo-screen-hidden" id="lodo-screen-3">
+        <div class="lodo-screen-header">
+          <button id="lodo-compare-back-btn" class="lodo-btn lodo-btn-ghost">← Auction</button>
+        </div>
+
+        <div class="lodo-screen-header-row">
+          <h2 class="lodo-screen-title">Compare Offers</h2>
+          <span class="lodo-badge lodo-badge-compare">Normalized comparison</span>
+        </div>
+
+        <p class="lodo-compare-intro">
+          Each offer below is shown on the same cost components: APR, monthly payment, total interest, processing fees, upfront costs, and total repayment.
+          This is an illustrative comparison from the source prototype's seed data.
+        </p>
+
+        <div class="lodo-comparison-list" id="lodo-comparison-list">
+          <!-- Comparison cards injected here -->
+        </div>
+
+        <div class="lodo-comparison-empty lodo-card" id="lodo-comparison-empty">
+          <p class="lodo-empty-text">Select bids in the auction to compare them here.</p>
+        </div>
+
+        <div class="lodo-comparison-footer">
+          <button id="lodo-compare-back-to-auction-btn" class="lodo-btn lodo-btn-secondary">Back to Auction</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Decision / Accepted -->
+      <div class="lodo-screen lodo-screen-hidden" id="lodo-screen-4">
+        <div class="lodo-success-screen">
+          <div class="lodo-success-icon">✓</div>
+          <h2 class="lodo-success-title">Offer Accepted</h2>
+          <p class="lodo-success-sub">You selected the best-value offer. This is a prototype action — no real loan has been executed.</p>
+
+          <div class="lodo-accepted-detail" id="lodo-accepted-detail">
+            <!-- Injected -->
+          </div>
+
+          <div class="lodo-auditability-note lodo-card">
+            <div class="lodo-auditability-title">Why this matters</div>
+            <p>
+              In a single-source lending flow, the borrower sees one offer and must trust it.
+              In LoDo's concept, the borrower saw multiple normalized offers, compared total cost components, and made an explicit choice.
+              The acceptance is recorded as an auditable action in the prototype.
+            </p>
+          </div>
+
+          <div class="lodo-decision-actions">
+            <button id="lodo-restart-btn" class="lodo-btn lodo-btn-primary">Start New Intent</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: trust / context panel -->
+    <div class="lodo-context-panel">
+      <div class="lodo-context-card">
+        <h3 class="lodo-context-title">What LoDo is trying to change</h3>
+        <p>
+          MSME borrowers often receive a single offer from a single lender and have no structured way to compare alternatives on the same terms.
+          LoDo's concept is a reverse auction: the borrower creates one structured intent, and multiple lenders bid on it.
+        </p>
+      </div>
+
+      <div class="lodo-context-card">
+        <h3 class="lodo-context-title">Consent + verification (design intent)</h3>
+        <p>
+          The portfolio positions LoDo around consent and verification so that borrowers understand what is being shared and what has been verified before they see offers.
+          This web demonstration does not implement an explicit consent or verification step — that is a product-design direction, not a feature of this prototype.
+        </p>
+      </div>
+
+      <div class="lodo-context-card">
+        <h3 class="lodo-context-title">Illustrative data</h3>
+        <p>
+          Lender names, APR values, fees, and total repayment figures shown here are illustrative demo data from the source prototype's seed data.
+          They are not real offers and do not represent real lender terms.
+        </p>
+      </div>
+
+      <div class="lodo-context-card lodo-context-card-bottom">
+        <h3 class="lodo-context-title">Market context (not a LoDo outcome)</h3>
+        <p>
+          Some LoDo descriptions reference a $300B MSME credit opportunity. That figure is market/context information, not a LoDo outcome, not a validated addressable-market measurement for this prototype, and not a claim about captured share.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .work-live {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-4) var(--space-16);
+    font-family: var(--font-sans);
+  }
+
+  .work-nav {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  .work-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .work-nav a:hover {
+    color: var(--gold-bright);
+    text-decoration: underline;
+  }
+
+  .work-live-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .work-live-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    border-radius: var(--radius-full);
+    margin-right: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .work-live-badge-prototype {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  .work-live-badge-concept {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .work-live-badge-illustrative {
+    background: rgba(234, 179, 8, 0.15);
+    color: #facc15;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+  }
+
+  .work-live-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-family: var(--font-serif);
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: var(--space-3) 0 var(--space-2);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+  }
+
+  .live-subtitle {
+    color: var(--text-secondary);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    max-width: 850px;
+    margin-bottom: var(--space-3);
+  }
+
+  .inline-note {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-muted);
+    border-radius: var(--radius-sm);
+    border-left: 2px solid var(--accent);
+  }
+
+  .inline-note .mono {
+    font-family: var(--font-mono);
+    color: var(--gold-bright);
+  }
+
+  .live-evidence-note {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-muted);
+    border-radius: var(--radius-sm);
+    border-left: 2px solid var(--border-default);
+    max-width: 900px;
+    line-height: var(--leading-normal);
+  }
+
+  /* 3-Column Workspace */
+  .lodo-live-workspace {
+    display: grid;
+    grid-template-columns: 240px 1fr 300px;
+    gap: var(--space-6);
+    align-items: start;
+    margin-top: var(--space-6);
+  }
+
+  @media (max-width: 1200px) {
+    .lodo-live-workspace {
+      grid-template-columns: 220px 1fr;
+    }
+    .lodo-context-panel {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .lodo-live-workspace {
+      grid-template-columns: 1fr;
+    }
+    .lodo-context-panel {
+      grid-column: span 1;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Left Flow Panel */
+  .lodo-flow-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .lodo-flow-steps {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .lodo-step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+
+  .lodo-step-active {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+  }
+
+  .lodo-step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .lodo-step-active .lodo-step-num {
+    background: var(--accent);
+    color: #120e06;
+    border-color: var(--accent);
+  }
+
+  .lodo-step-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .lodo-step-active .lodo-step-label {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  .lodo-step-arrow {
+    display: none;
+  }
+
+  .lodo-trust-note {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: var(--leading-normal);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .lodo-trust-tag {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  /* Center Main Panel */
+  .lodo-main-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    min-height: 520px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .lodo-screen {
+    display: block;
+  }
+
+  .lodo-screen-hidden {
+    display: none;
+  }
+
+  .lodo-screen-header {
+    margin-bottom: var(--space-5);
+  }
+
+  .lodo-screen-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+    font-family: var(--font-sans);
+  }
+
+  .lodo-screen-sub {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .lodo-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+  }
+
+  .lodo-form-card-hidden {
+    display: none;
+  }
+
+  /* Form Stepper */
+  .lodo-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .lodo-stepper-dot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .lodo-stepper-active {
+    color: var(--accent);
+  }
+
+  .lodo-stepper-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: inherit;
+  }
+
+  .lodo-stepper-active .lodo-stepper-num {
+    background: var(--accent);
+    color: #120e06;
+    border-color: var(--accent);
+  }
+
+  .lodo-stepper-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+    margin: 0 12px;
+  }
+
+  .lodo-form-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .lodo-form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lodo-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-secondary);
+  }
+
+  .lodo-input-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .lodo-input {
+    background: var(--bg);
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .lodo-input:focus {
+    border-color: var(--accent);
+  }
+
+  .lodo-input-hint {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .lodo-select,
+  .lodo-textarea {
+    background: var(--bg);
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .lodo-select:focus,
+  .lodo-textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .lodo-textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  .lodo-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  /* Buttons */
+  .lodo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: var(--font-sans);
+    text-decoration: none;
+  }
+
+  .lodo-btn-primary {
+    background: var(--accent);
+    color: #120e06;
+    font-weight: 700;
+  }
+
+  .lodo-btn-primary:hover {
+    background: var(--gold-bright);
+    transform: translateY(-1px);
+  }
+
+  .lodo-btn-secondary {
+    background: var(--bg-muted);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .lodo-btn-secondary:hover {
+    background: var(--bg-elevated);
+    border-color: var(--border-default);
+  }
+
+  .lodo-btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .lodo-btn-sm {
+    padding: 5px 12px;
+    font-size: var(--text-xs);
+  }
+
+  /* Review Screen */
+  .lodo-review-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .lodo-review-item {
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3);
+  }
+
+  .lodo-review-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+    margin-bottom: 3px;
+  }
+
+  .lodo-review-value {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+  }
+
+  .lodo-review-description {
+    grid-column: span 2;
+  }
+
+  /* Reverse Auction View */
+  .lodo-auction-header {
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .lodo-auction-title-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .lodo-intent-title {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .lodo-intent-meta {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+  }
+
+  .lodo-auction-timer {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--gold-bright);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lodo-bids-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .lodo-bid-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .lodo-bid-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .lodo-bid-card--selected {
+    border-color: var(--accent);
+    background: rgba(229, 169, 59, 0.08);
+  }
+
+  .lodo-bid-card--winning {
+    border-left: 3px solid #10b981;
+  }
+
+  .lodo-bid-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .lodo-bid-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+  }
+
+  .lodo-bid-name-row {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lodo-bid-name {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .lodo-bid-tag {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .lodo-bid-checkbox {
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--border-default);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .lodo-checkbox-icon--checked {
+    color: var(--gold-bright);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .lodo-bid-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-muted);
+    border-radius: var(--radius-sm);
+  }
+
+  .lodo-metric {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lodo-metric-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+
+  .lodo-metric-value {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+  }
+
+  .lodo-bid-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .lodo-auction-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  /* Comparison View */
+  .lodo-comparison-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .lodo-comparison-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+  }
+
+  .lodo-comparison-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: var(--space-8);
+  }
+
+  .lodo-empty-text {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+
+  .lodo-comparison-footer {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  /* Step 4 Decision Screen */
+  .lodo-success-screen {
+    text-align: center;
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .lodo-success-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1.5px solid rgba(16, 185, 129, 0.35);
+    font-size: 26px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-3);
+  }
+
+  .lodo-success-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+  }
+
+  .lodo-success-sub {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin: 0 auto var(--space-4);
+  }
+
+  .lodo-accepted-detail {
+    max-width: 520px;
+    margin: 0 auto var(--space-4);
+    text-align: left;
+  }
+
+  .lodo-auditability-note {
+    max-width: 520px;
+    margin: 0 auto var(--space-5);
+    text-align: left;
+    background: var(--bg-muted);
+    border-left: 3px solid var(--accent);
+  }
+
+  .lodo-auditability-title {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .lodo-decision-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  /* Right Context Panel */
+  .lodo-context-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .lodo-context-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .lodo-context-title {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--accent);
+    margin: 0 0 var(--space-2);
+  }
+
+  .lodo-context-card p {
+    margin: 0;
+  }
+</style>
+
+<script src="/static/js/lodo-live.js"></script>
+
+{% endblock %}

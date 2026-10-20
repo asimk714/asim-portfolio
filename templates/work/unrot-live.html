@@ -1,0 +1,505 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ============================================================
+     UNROT LIVE EXPERIENCE
+     ============================================================ -->
+<nav class="case-study-nav" aria-label="Case study navigation">
+  <div class="container case-study-nav__inner">
+    <a href="/work/unrot/" class="case-study-nav__exit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to case study
+    </a>
+    <div class="case-study-nav__meta">
+      <span class="case-study-nav__project">Unrot</span>
+      <span class="case-study-nav__separator">/</span>
+      <span class="case-study-nav__type">Live Experience</span>
+    </div>
+  </div>
+</nav>
+
+<header class="case-study-header">
+  <div class="container">
+    <div class="case-study-headline-block animate-in">
+      <div class="inline-flex items-center gap-2 mb-3" style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+        <span class="evidence-label evidence-label--verified" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-verified-bg); color: var(--evidence-verified); border: 1px solid var(--evidence-verified-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-verified); flex-shrink: 0;"></span>
+          Working prototype
+        </span>
+        <span class="evidence-label evidence-label--not-evidenced" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--evidence-not-evidenced-bg); color: var(--evidence-not-evidenced); border: 1px solid var(--evidence-not-evidenced-bg); display: inline-flex; align-items: center; gap: var(--space-1);">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--evidence-not-evidenced); flex-shrink: 0; opacity: 0.5;"></span>
+          No measured D1 outcome
+        </span>
+      </div>
+      <h1 class="case-study-headline" style="font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin: 0;">
+        Explore the retention measurement system
+      </h1>
+    </div>
+
+    <p class="muted-paragraph" style="font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 600px; margin-top: var(--space-4);">
+      This interactive demonstrates the Unrot measurement model — the D1 retention funnel, the
+      calendar-day calculator logic, and the experiment design — using illustrative data. No real
+      cohort data is shown; the prototype honestly displays "not enough real cohort data yet."
+    </p>
+
+    <div class="inline-flex items-center gap-2" style="display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-4); font-size: var(--text-xs); color: var(--text-muted);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; opacity: 0.6;">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      Prototype functionality is demonstrated here. No real-user outcome is claimed.
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     DEMO: FUNNEL → CALCULATOR → EXPERIMENT
+     ============================================================ -->
+<section class="unrot-live-section" style="padding: var(--space-12) 0 var(--space-16);">
+  <div class="container">
+    <div class="unrot-live-layout" style="display: grid; grid-template-columns: 1fr; gap: var(--space-8); align-items: start;">
+
+      <!-- LEFT: Funnel visualization -->
+      <div class="unrot-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column;">
+        <div class="unrot-panel-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-5);">
+          <div>
+            <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">The Funnel</p>
+            <h2 style="font-size: var(--text-xl); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">D1 Retention Funnel</h2>
+          </div>
+          <span class="unrot-step-badge" style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); background: var(--bg-muted); border: 1px solid var(--border-subtle); padding: var(--space-1) var(--space-2); border-radius: var(--radius-full);">Measurement Model</span>
+        </div>
+
+        <p class="muted-paragraph" style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-5);">
+          The funnel tracks a new user from first session through D1 return. Each stage is instrumented
+          as an analytics event. Hover or tap a stage to see what it measures.
+        </p>
+
+        <!-- Funnel stages -->
+        <div class="unrot-funnel" style="display: flex; flex-direction: column; gap: var(--space-2);">
+          <div class="unrot-funnel-stage" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);" data-stage="1">
+            <div style="display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0;">
+              <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: var(--font-mono);">1</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">first_session_started</span>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <p style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin: 0;">New user starts first session</p>
+              <p style="font-size: var(--text-xs); color: var(--text-muted); margin: var(--space-1) 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Recorded when onboarding begins. Entry point of the funnel.</p>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--border-default); flex-shrink: 0;">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <div class="unrot-funnel-stage" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);" data-stage="2">
+            <div style="display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0;">
+              <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: var(--font-mono);">2</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">onboarding_completed</span>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <p style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin: 0;">User completes 3-step onboarding</p>
+              <p style="font-size: var(--text-xs); color: var(--text-muted); margin: var(--space-1) 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Role, goal, experience selected. UserPreference saved.</p>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--border-default); flex-shrink: 0;">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <div class="unrot-funnel-stage" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);" data-stage="3">
+            <div style="display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0;">
+              <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: var(--font-mono);">3</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">plan_viewed</span>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <p style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin: 0;">5-day curriculum plan displayed</p>
+              <p style="font-size: var(--text-xs); color: var(--text-muted); margin: var(--space-1) 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Personalized learning path. Day 1 lesson highlighted.</p>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--border-default); flex-shrink: 0;">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <div class="unrot-funnel-stage" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);" data-stage="4">
+            <div style="display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0;">
+              <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: var(--font-mono);">4</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">lesson_started</span>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <p style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin: 0;">User opens Day 1 lesson</p>
+              <p style="font-size: var(--text-xs); color: var(--text-muted); margin: var(--space-1) 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lesson reader loads. Progress tracking begins.</p>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--border-default); flex-shrink: 0;">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <div class="unrot-funnel-stage" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);" data-stage="5">
+            <div style="display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0;">
+              <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: var(--font-mono);">5</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">lesson_completed</span>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <p style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin: 0;">Knowledge check passed, lesson done</p>
+              <p style="font-size: var(--text-xs); color: var(--text-muted); margin: var(--space-1) 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">LessonProgress stores startedAt, quizScore, completedAt.</p>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--border-default); flex-shrink: 0;">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <div class="unrot-funnel-stage" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);" data-stage="6">
+            <div style="display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0;">
+              <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: var(--font-mono);">6</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">reminder_enabled</span>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <p style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin: 0;">User opts into daily reminder</p>
+              <p style="font-size: var(--text-xs); color: var(--text-muted); margin: var(--space-1) 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Time (HH:mm) + timezone saved. No real notification sent.</p>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--border-default); flex-shrink: 0;">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <!-- D1 return — highlighted -->
+          <div class="unrot-funnel-stage unrot-funnel-stage--d1" style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--evidence-observed-bg); border: 1px solid var(--evidence-observed); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);" data-stage="7">
+            <div style="display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0;">
+              <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--evidence-observed); color: var(--text-inverse); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: var(--font-mono);">7</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-inverse);">D1_returned</span>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <p style="font-size: var(--text-sm); font-weight: 650; color: var(--text-primary); margin: 0;">User returns next calendar day</p>
+              <p style="font-size: var(--text-xs); color: var(--evidence-observed); margin: var(--space-1) 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Qualifying return event on calendar day D0+1 — the North Star metric.</p>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--evidence-observed); flex-shrink: 0; opacity: 0.6;">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Funnel summary -->
+        <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border-subtle);">
+          <p style="font-size: var(--text-xs); color: var(--text-muted); margin: 0 0 var(--space-2);">Funnel summary — illustrative data (no real cohort):</p>
+          <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--space-1); font-size: var(--text-xs); font-family: var(--font-mono); color: var(--text-secondary);">
+            <div style="text-align: center; padding: var(--space-1); background: var(--bg-muted); border-radius: var(--radius-sm);">
+              <span style="display: block; font-weight: 600; color: var(--text-primary);">100</span>
+              <span style="color: var(--text-muted);">stage 1</span>
+            </div>
+            <div style="text-align: center; padding: var(--space-1); background: var(--bg-muted); border-radius: var(--radius-sm);">
+              <span style="display: block; font-weight: 600; color: var(--text-primary);">84</span>
+              <span style="color: var(--text-muted);">stage 2</span>
+            </div>
+            <div style="text-align: center; padding: var(--space-1); background: var(--bg-muted); border-radius: var(--radius-sm);">
+              <span style="display: block; font-weight: 600; color: var(--text-primary);">71</span>
+              <span style="color: var(--text-muted);">stage 3</span>
+            </div>
+            <div style="text-align: center; padding: var(--space-1); background: var(--bg-muted); border-radius: var(--radius-sm);">
+              <span style="display: block; font-weight: 600; color: var(--text-primary);">58</span>
+              <span style="color: var(--text-muted);">stage 4</span>
+            </div>
+            <div style="text-align: center; padding: var(--space-1); background: var(--bg-muted); border-radius: var(--radius-sm);">
+              <span style="display: block; font-weight: 600; color: var(--text-primary);">47</span>
+              <span style="color: var(--text-muted);">stage 5</span>
+            </div>
+            <div style="text-align: center; padding: var(--space-1); background: var(--bg-muted); border-radius: var(--radius-sm);">
+              <span style="display: block; font-weight: 600; color: var(--text-primary);">32</span>
+              <span style="color: var(--text-muted);">stage 6</span>
+            </div>
+            <div style="text-align: center; padding: var(--space-1); background: var(--evidence-observed-bg); border: 1px solid var(--evidence-observed); border-radius: var(--radius-sm); color: var(--evidence-observed);">
+              <span style="display: block; font-weight: 700; color: var(--evidence-observed);">0</span>
+              <span style="color: var(--evidence-observed);">D1</span>
+            </div>
+          </div>
+          <p style="font-size: 10px; color: var(--text-muted); margin-top: var(--space-2); text-align: center;">
+            D1: 0 / 100 = 0% — not enough real cohort data yet
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Calculator + Experiment -->
+      <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+
+        <!-- D1 Calculator -->
+        <div class="unrot-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column;">
+          <div class="unrot-panel-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+            <div>
+              <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">Calculator</p>
+              <h2 style="font-size: var(--text-lg); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">D1 Retention Calculator</h2>
+            </div>
+            <span class="unrot-step-badge" style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); background: var(--bg-muted); border: 1px solid var(--border-subtle); padding: var(--space-1) var(--space-2); border-radius: var(--radius-full);">Pure TypeScript</span>
+          </div>
+
+          <p class="muted-paragraph" style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-4);">
+            The calculator computes D1 retention from a list of analytics events, using the user's
+            configured timezone (or UTC fallback). It excludes demo return previews and enforces the
+            cohort completeness rule: a cohort on day D is incomplete until day D+2 has closed.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <div>
+              <label style="display: block; font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Timezone</label>
+              <select id="unrot-timezone" style="width: 100%; padding: var(--space-2) var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans); appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;12&quot; height=&quot;12&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;6 9 12 15 18 9&quot;/></svg>'); background-repeat: no-repeat; background-position: right var(--space-2) center; padding-right: var(--space-6); cursor: pointer;">
+                <option value="UTC">UTC (fallback)</option>
+                <option value="America/New_York">America/New_York (EST)</option>
+                <option value="America/Chicago">America/Chicago (CST)</option>
+                <option value="America/Denver">America/Denver (MST)</option>
+                <option value="America/Los_Angeles">America/Los_Angeles (PST)</option>
+                <option value="Europe/London">Europe/London (GMT)</option>
+                <option value="Europe/Berlin">Europe/Berlin (CET)</option>
+                <option value="Asia/Kolkata">Asia/Kolkata (IST)</option>
+                <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                <option value="Australia/Sydney">Australia/Sydney (AEST)</option>
+              </select>
+            </div>
+            <div>
+              <label style="display: block; font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">Cohort start date (D0)</label>
+              <input type="date" id="unrot-cohort-date" style="width: 100%; padding: var(--space-2) var(--space-3); font-size: var(--text-sm); color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); font-family: var(--font-sans);">
+            </div>
+          </div>
+
+          <button id="unrot-calc-btn" class="btn btn--primary" style="margin-top: var(--space-4); width: 100%; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-right: var(--space-1);">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="3" x2="9" y2="21"/>
+            </svg>
+            Compute D1
+          </button>
+
+          <div id="unrot-calc-result" style="margin-top: var(--space-4); padding: var(--space-3) var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); display: none;">
+            <p style="font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); margin: 0 0 var(--space-1);">Calculator result</p>
+            <p id="unrot-calc-text" style="font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0;"></p>
+            <p style="font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-2);">
+              ⚠ This is an illustrative calculation using synthetic events. No real cohort data is used.
+            </p>
+          </div>
+        </div>
+
+        <!-- Experiment Design -->
+        <div class="unrot-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column;">
+          <div class="unrot-panel-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+            <div>
+              <p class="eyebrow" style="font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-1);">A/B Experiment</p>
+              <h2 style="font-size: var(--text-lg); font-weight: 650; color: var(--text-primary); margin: 0; letter-spacing: -0.01em;">Control vs Treatment</h2>
+            </div>
+            <span class="unrot-step-badge" style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); background: var(--bg-muted); border: 1px solid var(--border-subtle); padding: var(--space-1) var(--space-2); border-radius: var(--radius-full);">Design Only</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+            <div style="padding: var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+              <p style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); margin: 0 0 var(--space-2);">Control (A)</p>
+              <p style="font-size: var(--text-sm); color: var(--text-primary); font-weight: 600; margin: 0 0 var(--space-2);">Generic onboarding</p>
+              <ul style="font-size: var(--text-xs); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0; padding-left: var(--space-3);">
+                <li>Static unpersonalized lesson list</li>
+                <li>No 5-day goal syllabus</li>
+                <li>No tomorrow's lesson preview</li>
+                <li>No reminder preference</li>
+                <li>~50% allocation</li>
+              </ul>
+            </div>
+            <div style="padding: var(--space-4); background: var(--accent-soft); border: 1px solid var(--accent-muted); border-radius: var(--radius-md);">
+              <p style="font-size: var(--text-xs); font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: var(--tracking-wide); margin: 0 0 var(--space-2);">Treatment (B)</p>
+              <p style="font-size: var(--text-sm); color: var(--text-primary); font-weight: 600; margin: 0 0 var(--space-2);">Personalized retention loop</p>
+              <ul style="font-size: var(--text-xs); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0; padding-left: var(--space-3);">
+                <li>Role/goal/experience selection</li>
+                <li>Tailored 5-day curriculum</li>
+                <li>Tomorrow's lesson preview on completion</li>
+                <li>Optional daily reminder (HH:mm + timezone)</li>
+                <li>Returning-user /home dashboard</li>
+                <li>~50% allocation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top: var(--space-4); padding: var(--space-3) var(--space-4); background: var(--bg-muted); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+            <p style="font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); margin: 0 0 var(--space-1);">Key design parameters</p>
+            <table style="width: 100%; font-size: var(--text-xs); color: var(--text-secondary); border-collapse: collapse;">
+              <tr>
+                <td style="padding: var(--space-1) 0; white-space: nowrap;">Primary metric:</td>
+                <td style="padding: var(--space-1) 0;">D1 retention rate (calendar-day, timezone-aware)</td>
+              </tr>
+              <tr>
+                <td style="padding: var(--space-1) 0; white-space: nowrap;">Baseline:</td>
+                <td style="padding: var(--space-1) 0;">16% (assignment-provided context, not author-measured)</td>
+              </tr>
+              <tr>
+                <td style="padding: var(--space-1) 0; white-space: nowrap;">Target:</td>
+                <td style="padding: var(--space-1) 0;">22% (+6pp, +37.5% relative)</td>
+              </tr>
+              <tr>
+                <td style="padding: var(--space-1) 0; white-space: nowrap;">Sample size:</td>
+                <td style="padding: var(--space-1) 0;">~650–700 per variant (~1,300–1,400 total)</td>
+              </tr>
+              <tr>
+                <td style="padding: var(--space-1) 0; white-space: nowrap;">Duration:</td>
+                <td style="padding: var(--space-1) 0;">2 weeks + 2-day cooldown</td>
+              </tr>
+              <tr>
+                <td style="padding: var(--space-1) 0; white-space: nowrap;">Decision rule:</td>
+                <td style="padding: var(--space-1) 0;">p < 0.05, guardrails within tolerance</td>
+              </tr>
+            </table>
+          </div>
+
+          <p style="font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-4);">
+            Experiment design is complete. The experiment has not been run — no real users, no real D1 measurement.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="unrot-nav-row" style="margin-top: var(--space-8); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+      <a href="/work/unrot/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;">
+          <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Unrot case study
+      </a>
+      <a href="/work/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: var(--space-1);">
+        Back to Proof of Work
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESPONSIVE
+     ============================================================ -->
+<style>
+  .unrot-live-section {
+    padding: var(--space-12) 0 var(--space-16);
+  }
+
+  .unrot-live-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .unrot-live-layout {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  .unrot-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .unrot-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .unrot-step-badge {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+
+  .unrot-funnel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .unrot-funnel-stage {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .unrot-funnel-stage:hover {
+    border-color: var(--border-default);
+    background: var(--bg-surface);
+  }
+
+  .unrot-funnel-stage--d1 {
+    background: var(--evidence-observed-bg);
+    border-color: var(--evidence-observed);
+  }
+
+  .unrot-funnel-stage--d1:hover {
+    background: var(--evidence-observed-bg);
+    border-color: var(--evidence-observed-hover);
+  }
+
+  .unrot-nav-row {
+    margin-top: var(--space-8);
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  /* Mobile: simpler funnel on small screens */
+  @media (max-width: 640px) {
+    .unrot-funnel-stage {
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .unrot-funnel-stage > div:first-child {
+      width: 100%;
+      margin-bottom: var(--space-1);
+    }
+
+    .unrot-funnel-stage > div:nth-child(2) {
+      flex: 1;
+      min-width: 0;
+      order: 3;
+      margin-top: var(--space-1);
+    }
+
+    .unrot-funnel-stage > svg {
+      display: none;
+    }
+
+    .unrot-panel {
+      padding: var(--space-4);
+    }
+
+    .unrot-panel-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .unrot-live-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<!-- ============================================================
+     SCRIPT: Funnel tooltips, calculator, experiment display
+     ============================================================ -->
+<script src="/static/js/unrot-live.js" defer></script>
+
+{% endblock %}

@@ -1,0 +1,1227 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="work-live">
+  <nav class="work-nav">
+    <a href="/work/irctc/">Back to IRCTC case study</a>
+    <a href="/work/">Back to Proof of Work</a>
+  </nav>
+
+  <div class="work-live-header">
+    <span class="work-live-badge work-live-badge-concept">Concept artifact + interactive prototype</span>
+    <span class="work-live-badge work-live-badge-illustrative">Illustrative data</span>
+    <span class="work-live-badge work-live-badge-static">Static portfolio presentation</span>
+    <h1>IRCTC — Peak-Hour Checkout UX Redesign</h1>
+    <p>
+      Interactive demonstration of the checkout teardown concept and the proposed redesign behaviors.
+      <span class="inline-note">
+        <strong>Source prototype:</strong>
+        <a href="/work/irctc/">/work/irctc/</a>
+        &nbsp; — the full 1,451-line interactive prototype lives in the case study. This page is a portfolio presentation of the same behaviors.
+      </span>
+    </p>
+    <p class="inline-note">
+      <strong>Evidence status:</strong>
+      The metric figures shown below (980ms / 77.4% for current mode; 420ms / 91.2% for redesign mode) are concept figures from the source prototype. They are NOT measured IRCTC outcomes. This is a concept prototype, not a deployed feature. No real tickets are booked.
+    </p>
+  </div>
+
+  <div class="live-workspace">
+    <!-- LEFT PANEL: PM explanation + mode toggle + metrics -->
+    <div class="pm-panel">
+      <div class="glass-card">
+        <h2 class="card-title">PM Assignment: Concurrency vs. UX</h2>
+        <p>
+          IRCTC (India's railway reservation platform) faces extreme concurrency during Tatkal booking windows (10:00 AM and 11:00 AM). The prototype frames this as a concurrency-vs-UX problem: database load, layout shifts from async ad banners, and session drop-off degrade the checkout experience at the worst possible moment.
+        </p>
+
+        <div class="mode-selector">
+          <button class="mode-tab" id="irctc-btn-toggle-current">🔴 Legacy Cluttered UI</button>
+          <button class="mode-tab" id="irctc-btn-toggle-redesign">🟢 Redesigned Minimalist UI</button>
+        </div>
+
+        <h3 class="section-heading">Key Funnel Diagnostics Comparison</h3>
+        <div class="metric-comparison">
+          <div class="metric-card">
+            <div class="metric-header">Peak Checkout Latency</div>
+            <div class="metric-row">
+              <span class="metric-value metric-red" id="irctc-metric-latency-val">980ms</span>
+              <span class="metric-change metric-negative" id="irctc-metric-latency-change">Slow</span>
+            </div>
+            <p class="metric-desc" id="irctc-metric-latency-desc">Heavy script files (ad trackers, analytics bundles) load during the transaction, slowing checkout responses.</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-header">Tatkal Success Rate</div>
+            <div class="metric-row">
+              <span class="metric-value metric-red" id="irctc-metric-success-val">77.4%</span>
+              <span class="metric-change metric-negative" id="irctc-metric-success-change">Leaky</span>
+            </div>
+            <p class="metric-desc" id="irctc-metric-success-desc">Frequent time-out errors, layout shifts leading to invalid taps, and session expiry cause user drop-off.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card">
+        <span class="badge-pill blue">P0 / P1 Prioritization</span>
+        <h2 class="card-title" style="font-size: 1.4rem;">Core Strategic Initiatives</h2>
+        <div class="feature-list" id="irctc-feature-list"></div>
+      </div>
+
+      <div class="glass-card booking-status-card">
+        <div class="booking-status-label">Booking flow status</div>
+        <p id="irctc-booking-status" class="booking-status-text">
+          Toggle the mode above to compare the two experiences.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: smartphone mockup -->
+    <div class="device-panel">
+      <div class="smartphone">
+        <div class="notch"></div>
+
+        <div class="screen">
+          <div class="app-header">
+            <h3 id="app-title-text">IRCTC Rail Connect</h3>
+            <div class="app-header-icons">
+              <span>🔔</span>
+              <span>👤</span>
+            </div>
+          </div>
+
+          <!-- Step indicator (redesign mode only) -->
+          <div class="step-indicator" id="irctc-step-indicator" style="display:none;">
+            <span> passenger info</span>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="irctc-progress-fill" style="width: 0%;"></div>
+            </div>
+            <span>payment</span>
+          </div>
+
+          <div class="screen-content">
+            <!-- Current mode: cluttered with ad banners -->
+            <div id="irctc-screen-current">
+              <div class="route-summary">
+                <div class="route-title"><span>12345 · Rajdhani Express</span><span style="color:#ef4444;font-weight:700;">Tatkal Quota</span></div>
+                <div class="route-sub">NDLS (New Delhi) → BCT (Mumbai Central) · 15 Nov 2024</div>
+                <div class="route-sub" style="color:#10b981;font-weight:600;margin-top:2px;">● 2 Seats Available (AC 3 Tier)</div>
+              </div>
+
+              <div class="screen-sub" style="margin-top: 8px;">
+                <span style="font-weight: 700; color: #0f2a4a; font-size: 11px;">Manual Passenger Entry</span>
+                <span class="hint" style="color: #64748b; font-size: 10px; display: block;">Fields must be manually typed during Tatkal high-load</span>
+              </div>
+
+              <div class="input-line">
+                <span class="input-label">Passenger Name</span>
+                <input type="text" placeholder="Enter name" value="Rahul Sharma" class="screen-input" disabled/>
+              </div>
+              <div class="input-line">
+                <span class="input-label">Age</span>
+                <input type="text" placeholder="Enter age" value="31" class="screen-input" disabled/>
+              </div>
+              <div class="input-line">
+                <span class="input-label">Berth preference</span>
+                <select class="screen-input" disabled>
+                  <option selected>Lower Berth</option>
+                  <option>Upper</option>
+                  <option>Side Lower</option>
+                </select>
+              </div>
+
+              <!-- Captcha block -->
+              <div class="captcha-block" style="margin: 6px 0;">
+                <span class="captcha-code">X 7 9 K B</span>
+                <button type="button" class="captcha-refresh" disabled>↻ Refresh</button>
+              </div>
+
+              <!-- Ad banner 1 -->
+              <div class="ad-banner" id="irctc-ad-1">
+                <div class="ad-content">
+                  <div class="ad-text" style="font-weight: 700; color: #92400e;">⚡ Tatkal Quick Hotel Pass (Ad)</div>
+                  <div class="ad-subtext" style="font-size: 10px; color: #b45309;">Book stay at 40% off near Mumbai Central</div>
+                </div>
+              </div>
+              <!-- Ad banner 2 -->
+              <div class="ad-banner" id="irctc-ad-2">
+                <div class="ad-content">
+                  <div class="ad-text" style="font-weight: 700; color: #92400e;">💳 IRCTC Co-brand RuPay Card</div>
+                  <div class="ad-subtext" style="font-size: 10px; color: #b45309;">Zero gateway surcharge on Tatkal bookings</div>
+                </div>
+              </div>
+
+              <button class="screen-btn primary" id="irctc-legacy-pay-btn" disabled>Continue to Payment (₹2,140)</button>
+            </div>
+
+            <!-- Redesign mode: clean UI -->
+            <div id="irctc-screen-redesign" style="display:none;">
+              <div class="route-summary" style="border-left: 3px solid #10b981;">
+                <div class="route-title"><span>12345 · Rajdhani Express</span><span style="color:#10b981;font-weight:700;">Tatkal Priority</span></div>
+                <div class="route-sub">NDLS → BCT · 15 Nov 2024 · 2 Seats Available</div>
+              </div>
+
+              <div class="autofill-suggestion" style="margin-top: 8px;">
+                <div>
+                  <div class="autofill-pill-text">⚡ Frequent Traveler Profile</div>
+                  <div style="font-size: 10px; color: #64748b;">Ramesh Kumar (34, Male) · Lower Berth</div>
+                </div>
+                <button class="screen-btn secondary" id="irctc-btn-autofill" type="button">Quick Autofill</button>
+              </div>
+
+              <div class="input-line autofill-line" id="irctc-passenger-form" style="margin-top: 6px;">
+                <span class="input-label">Passenger Name</span>
+                <input type="text" placeholder="Click Quick Autofill above" id="irctc-input-name" class="screen-input autofill-input" disabled/>
+              </div>
+              <div class="input-line autofill-line">
+                <span class="input-label">Age &amp; Gender</span>
+                <input type="text" placeholder="—" id="irctc-input-age" class="screen-input autofill-input" disabled/>
+              </div>
+              <div class="input-line autofill-line">
+                <span class="input-label">Berth preference</span>
+                <select class="screen-input autofill-input" id="irctc-select-berth" disabled>
+                  <option id="irctc-berth-opt">—</option>
+                  <option>Lower Berth (Preferred)</option>
+                </select>
+              </div>
+
+              <div id="irctc-autofill-confirmed-badge" style="display:none;background:#f0fdf4;border:1px solid #86efac;color:#166534;padding:6px 10px;border-radius:6px;font-size:10px;font-weight:600;margin-top:4px;">
+                ✓ Profile loaded from encrypted local storage
+              </div>
+
+              <div style="margin-top: 10px;">
+                <button class="screen-btn primary" id="irctc-btn-checkout" disabled>Proceed to 1-Click Checkout (₹2,140)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Virtual waiting queue overlay (redesign mode only) -->
+        <div class="queue-overlay" id="irctc-waiting-queue">
+          <div class="queue-card">
+            <div class="queue-icon">⏳</div>
+            <h3>You're in the queue</h3>
+            <p>Your booking request is being processed. Please hold on.</p>
+            <div class="queue-position">
+              <span class="queue-label">Your position</span>
+              <span class="queue-value" id="irctc-queue-position">—</span>
+            </div>
+            <div class="queue-progress">
+              <div class="queue-bar-bg">
+                <div class="queue-bar-fill" id="irctc-queue-bar" style="width: 0%;"></div>
+              </div>
+              <span class="queue-percent" id="irctc-queue-percent">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success screen overlay (redesign mode only) -->
+        <div class="success-overlay" id="irctc-success-screen">
+          <div class="success-card">
+            <div class="success-icon">✅</div>
+            <h3>Booking Confirmed</h3>
+            <p>PNR: <strong>8475930261</strong></p>
+            <p>Date: 15 Nov 2024 &bull; Train: 12345 Rajdhani Express</p>
+            <p>Class: General &bull; Seat: 12A</p>
+
+            <div class="success-upsell">
+              <h5>Would you like to add travel insurance?</h5>
+              <p>Complimentary coverage up to ₹50,000</p>
+              <button class="success-upsell-btn">Add (₹120)</button>
+              <button class="success-upsell-btn secondary">Skip</button>
+            </div>
+
+            <button class="reset-btn" id="irctc-btn-reset">Reset Demo</button>
+          </div>
+        </div>
+
+        <!-- Shift alert toast (current mode only) -->
+        <div class="toast-shift" id="irctc-shift-toast">
+          ⚠️ Layout shift detected — screen displaced
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .work-live {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-4) var(--space-16);
+    font-family: var(--font-sans);
+  }
+
+  .work-nav {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  .work-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .work-nav a:hover {
+    color: var(--gold-bright);
+    text-decoration: underline;
+  }
+
+  .work-live-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .work-live-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    border-radius: var(--radius-full);
+    margin-right: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .work-live-badge-concept {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .work-live-badge-illustrative {
+    background: rgba(234, 179, 8, 0.15);
+    color: #facc15;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+  }
+
+  .work-live-badge-static {
+    background: rgba(148, 163, 184, 0.15);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+  }
+
+  .work-live-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-family: var(--font-serif);
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: var(--space-3) 0 var(--space-2);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+  }
+
+  .work-live-header p {
+    color: var(--text-secondary);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    max-width: 800px;
+    margin-bottom: var(--space-3);
+  }
+
+  .inline-note {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-muted);
+    border-radius: var(--radius-sm);
+    border-left: 2px solid var(--accent);
+  }
+
+  .inline-note a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  /* Two-column layout */
+  .live-workspace {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-8);
+    align-items: start;
+    margin-top: var(--space-6);
+  }
+
+  @media (max-width: 1024px) {
+    .live-workspace {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+
+  /* Left PM Panel */
+  .pm-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .glass-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .card-title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+    font-family: var(--font-sans);
+  }
+
+  .glass-card p {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-heading {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--accent);
+    margin: var(--space-5) 0 var(--space-3);
+  }
+
+  .mode-selector {
+    display: flex;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    padding: 4px;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+    gap: 6px;
+  }
+
+  .mode-tab {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font-sans);
+  }
+
+  .mode-tab:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .mode-tab.active-current {
+    background: #ef4444;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+  }
+
+  .mode-tab.active-redesign {
+    background: #10b981;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+  }
+
+  /* Metric comparison */
+  .metric-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  @media (max-width: 600px) {
+    .metric-comparison {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .metric-card {
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+  }
+
+  .metric-header {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .metric-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+  }
+
+  .metric-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: var(--font-sans);
+  }
+
+  .metric-value.metric-red {
+    color: #ef4444;
+  }
+
+  .metric-value.metric-green {
+    color: #10b981;
+  }
+
+  .metric-change {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .metric-change.metric-negative {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+  }
+
+  .metric-change.metric-positive {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+  }
+
+  .metric-desc {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    margin-top: 6px;
+    line-height: var(--leading-normal);
+  }
+
+  /* Feature list */
+  .badge-pill.blue {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    border-radius: var(--radius-full);
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    margin-bottom: var(--space-2);
+  }
+
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+  }
+
+  .feature-item {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease;
+  }
+
+  .feature-item:hover {
+    transform: translateX(3px);
+  }
+
+  .feature-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-xs);
+    flex-shrink: 0;
+  }
+
+  .feature-icon.p0 {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+
+  .feature-icon.p1 {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  .feature-text h4 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 2px;
+  }
+
+  .feature-text p {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: var(--leading-normal);
+  }
+
+  .booking-status-card {
+    border-left: 3px solid var(--accent);
+  }
+
+  .booking-status-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .booking-status-text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* Right Device Panel */
+  .device-panel {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: sticky;
+    top: var(--space-8);
+  }
+
+  .smartphone {
+    width: 380px;
+    height: 740px;
+    background: #0f172a;
+    border: 10px solid #1e293b;
+    border-radius: 46px;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 24px;
+    background: #1e293b;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    z-index: 100;
+  }
+
+  .notch::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background: #0f172a;
+    border-radius: 4px;
+  }
+
+  .screen {
+    flex: 1;
+    background: #f8fafc;
+    color: #0f2a4a;
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-sans);
+  }
+
+  .app-header {
+    background: #0f2a4a;
+    color: #fff;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .app-header h3 {
+    margin: 0;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+
+  .app-header-icons {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .step-indicator {
+    background: #fff;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+  }
+
+  .progress-bar-container {
+    flex: 1;
+    margin: 0 10px;
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: #ff8c00;
+    transition: width 0.3s ease;
+  }
+
+  .screen-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+
+  .route-summary {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .route-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f2a4a;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .route-sub {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  .section-header {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    margin-top: 4px;
+  }
+
+  .input-line,
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .input-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+  }
+
+  .screen-input,
+  .input-field {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 12px;
+    font-family: inherit;
+    color: #0f2a4a;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .screen-input:focus,
+  .input-field:focus {
+    border-color: #ff8c00;
+  }
+
+  .screen-input:disabled {
+    background: #f8fafc;
+    color: #334155;
+    cursor: default;
+  }
+
+  .screen-input.autofilled-field {
+    background: #f0fdf4 !important;
+    border-color: #22c55e !important;
+    color: #15803d !important;
+    font-weight: 600;
+  }
+
+  .screen-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .screen-btn.primary {
+    background: #ff8c00;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+  }
+
+  .screen-btn.primary:hover:not(:disabled) {
+    background: #ea580c;
+    transform: translateY(-1px);
+  }
+
+  .screen-btn.primary:disabled {
+    background: #cbd5e1;
+    color: #94a3b8;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  .screen-btn.secondary {
+    background: #2563eb;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 11px;
+    width: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+  }
+
+  .screen-btn.secondary:hover {
+    background: #1d4ed8;
+  }
+
+  .autofill-suggestion {
+    background: #eff6ff;
+    border: 1.5px dashed #3b82f6;
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .autofill-suggestion:hover {
+    background: #dbeafe;
+  }
+
+  .autofill-pill-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: #1e3a8a;
+  }
+
+  .autofill-btn-trigger {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .passenger-card {
+    background: #fff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.2s ease;
+  }
+
+  .passenger-card.autofilled {
+    border-color: #ff8c00;
+    box-shadow: 0 2px 8px rgba(255, 140, 0, 0.15);
+  }
+
+  .passenger-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f2a4a;
+  }
+
+  .passenger-details {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.4;
+  }
+
+  .ad-banner {
+    background: #fef3c7;
+    border: 1px dashed #f59e0b;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 11px;
+    color: #92400e;
+    text-align: center;
+    margin: 4px 0;
+  }
+
+  .ad-banner.ad-shifted {
+    animation: layoutShift 0.4s ease forwards;
+  }
+
+  .captcha-block {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .captcha-code {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    background: #e2e8f0;
+    padding: 3px 6px;
+    border-radius: 4px;
+    color: #334155;
+  }
+
+  .captcha-refresh {
+    background: transparent;
+    border: none;
+    color: #3b82f6;
+    cursor: pointer;
+    font-size: 11px;
+  }
+
+  .btn-book {
+    background: #ff8c00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 11px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+    margin-top: 6px;
+  }
+
+  .btn-book:hover {
+    background: #ea580c;
+  }
+
+  .waiting-queue,
+  .queue-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 20px;
+  }
+
+  .queue-card {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .queue-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  .queue-position {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0 8px;
+    font-size: 12px;
+  }
+
+  .queue-label {
+    color: #94a3b8;
+  }
+
+  .queue-value {
+    color: #ff8c00;
+    font-weight: 700;
+  }
+
+  .queue-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .queue-bar-bg,
+  .queue-bar-container {
+    flex: 1;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .queue-bar-fill,
+  .queue-bar {
+    height: 100%;
+    width: 0%;
+    background: #ff8c00;
+    transition: width 0.3s;
+  }
+
+  .queue-percent {
+    font-size: 11px;
+    color: #94a3b8;
+    min-width: 32px;
+    text-align: right;
+  }
+
+  .queue-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #ff8c00;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 12px;
+  }
+
+  .queue-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .queue-sub {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-bottom: 12px;
+  }
+
+  .queue-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #94a3b8;
+  }
+
+  .success-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 60;
+    padding: 20px;
+  }
+
+  .success-card {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 20px;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .success-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  .success-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #10b981;
+  }
+
+  .success-card p {
+    font-size: 11px;
+    color: #94a3b8;
+    margin: 2px 0;
+  }
+
+  .success-upsell {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 12px 0;
+    text-align: left;
+  }
+
+  .success-upsell h5 {
+    font-size: 11px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 2px;
+  }
+
+  .success-upsell p {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-bottom: 6px;
+  }
+
+  .success-upsell-btn {
+    background: #10b981;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 4px;
+  }
+
+  .success-upsell-btn.secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+  }
+
+  .reset-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+  }
+
+  .reset-btn:hover {
+    background: var(--accent);
+    color: #000;
+  }
+
+  .toast-shift {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: #ef4444;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+    z-index: 70;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .live-footer-note {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+    margin-top: var(--space-8);
+    max-width: 800px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes layoutShift {
+    0% { transform: translateY(-10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  @media (max-width: 640px) {
+    .smartphone {
+      width: 100%;
+      max-width: 360px;
+      height: 680px;
+    }
+  }
+</style>
+
+<script src="/static/js/irctc-live.js"></script>
+
+{% endblock %}
